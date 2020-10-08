@@ -1,4 +1,4 @@
-import DText from '@/components/atoms/Text'
+import DText from "./src/components/atoms/Text";
 
 /** atoms **/
-export { DText }
+export { DText };
