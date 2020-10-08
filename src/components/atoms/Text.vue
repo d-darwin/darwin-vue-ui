@@ -16,6 +16,7 @@ export default {
 </script>
 
 <style scoped>
+/* special vue pseudo selector to be able to style tags inside slot */
 ::v-slotted(p) {
   font-style: italic;
 }

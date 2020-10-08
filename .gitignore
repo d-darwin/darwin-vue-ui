@@ -24,3 +24,5 @@ pnpm-debug.log*
 
 # Dev files and folders
 /public
+/src/main.js
+/src/App.vue

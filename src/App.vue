@@ -4,7 +4,7 @@
   </d-text>
 </template>
 <script>
-import DText from "./components/atoms/Text";
+import { DText } from '../index'
 
 export default {
   components: { DText }
