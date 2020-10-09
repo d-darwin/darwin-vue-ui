@@ -4,7 +4,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-lib": "vue-cli-service build --target lib --name @darwin-studio/ui-vue ./src/index.js",
+    "build-lib": "vue-cli-service build --target lib --name ui-vue ./src/index.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -24,7 +24,7 @@
     "prettier": "^1.19.1"
   },
   "description": "## Project setup ``` npm install ```",
-  "main": "./dist/@darwin-studio/ui-vue.common.js",
+  "main": "./dist/ui-vue.umd.min.js",
   "files": [
     "dist/*",
     "src/assets/*",
