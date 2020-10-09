@@ -23,7 +23,7 @@
     "eslint-plugin-vue": "^7.0.0-0",
     "prettier": "^1.19.1"
   },
-  "description": "## Project setup ``` npm install ```",
+  "description": "Vue 3 based simple ui-library",
   "main": "./dist/ui-vue.umd.min.js",
   "files": [
     "dist/*",

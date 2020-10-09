@@ -1,24 +1,30 @@
-# darwin-ui
+# DARWIN Studio UI Library
 
-## Project setup
-```
-npm install
-```
+## What is it?
+It's lightweight and performant UI Library for Vue 3. 
+DISCLAIMER: Under construction. Don't use in production.
 
-### Compiles and hot-reloads for development
+## Installation
 ```
-npm run serve
-```
+npm i @darwin-studio/ui-vue
+```  
 
-### Compiles and minifies for production
+## Basic Usage
 ```
-npm run build
-```
+<template>
+  ...
+  <d-typography content="htmlString" />
+  ...
+</template>
 
-### Lints and fixes files
-```
-npm run lint
-```
+<script>
+import { DTypography } from "@darwin-studio/ui-vue"
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+export default {
+  ...
+  components: {
+    DTypography
+  }
+  ...
+}
+```   
