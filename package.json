@@ -4,6 +4,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build-lib": "vue-cli-service build --target lib --name @darwin-studio/ui-vue ./src/index.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -23,7 +24,16 @@
     "prettier": "^1.19.1"
   },
   "description": "## Project setup ``` npm install ```",
-  "main": "src/index.js",
+  "main": "./dist/@darwin-studio/ui-vue.common.js",
+  "files": [
+    "dist/*",
+    "src/assets/*",
+    "src/components/*",
+    "src/use/*",
+    "src/index.js",
+    "*.json",
+    "*.js"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/d-darwin/darwin-vue-ui.git"
