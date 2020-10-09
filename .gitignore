@@ -26,3 +26,6 @@ pnpm-debug.log*
 /public
 /src/main.js
 /src/App.vue
+/src/_App.vue
+/src/router/
+/src/views/
