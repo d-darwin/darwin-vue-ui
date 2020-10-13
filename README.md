@@ -8,6 +8,7 @@ It's lightweight and performant UI Library for Vue 3.
 ## Installation
 ```shell script
 npm i @darwin-studio/ui-vue
+npm i -D sass-loader sass
 ```  
 
 ## Basic Usage
