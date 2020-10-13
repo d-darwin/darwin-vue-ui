@@ -21,8 +21,11 @@
 </template>
 
 <script>
+/** utils **/
+import fontSize from "@/utils/fontSize";
+
 /**
- * Component intents to display typography text.
+ * Displays typography text.
  *
  * @version 0.1.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
@@ -41,22 +44,7 @@ export default {
       default: "div"
     },
 
-    size: {
-      type: String,
-      default: "general",
-      validator: val =>
-        [
-          "small",
-          "general",
-          "longread",
-          "augmented",
-          "h5",
-          "h4",
-          "h3",
-          "h2",
-          "h1"
-        ].includes(val)
-    }
+    size: fontSize
   },
 
   data() {
@@ -83,11 +71,11 @@ export default {
      *
      * @param event
      */
-    navigate($event) {
-      const href = $event.target.getAttribute("href");
-      const target = $event.target.getAttribute("target");
+    navigate(event) {
+      const href = event.target.getAttribute("href");
+      const target = event.target.getAttribute("target");
       if (href && href[0] === "/" && target !== "_blank") {
-        $event.preventDefault();
+        event.preventDefault();
         this.$router.push(href);
       }
     },
@@ -121,7 +109,7 @@ export default {
 
 .d-typography > *,
 .d-typography > ::v-slotted(*) {
-  margin: 1em 0;
+  margin: 1rem 0;
   color: currentColor;
 }
 

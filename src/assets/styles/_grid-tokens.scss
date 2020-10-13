@@ -1,0 +1,49 @@
+// Contains all grid design tokens
+@import 'gaps';
+
+$sm-breakpoint: 480px;
+$md-breakpoint: 768px;
+$lg-breakpoint: 1024px;
+$xl-breakpoint: 1280px;
+$xxl-breakpoint: 1480px;
+
+$xs-grid-columns-count: 2;
+$xs-grid-offset: 18px;
+$xs-grid-gutter: 18px;
+$xs-grid-width: 100%;
+
+$sm-grid-columns-count: 6;
+$sm-grid-offset: $xs-grid-offset;
+$sm-grid-gutter: $xs-grid-gutter;
+$sm-grid-width: $xs-grid-width;
+
+$md-grid-columns-count: 12;
+$md-grid-offset: $gap-6x;
+$md-grid-gutter: $gap-6x;
+$md-grid-width: $sm-grid-width;
+
+$lg-grid-columns-count: $md-grid-columns-count;
+$lg-grid-offset: 0;
+$lg-grid-gutter: $md-grid-gutter;
+$lg-grid-width: 960px;
+
+$xl-grid-columns-count: $lg-grid-columns-count;
+$xl-grid-offset: $lg-grid-offset;
+$xl-grid-gutter: $lg-grid-gutter;
+$xl-grid-width: 1140px;
+
+$xxl-grid-columns-count: $xl-grid-columns-count;
+$xxl-grid-offset: $xl-grid-offset;
+$xxl-grid-gutter: $xl-grid-gutter;
+$xxl-grid-width: 1320px;
+
+// the :export directive is the magic sauce for webpack.
+// this variables will be available to js on build time.
+// see: ./mixins/deviceWidthListener.
+:export {
+  sm: $sm-breakpoint;
+  md: $md-breakpoint;
+  lg: $lg-breakpoint;
+  xl: $xl-breakpoint;
+  xxl: $xxl-breakpoint;
+}

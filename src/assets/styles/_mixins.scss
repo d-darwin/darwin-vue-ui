@@ -1,0 +1,379 @@
+@import 'colors';
+@import 'border-radius';
+@import 'control-heights';
+@import 'grid-tokens';
+@import 'line-heights';
+@import 'shadows';
+@import 'transitions';
+
+// Device width mixins
+
+@mixin xs-device {
+  @media (max-width: $sm-breakpoint - 0.5) {
+    @content;
+  }
+}
+
+@mixin sm-device-min {
+  @media (min-width: $sm-breakpoint) {
+    @content;
+  }
+}
+
+@mixin sm-device {
+  @media (min-width: $sm-breakpoint) and (max-width: $md-breakpoint - 0.5) {
+    @content;
+  }
+}
+
+@mixin sm-device-max {
+  @media (max-width: $md-breakpoint - 0.5) {
+    @content;
+  }
+}
+
+@mixin md-device-min {
+  @media (min-width: $md-breakpoint) {
+    @content;
+  }
+}
+
+@mixin md-device {
+  @media (min-width: $md-breakpoint) and (max-width: $lg-breakpoint - 0.5) {
+    @content;
+  }
+}
+
+@mixin md-device-max {
+  @media (max-width: $lg-breakpoint - 0.5) {
+    @content;
+  }
+}
+
+@mixin lg-device-min {
+  @media (min-width: $lg-breakpoint) {
+    @content;
+  }
+}
+
+@mixin lg-device {
+  @media (min-width: $lg-breakpoint) and (max-width: $xl-breakpoint - 0.5) {
+    @content;
+  }
+}
+
+@mixin lg-device-max {
+  @media (max-width: $xl-breakpoint - 0.5) {
+    @content;
+  }
+}
+
+@mixin xl-device-min {
+  @media (min-width: $xl-breakpoint) {
+    @content;
+  }
+}
+
+@mixin xl-device {
+  @media (min-width: $xl-breakpoint) and (max-width: $xxl-breakpoint - 0.5) {
+    @content;
+  }
+}
+
+@mixin xl-device-max {
+  @media (max-width: $xxl-breakpoint - 0.5) {
+    @content;
+  }
+}
+
+@mixin xxl-device {
+  @media (min-width: $xxl-breakpoint) {
+    @content;
+  }
+}
+
+// Typography mixins
+
+@mixin augmented-text {
+  font-size: 18px;
+  line-height: $line-height-augmented;
+}
+
+@mixin longread-text {
+  font-size: 16px;
+  line-height: $line-height-longread;
+}
+
+@mixin general-text {
+  font-size: 15px;
+  line-height: $line-height-general;
+}
+
+@mixin small-text {
+  font-size: 13px;
+  line-height: $line-height-small;
+}
+
+@mixin heading-1 {
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 60px;
+}
+
+@mixin heading-2 {
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 46px;
+}
+
+@mixin heading-3 {
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 34px;
+}
+
+@mixin heading-4 {
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 26px;
+}
+
+@mixin heading-5 {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 22px;
+}
+
+// Shadow mixins
+
+@mixin shadow {
+  box-shadow: $box-shadow;
+
+  &:hover {
+    box-shadow: $box-shadow-hover;
+  }
+
+  &:active {
+    box-shadow: $box-shadow-active;
+  }
+}
+
+// Transitions mixins
+
+@mixin transition {
+  transition: $transition;
+}
+
+@mixin transition-medium {
+  transition: $transition-medium;
+}
+
+@mixin transition-long {
+  transition: $transition-long;
+}
+
+// Control height and border-radius mixins
+
+@mixin large-control {
+  height: $large-control-height;
+
+  &.__smooth {
+    border-radius: calc(#{$large-control-height} / 2);
+  }
+
+  &.__rounded {
+    border-radius: $border-radius;
+  }
+}
+
+@mixin medium-control {
+  height: $medium-control-height;
+
+  &.__smooth {
+    border-radius: calc(#{$medium-control-height} / 2);
+  }
+
+  &.__rounded {
+    border-radius: $border-radius;
+  }
+}
+
+@mixin small-control {
+  height: $small-control-height;
+
+  &.__smooth {
+    border-radius: calc(#{$small-control-height} / 2);
+  }
+
+  &.__rounded {
+    border-radius: $border-radius;
+  }
+}
+
+// card mixin
+
+@mixin card {
+  @include transition;
+  @include shadow;
+
+  background: $white;
+  color: $text;
+  border-radius: $border-radius;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+// Link mixin
+
+@mixin link-primary {
+  &,
+  &:visited {
+    color: $blue;
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:active {
+    text-decoration: underline;
+  }
+}
+
+@mixin link-secondary {
+  &,
+  &:visited {
+    color: $text;
+  }
+
+  &:hover,
+  &:active {
+    text-decoration: none;
+    color: $primary-active;
+  }
+}
+
+@mixin link-tertiary {
+  &,
+  &:visited {
+    color: $text-aux;
+  }
+
+  &:hover,
+  &:active {
+    color: $text-aux;
+  }
+}
+
+@mixin link-inverse {
+  &,
+  &:visited {
+    color: $white;
+  }
+
+  &:hover,
+  &:active {
+    color: $primary-disabled;
+    text-decoration: none;
+  }
+}
+
+@mixin link-inverse-aux {
+  &,
+  &:visited,
+  &:hover,
+  &:active {
+    color: $primary-disabled;
+    text-decoration: none;
+  }
+}
+
+// Colors mixins
+
+@mixin colors {
+  .__text {
+    color: $text;
+  }
+
+  .__text-aux {
+    color: $text-aux;
+  }
+
+  .__text-alt {
+    color: $text-alt;
+  }
+
+  .__primary {
+    color: $primary;
+  }
+
+  .__primary-active {
+    color: $primary-active;
+  }
+
+  .__primary-disabled {
+    color: $primary-disabled;
+  }
+
+  .__accent {
+    color: $accent;
+  }
+
+  .__link {
+    color: $link;
+  }
+
+  .__danger {
+    color: $danger;
+  }
+
+  .__white {
+    color: $white;
+  }
+}
+
+@mixin textSizes {
+  .__augmented {
+    @include augmented-text;
+  }
+
+  .__longread {
+    @include longread-text;
+  }
+
+  .__general {
+    @include general-text;
+  }
+
+  .__small {
+    @include small-text;
+  }
+}
+
+@mixin headingSizes {
+  h1,
+  .h1 {
+    @include heading-1;
+  }
+
+  h2,
+  .h2 {
+    @include heading-2;
+  }
+
+  h3,
+  .h3 {
+    @include heading-3;
+  }
+
+  h4,
+  .h4 {
+    @include heading-4;
+  }
+
+  h5,
+  .h5 {
+    @include heading-5;
+  }
+}

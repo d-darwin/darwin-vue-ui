@@ -18,10 +18,13 @@
     "@vue/compiler-sfc": "^3.0.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-vue": "^7.0.0-0",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "sass": "^1.27.0",
+    "sass-loader": "^10.0.3"
   },
   "description": "Vue 3 based simple ui-library",
   "type": "module",
@@ -31,6 +34,7 @@
     "src/assets/*",
     "src/components/*",
     "src/use/*",
+    "src/utils/*",
     "src/index.js",
     "*.json",
     "*.js"
