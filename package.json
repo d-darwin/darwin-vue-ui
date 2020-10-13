@@ -24,9 +24,10 @@
     "prettier": "^1.19.1"
   },
   "description": "Vue 3 based simple ui-library",
-  "main": "./dist/ui-vue.umd.min.js",
+  "type": "module",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
   "files": [
-    "dist/*",
     "src/assets/*",
     "src/components/*",
     "src/use/*",
@@ -39,8 +40,9 @@
     "url": "git+https://github.com/d-darwin/darwin-vue-ui.git"
   },
   "keywords": [
-    "vue",
-    "ui-library"
+    "vue 3",
+    "ui library",
+    "visual components"
   ],
   "author": "[Dmitriy Bykov] (https://github.com/d-darwin)",
   "license": "MIT",
