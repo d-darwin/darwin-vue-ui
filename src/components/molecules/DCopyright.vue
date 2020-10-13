@@ -4,10 +4,10 @@
 
 <script>
 /** utils **/
-import fontSize from "@/utils/fontSize";
+import fontSize from "../../utils/fontSize";
 
 /** components **/
-import DTypography from "@/components/atoms/DTypography";
+import DTypography from "../atoms/DTypography";
 
 /**
  * Renders standard copyright.

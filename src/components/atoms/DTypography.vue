@@ -22,7 +22,7 @@
 
 <script>
 /** utils **/
-import fontSize from "@/utils/fontSize";
+import fontSize from "../../utils/fontSize";
 
 /**
  * Displays typography text.
