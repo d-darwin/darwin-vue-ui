@@ -1,0 +1,55 @@
+@import "typography-tokens";
+
+@mixin small-text {
+  font-size: var(--small-font-size);
+  line-height: var(--small-line-height);
+  font-weight: var(--small-font-weight);
+}
+
+@mixin general-text {
+  font-size: var(--general-font-size);
+  line-height: var(--general-line-height);
+  font-weight: var(--general-font-weight);
+}
+
+@mixin longread-text {
+  font-size: var(--longread-font-size);
+  line-height: var(--longread-line-height);
+  font-weight: var(--longread-font-weight);
+}
+
+@mixin augmented-text {
+  font-size: var(--augmented-font-size);
+  line-height: var(--augmented-line-height);
+  font-weight: var(--augmented-font-weight);
+}
+
+@mixin h5-heading {
+  font-size: var(--h5-font-size);
+  line-height: var(--h5-line-height);
+  font-weight: var(--h5-font-weight);
+}
+
+@mixin h4-heading {
+  font-size: var(--h4-font-size);
+  line-height: var(--h4-line-height);
+  font-weight: var(--h4-font-weight);
+}
+
+@mixin h3-heading {
+  font-size: var(--h3-font-size);
+  line-height: var(--h3-line-height);
+  font-weight: var(--h3-font-weight);
+}
+
+@mixin h2-heading {
+  font-size: var(--h2-font-size);
+  line-height: var(--h2-line-height);
+  font-weight: var(--h2-font-weight);
+}
+
+@mixin h1-heading {
+  font-size: var(--h1-font-size);
+  line-height: var(--h1-line-height);
+  font-weight: var(--h1-font-weight);
+}

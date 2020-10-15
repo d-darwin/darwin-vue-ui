@@ -23,12 +23,12 @@ export default {
   props: {
     startYear: {
       type: Number,
-      default: 2018
+      required: true
     },
 
     company: {
       type: String,
-      required: ""
+      required: true
     },
 
     size: fontSize

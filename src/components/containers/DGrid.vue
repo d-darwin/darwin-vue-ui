@@ -59,8 +59,8 @@ export default {
 
 <style lang="scss">
 /* NOTE: need to be unscoped to be able to overwrite grid-... attr in other components */
+@import "../../assets/styles/breakpoint-mixins";
 @import "../../assets/styles/grid-tokens";
-@import "../../assets/styles/mixins";
 
 .d-grid {
   display: grid;

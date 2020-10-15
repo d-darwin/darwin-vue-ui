@@ -1,96 +1,10 @@
-@import 'colors';
+@import 'color-tokens';
 @import 'border-radius';
 @import 'control-heights';
 @import 'grid-tokens';
 @import 'line-heights';
 @import 'shadows';
 @import 'transitions';
-
-// Device width mixins
-
-@mixin xs-device {
-  @media (max-width: $sm-breakpoint - 0.5) {
-    @content;
-  }
-}
-
-@mixin sm-device-min {
-  @media (min-width: $sm-breakpoint) {
-    @content;
-  }
-}
-
-@mixin sm-device {
-  @media (min-width: $sm-breakpoint) and (max-width: $md-breakpoint - 0.5) {
-    @content;
-  }
-}
-
-@mixin sm-device-max {
-  @media (max-width: $md-breakpoint - 0.5) {
-    @content;
-  }
-}
-
-@mixin md-device-min {
-  @media (min-width: $md-breakpoint) {
-    @content;
-  }
-}
-
-@mixin md-device {
-  @media (min-width: $md-breakpoint) and (max-width: $lg-breakpoint - 0.5) {
-    @content;
-  }
-}
-
-@mixin md-device-max {
-  @media (max-width: $lg-breakpoint - 0.5) {
-    @content;
-  }
-}
-
-@mixin lg-device-min {
-  @media (min-width: $lg-breakpoint) {
-    @content;
-  }
-}
-
-@mixin lg-device {
-  @media (min-width: $lg-breakpoint) and (max-width: $xl-breakpoint - 0.5) {
-    @content;
-  }
-}
-
-@mixin lg-device-max {
-  @media (max-width: $xl-breakpoint - 0.5) {
-    @content;
-  }
-}
-
-@mixin xl-device-min {
-  @media (min-width: $xl-breakpoint) {
-    @content;
-  }
-}
-
-@mixin xl-device {
-  @media (min-width: $xl-breakpoint) and (max-width: $xxl-breakpoint - 0.5) {
-    @content;
-  }
-}
-
-@mixin xl-device-max {
-  @media (max-width: $xxl-breakpoint - 0.5) {
-    @content;
-  }
-}
-
-@mixin xxl-device {
-  @media (min-width: $xxl-breakpoint) {
-    @content;
-  }
-}
 
 // Typography mixins
 

@@ -47,6 +47,8 @@ export default {
     size: fontSize
   },
 
+  // TODO: how to reuse relative link handling logic ?
+  // TODO: how to not include this logic if no vue-router installed
   data() {
     return {
       links: []
@@ -65,9 +67,15 @@ export default {
     }
   },
 
+  watch: {
+    content() {
+      this.contentUpdatedHandler();
+    }
+  },
+
   methods: {
     /**
-     * Нажатие на внутреннюю ссылку обрабатывается как переход по маршруту.
+     * Click on a relative link don't reloads the page
      *
      * @param event
      */
@@ -80,7 +88,7 @@ export default {
       }
     },
 
-    contentUpdated() {
+    contentUpdatedHandler() {
       this.removeListeners();
       this.$nextTick(() => {
         this.addListeners();
@@ -104,8 +112,8 @@ export default {
 };
 </script>
 
-<style scoped>
-@import "../../assets/styles/_typography-tokens.css";
+<style scoped lang="scss">
+@import "../../assets/styles/typography-mixins";
 
 .d-typography > *,
 .d-typography > ::v-slotted(*) {
@@ -124,61 +132,43 @@ export default {
 }
 
 .__small {
-  font-size: var(--small-font-size);
-  line-height: var(--small-line-height);
-  font-weight: var(--small-font-weight);
+  @include small-text;
 }
 
 .__general {
-  font-size: var(--general-font-size);
-  line-height: var(--general-line-height);
-  font-weight: var(--general-font-weight);
+  @include general-text;
 }
 
 .__longread {
-  font-size: var(--longread-font-size);
-  line-height: var(--longread-line-height);
-  font-weight: var(--longread-font-weight);
+  @include longread-text;
 }
 
 .__augmented {
-  font-size: var(--augmented-font-size);
-  line-height: var(--augmented-line-height);
-  font-weight: var(--augmented-font-weight);
+  @include augmented-text;
 }
 
 h5,
 .__h5 {
-  font-size: var(--h5-font-size);
-  line-height: var(--h5-line-height);
-  font-weight: var(--h5-font-weight);
+  @include h5-heading;
 }
 
 h4,
 .__h4 {
-  font-size: var(--h4-font-size);
-  line-height: var(--h4-line-height);
-  font-weight: var(--h4-font-weight);
+  @include h4-heading
 }
 
 h3,
 .__h3 {
-  font-size: var(--h3-font-size);
-  line-height: var(--h3-line-height);
-  font-weight: var(--h3-font-weight);
+  @include h3-heading
 }
 
 h2,
 .__h2 {
-  font-size: var(--h2-font-size);
-  line-height: var(--h2-line-height);
-  font-weight: var(--h2-font-weight);
+  @include h2-heading
 }
 
 h1,
 .__h1 {
-  font-size: var(--h1-font-size);
-  line-height: var(--h1-line-height);
-  font-weight: var(--h1-font-weight);
+  @include h1-heading
 }
 </style>

@@ -1,0 +1,16 @@
+$sm-breakpoint: 480px;
+$md-breakpoint: 768px;
+$lg-breakpoint: 1024px;
+$xl-breakpoint: 1280px;
+$xxl-breakpoint: 1480px;
+
+// the :export directive is the magic sauce for webpack.
+// this variables will be available to js on build time.
+// see: ./mixins/deviceWidthListener.
+:export {
+  sm: $sm-breakpoint;
+  md: $md-breakpoint;
+  lg: $lg-breakpoint;
+  xl: $xl-breakpoint;
+  xxl: $xxl-breakpoint;
+}
