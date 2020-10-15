@@ -74,27 +74,27 @@
 
 @mixin heading-sizes {
   h1,
-  .h1 {
+  .__h1 {
     @include h1-heading;
   }
 
   h2,
-  .h2 {
+  .__h2 {
     @include h2-heading;
   }
 
   h3,
-  .h3 {
+  .__h3 {
     @include h3-heading;
   }
 
   h4,
-  .h4 {
+  .__h4 {
     @include h4-heading;
   }
 
   h5,
-  .h5 {
+  .__h5 {
     @include h5-heading;
   }
 }
