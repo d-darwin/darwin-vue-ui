@@ -1,0 +1,43 @@
+@import '../tokens/colors';
+
+@mixin colors {
+  .__text {
+    color: $text;
+  }
+
+  .__text-aux {
+    color: $text-aux;
+  }
+
+  .__text-alt {
+    color: $text-alt;
+  }
+
+  .__primary {
+    color: $primary;
+  }
+
+  .__primary-active {
+    color: $primary-active;
+  }
+
+  .__primary-disabled {
+    color: $primary-disabled;
+  }
+
+  .__accent {
+    color: $accent;
+  }
+
+  .__link {
+    color: $link;
+  }
+
+  .__danger {
+    color: $danger;
+  }
+
+  .__white {
+    color: $white;
+  }
+}

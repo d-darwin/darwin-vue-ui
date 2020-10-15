@@ -1,4 +1,4 @@
-@import "typography-tokens";
+@import "../tokens/typography";
 
 @mixin small-text {
   font-size: var(--small-font-size);
@@ -52,4 +52,49 @@
   font-size: var(--h1-font-size);
   line-height: var(--h1-line-height);
   font-weight: var(--h1-font-weight);
+}
+
+@mixin text-sizes {
+  .__augmented {
+    @include augmented-text;
+  }
+
+  .__longread {
+    @include longread-text;
+  }
+
+  .__general {
+    @include general-text;
+  }
+
+  .__small {
+    @include small-text;
+  }
+}
+
+@mixin heading-sizes {
+  h1,
+  .h1 {
+    @include h1-heading;
+  }
+
+  h2,
+  .h2 {
+    @include h2-heading;
+  }
+
+  h3,
+  .h3 {
+    @include h3-heading;
+  }
+
+  h4,
+  .h4 {
+    @include h4-heading;
+  }
+
+  h5,
+  .h5 {
+    @include h5-heading;
+  }
 }

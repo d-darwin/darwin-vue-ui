@@ -113,7 +113,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/typography-mixins";
+@import "../../assets/styles/mixins/typography";
+
+@include text-sizes;
+@include heading-sizes;
 
 .d-typography > *,
 .d-typography > ::v-slotted(*) {
@@ -129,46 +132,5 @@ export default {
 .d-typography > :last-child,
 .d-typography > ::v-slotted(:last-child) {
   margin-bottom: 0;
-}
-
-.__small {
-  @include small-text;
-}
-
-.__general {
-  @include general-text;
-}
-
-.__longread {
-  @include longread-text;
-}
-
-.__augmented {
-  @include augmented-text;
-}
-
-h5,
-.__h5 {
-  @include h5-heading;
-}
-
-h4,
-.__h4 {
-  @include h4-heading
-}
-
-h3,
-.__h3 {
-  @include h3-heading
-}
-
-h2,
-.__h2 {
-  @include h2-heading
-}
-
-h1,
-.__h1 {
-  @include h1-heading
 }
 </style>

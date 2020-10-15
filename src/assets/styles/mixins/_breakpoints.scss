@@ -1,4 +1,4 @@
-@import "breakpoint-tokens";
+@import "../tokens/breakpoints";
 
 @mixin xs-device {
   @media (max-width: $sm-breakpoint - 0.5) {

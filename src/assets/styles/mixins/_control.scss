@@ -1,0 +1,37 @@
+@import "../tokens/control";
+
+@mixin large-control {
+  height: $large-control-height;
+
+  &.__smooth {
+    border-radius: calc(#{$large-control-height} / 2);
+  }
+
+  &.__rounded {
+    border-radius: $border-radius;
+  }
+}
+
+@mixin medium-control {
+  height: $medium-control-height;
+
+  &.__smooth {
+    border-radius: calc(#{$medium-control-height} / 2);
+  }
+
+  &.__rounded {
+    border-radius: $border-radius;
+  }
+}
+
+@mixin small-control {
+  height: $small-control-height;
+
+  &.__smooth {
+    border-radius: calc(#{$small-control-height} / 2);
+  }
+
+  &.__rounded {
+    border-radius: $border-radius;
+  }
+}
