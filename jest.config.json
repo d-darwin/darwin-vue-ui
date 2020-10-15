@@ -1,10 +1,12 @@
 {
   "preset": "@vue/cli-plugin-unit-jest",
-  "moduleFileExtensions": [
-    "js",
-    "vue"
-  ],
+  "moduleFileExtensions": ["js", "vue"],
+  "moduleNameMapper": {
+    "^@/(.*)$": "<rootDir>/src/$1"
+  },
   "transform": {
     "^.+\\.vue$": "vue-jest"
-  }
+  },
+  "collectCoverage": true,
+  "collectCoverageFrom": ["src/components/**/*.{js,vue}"]
 }

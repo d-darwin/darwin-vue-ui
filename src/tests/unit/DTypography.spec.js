@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import DTypography from "../../components/atoms/DTypography";
+import DTypography from "@/components/atoms/DTypography";
 
 describe("DTypography", () => {
   it("Тест 1", () => {
