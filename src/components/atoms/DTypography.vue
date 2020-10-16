@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <template>
   <component
     v-if="content"
@@ -22,7 +23,7 @@
 
 <script>
 /** utils **/
-import fontSize from "../../utils/fontSize";
+import fontSizeProp from "../../utils/fontSizeProp";
 
 /**
  * Displays typography text.
@@ -44,7 +45,7 @@ export default {
       default: "div"
     },
 
-    size: fontSize
+    size: fontSizeProp
   },
 
   // TODO: how to reuse relative link handling logic ?

@@ -4,13 +4,13 @@
 
 <script>
 /** utils **/
-import fontSize from "../../utils/fontSize";
+import fontSizeProp from "../../utils/fontSizeProp";
 
 /** components **/
 import DTypography from "../atoms/DTypography";
 
 /**
- * Renders standard copyright.
+ * Renders standard copyright string.
  *
  * @version 1.0.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
@@ -21,17 +21,26 @@ export default {
   components: { DTypography },
 
   props: {
+    /**
+     * Company foundation year.
+     */
     startYear: {
       type: Number,
       required: true
     },
 
+    /**
+     * Company name.
+     */
     company: {
       type: String,
       required: true
     },
 
-    size: fontSize
+    /**
+     * Size of the string in <DTypography /> notation.
+     */
+    size: fontSizeProp
   },
 
   computed: {

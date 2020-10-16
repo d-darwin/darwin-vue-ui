@@ -1,29 +1,65 @@
+@import "../mixins/breakpoints";
+
+// it's not very convenient but we have to use scss variables
+// to use them in @for loop in DGrid component
 $xs-grid-columns-count: 2;
-$xs-grid-offset: 18px;
-$xs-grid-gutter: 18px;
-$xs-grid-width: 100%;
-
 $sm-grid-columns-count: 6;
-$sm-grid-offset: 18px;
-$sm-grid-gutter: 18px;
-$sm-grid-width: 100%;
-
 $md-grid-columns-count: 12;
-$md-grid-offset: 24px;
-$md-grid-gutter: 24px;
-$md-grid-width: 100%;
-
 $lg-grid-columns-count: 12;
-$lg-grid-offset: 0;
-$lg-grid-gutter: 24px;
-$lg-grid-width: 960px;
-
 $xl-grid-columns-count: 12;
-$xl-grid-offset: 0;
-$xl-grid-gutter: 24px;
-$xl-grid-width: 1140px;
-
 $xxl-grid-columns-count: 12;
-$xxl-grid-offset: 0;
-$xxl-grid-gutter: 24px;
-$xxl-grid-width: 1320px;
+
+.d-grid {
+  @include xs-device {
+    --grid-columns-count: #{$xs-grid-columns-count};
+    --grid-offset: 18px;
+    --grid-gutter: 18px;
+    --grid-width: 100%;
+  }
+
+  @include sm-device {
+    --grid-columns-count: #{$sm-grid-columns-count};
+    --grid-offset: 18px;
+    --grid-gutter: 18px;
+    --grid-width: 100%;
+  }
+
+  @include md-device {
+    --grid-columns-count: #{$md-grid-columns-count};
+    --grid-offset: 24px;
+    --grid-gutter: 24px;
+    --grid-width: 100%;
+  }
+
+  @include lg-device {
+    --grid-columns-count: #{$lg-grid-columns-count};
+    --grid-offset: 0;
+    --grid-gutter: 24px;
+    --grid-width: 960px;
+  }
+
+  @include xl-device {
+    --grid-columns-count: #{$xl-grid-columns-count};
+    --grid-offset: 0;
+    --grid-gutter: 24px;
+    --grid-width: 1140px;
+  }
+
+  @include xxl-device {
+    --grid-columns-count: #{$xxl-grid-columns-count};
+    --grid-offset: 0;
+    --grid-gutter: 24px;
+    --grid-width: 1320px;
+  }
+
+}
+
+// the :export directive is the magic sauce for webpack.
+// this variables will be available to js on build time.
+:export {
+  sm: $sm-grid-columns-count;
+  md: $md-grid-columns-count;
+  lg: $lg-grid-columns-count;
+  xl: $xl-grid-columns-count;
+  xxl: $xxl-grid-columns-count;
+}

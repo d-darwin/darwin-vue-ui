@@ -10,8 +10,10 @@
 </template>
 
 <script>
+import cssColumnCountList from "../../assets/styles/tokens/_grid.scss";
+
 /**
- * Container for child elements arrangement.
+ * The container allows you an easy way to arrange child nodes in a grid template.
  *
  * @version 1.0.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
@@ -20,45 +22,61 @@ export default {
   name: "DGrid",
 
   props: {
+    /**
+     * Contains number of columns which should take every child node for specific device width.<br>
+     * Expected format: { xs: 2, sm: 3, ..., xxl: 4 }<br>
+     * If no column count presented for any device width, nodes will take all width of the container.
+     */
     columnCount: {
       type: Object,
-      default: () => ({
-        xs: 2,
-        sm: 6,
-        md: 12,
-        lg: 12,
-        xl: 12,
-        xxl: 12
-      })
+      default: () => {}
     },
 
+    /**
+     * Tag of the <b>DGrid</d> component.
+     */
     tag: {
       type: String,
       default: "div"
     },
 
+    /**
+     * Condensed grid hasn't gaps between columns.
+     */
     isCondensed: {
       type: Boolean,
       default: false
     }
   },
 
+  data() {
+    return {
+      defaultColumnCountList: {
+        sm: parseInt(cssColumnCountList.sm),
+        md: parseInt(cssColumnCountList.md),
+        lg: parseInt(cssColumnCountList.lg),
+        xl: parseInt(cssColumnCountList.xl),
+        xxl: parseInt(cssColumnCountList.xxl)
+      },
+      throttledFunction: null
+    };
+  },
+
   computed: {
     columnCountClass() {
-      if (Object.keys(this.columnCount).length) {
-        return Object.keys(this.columnCount).map(
-          deviceWidth => `grid-${deviceWidth}-${this.columnCount[deviceWidth]}`
-        );
-      } else {
-        return "";
-      }
+      return Object.keys(this.defaultColumnCountList).map(
+        deviceWidth =>
+          `grid-${deviceWidth}-${(this.columnCount &&
+            this.columnCount[deviceWidth]) ||
+            this.defaultColumnCountList[deviceWidth]}`
+      );
     }
   }
 };
 </script>
 
+<!--NOTE: style need to be unscoped to be able to overwrite grid items column positioning-->
 <style lang="scss">
-/* NOTE: need to be unscoped to be able to overwrite grid-... attr in other components */
 @import "../../assets/styles/mixins/breakpoints";
 @import "../../assets/styles/tokens/grid";
 
@@ -66,24 +84,21 @@ export default {
   display: grid;
   min-width: 320px;
   margin: 0 auto;
+  // TODO: do we really need it right here or may be it's a root style?
+  box-sizing: border-box;
+
+  padding-left: var(--grid-offset);
+  padding-right: var(--grid-offset);
+  width: var(--grid-width);
+
+  &:not(.__condensed) {
+    grid-column-gap: var(--grid-gutter);
+  }
 }
 
 @include xs-device {
   .d-grid {
-    padding-left: $xs-grid-offset;
-    padding-right: $xs-grid-offset;
-    width: $xs-grid-width;
-
     grid-template-columns: repeat($xs-grid-columns-count, 1fr);
-
-    &:not(.__condensed) {
-      grid-column-gap: $xs-grid-gutter;
-    }
-
-    /*> * {
-      // each grid item takes full-width by default
-      grid-column-end: span $xs-grid-columns-count;
-    }*/
 
     @for $i from 1 through $xs-grid-columns-count {
       // specific size columns
@@ -96,19 +111,7 @@ export default {
 
 @include sm-device {
   .d-grid {
-    padding-left: $sm-grid-offset;
-    padding-right: $sm-grid-offset;
-    width: $sm-grid-width;
-
     grid-template-columns: repeat($sm-grid-columns-count, 1fr);
-
-    &:not(.__condensed) {
-      grid-column-gap: $sm-grid-gutter;
-    }
-
-    /*> * {
-      grid-column-end: span $sm-grid-columns-count;
-    }*/
 
     @for $i from 1 through $sm-grid-columns-count {
       &.grid-sm-#{$i} > * {
@@ -120,19 +123,7 @@ export default {
 
 @include md-device {
   .d-grid {
-    padding-left: $md-grid-offset;
-    padding-right: $md-grid-offset;
-    width: $md-grid-width;
-
     grid-template-columns: repeat($md-grid-columns-count, 1fr);
-
-    &:not(.__condensed) {
-      grid-column-gap: $md-grid-gutter;
-    }
-
-    /* > * {
-      grid-column-end: span $md-grid-columns-count;
-    } */
 
     @for $i from 1 through $md-grid-columns-count {
       &.grid-md-#{$i} > * {
@@ -144,19 +135,7 @@ export default {
 
 @include lg-device {
   .d-grid {
-    padding-left: $lg-grid-offset;
-    padding-right: $lg-grid-offset;
-    width: $lg-grid-width;
-
     grid-template-columns: repeat($lg-grid-columns-count, 1fr);
-
-    &:not(.__condensed) {
-      grid-column-gap: $lg-grid-gutter;
-    }
-
-    /* > * {
-      grid-column-end: span $lg-grid-columns-count;
-    } */
 
     @for $i from 1 through $lg-grid-columns-count {
       &.grid-lg-#{$i} > * {
@@ -168,19 +147,7 @@ export default {
 
 @include xl-device {
   .d-grid {
-    padding-left: $xl-grid-offset;
-    padding-right: $xl-grid-offset;
-    width: $xl-grid-width;
-
     grid-template-columns: repeat($xl-grid-columns-count, 1fr);
-
-    &:not(.__condensed) {
-      grid-column-gap: $xl-grid-gutter;
-    }
-
-    /* > * {
-      grid-column-end: span $xl-grid-columns-count;
-    } */
 
     @for $i from 1 through $xl-grid-columns-count {
       &.grid-xl-#{$i} > * {
@@ -192,19 +159,7 @@ export default {
 
 @include xxl-device {
   .d-grid {
-    padding-left: $xxl-grid-offset;
-    padding-right: $xxl-grid-offset;
-    width: $xxl-grid-width;
-
     grid-template-columns: repeat($xxl-grid-columns-count, 1fr);
-
-    &:not(.__condensed) {
-      grid-column-gap: $xxl-grid-gutter;
-    }
-
-    /* > * {
-      grid-column-end: span $xxl-grid-columns-count;
-    } */
 
     @for $i from 1 through $xxl-grid-columns-count {
       &.grid-xxl-#{$i} > * {
