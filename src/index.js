@@ -1,5 +1,5 @@
 /** atoms **/
-import DTypography from "./components/atoms/DTypography";
+import DTypography from "./components/containers/DTypography";
 import DGrid from "./components/containers/DGrid";
 
 /** molecules **/

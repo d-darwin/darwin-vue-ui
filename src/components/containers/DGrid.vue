@@ -1,3 +1,4 @@
+<!--suppress CssInvalidPseudoSelector -->
 <template>
   <component
     :is="tag"
@@ -75,8 +76,7 @@ export default {
 };
 </script>
 
-<!--NOTE: style need to be unscoped to be able to overwrite grid items column positioning-->
-<style lang="scss">
+<style scoped lang="scss">
 @import "../../assets/styles/mixins/breakpoints";
 @import "../../assets/styles/tokens/grid";
 
@@ -101,8 +101,7 @@ export default {
     grid-template-columns: repeat($xs-grid-columns-count, 1fr);
 
     @for $i from 1 through $xs-grid-columns-count {
-      // specific size columns
-      &.grid-xs-#{$i} > * {
+      &.grid-xs-#{$i} > ::v-slotted(*) {
         grid-column-end: span #{$i};
       }
     }
@@ -114,7 +113,7 @@ export default {
     grid-template-columns: repeat($sm-grid-columns-count, 1fr);
 
     @for $i from 1 through $sm-grid-columns-count {
-      &.grid-sm-#{$i} > * {
+      &.grid-sm-#{$i} > ::v-slotted(*) {
         grid-column-end: span #{$i};
       }
     }
@@ -126,7 +125,7 @@ export default {
     grid-template-columns: repeat($md-grid-columns-count, 1fr);
 
     @for $i from 1 through $md-grid-columns-count {
-      &.grid-md-#{$i} > * {
+      &.grid-md-#{$i} > ::v-slotted(*) {
         grid-column-end: span #{$i};
       }
     }
@@ -138,7 +137,7 @@ export default {
     grid-template-columns: repeat($lg-grid-columns-count, 1fr);
 
     @for $i from 1 through $lg-grid-columns-count {
-      &.grid-lg-#{$i} > * {
+      &.grid-lg-#{$i} > ::v-slotted(*) {
         grid-column-end: span #{$i};
       }
     }
@@ -150,7 +149,7 @@ export default {
     grid-template-columns: repeat($xl-grid-columns-count, 1fr);
 
     @for $i from 1 through $xl-grid-columns-count {
-      &.grid-xl-#{$i} > * {
+      &.grid-xl-#{$i} > ::v-slotted(*) {
         grid-column-end: span #{$i};
       }
     }
@@ -162,7 +161,7 @@ export default {
     grid-template-columns: repeat($xxl-grid-columns-count, 1fr);
 
     @for $i from 1 through $xxl-grid-columns-count {
-      &.grid-xxl-#{$i} > * {
+      &.grid-xxl-#{$i} > ::v-slotted(*) {
         grid-column-end: span #{$i};
       }
     }

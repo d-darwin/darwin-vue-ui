@@ -1,5 +1,5 @@
 <template>
-  <DTypography :content="copyrightText" :size="size" />
+  <DTypography :content="copyrightText" :size="size" class="d-copyright" />
 </template>
 
 <script>
@@ -7,7 +7,7 @@
 import fontSizeProp from "../../utils/fontSizeProp";
 
 /** components **/
-import DTypography from "../atoms/DTypography";
+import DTypography from "../containers/DTypography";
 
 /**
  * Renders standard copyright string.
