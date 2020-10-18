@@ -26,6 +26,12 @@ export default {
   //...
   components: {
     DTypography
+  },
+
+  data() {
+    return {
+      htmlString: '<p><strong>DTypography</strong> content prop may contain any HTML string.</p>'
+    }
   }
   //...
 }
@@ -33,7 +39,10 @@ export default {
 
 <style>
 .d-typography {
-  background: gray;
+  /*you can override css custom props*/
+  --general-font-size: 16px;
+  --general-line-height: 24px;
+  --general-font-weight: bold;
 }
 </style>
 ```   
