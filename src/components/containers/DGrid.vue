@@ -53,6 +53,8 @@ export default {
   data() {
     return {
       defaultColumnCountList: {
+        // TODO: too verbose...
+        xs: parseInt(cssColumnCountList.xs),
         sm: parseInt(cssColumnCountList.sm),
         md: parseInt(cssColumnCountList.md),
         lg: parseInt(cssColumnCountList.lg),

@@ -58,6 +58,7 @@ $xxl-grid-columns-count: 12;
 // this variables will be available to js on build time.
 // noinspection CssUnknownProperty
 :export {
+  xs: $xs-grid-columns-count;
   sm: $sm-grid-columns-count;
   md: $md-grid-columns-count;
   lg: $lg-grid-columns-count;

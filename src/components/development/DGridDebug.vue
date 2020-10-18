@@ -61,7 +61,7 @@ body.__debug::before {
   --grid-gutter-color: transparent;
   --grid-column-width: calc(
     (100% - var(--grid-gutter) * var(--grid-columns-count)) /
-      var(--grid-columns-count)
+    var(--grid-columns-count)
   );
 
   width: calc(var(--grid-width) + var(--grid-offset) * 2);
@@ -72,15 +72,15 @@ body.__debug::before {
   background-repeat: no-repeat;
   //noinspection CssInvalidFunction
   background-image: repeating-linear-gradient(
-    to right,
-    var(--grid-gutter-color) 0,
-    var(--grid-gutter-color) calc(var(--grid-gutter) / 2),
-    var(--grid-column-color) calc(var(--grid-gutter) / 2),
-    var(--grid-column-color)
+      to right,
+      var(--grid-gutter-color) 0,
+      var(--grid-gutter-color) calc(var(--grid-gutter) / 2),
+      var(--grid-column-color) calc(var(--grid-gutter) / 2),
+      var(--grid-column-color)
       calc(var(--grid-column-width) + var(--grid-gutter) / 2),
-    var(--grid-gutter-color)
+      var(--grid-gutter-color)
       calc(var(--grid-column-width) + var(--grid-gutter) / 2),
-    var(--grid-gutter-color) calc(var(--grid-column-width) + var(--grid-gutter))
+      var(--grid-gutter-color) calc(var(--grid-column-width) + var(--grid-gutter))
   );
 }
 
