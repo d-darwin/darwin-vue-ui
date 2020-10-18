@@ -26,25 +26,37 @@
 import fontSizeProp from "../../utils/fontSizeProp";
 
 /**
- * Displays typography text.
+ * Renders typography text according to design tokens from './src/assets/styles/tokens/_typography.scss'.<br>
+ * Handles content relativ links cliks as routes.
  *
- * @version 0.1.0
+ * @version 1.0.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
   name: "DTypography",
 
   props: {
+    /**
+     * May contain any HTML string. Alternatavly you can use defaul slot to place any HTML or components.
+     */
     content: {
       type: [String, Number],
       default: ""
     },
 
+    /**
+     * Which tag should wrap component content.
+     */
     tag: {
       type: String,
       default: "div"
     },
 
+    /**
+     * Defines main font props of the component content.<br>
+     * Expected values: "small", "general", "longread", "augmented", "h5", "h4", "h3", "h2", "h1".<br>
+     * See './src/assets/styles/tokens/_typography.scss' for more details.
+     */
     size: fontSizeProp
   },
 
@@ -70,15 +82,15 @@ export default {
 
   watch: {
     content() {
-      this.contentUpdatedHandler();
+      if (this.$router) {
+        this.contentUpdatedHandler();
+      }
     }
   },
 
   methods: {
     /**
-     * Click on a relative link don't reloads the page
-     *
-     * @param event
+     * Prevents default browser behavior (page reload) for relative links.
      */
     navigate(event) {
       const href = event.target.getAttribute("href");
