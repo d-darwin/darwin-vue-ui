@@ -1,4 +1,6 @@
 <script>
+import { h } from "vue";
+
 /**
  * This development component intents to help while positioning elements inside <b>DGrid</b> component.</br>
  * It renders independent grid visualization on <i>Ctrl + Alt + D</i>.
@@ -28,6 +30,10 @@ export default {
   unmounted() {
     // remove all added event listeners to avoid memory leaks
     window.removeEventListener("keydown", this.keydownEventListener);
+  },
+
+  render() {
+    return h();
   }
 };
 </script>

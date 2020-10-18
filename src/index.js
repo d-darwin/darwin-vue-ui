@@ -1,14 +1,14 @@
 /** development **/
-import DGridDebug from "../src/components/development/DGridDebug";
+import DGridDebug from "./components/development/DGridDebug";
 
 /** containers **/
-import DTypography from "../src/components/containers/DTypography";
-import DGrid from "../src/components/containers/DGrid";
+import DTypography from "./components/containers/DTypography";
+import DGrid from "./components/containers/DGrid";
 
 /** atoms **/
 
 /** molecules **/
-import DCopyright from "../src/components/molecules/DCopyright";
+import DCopyright from "./components/molecules/DCopyright";
 
 /** organisms **/
 

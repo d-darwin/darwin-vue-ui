@@ -1,77 +1,93 @@
-// basic colors
-
-$black: #000000;
-$white: #ffffff;
-$blue: #325efa;
-$red: #ca2b2b;
-
 // Slightly lighter a color
-// @access public
 // @param {Color} $color - color to shade
 // @param {Number} $percentage - percentage of `$color` in returned color
 // @return {Color}
 @function shade($color, $percentage) {
+  $white: var(--white);
   @return mix($white, $color, $percentage);
 }
 
-// bases and shades
+:root {
+  /**
+   basic colors
+   */
+  --black: #000000;
+  --white: #ffffff;
+  --blue: #325efa;
+  --red: #ca2b2b;
 
-$purple-500: #321f54;
-$purple-shade-step: 10;
-$purple-450: shade($purple-500, 1 * $purple-shade-step);
-$purple-400: shade($purple-500, 2 * $purple-shade-step);
-$purple-350: shade($purple-500, 3 * $purple-shade-step);
-$purple-300: shade($purple-500, 4 * $purple-shade-step);
-$purple-250: shade($purple-500, 5 * $purple-shade-step);
-$purple-200: shade($purple-500, 6 * $purple-shade-step);
-$purple-150: shade($purple-500, 7 * $purple-shade-step);
-$purple-100: shade($purple-500, 8 * $purple-shade-step);
-$purple-050: shade($purple-500, 9 * $purple-shade-step);
+  /**
+   main colors
+   */
 
-$tangerine-500: #ff843f;
-$tangerine-shade-step: 10;
-$tangerine-450: shade($tangerine-500, 1 * $tangerine-shade-step);
-$tangerine-400: shade($tangerine-500, 2 * $tangerine-shade-step);
-$tangerine-350: shade($tangerine-500, 3 * $tangerine-shade-step);
-$tangerine-300: shade($tangerine-500, 4 * $tangerine-shade-step);
-$tangerine-250: shade($tangerine-500, 5 * $tangerine-shade-step);
-$tangerine-200: shade($tangerine-500, 6 * $tangerine-shade-step);
-$tangerine-150: shade($tangerine-500, 7 * $tangerine-shade-step);
-$tangerine-100: shade($tangerine-500, 8 * $tangerine-shade-step);
-$tangerine-050: shade($tangerine-500, 9 * $tangerine-shade-step);
+  --purple-500: #321f54;
+  --tangerine-500: #ff843f;
+  --gray-900: #282828;
 
-$gray-shade-step: 12;
-$gray-900: shade($black, 15.5);
-$gray-800: shade($gray-900, 1 * $gray-shade-step);
-$gray-700: shade($gray-900, 2 * $gray-shade-step);
-$gray-650: shade($gray-900, 2.5 * $gray-shade-step);
-$gray-600: shade($gray-900, 3 * $gray-shade-step);
-$gray-500: shade($gray-900, 4 * $gray-shade-step);
-$gray-400: shade($gray-900, 5 * $gray-shade-step);
-$gray-300: shade($gray-900, 6 * $gray-shade-step);
-$gray-200: shade($gray-900, 7 * $gray-shade-step);
-$gray-100: shade($gray-900, 8 * $gray-shade-step);
+  /**
+   main colors shades
+   */
 
-// semantic colors
+  --purple-shade-step: 10;
+  --purple-450: shade(var(--purple-500), 1 * var(--purple-shade-step));
+  --purple-400: shade(var(--purple-500), 2 * var(--purple-shade-step));
+  --purple-350: shade(var(--purple-500), 3 * var(--purple-shade-step));
+  --purple-300: shade(var(--purple-500), 4 * var(--purple-shade-step));
+  --purple-250: shade(var(--purple-500), 5 * var(--purple-shade-step));
+  --purple-200: shade(var(--purple-500), 6 * var(--purple-shade-step));
+  --purple-150: shade(var(--purple-500), 7 * var(--purple-shade-step));
+  --purple-100: shade(var(--purple-500), 8 * var(--purple-shade-step));
+  --purple-050: shade(var(--purple-500), 9 * var(--purple-shade-step));
 
-$primary: $purple-500;
-$primary-active: $purple-400;
-$primary-disabled: $purple-200;
+  --tangerine-shade-step: 10;
+  --tangerine-450: shade(var(--tangerine-500), 1 * var(--tangerine-shade-step));
+  --tangerine-400: shade(var(--tangerine-500), 2 * var(--tangerine-shade-step));
+  --tangerine-350: shade(var(--tangerine-500), 3 * var(--tangerine-shade-step));
+  --tangerine-300: shade(var(--tangerine-500), 4 * var(--tangerine-shade-step));
+  --tangerine-250: shade(var(--tangerine-500), 5 * var(--tangerine-shade-step));
+  --tangerine-200: shade(var(--tangerine-500), 6 * var(--tangerine-shade-step));
+  --tangerine-150: shade(var(--tangerine-500), 7 * var(--tangerine-shade-step));
+  --tangerine-100: shade(var(--tangerine-500), 8 * var(--tangerine-shade-step));
+  --tangerine-050: shade(var(--tangerine-500), 9 * var(--tangerine-shade-step));
 
-$accent: $tangerine-500;
-$accent-active: $tangerine-400;
-$accent-disabled: $tangerine-200;
+  --gray-shade-step: 12;
+  --gray-800: shade(var(--gray-900), 1 * var(--gray-shade-step));
+  --gray-700: shade(var(--gray-900), 2 * var(--gray-shade-step));
+  --gray-650: shade(var(--gray-900), 2.5 * var(--gray-shade-step));
+  --gray-600: shade(var(--gray-900), 3 * var(--gray-shade-step));
+  --gray-500: shade(var(--gray-900), 4 * var(--gray-shade-step));
+  --gray-400: shade(var(--gray-900), 5 * var(--gray-shade-step));
+  --gray-300: shade(var(--gray-900), 6 * var(--gray-shade-step));
+  --gray-200: shade(var(--gray-900), 7 * var(--gray-shade-step));
+  --gray-100: shade(var(--gray-900), 8 * var(--gray-shade-step));
 
-$text: $gray-900;
-$text-aux: $gray-650;
-$text-alt: $gray-400;
+  /**
+   semantic colors
+   */
 
-$background: $gray-100;
-$separator: $gray-200;
+  --primary: var(--purple-500);
+  --primary-active: var(--purple-400);
+  --primary-disabled: var(--purple-200);
 
-$danger: $red;
-$link: $blue;
+  --accent: var(--tangerine-500);
+  --accent-active: var(--tangerine-400);
+  --accent-disabled: var(--tangerine-200);
 
-$facebook: #3b5998;
-$twitter: #00acee;
-$vkontakte: #4a76a8;
+  --text: var(--gray-900);
+  --text-aux: var(--gray-650);
+  --text-alt: var(--gray-400);
+
+  --background: var(--gray-100);
+  --separator: var(--gray-200);
+
+  --danger: var(--red);
+  --link: var(--blue);
+
+  /**
+   special colors
+   */
+
+  --facebook: #3b5998;
+  --twitter: #00acee;
+  --vkontakte: #4a76a8;
+}
