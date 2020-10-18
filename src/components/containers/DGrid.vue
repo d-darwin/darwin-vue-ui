@@ -25,7 +25,7 @@ export default {
   props: {
     /**
      * Contains number of columns which should take every child node for specific device width.<br>
-     * Expected format: { xs: 2, sm: 3, ..., xxl: 4 }<br>
+     * Expected format: { xs: 2, sm: 3, ..., xxl: 4 }.<br>
      * If no column count presented for any device width, nodes will take all width of the container.
      */
     columnCount: {
@@ -34,7 +34,7 @@ export default {
     },
 
     /**
-     * Tag of the <b>DGrid</d> component.
+     * Tag of the component.
      */
     tag: {
       type: String,

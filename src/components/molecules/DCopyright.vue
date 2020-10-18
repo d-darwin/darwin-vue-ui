@@ -10,7 +10,7 @@ import fontSizeProp from "../../utils/fontSizeProp";
 import DTypography from "../containers/DTypography";
 
 /**
- * Renders standard copyright string.
+ * Renders standard copyright string. Current year always displays as "to" year.
  *
  * @version 1.0.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
@@ -38,7 +38,9 @@ export default {
     },
 
     /**
-     * Size of the string in <DTypography /> notation.
+     * Defines main font props of the component content.<br>
+     * Expected values: "small", "general", "longread", "augmented", "h5", "h4", "h3", "h2", "h1".<br>
+     * See './src/assets/styles/tokens/_typography.scss' for more details.
      */
     size: fontSizeProp
   },

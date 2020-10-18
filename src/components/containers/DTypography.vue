@@ -17,6 +17,7 @@
     }"
     class="d-typography"
   >
+    <!-- @slot contains any HTML or components -->
     <slot v-if="$slots.default" />
   </component>
 </template>
