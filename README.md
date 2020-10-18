@@ -2,6 +2,7 @@
 
 ## What is it?
 It's lightweight and performant UI Library for Vue 3.  
+It uses CSS custom properties to define design tokens, so you can redefine them either in build time or in runtime.
 
 🚧 DISCLAIMER: Under construction. Don't use in production until release.
 
@@ -38,8 +39,9 @@ export default {
 </script>
 
 <style>
+/* By convention root element of all components has eponymous name. */
 .d-typography {
-  /*you can override css custom props*/
+  /* You can override css custom props to redefine design tokens. */
   --general-font-size: 16px;
   --general-line-height: 24px;
   --general-font-weight: bold;
