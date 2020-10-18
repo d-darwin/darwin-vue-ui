@@ -56,10 +56,13 @@ $xxl-grid-columns-count: 12;
 
 // the :export directive is the magic sauce for webpack.
 // this variables will be available to js on build time.
+// noinspection CssUnknownProperty
 :export {
   sm: $sm-grid-columns-count;
   md: $md-grid-columns-count;
   lg: $lg-grid-columns-count;
   xl: $xl-grid-columns-count;
   xxl: $xxl-grid-columns-count;
+
+  // TODO: export other gird tokens ???
 }

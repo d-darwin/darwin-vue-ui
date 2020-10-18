@@ -91,7 +91,7 @@ $danger: $red;
 $link: $blue;
 
 /**
- * map to CSS custom properties
+ * Map to CSS custom properties
  */
 
 :root {
@@ -175,4 +175,90 @@ $link: $blue;
 
   --danger: var(--red);
   --link: var(--blue);
+}
+
+// the :export directive is the magic sauce for webpack.
+// this variables will be available to js on build time.
+// noinspection CssUnknownProperty
+:export {
+  /**
+   * basic colors
+   */
+
+  black: $black;
+  white: $white;
+  blue: $blue;
+  red: $red;
+
+  /**
+   * special colors
+   */
+
+  facebook: $facebook;
+  twitter: $twitter;
+  vkontakte: $vkontakte;
+
+  /**
+   * main colors
+   */
+
+  purple-500: $purple-500;
+  tangerine-500: $tangerine-500;
+  gray-900: $gray-900;
+
+  /**
+   * main colors shades
+   */
+
+  purple-450: $purple-450;
+  purple-400: $purple-400;
+  purple-350: $purple-350;
+  purple-300: $purple-300;
+  purple-250: $purple-250;
+  purple-200: $purple-200;
+  purple-150: $purple-150;
+  purple-100: $purple-100;
+  purple-050: $purple-050;
+
+  tangerine-450: $tangerine-450;
+  tangerine-400: $tangerine-400;
+  tangerine-350: $tangerine-350;
+  tangerine-300: $tangerine-300;
+  tangerine-250: $tangerine-250;
+  tangerine-200: $tangerine-200;
+  tangerine-150: $tangerine-150;
+  tangerine-100: $tangerine-100;
+  tangerine-050: $tangerine-050;
+
+  gray-800: $gray-800;
+  gray-700: $gray-700;
+  gray-650: $gray-650;
+  gray-600: $gray-600;
+  gray-500: $gray-500;
+  gray-400: $gray-400;
+  gray-300: $gray-300;
+  gray-200: $gray-200;
+  gray-100: $gray-100;
+
+  /**
+   * semantic colors
+   */
+
+  primary: $primary;
+  primary-active: $primary-active;
+  primary-disabled: $primary-disabled;
+
+  accent: $accent;
+  accent-active: $accent-active;
+  accent-disabled: $accent-disabled;
+
+  text: $text;
+  text-aux: $text-aux;
+  text-alt: $text-alt;
+
+  background: $background;
+  separator: $separator;
+
+  danger: $danger;
+  link: $link;
 }

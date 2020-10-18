@@ -1,4 +1,25 @@
-$border-radius: 4px;
 $large-control-height: 48px;
 $medium-control-height: 38px;
 $small-control-height: 28px;
+$border-radius: 4px;
+
+/**
+ * Map to CSS custom properties
+ */
+
+:root {
+  --large-control-height: #{$large-control-height};
+  --medium-control-height: #{$medium-control-height};
+  --small-control-height: #{$small-control-height};
+  --border-radius: #{$border-radius};
+}
+
+// the :export directive is the magic sauce for webpack.
+// this variables will be available to js on build time.
+// noinspection CssUnknownProperty
+:export {
+  large-control-height: $large-control-height;
+  medium-control-height: $medium-control-height;
+  small-control-height: $small-control-height;
+  border-radius: $border-radius;
+}

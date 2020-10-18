@@ -1,4 +1,4 @@
-// TODO: docs, make function to not hardcode each x ???
+// TODO: docs, make function to not hardcode each "x" ???
 
 $gap-base: 4px;
 $gap-2x: 2 * $gap-base;
@@ -16,11 +16,117 @@ $gap-14x: 14 * $gap-base;
 $gap-15x: 15 * $gap-base;
 $gap-16x: 16 * $gap-base;
 $gap-17x: 17 * $gap-base;
+$gap-18x: 18 * $gap-base;
+$gap-19x: 19 * $gap-base;
 $gap-20x: 20 * $gap-base;
+$gap-21x: 21 * $gap-base;
+$gap-22x: 22 * $gap-base;
+$gap-23x: 23 * $gap-base;
 $gap-24x: 24 * $gap-base;
+$gap-25x: 25 * $gap-base;
 $gap-26x: 26 * $gap-base;
+$gap-27x: 27 * $gap-base;
 $gap-28x: 28 * $gap-base;
+$gap-29x: 29 * $gap-base;
 $gap-30x: 30 * $gap-base;
+$gap-31x: 31 * $gap-base;
+$gap-32x: 32 * $gap-base;
+$gap-33x: 33 * $gap-base;
+$gap-34x: 34 * $gap-base;
 $gap-35x: 35 * $gap-base;
 $gap-36x: 36 * $gap-base;
-$gap-53x: 53 * $gap-base;
+$gap-37x: 37 * $gap-base;
+$gap-38x: 38 * $gap-base;
+$gap-39x: 39 * $gap-base;
+$gap-40x: 40 * $gap-base;
+
+/**
+ * Map to CSS custom properties
+ */
+
+:root {
+  --gap-base: #{$gap-base};
+  --gap-2x: #{$gap-2x};
+  --gap-3x: #{$gap-3x};
+  --gap-4x: #{$gap-4x};
+  --gap-5x: #{$gap-5x};
+  --gap-6x: #{$gap-6x};
+  --gap-7x: #{$gap-7x};
+  --gap-8x: #{$gap-8x};
+  --gap-9x: #{$gap-9x};
+  --gap-10x: #{$gap-10x};
+  --gap-11x: #{$gap-11x};
+  --gap-12x: #{$gap-12x};
+  --gap-14x: #{$gap-14x};
+  --gap-15x: #{$gap-15x};
+  --gap-16x: #{$gap-16x};
+  --gap-17x: #{$gap-17x};
+  --gap-18x: #{$gap-18x};
+  --gap-19x: #{$gap-19x};
+  --gap-20x: #{$gap-20x};
+  --gap-21x: #{$gap-21x};
+  --gap-22x: #{$gap-22x};
+  --gap-23x: #{$gap-23x};
+  --gap-24x: #{$gap-24x};
+  --gap-25x: #{$gap-25x};
+  --gap-26x: #{$gap-26x};
+  --gap-27x: #{$gap-27x};
+  --gap-28x: #{$gap-28x};
+  --gap-29x: #{$gap-29x};
+  --gap-30x: #{$gap-30x};
+  --gap-31x: #{$gap-31x};
+  --gap-32x: #{$gap-32x};
+  --gap-33x: #{$gap-33x};
+  --gap-34x: #{$gap-34x};
+  --gap-35x: #{$gap-35x};
+  --gap-36x: #{$gap-36x};
+  --gap-37x: #{$gap-37x};
+  --gap-38x: #{$gap-38x};
+  --gap-39x: #{$gap-39x};
+  --gap-40x: #{$gap-40x};
+}
+
+// the :export directive is the magic sauce for webpack.
+// this variables will be available to js on build time.
+// noinspection CssUnknownProperty
+:export {
+  gap-base: $gap-base;
+  gap-2x: $gap-2x;
+  gap-3x: $gap-3x;
+  gap-4x: $gap-4x;
+  gap-5x: $gap-5x;
+  gap-6x: $gap-6x;
+  gap-7x: $gap-7x;
+  gap-8x: $gap-8x;
+  gap-9x: $gap-9x;
+  gap-10x: $gap-10x;
+  gap-11x: $gap-11x;
+  gap-12x: $gap-12x;
+  gap-14x: $gap-14x;
+  gap-15x: $gap-15x;
+  gap-16x: $gap-16x;
+  gap-17x: $gap-17x;
+  gap-18x: $gap-18x;
+  gap-19x: $gap-19x;
+  gap-20x: $gap-20x;
+  gap-21x: $gap-21x;
+  gap-22x: $gap-22x;
+  gap-23x: $gap-23x;
+  gap-24x: $gap-24x;
+  gap-25x: $gap-25x;
+  gap-26x: $gap-26x;
+  gap-27x: $gap-27x;
+  gap-28x: $gap-28x;
+  gap-29x: $gap-29x;
+  gap-30x: $gap-30x;
+  gap-31x: $gap-31x;
+  gap-32x: $gap-32x;
+  gap-33x: $gap-33x;
+  gap-34x: $gap-34x;
+  gap-35x: $gap-35x;
+  gap-36x: $gap-36x;
+  gap-37x: $gap-37x;
+  gap-38x: $gap-38x;
+  gap-39x: $gap-39x;
+  gap-40x: $gap-40x;
+}

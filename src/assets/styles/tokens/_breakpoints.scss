@@ -4,8 +4,21 @@ $lg-breakpoint: 1024px;
 $xl-breakpoint: 1280px;
 $xxl-breakpoint: 1480px;
 
+/**
+ * Map to CSS custom properties
+ */
+
+:root {
+  --sm-breakpoint: #{$sm-breakpoint};
+  --md-breakpoint: #{$md-breakpoint};
+  --lg-breakpoint: #{$lg-breakpoint};
+  --xl-breakpoint: #{$xl-breakpoint};
+  --xxl-breakpoint: #{$xxl-breakpoint};
+}
+
 // the :export directive is the magic sauce for webpack.
 // this variables will be available to js on build time.
+// noinspection CssUnknownProperty
 :export {
   sm: $sm-breakpoint;
   md: $md-breakpoint;
