@@ -96,6 +96,7 @@ export default {
     navigate(event) {
       const href = event.target.getAttribute("href");
       const target = event.target.getAttribute("target");
+      // TODO: add if it is the same domain check
       if (href && href[0] === "/" && target !== "_blank") {
         event.preventDefault();
         this.$router.push(href);
