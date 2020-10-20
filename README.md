@@ -1,25 +1,28 @@
 # DARWIN Studio UI Library
 
-## What is it?
+### What is it?
 It's lightweight and performant UI Library for Vue 3.  
 
 🚧 DISCLAIMER: Under construction. Don't use in production until release.
 
-## Key features
+### Key features
 - Design tokens represented as SCSS variables, CSS custom properties and exported as JS variables, so you can redefine design tokens either on build time or in runtime.  
 - Components created by [Brad Frost's Atomic Design](https://atomicdesign.bradfrost.com/) methodology, so you can go along with it in creating and maintaining your Design System.  
 - Container components presented to define presentation of their children.  
 - Developer components presented to help developers do their job.
+- Icon set agnostic.
+- Build in optional reset style.
+- Build in optional fonts.
 
 ⚠ WARNING: Components of the library have to be compiled with sass-loader, so you need sass-loader package as a dev dependency. 
 
-## Installation
+### Installation
 ```shell script
 npm i @darwin-studio/ui-vue
 npm i -D sass-loader sass
 ```  
 
-## Basic Usage
+### Basic Usage
 ```vue
 <template>
   <!--...-->
@@ -56,13 +59,34 @@ export default {
 </style>
 ```   
 
-## Documentation
+### Documentation
 
 For now there isn't any fancy documentation site to check out.  
 All component documentation is in their source code.
 In the future we are planing to use Storybook for the documentation.
 
-## Icons
+### More detailed
+
+#### Design Tokens
+
+Your can find all design tokens in '@dariwn-studio/ui-vue/src/assets/styles/tokens' folder.
+
+#### Icons
 
 We don't want to stick with one of icon sets, so decided allow you to choose one yourself.  
 To do so just use [@iconify/vue](https://docs.iconify.design/implementations/vue/) package.
+
+#### Reset styles
+
+Just add following line into your general scss file to reset all browser-specific styles.
+```scss
+@import "@darwin-studio/ui-vue/src/assets/styles/reset";
+```
+
+#### Fonts
+
+You can easily add to your project one of the popular open source custom font by adding following line. 
+```scss
+@import "@darwin-studio/ui-vue/src/assets/styles/fonts/[font-name]";
+```
+For now only 'roboto' and 'open-sans' are supported.
