@@ -3,11 +3,11 @@
 ### What is it?
 It's lightweight and performant UI Library for Vue 3.  
 
-🚧 DISCLAIMER: Under construction. Don't use in production until release.
+🚧 DISCLAIMER: Under construction. Not even close to alpha. So please, don't use in production.
 
 ### Key features
 - Design tokens represented as SCSS variables, CSS custom properties and exported as JS variables, so you can redefine design tokens either on build time or in runtime.  
-- Components created by [Brad Frost's Atomic Design](https://atomicdesign.bradfrost.com/) methodology, so you can go along with it in creating and maintaining your Design System.  
+- Components created by [Brad Frost's Atomic Design](https://atomicdesign.bradfrost.com/) methodology, so you can go along with it creating and maintaining your Design System.  
 - Container components presented to define presentation of their children.  
 - Developer components presented to help developers do their job.
 - Icon set agnostic.

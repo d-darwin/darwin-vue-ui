@@ -8,7 +8,7 @@ import DGrid from "./components/containers/DGrid";
 /** atoms **/
 
 /** molecules **/
-import DCopyright from "./components/molecules/DCopyright";
+import DCopyright from "./components/atoms/DCopyright";
 
 /** organisms **/
 
