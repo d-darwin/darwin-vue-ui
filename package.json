@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "focus-visible": "^5.2.0",
     "vue": "^3.0.0"
   },
   "devDependencies": {

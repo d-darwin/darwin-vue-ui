@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style>
-/* By convention root element of all components has eponymous name. */
+/* By convention root element of all components has eponymous class name. */
 .d-typography {
   /* You can override css custom props to redefine design tokens. */
   --general-font-size: 16px;
