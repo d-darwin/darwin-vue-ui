@@ -134,7 +134,7 @@ export default {
 
 .d-typography > *,
 .d-typography > ::v-slotted(*) {
-  margin: 1rem 0;
+  margin: 1em 0;
   color: currentColor;
 }
 
