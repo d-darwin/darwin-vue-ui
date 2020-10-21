@@ -1,4 +1,3 @@
-<!--suppress ALL -->
 <template>
   <component
     v-if="content"
@@ -27,11 +26,11 @@
 import fontSizeProp from "../../utils/fontSizeProp";
 
 /** mixins **/
-import LinkClickRouting from "@/mixins/LinkClickRouting";
+import LinkClickRouting from "../../mixins/LinkClickRouting";
 
 /**
  * Renders typography text according to design tokens from './src/assets/styles/tokens/_typography.scss'.<br>
- * Handles content relativ links cliks as routes.
+ * Handles content relative links clicks as routes.
  *
  * @version 1.0.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
