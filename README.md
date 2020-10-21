@@ -87,6 +87,6 @@ Just add following line into your general scss file to reset all browser-specifi
 
 You can easily add to your project one of the popular open source custom font by adding following line. 
 ```scss
-@import "@darwin-studio/ui-vue/src/assets/styles/fonts/[font-name]";
+@import "@darwin-studio/ui-vue/src/assets/styles/fonts/[font-family-name]";
 ```
-For now only 'roboto' and 'open-sans' are supported.
+List of supported font families
