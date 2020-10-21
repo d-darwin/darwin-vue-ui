@@ -53,9 +53,10 @@
   "keywords": [
     "vue 3",
     "ui library",
-    "visual components"
+    "visual components",
+    "CSS custom properties"
   ],
-  "author": "[Dmitriy Bykov] (https://github.com/d-darwin)",
+  "author": "Dmitrii Bykov <d@darwin.st> (https://darwin.st/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/d-darwin/darwin-vue-ui/issues"

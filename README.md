@@ -10,9 +10,9 @@ It's lightweight and performant UI Library for Vue 3.
 - Components created by [Brad Frost's Atomic Design](https://atomicdesign.bradfrost.com/) methodology, so you can go along with it creating and maintaining your Design System.  
 - Container components presented to define presentation of their children.  
 - Developer components presented to help developers do their job.
-- Icon set agnostic.
 - Build in optional reset style.
 - Build in optional fonts.
+- Icon set agnostic.
 
 ⚠ WARNING: Components of the library have to be compiled with sass-loader, so you need sass-loader package as a dev dependency. 
 
@@ -65,28 +65,39 @@ For now there isn't any fancy documentation site to check out.
 All component documentation is in their source code.
 In the future we are planing to use Storybook for the documentation.
 
-### More detailed
+### More details  
 
-#### Design Tokens
+#### Design Tokens  
 
 Your can find all design tokens in '@dariwn-studio/ui-vue/src/assets/styles/tokens' folder.
 
-#### Icons
-
-We don't want to stick with one of icon sets, so decided allow you to choose one yourself.  
-To do so just use [@iconify/vue](https://docs.iconify.design/implementations/vue/) package.
-
-#### Reset styles
+#### Reset styles  
 
 Just add following line into your general scss file to reset all browser-specific styles.
 ```scss
 @import "@darwin-studio/ui-vue/src/assets/styles/reset";
 ```
 
-#### Fonts
+#### Fonts  
 
 You can easily add to your project one of the popular open source custom font by adding following line. 
 ```scss
 @import "@darwin-studio/ui-vue/src/assets/styles/fonts/[font-family-name]";
 ```
-List of supported font families
+List of supported [font-family-names]:  
+- inter;
+- fira-sans;
+- manrope;
+- oswald;
+- spectral;
+- source-sans;
+- montserrat;
+- noto-sans;
+- anonymous-pro;
+- roboto.
+
+#### Icons  
+
+We don't want to stick with one of icon sets, so decided allow you to choose one yourself.  
+To do so just use [@iconify/vue](https://docs.iconify.design/implementations/vue/) package.
+
