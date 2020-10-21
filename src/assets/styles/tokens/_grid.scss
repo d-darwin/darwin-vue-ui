@@ -9,7 +9,7 @@ $lg-grid-columns-count: 12;
 $xl-grid-columns-count: 12;
 $xxl-grid-columns-count: 12;
 
-.d-grid {
+:root {
   @include xs-device {
     --grid-columns-count: #{$xs-grid-columns-count};
     --grid-offset: 18px;

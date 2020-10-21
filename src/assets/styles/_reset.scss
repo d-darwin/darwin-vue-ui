@@ -2,13 +2,14 @@
 @import "./tokens/typography";
 
 html {
-  font-size: var(--general-font-size);
-  line-height: var(--general-line-height);
-  font-weight: var(--general-font-weight);
+  font-family: Arial, sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  font-size: var(--general-font-size);
+  line-height: var(--general-line-height);
+  font-weight: var(--general-font-weight);
 }
 
 /* Box sizing rules */
