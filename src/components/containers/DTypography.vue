@@ -26,6 +26,9 @@
 /** utils **/
 import fontSizeProp from "../../utils/fontSizeProp";
 
+/** mixins **/
+import LinkClickRouting from "@/mixins/LinkClickRouting";
+
 /**
  * Renders typography text according to design tokens from './src/assets/styles/tokens/_typography.scss'.<br>
  * Handles content relativ links cliks as routes.
@@ -35,6 +38,8 @@ import fontSizeProp from "../../utils/fontSizeProp";
  */
 export default {
   name: "DTypography",
+
+  mixins: [LinkClickRouting],
 
   props: {
     /**
@@ -59,70 +64,6 @@ export default {
      * See './src/assets/styles/tokens/_typography.scss' for more details.
      */
     size: fontSizeProp
-  },
-
-  // TODO: how to reuse relative link handling logic ?
-  // TODO: how to not include this logic if no vue-router installed
-  data() {
-    return {
-      links: []
-    };
-  },
-
-  mounted() {
-    if (this.$router) {
-      this.addListeners();
-    }
-  },
-
-  beforeUnmount() {
-    if (this.$router) {
-      this.removeListeners();
-    }
-  },
-
-  watch: {
-    content() {
-      if (this.$router) {
-        this.contentUpdatedHandler();
-      }
-    }
-  },
-
-  methods: {
-    /**
-     * Prevents default browser behavior (page reload) for relative links.
-     */
-    navigate(event) {
-      const href = event.target.getAttribute("href");
-      const target = event.target.getAttribute("target");
-      // TODO: add if it is the same domain check
-      if (href && href[0] === "/" && target !== "_blank") {
-        event.preventDefault();
-        this.$router.push(href);
-      }
-    },
-
-    contentUpdatedHandler() {
-      this.removeListeners();
-      this.$nextTick(() => {
-        this.addListeners();
-      });
-    },
-
-    addListeners() {
-      this.links = this.$el.getElementsByTagName("a");
-      for (let i = 0; i < this.links.length; i++) {
-        this.links[i].addEventListener("click", this.navigate, false);
-      }
-    },
-
-    removeListeners() {
-      for (let i = 0; i < this.links.length; i++) {
-        this.links[i].removeEventListener("click", this.navigate, false);
-      }
-      this.links = [];
-    }
   }
 };
 </script>
