@@ -41,6 +41,8 @@
     "src/assets/*",
     "src/components/*",
     "src/use/*",
+    "src/mixins/*",
+    "src/use/*",
     "src/utils/*",
     "src/index.js",
     "*.json",
