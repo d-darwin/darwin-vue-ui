@@ -1,19 +1,25 @@
+@import "colors";
+
 $large-control-height: 48px;
 $medium-control-height: 38px;
 $small-control-height: 28px;
 
 $border-radius: 4px;
+$outline-color: $blue;
+$outline-width: 2px;
 
 /**
  * Map to CSS custom properties
  */
 
-:root {
+.control-group {
   --large-control-height: #{$large-control-height};
   --medium-control-height: #{$medium-control-height};
   --small-control-height: #{$small-control-height};
 
   --border-radius: #{$border-radius};
+  --outline-color: #{$outline-color};
+  --outline-width: #{$outline-width};
 }
 
 // the :export directive is the magic sauce for webpack.
@@ -25,4 +31,6 @@ $border-radius: 4px;
   small-control-height: $small-control-height;
 
   border-radius: $border-radius;
+  outline-color: $outline-color;
+  outline-width: $outline-width;
 }

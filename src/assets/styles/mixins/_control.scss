@@ -1,37 +1,61 @@
 @import "../tokens/control";
 
 @mixin large-control {
-  height: $large-control-height;
+  height: var(--large-control-height);
 
   &.__smooth {
-    border-radius: calc(#{$large-control-height} / 2);
+    border-radius: calc(var(--large-control-height) / 2);
+
+    & + .outline {
+      border-radius: calc((var(--large-control-height) + 2px) / 2);
+    }
   }
 
   &.__rounded {
-    border-radius: $border-radius;
+    border-radius: var(--border-radius);
+
+    & + .outline {
+      border-radius: calc(var(--border-radius) + 2px);
+    }
   }
 }
 
 @mixin medium-control {
-  height: $medium-control-height;
+  height: var(--medium-control-height);
 
   &.__smooth {
-    border-radius: calc(#{$medium-control-height} / 2);
+    border-radius: calc(var(--medium-control-height) / 2);
+
+    & + .outline {
+      border-radius: calc((var(--medium-control-height) + 2px) / 2);
+    }
   }
 
   &.__rounded {
-    border-radius: $border-radius;
+    border-radius: var(--border-radius);
+
+    & + .outline {
+      border-radius: calc(var(--border-radius) + 2px);
+    }
   }
 }
 
 @mixin small-control {
-  height: $small-control-height;
+  height: var(--small-control-height);
 
   &.__smooth {
-    border-radius: calc(#{$small-control-height} / 2);
+    border-radius: calc(var(--small-control-height) / 2);
+
+    & + .outline {
+      border-radius: calc((var(--small-control-height) + 2px)/ 2);
+    }
   }
 
   &.__rounded {
-    border-radius: $border-radius;
+    border-radius: var(--border-radius);
+
+    & + .outline {
+      border-radius: calc(var(--border-radius) + 2px);
+    }
   }
 }

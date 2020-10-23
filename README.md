@@ -13,6 +13,7 @@ It's lightweight and performant UI Library for Vue 3.
 - Build in optional reset style.
 - Build in optional fonts.
 - Icon set agnostic.
+- Uses focus-visible polyfill for a11y reasons.
 
 ⚠ WARNING: Components of the library have to be compiled with sass-loader, so you need sass-loader package as a dev dependency. 
 
@@ -62,7 +63,7 @@ export default {
 ### Documentation
 
 For now there isn't any fancy documentation site to check out.  
-All component documentation is in their source code. You can find components' source code in ''@dariwn-studio/ui-vue/src/components'.  
+All component documentation is in their source code. You can find components' source code in '@dariwn-studio/ui-vue/src/components'.  
 In the future we are planing to use Storybook for the documentation.
 
 ### More details  
