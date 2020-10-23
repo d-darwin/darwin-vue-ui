@@ -62,7 +62,7 @@ export default {
 ### Documentation
 
 For now there isn't any fancy documentation site to check out.  
-All component documentation is in their source code.
+All component documentation is in their source code. You can find components' source code in ''@dariwn-studio/ui-vue/src/components'.  
 In the future we are planing to use Storybook for the documentation.
 
 ### More details  

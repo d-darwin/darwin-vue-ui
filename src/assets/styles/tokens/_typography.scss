@@ -76,6 +76,13 @@ $h1-font-weight: bold;
   --h1-font-weight: #{$h1-font-weight};
 }
 
+html {
+  font-family: var(--font-family, "Geneva, Arial, Helvetica, sans-serif");
+  font-size: var(--general-font-size);
+  line-height: var(--general-line-height);
+  font-weight: var(--general-font-weight);
+}
+
 // the :export directive is the magic sauce for webpack.
 // this variables will be available to js on build time.
 // noinspection CssUnknownProperty
