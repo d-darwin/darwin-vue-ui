@@ -7,11 +7,11 @@
     }"
     class="control-group"
   >
-    <label v-if="label" :for="_uid" class="label">
+    <label v-if="label" :for="id" class="label">
       <DTypography :content="label" size="small" />
     </label>
     <input
-      :id="_uid"
+      :id="id"
       v-model="inputValue"
       :name="name"
       :type="type"
@@ -37,6 +37,10 @@
 </template>
 
 <script>
+/** utils **/
+import uuid from "@/utils/uuid";
+
+/** components **/
 import DTypography from "../containers/DTypography";
 
 /**
@@ -158,6 +162,10 @@ export default {
       innerError: this.error,
       id: null
     };
+  },
+
+  mounted() {
+    this.id = uuid()
   },
 
   watch: {
