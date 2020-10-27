@@ -1,0 +1,31 @@
+$transition-time-short: 150ms;
+$transition-time-medium: 300ms;
+$transition-time-long: 600ms;
+
+$transition-property: all;
+$transition-function: ease;
+
+/**
+ * Map to CSS custom properties
+ */
+
+:root {
+  --transition-time-short: #{$transition-time-short};
+  --transition-time-medium: #{$transition-time-medium};
+  --transition-time-long: #{$transition-time-long};
+
+  --transition-property: #{$transition-property};
+  --transition-function: #{$transition-function};
+}
+
+// the :export directive is the magic sauce for webpack.
+// this variables will be available to js on build time.
+// noinspection CssUnknownProperty
+:export {
+  transition-time-short: $transition-time-short;
+  transition-time-medium: $transition-time-medium;
+  transition-time-long: $transition-time-long;
+
+  transition-property: $transition-property;
+  transition-function: $transition-function;
+}

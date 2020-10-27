@@ -10,9 +10,10 @@
     <label v-if="label" :for="id" class="label">
       <DTypography :content="label" size="small" />
     </label>
+    <!--TODO: [`__${roundness}`]: should be at one place-->
     <input
-      :id="id"
       v-model="inputValue"
+      :id="id"
       :name="name"
       :type="type"
       :placeholder="required ? placeholder + '*' : placeholder"
@@ -30,9 +31,10 @@
       @keyup.enter.prevent="emitSubmit"
     />
     <div class="outline" />
-    <!--<transition name="error">-->
-    <DTypography v-if="error" :content="error" size="small" class="error" />
-    <!--</transition>-->
+
+    <transition name="input-error">
+      <DTypography v-if="error" :content="error" size="small" class="error" />
+    </transition>
   </div>
 </template>
 
@@ -165,7 +167,7 @@ export default {
   },
 
   mounted() {
-    this.id = uuid()
+    this.id = uuid();
   },
 
   watch: {

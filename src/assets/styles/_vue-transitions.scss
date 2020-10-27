@@ -1,0 +1,23 @@
+@import "./mixins/transitions";
+@import "./tokens/typography";
+
+.input-error-enter,
+.input-error-leave-to {
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(-50%);
+}
+
+.input-error-enter-to,
+.input-error-leave {
+  opacity: 1;
+  max-height: calc(
+    #{$small-line-height} * 3
+  ); // error strings shouldn't be very long
+  transform: translateY(0);
+}
+
+.input-error-enter-active,
+.input-error-leave-active {
+  @include transition-short;
+}

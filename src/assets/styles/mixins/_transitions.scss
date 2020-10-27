@@ -1,0 +1,13 @@
+@import "../tokens/transitions";
+
+@mixin transition-short {
+  transition: $transition-property $transition-time-short $transition-function;
+}
+
+@mixin transition-medium {
+  transition: $transition-property $transition-time-medium $transition-function;
+}
+
+@mixin transition-long {
+  transition: $transition-property $transition-time-long $transition-function;
+}
