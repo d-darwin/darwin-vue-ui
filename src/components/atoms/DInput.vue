@@ -46,9 +46,11 @@ import uuid from "@/utils/uuid";
 import DTypography from "../containers/DTypography";
 
 /**
- * TODO: descr
+ * The components renders input field with label.
+ * May be in various sizes and have different corner roundness.
+ * Renders error string if any passed to a prop.
  *
- * @version 1.0.1
+ * @version 1.0.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -57,8 +59,9 @@ export default {
   components: { DTypography },
 
   props: {
+    /*TODO: reduce number of props by using v-bind*/
     /**
-     * Определяет значение атрибута <i>name</i> тега <b>input</b>.
+     * Defines <i>name</i> attr value of the <b>input</b> tag.
      */
     name: {
       type: String,
@@ -66,8 +69,8 @@ export default {
     },
 
     /**
-     * Определяет размер компонента.<br>
-     * Принимает значения: 'large', 'medium'.
+     * Defines vertical size of the <b>input</b> tag.<br>
+     * Takes values: 'large', 'medium'.
      */
     size: {
       type: String,
@@ -76,8 +79,8 @@ export default {
     },
 
     /**
-     * Определяет скругление углов компонента.<br>
-     * Принимает значения: 'smooth', 'rounded', 'boxed'
+     * Defines corner's roundness  of the <b>input</b> tag.<br>
+     * Takes values: 'smooth', 'rounded', 'boxed'
      */
     roundness: {
       type: String,
@@ -86,7 +89,7 @@ export default {
     },
 
     /**
-     * Определяет значение атрибута <i>type</i> тега <b>input</b>.
+     * Defines <i>type</i> attr value of the <b>input</b> tag.
      */
     type: {
       type: String,
@@ -94,7 +97,7 @@ export default {
     },
 
     /**
-     * Определяет начальное значение атрибута <i>value</i> тега <b>input</b>.
+     * Defines <i>value</i> тега <b>input</b>.
      */
     value: {
       type: String,
@@ -102,7 +105,7 @@ export default {
     },
 
     /**
-     * Определяет текст тега <b>label</b>.
+     * Defines content of the <b>label</b> tag.
      */
     label: {
       type: String,
@@ -110,7 +113,7 @@ export default {
     },
 
     /**
-     * Определяет значение атрибута <i>placeholder</i> тега <b>input</b>.
+     * Defines <i>placeholder</i> attr value of the <b>input</b> tag.
      */
     placeholder: {
       type: String,
@@ -118,7 +121,7 @@ export default {
     },
 
     /**
-     * Определяет значение атрибута <i>required</i> тега <b>input</b>.
+     * Defines <i>required</i> attr value of the <b>input</b> tag.
      */
     required: {
       type: Boolean,
@@ -126,7 +129,7 @@ export default {
     },
 
     /**
-     * Определяет значение атрибута <i>autocomplete</i> тега <b>input</b>.
+     * Defines <i>autocomplete</i> attr value of the <b>input</b> tag.
      */
     autocomplete: {
       type: Boolean,
@@ -134,7 +137,7 @@ export default {
     },
 
     /**
-     * Определяет значение атрибута <i>disabled</i> тега <b>input</b>.
+     * Defines <i>disabled</i> attr value of the <b>input</b> tag.
      */
     disabled: {
       type: Boolean,
@@ -142,7 +145,7 @@ export default {
     },
 
     /**
-     * Определяет будет ли компонент иметь обводку.
+     * Defines if <b>input</b> tag has to have border.
      */
     borderless: {
       type: Boolean,
@@ -150,7 +153,7 @@ export default {
     },
 
     /**
-     * Если не пустое, то отображается в качестве текста ошибки.
+     * If not empty renders as an error string below the <b>input</b> tag.
      */
     error: {
       type: String,
@@ -179,8 +182,8 @@ export default {
   methods: {
     emitValue() {
       /**
-       * Значение атрибута <i>value</i> тега <b>input</b> изменилось.<br>
-       * Событие содержит новое значение атрибута <i>value</i>.
+       * Value of the <b>input</b> tag changed.<br>
+       * Contains new <i>value</i>.
        *
        * @event changed
        * @type {String}
@@ -190,7 +193,7 @@ export default {
 
     emitSubmit() {
       /**
-       * Была нажата клавиша Enter.
+       * Enter clicked while focus on the <b>input</b>.
        *
        * @event submitted
        */
