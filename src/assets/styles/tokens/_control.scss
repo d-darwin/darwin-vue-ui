@@ -8,6 +8,8 @@ $border-radius: 4px;
 $outline-color: $blue;
 $outline-width: 2px;
 
+$button-font-weight: 500;
+
 /**
  * Map to CSS custom properties
  */
@@ -20,6 +22,8 @@ $outline-width: 2px;
   --border-radius: #{$border-radius};
   --outline-color: #{$outline-color};
   --outline-width: #{$outline-width};
+
+  --button-font-weight: #{$button-font-weight}
 }
 
 // the :export directive is the magic sauce for webpack.
@@ -33,4 +37,6 @@ $outline-width: 2px;
   border-radius: $border-radius;
   outline-color: $outline-color;
   outline-width: $outline-width;
+
+  button-font-weight: $button-font-weight;
 }

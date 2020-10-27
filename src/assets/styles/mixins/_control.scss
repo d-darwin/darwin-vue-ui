@@ -6,7 +6,8 @@
   &.__smooth {
     border-radius: calc(var(--large-control-height) / 2);
 
-    & + .outline {
+    & + .outline,
+    &:before {
       border-radius: calc((var(--large-control-height) + 2px) / 2);
     }
   }
@@ -14,7 +15,8 @@
   &.__rounded {
     border-radius: var(--border-radius);
 
-    & + .outline {
+    & + .outline,
+    &:before {
       border-radius: calc(var(--border-radius) + 2px);
     }
   }
@@ -26,7 +28,8 @@
   &.__smooth {
     border-radius: calc(var(--medium-control-height) / 2);
 
-    & + .outline {
+    & + .outline,
+    &:before {
       border-radius: calc((var(--medium-control-height) + 2px) / 2);
     }
   }
@@ -34,7 +37,8 @@
   &.__rounded {
     border-radius: var(--border-radius);
 
-    & + .outline {
+    & + .outline,
+    &:before {
       border-radius: calc(var(--border-radius) + 2px);
     }
   }
@@ -46,15 +50,17 @@
   &.__smooth {
     border-radius: calc(var(--small-control-height) / 2);
 
-    & + .outline {
-      border-radius: calc((var(--small-control-height) + 2px)/ 2);
+    & + .outline,
+    &:before {
+      border-radius: calc((var(--small-control-height) + 2px) / 2);
     }
   }
 
   &.__rounded {
     border-radius: var(--border-radius);
 
-    & + .outline {
+    & + .outline,
+    &:before {
       border-radius: calc(var(--border-radius) + 2px);
     }
   }

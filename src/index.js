@@ -12,6 +12,7 @@ import DGrid from "./components/containers/DGrid";
 /** atoms **/
 import DCopyright from "./components/atoms/DCopyright";
 import DInput from "./components/atoms/DInput";
+import DButton from "./components/atoms/DButton";
 
 /** molecules **/
 
@@ -27,7 +28,8 @@ export {
   DGrid,
   /** atoms **/
   DCopyright,
-  DInput
+  DInput,
+  DButton
 
   /** molecules **/
 

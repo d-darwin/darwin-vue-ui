@@ -46,8 +46,8 @@ import uuid from "@/utils/uuid";
 import DTypography from "../containers/DTypography";
 
 /**
- * The components renders input field with label.
- * May be in various sizes and have different corner roundness.
+ * The components renders input field with label.<br>
+ * May be in various sizes and have different corner roundness.<br>
  * Renders error string if any passed to a prop.
  *
  * @version 1.0.2
@@ -79,8 +79,8 @@ export default {
     },
 
     /**
-     * Defines corner's roundness  of the <b>input</b> tag.<br>
-     * Takes values: 'smooth', 'rounded', 'boxed'
+     * Defines corner's roundness of the <b>input</b> tag.<br>
+     * Takes values: 'smooth', 'rounded', 'boxed'.
      */
     roundness: {
       type: String,
@@ -237,9 +237,10 @@ export default {
 
   &.focus-visible + .outline {
     // emulates outline property
-    border: var(--outline-width) solid var(--outline-color);
-    content: " ";
+    // TODO: make mixin ???
     position: absolute;
+    content: " ";
+    border: var(--outline-width) solid var(--outline-color);
     z-index: -1;
     top: calc(var(--outline-width) * -1);
     left: calc(var(--outline-width) * -1);
