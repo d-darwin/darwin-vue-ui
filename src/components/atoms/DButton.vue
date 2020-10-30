@@ -7,17 +7,15 @@
         [`__${size}`]: size,
         [`__${roundness}`]: roundness,
         ['__icon-only']: iconOnly,
-        __disabled: $props.disabled
+        __disabled: $attrs.disabled !== undefined
       }"
       :aria-disabled="$attrs.disabled"
-      v-bind="{ ...$attrs, ...$props, ...elSpecificProps }"
+      v-bind="{ ...$props, ...$attrs }"
       role="button"
       class="control-button"
     >
       <!-- @slot May contains a string, an icon or an combination. -->
       <slot />
-      <pre>{{ $attrs }}</pre>
-      <pre>{{ $props }}</pre>
     </component>
   </div>
 </template>
@@ -27,7 +25,7 @@
  * The components renders as a <b>button</b>, <b>n-link</b> or <b>a</b> depending on props.
  * May be in various sizes and have different corner roundness.
  *
- * @version 1.0.0
+ * @version 1.0.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -36,7 +34,6 @@ export default {
   inheritAttrs: false,
 
   props: {
-    /*TODO: reduce number of props by using v-bind*/
     /**
      * Defines background and border colors of the component as well as :hover and :active behavior.<br>
      * Takes values: 'primary', 'secondary', 'alternative', 'inverse'.
@@ -69,48 +66,6 @@ export default {
     },
 
     /**
-     * Use the prop to render component as a <b>n-link<b>.
-     */
-    routeName: {
-      type: String,
-      default: ""
-    },
-
-    /**
-     * Use the prop to define params of a route in case of <b>n-link<b> usage.
-     */
-    routeParams: {
-      type: Object,
-      default: () => {}
-    },
-
-    /**
-     * Use the prop to render component as an <b>a</b> tag.
-     */
-    href: {
-      type: String,
-      default: ""
-    },
-
-    /**
-     * Use the prop to define value of the <i>target</i> attr in case of <b>a</b> usage.
-     * Takes values: '\_blank', '\_parent', '\_self', '\_top'.
-     */
-    target: {
-      type: String,
-      default: "_blank",
-      validator: val => ["_blank", "_parent", "_self", "_top"].includes(val)
-    },
-
-    /**
-     * Prevents event generation on click and changes look and feel.
-     */
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-
-    /**
      * Reduces horizontal padding of the components.
      */
     iconOnly: {
@@ -121,47 +76,8 @@ export default {
 
   computed: {
     el() {
-      return this.routeName ? "n-link" : this.href ? "a" : "button";
-    },
-
-    elSpecificProps() {
-      if (this.routeName) {
-        return {
-          to: {
-            name: this.routeName,
-            params: this.routeParams
-          },
-        };
-      } else if (this.href) {
-        return {
-          href: this.href,
-          target: this.target,
-          rel: this.target === "_blank" ? "nofollow noopener noreferer" : "",
-        };
-      } else {
-        return {
-          // TODO: add if needed
-        };
-      }
+      return this.$attrs.to ? "n-link" : this.$attrs.href ? "a" : "button";
     }
-  },
-
-  methods: {
-    /*emitClick(event) {
-      if (this.preventDefault) {
-        event.preventDefault();
-      }
-
-      if (!this.disabled) {
-        /!**
-         * The component clicked. Contains <i>MouseEvent</i>.
-         *
-         * @event click
-         * @type {MouseEvent}
-         *!/
-        this.$emit("click", event);
-      }
-    }*/
   }
 };
 </script>
