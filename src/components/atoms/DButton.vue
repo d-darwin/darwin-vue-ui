@@ -2,21 +2,22 @@
   <div class="control-group">
     <component
       :is="el"
-      v-bind="linkProps"
       :class="{
         [`__${type}`]: type,
         [`__${size}`]: size,
         [`__${roundness}`]: roundness,
         ['__icon-only']: iconOnly,
-        __disabled: disabled
+        __disabled: $props.disabled
       }"
-      :aria-disabled="disabled"
+      :aria-disabled="$attrs.disabled"
+      v-bind="{ ...$attrs, ...$props, ...elSpecificProps }"
       role="button"
       class="control-button"
-      @click="emitClick($event)"
     >
-      <!-- @slot May contain string, icon or combination. -->
+      <!-- @slot May contains a string, an icon or an combination. -->
       <slot />
+      <pre>{{ $attrs }}</pre>
+      <pre>{{ $props }}</pre>
     </component>
   </div>
 </template>
@@ -31,6 +32,8 @@
  */
 export default {
   name: "DButton",
+
+  inheritAttrs: false,
 
   props: {
     /*TODO: reduce number of props by using v-bind*/
@@ -100,22 +103,6 @@ export default {
     },
 
     /**
-     * Use the prop to add <i>download</i> attr in case of <b>a</b> usage.
-     */
-    download: {
-      type: Boolean,
-      default: false
-    },
-
-    /**
-     * Prevents default button behavior on click.
-     */
-    preventDefault: {
-      type: Boolean,
-      default: false
-    },
-
-    /**
      * Prevents event generation on click and changes look and feel.
      */
     disabled: {
@@ -137,23 +124,19 @@ export default {
       return this.routeName ? "n-link" : this.href ? "a" : "button";
     },
 
-    linkProps() {
+    elSpecificProps() {
       if (this.routeName) {
         return {
           to: {
             name: this.routeName,
             params: this.routeParams
-          }
+          },
         };
       } else if (this.href) {
         return {
           href: this.href,
-          target: !this.download && this.target,
-          rel:
-            !this.download && this.target === "_blank"
-              ? "nofollow noopener noreferer"
-              : "",
-          download: this.download
+          target: this.target,
+          rel: this.target === "_blank" ? "nofollow noopener noreferer" : "",
         };
       } else {
         return {
@@ -164,21 +147,21 @@ export default {
   },
 
   methods: {
-    emitClick(event) {
+    /*emitClick(event) {
       if (this.preventDefault) {
         event.preventDefault();
       }
 
       if (!this.disabled) {
-        /**
+        /!**
          * The component clicked. Contains <i>MouseEvent</i>.
          *
          * @event click
          * @type {MouseEvent}
-         */
+         *!/
         this.$emit("click", event);
       }
-    }
+    }*/
   }
 };
 </script>
