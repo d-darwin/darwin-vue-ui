@@ -3,31 +3,28 @@
     :class="{
       [`__${size}`]: size,
       [`__${roundness}`]: roundness,
-      __disabled: disabled
+      __disabled: $attrs.disabled
     }"
     class="control-group"
   >
-    <label v-if="label" :for="id" class="label">
+    <label v-if="label" :for="inputId" class="label">
       <DTypography :content="label" size="small" />
     </label>
-    <!--TODO: [`__${roundness}`]: should be at one place-->
+    <!--need roundness class here for uniformity with other controls-->
     <input
-      v-model="inputValue"
-      :id="id"
-      :name="name"
-      :type="type"
-      :placeholder="required ? placeholder + '*' : placeholder"
-      :autocomplete="autocomplete ? 'on' : 'off'"
-      :required="required"
-      :disabled="disabled"
+      :id="inputId"
+      :value="value"
       :class="{
         [`__${roundness}`]: roundness,
         __borderless: borderless,
         __error: error
       }"
+      v-bind="{
+        ...$attrs,
+        onInput: emitValue,
+        onChange: emitValue
+      }"
       class="input"
-      @input="emitValue"
-      @change="emitValue"
       @keyup.enter.prevent="emitSubmit"
     />
     <div class="outline" />
@@ -50,21 +47,32 @@ import DTypography from "../containers/DTypography";
  * May be in various sizes and have different corner roundness.<br>
  * Renders error string if any passed to a prop.
  *
- * @version 1.0.2
+ * @version 1.0.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
   name: "DInput",
 
+  inheritAttrs: false,
+
   components: { DTypography },
 
   props: {
-    /*TODO: reduce number of props by using v-bind*/
     /**
-     * Defines <i>name</i> attr value of the <b>input</b> tag.
+     * Defines <i>id</i> attr of th <b>input</b> tag.<br>
+     * If you don't want to specify it, it will be generated automatically.
      */
-    name: {
-      type: String,
+    id: {
+      type: [String, Number],
+      default: ""
+    },
+
+    /**
+     * Defines <i>value</i> тега <b>input</b>.
+     */
+    // TODO: something went wrong here, you don't need in inputValue
+    value: {
+      type: [String, Number],
       default: ""
     },
 
@@ -89,59 +97,11 @@ export default {
     },
 
     /**
-     * Defines <i>type</i> attr value of the <b>input</b> tag.
-     */
-    type: {
-      type: String,
-      default: "text"
-    },
-
-    /**
-     * Defines <i>value</i> тега <b>input</b>.
-     */
-    value: {
-      type: String,
-      default: ""
-    },
-
-    /**
      * Defines content of the <b>label</b> tag.
      */
     label: {
       type: String,
       default: ""
-    },
-
-    /**
-     * Defines <i>placeholder</i> attr value of the <b>input</b> tag.
-     */
-    placeholder: {
-      type: String,
-      default: ""
-    },
-
-    /**
-     * Defines <i>required</i> attr value of the <b>input</b> tag.
-     */
-    required: {
-      type: Boolean,
-      default: false
-    },
-
-    /**
-     * Defines <i>autocomplete</i> attr value of the <b>input</b> tag.
-     */
-    autocomplete: {
-      type: Boolean,
-      default: false
-    },
-
-    /**
-     * Defines <i>disabled</i> attr value of the <b>input</b> tag.
-     */
-    disabled: {
-      type: Boolean,
-      default: false
     },
 
     /**
@@ -163,32 +123,20 @@ export default {
 
   data() {
     return {
-      inputValue: this.value,
-      innerError: this.error,
-      id: null
+      inputId: this.id ? this.id : uuid()
     };
   },
 
-  mounted() {
-    this.id = uuid();
-  },
-
-  watch: {
-    value() {
-      this.inputValue = this.value;
-    }
-  },
-
   methods: {
-    emitValue() {
+    emitValue(event) {
       /**
-       * Value of the <b>input</b> tag changed.<br>
-       * Contains new <i>value</i>.
+       * Value of the <b>input</b> tag updated. Contains new <i>value</i>.<br>
+       * Use @update:value="fn" to catch this event.
        *
-       * @event changed
+       * @event update:value
        * @type {String}
        */
-      this.$emit("changed", this.inputValue);
+      this.$emit("update:value", event.target.value);
     },
 
     emitSubmit() {
