@@ -242,9 +242,9 @@ export default {
     content: " ";
     border: var(--outline-width) solid var(--outline-color);
     z-index: -1;
-    top: calc(var(--outline-width) * -1);
-    left: calc(var(--outline-width) * -1);
+    // top: calc(var(--outline-width) * -1);
     right: calc(var(--outline-width) * -1);
+    left: calc(var(--outline-width) * -1);
     bottom: calc(var(--outline-width) * -1);
     width: calc(100% + 2 * var(--outline-width));
   }
@@ -308,6 +308,10 @@ export default {
     @include large-control;
 
     padding: 12px 0 12px 15px;
+
+    &.focus-visible + .outline {
+      height: calc(var(--large-control-height) + 2 * var(--outline-width));
+    }
   }
 
   &.__smooth {
@@ -322,6 +326,10 @@ export default {
     @include medium-control;
 
     padding: 7px 0 7px 11px;
+
+    &.focus-visible + .outline {
+      height: calc(var(--medium-control-height) + 2 * var(--outline-width));
+    }
   }
 
   &.__smooth {
@@ -330,4 +338,6 @@ export default {
     }
   }
 }
+
+// TODO: __small ???
 </style>
