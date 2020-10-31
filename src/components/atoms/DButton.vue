@@ -11,7 +11,7 @@
       }"
       :aria-disabled="$attrs.disabled"
       v-bind="{ ...$props, ...$attrs }"
-      :role="['n-link', 'a'].includes(el) ? 'link' : 'button'"
+      :role="['router-link', 'a'].includes(el) ? 'link' : 'button'"
       class="control-button"
     >
       <!-- @slot May contains a string, an icon or an combination. -->
@@ -22,7 +22,7 @@
 
 <script>
 /**
- * The components renders as a <b>button</b>, <b>n-link</b> or <b>a</b> depending on props.
+ * The components renders as a <b>button</b>, <b>router-link</b> or <b>a</b> depending on props.
  * May be in various sizes and have different corner roundness.
  *
  * @version 1.0.3
@@ -77,7 +77,7 @@ export default {
   computed: {
     el() {
       return this.$attrs.to && this.$router
-        ? "n-link"
+        ? "router-link"
         : this.$attrs.href
         ? "a"
         : "button";

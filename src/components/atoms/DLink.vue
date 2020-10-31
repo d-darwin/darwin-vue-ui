@@ -34,7 +34,7 @@ import fontSizeProp from "../../utils/fontSizeProp";
 /**
  * Компонент отображается в виде ссылок различного размера и цветов.<br>
  * Если ссылка абсолютная, то к тексту добавляется иконка <i>external link</i>.<br>
- * Компонент рендериться как тег <b>a</b> или <b>n-link</b>.<br>
+ * Компонент рендериться как тег <b>a</b> или <b>router-link</b>.<br>
  * Содержимое ссылки задается через свойство <i>text</i> и/или слот.<br>
  *
  * @version 1.0.0
@@ -77,7 +77,7 @@ export default {
 
   computed: {
     el() {
-      return this.$attrs.to && this.$router ? "n-link" : "a";
+      return this.$attrs.to && this.$router ? "router-link" : "a";
     }
   }
 };
