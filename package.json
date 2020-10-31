@@ -1,6 +1,6 @@
 {
   "name": "@darwin-studio/ui-vue",
-  "version": "0.7.6",
+  "version": "0.7.7",
   "scripts": {
     "serve": "vue-cli-service serve",
     "test": "vue-cli-service test:unit --config ./jest.config.json",
