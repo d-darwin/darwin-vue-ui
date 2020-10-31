@@ -1,4 +1,5 @@
-@import "../tokens/control";
+@import "../tokens/controls";
+@import "../tokens/outline";
 
 @mixin large-control {
   height: var(--large-control-height);

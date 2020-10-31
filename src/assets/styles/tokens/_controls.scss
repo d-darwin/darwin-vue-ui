@@ -5,8 +5,6 @@ $medium-control-height: 38px;
 $small-control-height: 28px;
 
 $border-radius: 4px;
-$outline-color: $blue;
-$outline-width: 2px;
 
 $button-font-weight: 500;
 
@@ -14,14 +12,12 @@ $button-font-weight: 500;
  * Map to CSS custom properties
  */
 
-.control-group {
+:root {
   --large-control-height: #{$large-control-height};
   --medium-control-height: #{$medium-control-height};
   --small-control-height: #{$small-control-height};
 
   --border-radius: #{$border-radius};
-  --outline-color: #{$outline-color};
-  --outline-width: #{$outline-width};
 
   --button-font-weight: #{$button-font-weight}
 }
@@ -35,8 +31,6 @@ $button-font-weight: 500;
   small-control-height: $small-control-height;
 
   border-radius: $border-radius;
-  outline-color: $outline-color;
-  outline-width: $outline-width;
 
   button-font-weight: $button-font-weight;
 }

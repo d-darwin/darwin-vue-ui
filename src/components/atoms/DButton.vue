@@ -11,7 +11,7 @@
       }"
       :aria-disabled="$attrs.disabled"
       v-bind="{ ...$props, ...$attrs }"
-      role="button"
+      :role="['n-link', 'a'].includes(el) ? 'link' : 'button'"
       class="control-button"
     >
       <!-- @slot May contains a string, an icon or an combination. -->
@@ -76,15 +76,23 @@ export default {
 
   computed: {
     el() {
-      return this.$attrs.to ? "n-link" : this.$attrs.href ? "a" : "button";
+      return this.$attrs.to && this.$router
+        ? "n-link"
+        : this.$attrs.href
+        ? "a"
+        : "button";
     }
   }
 };
 </script>
 
+<style lang="scss">
+// always include tokens unscoped
+@import "../../assets/styles/tokens/controls";
+</style>
+
 <style scoped lang="scss">
-@import "../../assets/styles/tokens/control";
-@import "../../assets/styles/mixins/control";
+@import "../../assets/styles/mixins/controls";
 @import "../../assets/styles/mixins/typography";
 @import "../../assets/styles/mixins/transitions";
 @import "../../assets/styles/focus-visible";
@@ -132,11 +140,11 @@ export default {
       content: " ";
       border: var(--outline-width) solid var(--outline-color);
       z-index: -1;
-      top: calc(var(--outline-width) * -1);
-      left: calc(var(--outline-width) * -1);
-      right: calc(var(--outline-width) * -1);
-      bottom: calc(var(--outline-width) * -1);
-      width: calc(100% + 2 * var(--outline-width));
+      top: calc(var(--outline-width) * -1 - 1px);
+      left: calc(var(--outline-width) * -1 - 1px); // border
+      right: calc(var(--outline-width) * -1 - 1px); // border
+      bottom: calc(var(--outline-width) * -1 - 1px); // border
+      width: calc(100% + 2 * var(--outline-width) + 2px); // border
     }
   }
 }

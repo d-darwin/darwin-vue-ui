@@ -70,7 +70,6 @@ export default {
     /**
      * Defines <i>value</i> тега <b>input</b>.
      */
-    // TODO: something went wrong here, you don't need in inputValue
     value: {
       type: [String, Number],
       default: ""
@@ -151,11 +150,16 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+// always include tokens unscoped
 @import "../../assets/styles/tokens/colors";
-@import "../../assets/styles/mixins/control";
-@import "../../assets/styles/mixins/typography";
 @import "../../assets/styles/tokens/gaps";
+@import "../../assets/styles/tokens/outline";
+</style>
+
+<style scoped lang="scss">
+@import "../../assets/styles/mixins/controls";
+@import "../../assets/styles/mixins/typography";
 @import "../../assets/styles/focus-visible";
 
 .control-group {

@@ -42,7 +42,7 @@ export default {
 
   props: {
     /**
-     * May contain any HTML string. Alternatavly you can use defaul slot to place any HTML or components.
+     * May contain any HTML string. Alternatively you can use default slot to place any HTML or components.
      */
     content: {
       type: [String, Number],
@@ -70,8 +70,7 @@ export default {
 <style scoped lang="scss">
 @import "../../assets/styles/mixins/typography";
 
-@include text-sizes;
-@include heading-sizes;
+@include typography-sizes;
 
 .d-typography > *,
 .d-typography > ::v-slotted(*) {

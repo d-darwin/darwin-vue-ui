@@ -38,7 +38,7 @@ $h1-font-weight: bold;
  * Map to CSS custom properties
  */
 
-.d-typography {
+:root {
   --small-font-size: #{$small-font-size};
   --small-line-height: #{$small-line-height};
   --small-font-weight: #{$small-font-weight};

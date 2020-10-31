@@ -1,0 +1,65 @@
+@import "../tokens/colors";
+
+@mixin link-primary {
+  &,
+  &:visited {
+    color: var(--blue);
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:active {
+    text-decoration: underline;
+  }
+}
+
+@mixin link-secondary {
+  &,
+  &:visited {
+    color: var(--text);
+  }
+
+  &:hover,
+  &:active {
+    text-decoration: none;
+    color: var(--primary-active);
+  }
+}
+
+@mixin link-tertiary {
+  &,
+  &:visited {
+    color: var(--text-aux);
+  }
+
+  &:hover,
+  &:active {
+    color: var(--text-aux);
+  }
+}
+
+@mixin link-inverse {
+  &,
+  &:visited {
+    color: var(--white);
+  }
+
+  &:hover,
+  &:active {
+    color: var(--primary-disabled);
+    text-decoration: none;
+  }
+}
+
+@mixin link-danger {
+  &,
+  &:visited {
+    color: var(--danger);
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:active {
+    text-decoration: underline;
+  }
+}

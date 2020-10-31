@@ -1,0 +1,21 @@
+@import "colors";
+
+$outline-color: $blue;
+$outline-width: 2px;
+
+/**
+ * Map to CSS custom properties
+ */
+
+:root {
+  --outline-color: #{$outline-color};
+  --outline-width: #{$outline-width};
+}
+
+// the :export directive is the magic sauce for webpack.
+// this variables will be available to js on build time.
+// noinspection CssUnknownProperty
+:export {
+  outline-color: $outline-color;
+  outline-width: $outline-width;
+}

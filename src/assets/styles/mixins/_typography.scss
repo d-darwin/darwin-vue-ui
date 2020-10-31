@@ -98,3 +98,8 @@
     @include h5-heading;
   }
 }
+
+@mixin typography-sizes {
+  @include text-sizes;
+  @include heading-sizes;
+}

@@ -78,9 +78,14 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-@import "../../assets/styles/mixins/breakpoints";
+<style lang="scss">
+// always include tokens unscoped
 @import "../../assets/styles/tokens/grid";
+</style>
+
+<style scoped lang="scss">
+@import "../../assets/styles/tokens/grid";
+@import "../../assets/styles/mixins/breakpoints";
 
 .d-grid {
   display: grid;
