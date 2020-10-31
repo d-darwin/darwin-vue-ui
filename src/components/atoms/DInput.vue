@@ -37,7 +37,7 @@
 
 <script>
 /** utils **/
-import uuid from "@/utils/uuid";
+import uuid from "../../utils/uuid";
 
 /** components **/
 import DTypography from "../containers/DTypography";
