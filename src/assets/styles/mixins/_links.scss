@@ -1,65 +1,111 @@
-@import "../tokens/colors";
+@import "../tokens/links";
 
 @mixin link-primary {
-  &,
-  &:visited {
-    color: var(--blue);
-    text-decoration: none;
+  & {
+    color: var(--link-primary-color);
+    text-decoration: var(--link-primary-text-decoration);
   }
 
-  &:hover,
+  &:visited {
+    color: var(--link-primary-visited-color);
+    text-decoration: var(--link-primary-visited-text-decoration);
+  }
+
+  &:hover {
+    color: var(--link-primary-hover-color);
+    text-decoration: var(--link-primary-hover-text-decoration);
+  }
+
   &:active {
-    text-decoration: underline;
+    color: var(--link-primary-active-color);
+    text-decoration: var(--link-primary-active-text-decoration);
   }
 }
 
 @mixin link-secondary {
-  &,
-  &:visited {
-    color: var(--text);
+  & {
+    color: var(--link-secondary-color);
+    text-decoration: var(--link-secondary-text-decoration);
   }
 
-  &:hover,
+  &:visited {
+    color: var(--link-secondary-visited-color);
+    text-decoration: var(--link-secondary-visited-text-decoration);
+  }
+
+  &:hover {
+    color: var(--link-secondary-hover-color);
+    text-decoration: var(--link-secondary-hover-text-decoration);
+  }
+
   &:active {
-    text-decoration: none;
-    color: var(--primary-active);
+    color: var(--link-secondary-active-color);
+    text-decoration: var(--link-secondary-active-text-decoration);
   }
 }
 
 @mixin link-tertiary {
-  &,
-  &:visited {
-    color: var(--text-aux);
+  & {
+    color: var(--link-tertiary-color);
+    text-decoration: var(--link-tertiary-text-decoration);
   }
 
-  &:hover,
+  &:visited {
+    color: var(--link-tertiary-visited-color);
+    text-decoration: var(--link-tertiary-visited-text-decoration);
+  }
+
+  &:hover {
+    color: var(--link-tertiary-hover-color);
+    text-decoration: var(--link-tertiary-hover-text-decoration);
+  }
+
   &:active {
-    color: var(--text-aux);
+    color: var(--link-tertiary-active-color);
+    text-decoration: var(--link-tertiary-active-text-decoration);
   }
 }
 
 @mixin link-inverse {
-  &,
-  &:visited {
-    color: var(--white);
+  & {
+    color: var(--link-inverse-color);
+    text-decoration: var(--link-inverse-text-decoration);
   }
 
-  &:hover,
+  &:visited {
+    color: var(--link-inverse-visited-color);
+    text-decoration: var(--link-inverse-visited-text-decoration);
+  }
+
+  &:hover {
+    color: var(--link-inverse-hover-color);
+    text-decoration: var(--link-inverse-hover-text-decoration);
+  }
+
   &:active {
-    color: var(--primary-disabled);
-    text-decoration: none;
+    color: var(--link-inverse-active-color);
+    text-decoration: var(--link-inverse-active-text-decoration);
   }
 }
 
 @mixin link-danger {
-  &,
-  &:visited {
-    color: var(--danger);
-    text-decoration: none;
+  & {
+    color: var(--link-danger-color);
+    text-decoration: var(--link-danger-text-decoration);
   }
 
-  &:hover,
+  &:visited {
+    color: var(--link-danger-visited-color);
+    text-decoration: var(--link-danger-visited-text-decoration);
+  }
+
+  &:hover {
+    color: var(--link-danger-hover-color);
+    text-decoration: var(--link-danger-hover-text-decoration);
+  }
+
   &:active {
-    text-decoration: underline;
+    color: var(--link-danger-active-color);
+    text-decoration: var(--link-danger-active-text-decoration);
   }
 }

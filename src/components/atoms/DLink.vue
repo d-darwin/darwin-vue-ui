@@ -86,11 +86,12 @@ export default {
 <style lang="scss">
 // always include tokens unscoped
 @import "../../assets/styles/tokens/outline";
+@import "../../assets/styles/tokens/links";
 </style>
 
 <style scoped lang="scss">
-@import "../../assets/styles/mixins/typography";
 @import "../../assets/styles/mixins/links";
+@import "../../assets/styles/mixins/typography";
 @import "../../assets/styles/focus-visible";
 
 .d-link {
@@ -137,6 +138,10 @@ export default {
 
 .__inverse {
   @include link-inverse;
+}
+
+.__danger {
+  @include link-danger;
 }
 
 /* .icon-external-link {

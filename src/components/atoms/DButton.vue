@@ -146,7 +146,7 @@ export default {
       left: calc(var(--outline-width) * -1 - 1px); // border
       right: calc(var(--outline-width) * -1 - 1px); // border
       bottom: calc(var(--outline-width) * -1 - 1px); // border
-      width: calc(100% + 2 * var(--outline-width) ); // border
+      width: calc(100% + 2 * var(--outline-width) + 2px); // border
     }
   }
 }
