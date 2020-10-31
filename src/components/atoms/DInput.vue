@@ -178,6 +178,8 @@ export default {
   @include general-text;
   // @include transition;
 
+  // TODO: include reset by default???
+  box-sizing: border-box;
   display: inline-block;
   min-width: 240px;
   width: 100%;
@@ -190,6 +192,8 @@ export default {
   &.focus-visible + .outline {
     // emulates outline property
     // TODO: make mixin ???
+    // TODO: include reset by default???
+    box-sizing: border-box;
     position: absolute;
     content: " ";
     border: var(--outline-width) solid var(--outline-color);

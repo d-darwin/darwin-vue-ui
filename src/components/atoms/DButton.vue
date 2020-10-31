@@ -136,6 +136,8 @@ export default {
     &:before {
       // emulates outline property
       // TODO: make mixin ???
+      // TODO: include reset by default???
+      box-sizing: border-box;
       position: absolute;
       content: " ";
       border: var(--outline-width) solid var(--outline-color);
@@ -144,7 +146,7 @@ export default {
       left: calc(var(--outline-width) * -1 - 1px); // border
       right: calc(var(--outline-width) * -1 - 1px); // border
       bottom: calc(var(--outline-width) * -1 - 1px); // border
-      width: calc(100% + 2 * var(--outline-width) + 2px); // border
+      width: calc(100% + 2 * var(--outline-width) ); // border
     }
   }
 }
