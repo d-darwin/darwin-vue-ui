@@ -9,18 +9,15 @@
     role="link"
     class="d-link"
   >
-    <!-- @slot TODO -->
-    <slot name="before" />
+    <slot name="default" />
 
-    <slot />
-
-    <!-- @slot TODO -->
-    <slot name="after" />
-
-    <!-- <icon-external-link
-      v-if="href && !routeName && !hideExternalLinkIcon"
-      class="icon-external-link"
-    /> -->
+    <template v-if="isExternalLink && !hideExternalLinkIcon">
+      <d-icon-external-link
+        v-if="!$slots['icon-external-link']"
+        class="icon-external-link"
+      />
+      <slot v-else name="icon-external-link" />
+    </template>
   </component>
 </template>
 
@@ -29,7 +26,7 @@
 import fontSizeProp from "../../utils/fontSizeProp";
 
 /** components **/
-// import IconExternalLink from '@/components/atoms/IconExternalLink'
+import DIconExternalLink from "../../components/icons/DIconExternalLink";
 
 /**
  * Компонент отображается в виде ссылок различного размера и цветов.<br>
@@ -37,14 +34,14 @@ import fontSizeProp from "../../utils/fontSizeProp";
  * Компонент рендериться как тег <b>a</b> или <b>router-link</b>.<br>
  * Содержимое ссылки задается через свойство <i>text</i> и/или слот.<br>
  *
- * @version 1.0.0
+ * @version 1.0.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
   name: "DLink",
 
   components: {
-    // IconExternalLink,
+    DIconExternalLink
   },
 
   props: {
@@ -64,20 +61,24 @@ export default {
      * Expected values: "small", "general", "longread", "augmented", "h5", "h4", "h3", "h2", "h1".<br>
      * See './src/assets/styles/tokens/_typography.scss' for more details.
      */
-    size: fontSizeProp
+    size: fontSizeProp,
 
     /**
      * Определяет нужно ли скрывать, что иконка на внешний ресурс.
      */
-    /* hideExternalLinkIcon: {
+    hideExternalLinkIcon: {
       type: Boolean,
-      default: false,
-    }, */
+      default: false
+    }
   },
 
   computed: {
     el() {
       return this.$attrs.to && this.$router ? "router-link" : "a";
+    },
+
+    isExternalLink() {
+      return this.$attrs.href && this.$attrs.href.substring(0, 4) === "http";
     }
   }
 };
@@ -144,7 +145,10 @@ export default {
   @include link-danger;
 }
 
-/* .icon-external-link {
-  margin-left: 6px;
-} */
+.icon-external-link {
+  height: 1em;
+  width: 1em;
+
+  margin-left: calc(1em / 3);
+}
 </style>
