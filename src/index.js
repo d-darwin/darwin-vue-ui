@@ -9,6 +9,9 @@ import DGridDebug from "./components/development/DGridDebug";
 import DTypography from "./components/containers/DTypography";
 import DGrid from "./components/containers/DGrid";
 
+/** icons **/
+import DIconExternalLink from "./components/icons/DIconExternalLink";
+
 /** atoms **/
 import DCopyright from "./components/atoms/DCopyright";
 import DInput from "./components/atoms/DInput";
@@ -27,6 +30,8 @@ export {
   /** containers **/
   DTypography,
   DGrid,
+  /** icons **/
+  DIconExternalLink,
   /** atoms **/
   DCopyright,
   DInput,
