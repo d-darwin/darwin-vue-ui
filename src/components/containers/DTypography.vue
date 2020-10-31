@@ -68,12 +68,17 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../assets/styles/mixins/links";
 @import "../../assets/styles/tokens/outline";
 @import "../../assets/styles/focus-visible";
 
 .d-typography a {
   position: relative;
   outline: none;
+
+  & {
+    @include link-primary;
+  }
 }
 
 .d-typography a.focus-visible:before {
@@ -96,10 +101,13 @@ export default {
 
 @include typography-sizes;
 
+.d-typography {
+  color: currentColor;
+}
+
 .d-typography > *,
 .d-typography > ::v-slotted(*) {
   margin: 1em 0;
-  color: currentColor;
 }
 
 .d-typography > :first-child,

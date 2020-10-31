@@ -160,6 +160,7 @@ export default {
 <style scoped lang="scss">
 @import "../../assets/styles/mixins/controls";
 @import "../../assets/styles/mixins/typography";
+@import "../../assets/styles/mixins/transitions";
 @import "../../assets/styles/focus-visible";
 
 .control-group {
@@ -176,7 +177,7 @@ export default {
 
 .input {
   @include general-text;
-  // @include transition;
+  @include transition-short;
 
   // TODO: include reset by default???
   box-sizing: border-box;
@@ -193,6 +194,7 @@ export default {
     // emulates outline property
     // TODO: make mixin ???
     // TODO: include reset by default???
+    @include transition-short;
     box-sizing: border-box;
     position: absolute;
     content: " ";

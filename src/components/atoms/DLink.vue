@@ -93,9 +93,12 @@ export default {
 <style scoped lang="scss">
 @import "../../assets/styles/mixins/links";
 @import "../../assets/styles/mixins/typography";
+@import "../../assets/styles/mixins/transitions";
 @import "../../assets/styles/focus-visible";
 
 .d-link {
+  @include transition-short;
+
   width: auto;
   display: inline-flex;
   align-items: center;
@@ -109,6 +112,7 @@ export default {
       // emulates outline property
       // TODO: make mixin ???
       // TODO: include reset by default???
+      @include transition-short;
       box-sizing: border-box;
       position: absolute;
       content: " ";
