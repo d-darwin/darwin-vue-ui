@@ -43,7 +43,7 @@ import uuid from "../../utils/uuid";
 import DTypography from "../containers/DTypography";
 
 /**
- * The components renders input field with label.<br>
+ * The component renders input field with label.<br>
  * May be in various sizes and have different corner roundness.<br>
  * Renders error string if any passed to a prop.
  *

@@ -9,6 +9,7 @@
     role="link"
     class="d-link"
   >
+    <!-- @slot May contains a string or any content you want. -->
     <slot name="default" />
 
     <template v-if="isExternalLink && !hideExternalLinkIcon">
@@ -16,6 +17,7 @@
         v-if="!$slots['icon-external-link']"
         class="icon-external-link"
       />
+      <!-- @slot You can replace default external link icon by passing your own here. -->
       <slot v-else name="icon-external-link" />
     </template>
   </component>
@@ -29,10 +31,8 @@ import fontSizeProp from "../../utils/fontSizeProp";
 import DIconExternalLink from "../../components/icons/DIconExternalLink";
 
 /**
- * Компонент отображается в виде ссылок различного размера и цветов.<br>
- * Если ссылка абсолютная, то к тексту добавляется иконка <i>external link</i>.<br>
- * Компонент рендериться как тег <b>a</b> или <b>router-link</b>.<br>
- * Содержимое ссылки задается через свойство <i>text</i> и/или слот.<br>
+ * Component renders as a <b>router-link</b> or just as an <b>a</b> tag of differed colors and sized.<br>
+ * If <i>href</i> is a link to external resource, optional icon added to the left side of the default slot. You can turn off this behavior or pass your own icon.<br>
  *
  * @version 1.0.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
@@ -46,8 +46,8 @@ export default {
 
   props: {
     /**
-     * Определяет цвета компонента.<br>
-     * Принимает значения: 'primary', 'secondary', 'tertiary', 'inverse', 'danger'.
+     * Defines color of the component.<br>
+     * Takes values: 'primary', 'secondary', 'tertiary', 'inverse', 'danger'.
      */
     type: {
       type: String,
@@ -64,7 +64,7 @@ export default {
     size: fontSizeProp,
 
     /**
-     * Определяет нужно ли скрывать, что иконка на внешний ресурс.
+     * Set to true if you don't want to add icon to external links.
      */
     hideExternalLinkIcon: {
       type: Boolean,

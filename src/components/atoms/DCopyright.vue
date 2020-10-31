@@ -10,7 +10,7 @@ import fontSizeProp from "../../utils/fontSizeProp";
 import DTypography from "../containers/DTypography";
 
 /**
- * Renders standard copyright string. Current year always displays as "to" year.
+ * The component renders standard copyright string. Current year always displays as "to" year.
  *
  * @version 1.0.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)

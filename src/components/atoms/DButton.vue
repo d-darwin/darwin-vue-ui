@@ -22,7 +22,7 @@
 
 <script>
 /**
- * The components renders as a <b>button</b>, <b>router-link</b> or <b>a</b> depending on props.
+ * The component renders as a <b>button</b>, <b>router-link</b> or <b>a</b> depending on props.
  * May be in various sizes and have different corner roundness.
  *
  * @version 1.0.3
