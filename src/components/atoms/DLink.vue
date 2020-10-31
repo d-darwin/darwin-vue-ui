@@ -26,7 +26,7 @@
 
 <script>
 /** utils **/
-import fontSizeProp from "@/utils/fontSizeProp";
+import fontSizeProp from "../../utils/fontSizeProp";
 
 /** components **/
 // import IconExternalLink from '@/components/atoms/IconExternalLink'
