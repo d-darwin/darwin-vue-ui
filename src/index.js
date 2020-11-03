@@ -17,6 +17,7 @@ import DCopyright from "./components/atoms/DCopyright";
 import DInput from "./components/atoms/DInput";
 import DButton from "./components/atoms/DButton";
 import DLink from "./components/atoms/DLink";
+import DSwitch from "./components/atoms/DSwitch";
 
 /** molecules **/
 
@@ -36,7 +37,8 @@ export {
   DCopyright,
   DInput,
   DButton,
-  DLink
+  DLink,
+  DSwitch
   /** molecules **/
 
   /** organisms **/

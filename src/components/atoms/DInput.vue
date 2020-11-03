@@ -167,7 +167,7 @@ export default {
   display: flex;
   flex-direction: column;
   position: relative;
-  max-width: 240px;
+  // max-width: 240px;
 }
 
 .label {
@@ -182,7 +182,7 @@ export default {
   // TODO: include reset by default???
   box-sizing: border-box;
   display: inline-block;
-  min-width: 240px;
+  // min-width: 240px;
   width: 100%;
   border: 1px solid var(--separator);
   color: var(--text);
