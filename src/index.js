@@ -18,6 +18,7 @@ import DInput from "./components/atoms/DInput";
 import DButton from "./components/atoms/DButton";
 import DLink from "./components/atoms/DLink";
 import DSwitch from "./components/atoms/DSwitch";
+import DSelect from "./components/atoms/DSelect";
 
 /** molecules **/
 
@@ -38,7 +39,8 @@ export {
   DInput,
   DButton,
   DLink,
-  DSwitch
+  DSwitch,
+  DSelect
   /** molecules **/
 
   /** organisms **/

@@ -13,10 +13,7 @@
     <slot name="default" />
 
     <template v-if="isExternalLink && !hideExternalLinkIcon">
-      <d-icon-external-link
-        v-if="!$slots['icon-external-link']"
-        class="icon-external-link"
-      />
+      <DIconExternalLink v-if="!$slots['icon-external-link']" />
       <!-- @slot You can replace default external link icon by passing your own here. -->
       <slot v-else name="icon-external-link" />
     </template>
@@ -149,7 +146,7 @@ export default {
   @include link-danger;
 }
 
-.icon-external-link {
+.d-icon-external-link {
   height: 1em;
   width: 1em;
 

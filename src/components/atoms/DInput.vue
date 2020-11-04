@@ -1,35 +1,41 @@
 <template>
-  <div
-    :class="{
-      [`__${size}`]: size,
-      [`__${roundness}`]: roundness,
-      __disabled: $attrs.disabled
-    }"
-    class="control-group"
-  >
-    <label v-if="label" :for="inputId" class="label">
-      <DTypography :content="label" size="small" />
-    </label>
-    <!--need roundness class here for uniformity with other controls-->
-    <input
-      :id="inputId"
-      :value="value"
+  <div class="d-input">
+    <div
       :class="{
+        [`__${size}`]: size,
         [`__${roundness}`]: roundness,
-        __borderless: borderless,
-        __error: error
+        __disabled: $attrs.disabled
       }"
-      v-bind="{
-        ...$attrs,
-        onInput: emitValue,
-        onChange: emitValue
-      }"
-      class="input"
-      @keyup.enter.prevent="emitSubmit"
-    />
-    <div class="outline" />
+      class="control-group"
+    >
+      <DTypography
+        v-if="label"
+        :content="label"
+        :for="inputId"
+        tag="label"
+        size="small"
+        class="label"
+      />
+      <!--need roundness class here for uniformity with other controls-->
+      <input
+        :id="inputId"
+        :class="{
+          [`__${roundness}`]: roundness,
+          __borderless: borderless,
+          __error: error
+        }"
+        v-bind="{
+          ...$attrs,
+          onInput: emitValue,
+          onChange: emitValue
+        }"
+        class="input"
+        @keyup.enter.prevent="emitSubmit"
+      />
+      <div class="outline" />
+    </div>
 
-    <transition name="input-error">
+    <transition name="control-error">
       <DTypography v-if="error" :content="error" size="small" class="error" />
     </transition>
   </div>
@@ -43,7 +49,7 @@ import uuid from "../../utils/uuid";
 import DTypography from "../containers/DTypography";
 
 /**
- * The component renders input field with label.<br>
+ * The component renders <b>input</b> tag with <b>label</b>.<br>
  * May be in various sizes and have different corner roundness.<br>
  * Renders error string if any passed to a prop.
  *
@@ -63,14 +69,6 @@ export default {
      * If you don't want to specify it, it will be generated automatically.
      */
     id: {
-      type: [String, Number],
-      default: ""
-    },
-
-    /**
-     * Defines <i>value</i> тега <b>input</b>.
-     */
-    value: {
       type: [String, Number],
       default: ""
     },
@@ -162,6 +160,7 @@ export default {
 @import "../../assets/styles/mixins/typography";
 @import "../../assets/styles/mixins/transitions";
 @import "../../assets/styles/focus-visible";
+@import "../../assets/styles/vue-transitions";
 
 .control-group {
   display: flex;
@@ -214,6 +213,7 @@ export default {
 
 .error {
   margin-top: var(--gap-base);
+  color: var(--danger);
 }
 
 .__borderless {

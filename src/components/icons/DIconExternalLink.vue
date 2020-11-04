@@ -1,6 +1,6 @@
 <template>
   <svg
-    class="icon"
+    class="d-icon-external-link"
     width="24"
     height="24"
     viewBox="0 0 24 24"
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.icon {
+.d-icon-external-link {
   path {
     stroke: currentColor;
   }
