@@ -27,7 +27,7 @@ npm i -D sass-loader sass
 ```vue
 <template>
   <!--...-->
-  <d-typography content="htmlString" />
+  <d-typography :content="htmlString" />
   <!--...-->
 </template>
 
@@ -42,7 +42,7 @@ export default {
 
   data() {
     return {
-      htmlString: '<p><strong>DTypography</strong> content prop may contain any HTML string.</p>'
+      htmlString: '<p><b>DTypography</b> content prop can contains any HTML string.</p>'
     }
   }
   //...
@@ -100,5 +100,5 @@ List of supported [font-family-names]:
 #### Icons  
 
 We don't want to stick with one of icon sets, so decided allow you to choose one yourself.  
-To do so just use [@iconify/vue](https://docs.iconify.design/implementations/vue/) package.
+To do so just use [@iconify/vue](https://docs.iconify.design/implementations/vue/) package or any you prefer.
 
