@@ -1,20 +1,21 @@
 @import "./mixins/transitions";
 @import "./tokens/typography";
+@import "./tokens/controls";
 
-.control-error-enter,
+.control-error-enter-from,
 .control-error-leave-to {
   opacity: 0;
+  transform: translateY(-25%);
   max-height: 0;
-  transform: translateY(-50%);
+  overflow: hidden;
 }
 
 .control-error-enter-to,
-.control-error-leave {
+.control-error-leave-from {
   opacity: 1;
-  max-height: calc(
-    #{$small-line-height} * 3
-  ); // error strings shouldn't be very long
   transform: translateY(0);
+  // error message shouldn't be too long
+  max-height: calc(var(--small-control-height) * 3);
 }
 
 .control-error-enter-active,

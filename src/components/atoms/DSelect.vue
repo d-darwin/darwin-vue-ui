@@ -2,7 +2,8 @@
   <div class="d-select">
     <div
       :class="{
-        [`__${size}`]: size
+        [`__${size}`]: size,
+        [`__${roundness}`]: roundness
       }"
       class="control-group"
     >
@@ -18,7 +19,8 @@
         :id="inputId"
         :class="{
           [`__${roundness}`]: roundness,
-          __borderless: borderless
+          __borderless: borderless,
+          __error: error
         }"
         v-bind="{
           ...$attrs,
@@ -35,11 +37,12 @@
           v-text="op.text"
         />
       </select>
+
+      <div class="outline" />
+
       <DIconDirection v-if="!$slots['icon-dropdown']" />
       <!-- @slot You can replace default dropdown icon by passing your own here. -->
       <slot v-else name="icon-dropdown" />
-
-      <div class="outline" />
     </div>
 
     <transition name="control-error">
@@ -176,23 +179,30 @@ export default {
 
 .control-group {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   position: relative;
-  // width: 284px;
+  // max-width: 240px;
+}
+
+.label {
+  display: flex;
+  margin-bottom: 2px;
 }
 
 .select {
   @include general-text;
+  @include transition-short;
 
   color: var(--text);
   background: var(--white);
   border: 1px solid var(--separator);
   cursor: pointer;
-  // width: 100%;
+  width: 100%;
 
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
   // hide default dropdown icon
   // TODO: if prefixes added on prod
   -moz-appearance: none;
@@ -201,9 +211,26 @@ export default {
 
   outline: none;
 
-  /*&.focus-visible {
-    // TODO: instead of outline
-  }*/
+  &.focus-visible + .outline {
+    // emulates outline property
+    // TODO: make mixin ???
+    // TODO: include reset by default???
+    @include transition-short;
+    box-sizing: border-box;
+    position: absolute;
+    content: " ";
+    border: var(--outline-width) solid var(--outline-color);
+    z-index: -1;
+    // top: calc(var(--outline-width) * -1);
+    right: calc(var(--outline-width) * -1);
+    left: calc(var(--outline-width) * -1);
+    bottom: calc(var(--outline-width) * -1);
+    width: calc(100% + 2 * var(--outline-width));
+  }
+
+  &.__error {
+    border-color: var(--red);
+  }
 }
 
 .option {
@@ -216,11 +243,12 @@ export default {
 .error {
   margin-top: var(--gap-base);
   color: var(--danger);
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
-.icon-direction {
+.d-icon-direction {
   pointer-events: none;
-  // margin-top: 4px;
   position: absolute;
 }
 
@@ -235,8 +263,15 @@ export default {
     padding: 12px calc(15px + 12px + 12px) 12px 15px;
   }
 
-  .icon-direction {
+  .d-icon-direction {
     right: 15px;
+    bottom: 20px;
+  }
+
+  &.__smooth {
+    .label {
+      padding-left: 16px;
+    }
   }
 }
 
@@ -247,8 +282,15 @@ export default {
     padding: 7px calc(11px + 12px + 12px) 7px 11px;
   }
 
-  .icon-direction {
+  .d-icon-direction {
     right: 11px;
+    bottom: 16px;
+  }
+
+  &.__smooth {
+    .label {
+      padding-left: 12px;
+    }
   }
 }
 </style>

@@ -24,14 +24,16 @@
 export default {
   name: "DIconDirection",
 
-  /**
-   * Defines component orientation.<br>
-   * Takes values: 'up', 'right', 'down', 'left'.
-   */
-  type: {
-    type: String,
-    default: "down",
-    validator: val => ["up", "right", "down", "left"].includes(val)
+  props: {
+    /**
+     * Defines component orientation.<br>
+     * Takes values: 'up', 'right', 'down', 'left'.
+     */
+    type: {
+      type: String,
+      default: "down",
+      validator: val => ["up", "right", "down", "left"].includes(val)
+    }
   }
 };
 </script>

@@ -214,6 +214,8 @@ export default {
 .error {
   margin-top: var(--gap-base);
   color: var(--danger);
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .__borderless {
