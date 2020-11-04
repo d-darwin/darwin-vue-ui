@@ -3,6 +3,7 @@
     <div class="control-group">
       <component
         :is="el"
+        v-bind="{ ...$props, ...$attrs }"
         :class="{
           [`__${type}`]: type,
           [`__${size}`]: size,
@@ -12,7 +13,6 @@
           __error: error
         }"
         :aria-disabled="$attrs.disabled"
-        v-bind="{ ...$props, ...$attrs }"
         :role="['router-link', 'a'].includes(el) ? 'link' : 'button'"
         class="control-button"
       >
@@ -154,7 +154,6 @@ export default {
       // emulates outline property
       // TODO: make mixin ???
       // TODO: include reset by default???
-      @include transition-short;
       box-sizing: border-box;
       position: absolute;
       content: " ";

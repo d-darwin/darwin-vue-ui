@@ -9,7 +9,9 @@
 
     & + .outline,
     &:before {
-      border-radius: calc((var(--large-control-height) + 2px) / 2);
+      border-radius: calc(
+        (var(--large-control-height) + 2 * var(--outline-width)) / 2
+      );
     }
   }
 
@@ -18,7 +20,7 @@
 
     & + .outline,
     &:before {
-      border-radius: calc(var(--border-radius) + 2px);
+      border-radius: calc(var(--border-radius) + 2 * var(--outline-width));
     }
   }
 }
@@ -31,7 +33,9 @@
 
     & + .outline,
     &:before {
-      border-radius: calc((var(--medium-control-height) + 2px) / 2);
+      border-radius: calc(
+        (var(--medium-control-height) + 2 * var(--outline-width)) / 2
+      );
     }
   }
 
@@ -40,7 +44,7 @@
 
     & + .outline,
     &:before {
-      border-radius: calc(var(--border-radius) + 2px);
+      border-radius: calc(var(--border-radius) + 2 * var(--outline-width));
     }
   }
 }
@@ -53,7 +57,9 @@
 
     & + .outline,
     &:before {
-      border-radius: calc((var(--small-control-height) + 2px) / 2);
+      border-radius: calc(
+        (var(--small-control-height) + 2 * var(--outline-width)) / 2
+      );
     }
   }
 
@@ -62,7 +68,7 @@
 
     & + .outline,
     &:before {
-      border-radius: calc(var(--border-radius) + 2px);
+      border-radius: calc(var(--border-radius) + 2 * var(--outline-width));
     }
   }
 }

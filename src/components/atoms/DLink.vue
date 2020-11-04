@@ -109,7 +109,6 @@ export default {
       // emulates outline property
       // TODO: make mixin ???
       // TODO: include reset by default???
-      @include transition-short;
       box-sizing: border-box;
       position: absolute;
       content: " ";

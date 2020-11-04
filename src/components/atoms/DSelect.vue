@@ -17,14 +17,14 @@
       />
       <select
         :id="inputId"
+        v-bind="{
+          ...$attrs,
+          onChange: emitChange
+        }"
         :class="{
           [`__${roundness}`]: roundness,
           __borderless: borderless,
           __error: error
-        }"
-        v-bind="{
-          ...$attrs,
-          onChange: emitChange
         }"
         class="select"
       >
@@ -215,7 +215,6 @@ export default {
     // emulates outline property
     // TODO: make mixin ???
     // TODO: include reset by default???
-    @include transition-short;
     box-sizing: border-box;
     position: absolute;
     content: " ";
@@ -233,18 +232,18 @@ export default {
   }
 }
 
-.option {
-  // width: 240px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 .error {
   margin-top: var(--gap-base);
   color: var(--danger);
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.option {
+  // width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .d-icon-direction {

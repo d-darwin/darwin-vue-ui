@@ -1,35 +1,49 @@
 <template>
   <div class="d-switch">
-    <d-typography
-      v-if="labels && labels.falsy"
-      :content="labels.falsy"
-      class="value-label"
-    />
-
-    <label class="label">
-      <input
-        v-bind="{
-          ...$attrs,
-          onChange: emitChange
-        }"
-        type="checkbox"
-        class="input"
+    <div class="control-group">
+      <d-typography
+        v-if="labels && labels.falsy"
+        :content="labels.falsy"
+        class="value-label"
       />
-      <span
-        :class="{ [`__${type}`]: type, [`__toggle`]: values }"
-        class="slider"
-      />
-    </label>
 
-    <d-typography
-      v-if="labels && labels.truthy"
-      :content="labels.truthy"
-      class="value-label"
-    />
+      <label class="label">
+        <input
+          :id="inputId"
+          v-bind="{
+            ...$attrs,
+            onChange: emitChange
+          }"
+          type="checkbox"
+          class="input"
+        />
+
+        <div class="outline" />
+
+        <span
+          :class="{ [`__${type}`]: type, [`__toggle`]: values, __error: error }"
+          class="slider"
+        />
+      </label>
+
+      <d-typography
+        v-if="labels && labels.truthy"
+        :content="labels.truthy"
+        class="value-label"
+      />
+    </div>
+
+    <transition name="control-error">
+      <DTypography v-if="error" :content="error" size="small" class="error" />
+    </transition>
   </div>
 </template>
 
 <script>
+/** utils **/
+import uuid from "../../utils/uuid";
+
+/** components **/
 import DTypography from "../containers/DTypography";
 
 /**
@@ -45,6 +59,15 @@ export default {
   inheritAttrs: false,
 
   props: {
+    /**
+     * Defines <i>id</i> attr of th <b>input</b> tag.<br>
+     * If you don't want to specify it, it will be generated automatically.
+     */
+    id: {
+      type: [String, Number],
+      default: ""
+    },
+
     /**
      * Defines color of the component.
      */
@@ -70,7 +93,21 @@ export default {
     labels: {
       type: Object,
       default: () => {}
+    },
+
+    /**
+     * If not empty renders as an error string below the <b>input</b> tag.
+     */
+    error: {
+      type: String,
+      default: ""
     }
+  },
+
+  data() {
+    return {
+      inputId: this.id ? this.id : uuid()
+    };
   },
 
   methods: {
@@ -99,8 +136,13 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/styles/mixins/transitions";
+@import "../../assets/styles/focus-visible";
+@import "../../assets/styles/vue-transitions";
 
 .d-switch {
+}
+
+.control-group {
   display: inline-flex;
   width: auto;
   align-items: center;
@@ -130,6 +172,23 @@ export default {
   opacity: 0;
   width: 0;
   height: 0;
+
+  &.focus-visible + .outline {
+    // emulates outline property
+    // TODO: make mixin ???
+    // TODO: include reset by default???
+    box-sizing: border-box;
+    position: absolute;
+    content: " ";
+    border: var(--outline-width) solid var(--outline-color);
+    z-index: -1;
+    top: calc(var(--outline-width) * -1);
+    right: calc(var(--outline-width) * -1);
+    left: calc(var(--outline-width) * -1);
+    bottom: calc(var(--outline-width) * -1);
+    width: calc(100% + 2 * var(--outline-width));
+    border-radius: calc(12px + var(--outline-width));
+  }
 }
 
 .slider {
@@ -144,6 +203,7 @@ export default {
   border-radius: 14px;
   width: 44px;
   height: 24px;
+  border: 1px solid transparent;
 
   background-color: var(--text-alt);
 
@@ -160,6 +220,17 @@ export default {
       background-color: var(--text);
     }
   }
+
+  &.__error {
+    border-color: var(--red);
+  }
+}
+
+.error {
+  margin-top: var(--gap-base);
+  color: var(--danger);
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .slider:before {
@@ -170,7 +241,7 @@ export default {
   height: 20px;
   width: 20px;
   left: 2px;
-  bottom: 2px;
+  bottom: 1px;
   background-color: var(--white);
   border-radius: 50%;
 }
