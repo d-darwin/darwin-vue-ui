@@ -7,7 +7,7 @@
         class="value-label"
       />
 
-      <label class="label">
+      <label :for="inputId" class="label">
         <input
           :id="inputId"
           v-bind="{
@@ -18,12 +18,12 @@
           class="input"
         />
 
-        <div class="outline" />
-
         <span
           :class="{ [`__${type}`]: type, [`__toggle`]: values, __error: error }"
           class="slider"
         />
+
+        <span class="outline" />
       </label>
 
       <d-typography
@@ -55,7 +55,9 @@ import DTypography from "../containers/DTypography";
  */
 export default {
   name: "DSwitch",
+
   components: { DTypography },
+
   inheritAttrs: false,
 
   props: {
@@ -139,9 +141,6 @@ export default {
 @import "../../assets/styles/focus-visible";
 @import "../../assets/styles/vue-transitions";
 
-.d-switch {
-}
-
 .control-group {
   display: inline-flex;
   width: auto;
@@ -168,12 +167,16 @@ export default {
   height: 24px;
 }
 
+.outline {
+  pointer-events: none;
+}
+
 .input {
   opacity: 0;
   width: 0;
   height: 0;
 
-  &.focus-visible + .outline {
+  &.focus-visible + .slider + .outline {
     // emulates outline property
     // TODO: make mixin ???
     // TODO: include reset by default???
@@ -204,6 +207,8 @@ export default {
   width: 44px;
   height: 24px;
   border: 1px solid transparent;
+  // TODO: attach reset by default???
+  box-sizing: border-box;
 
   background-color: var(--text-alt);
 

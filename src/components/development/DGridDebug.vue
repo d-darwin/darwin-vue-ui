@@ -33,7 +33,7 @@ export default {
   },
 
   render() {
-    return h('div');
+    return h("div");
   }
 };
 </script>
