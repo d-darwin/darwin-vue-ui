@@ -261,6 +261,10 @@ export default {
     @include large-control;
 
     padding: 12px calc(15px + 12px + 12px) 12px 15px;
+
+    &.focus-visible + .outline {
+      height: calc(var(--large-control-height) + 2 * var(--outline-width));
+    }
   }
 
   .d-icon-direction {
@@ -280,6 +284,10 @@ export default {
     @include medium-control;
 
     padding: 7px calc(11px + 12px + 12px) 7px 11px;
+
+    &.focus-visible + .outline {
+      height: calc(var(--medium-control-height) + 2 * var(--outline-width));
+    }
   }
 
   .d-icon-direction {
