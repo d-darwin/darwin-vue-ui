@@ -149,7 +149,7 @@ export default {
 .d-icon-external-link {
   height: 1em;
   width: 1em;
-
   margin-left: calc(1em / 3);
+  margin-top: calc(-1em / 12);
 }
 </style>

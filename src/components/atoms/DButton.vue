@@ -1,26 +1,34 @@
 <template>
-  <div class="control-group">
-    <component
-      :is="el"
-      :class="{
-        [`__${type}`]: type,
-        [`__${size}`]: size,
-        [`__${roundness}`]: roundness,
-        ['__icon-only']: iconOnly,
-        __disabled: $attrs.disabled !== undefined
-      }"
-      :aria-disabled="$attrs.disabled"
-      v-bind="{ ...$props, ...$attrs }"
-      :role="['router-link', 'a'].includes(el) ? 'link' : 'button'"
-      class="control-button"
-    >
-      <!-- @slot May contains a string, an icon or an combination. -->
-      <slot />
-    </component>
+  <div class="d-button">
+    <div class="control-group">
+      <component
+        :is="el"
+        :class="{
+          [`__${type}`]: type,
+          [`__${size}`]: size,
+          [`__${roundness}`]: roundness,
+          ['__icon-only']: iconOnly,
+          __disabled: $attrs.disabled !== undefined,
+          __error: error
+        }"
+        :aria-disabled="$attrs.disabled"
+        v-bind="{ ...$props, ...$attrs }"
+        :role="['router-link', 'a'].includes(el) ? 'link' : 'button'"
+        class="control-button"
+      >
+        <!-- @slot May contains a string, an icon or an combination. -->
+        <slot />
+      </component>
+    </div>
+
+    <transition name="control-error">
+      <DTypography v-if="error" :content="error" size="small" class="error" />
+    </transition>
   </div>
 </template>
 
 <script>
+import DTypography from "@/components/containers/DTypography";
 /**
  * The component renders as a <b>button</b>, <b>router-link</b> or <b>a</b> depending on props.
  * May be in various sizes and have different corner roundness.
@@ -30,7 +38,7 @@
  */
 export default {
   name: "DButton",
-
+  components: { DTypography },
   inheritAttrs: false,
 
   props: {
@@ -71,6 +79,14 @@ export default {
     iconOnly: {
       type: Boolean,
       default: false
+    },
+
+    /**
+     * If not empty renders as an error string below the <b>input</b> tag.
+     */
+    error: {
+      type: String,
+      default: ""
     }
   },
 
@@ -96,6 +112,7 @@ export default {
 @import "../../assets/styles/mixins/typography";
 @import "../../assets/styles/mixins/transitions";
 @import "../../assets/styles/focus-visible";
+@import "../../assets/styles/vue-transitions";
 
 .control-group {
   position: relative;
@@ -150,6 +167,17 @@ export default {
       width: calc(100% + 2 * var(--outline-width) + 2px); // border
     }
   }
+
+  &.__error {
+    border-color: var(--red);
+  }
+}
+
+.error {
+  margin-top: var(--gap-base);
+  color: var(--danger);
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .__large {
