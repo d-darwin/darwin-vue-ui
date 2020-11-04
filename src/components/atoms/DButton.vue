@@ -28,7 +28,8 @@
 </template>
 
 <script>
-import DTypography from "@/components/containers/DTypography";
+import DTypography from "../containers/DTypography";
+
 /**
  * The component renders as a <b>button</b>, <b>router-link</b> or <b>a</b> depending on props.
  * May be in various sizes and have different corner roundness.
