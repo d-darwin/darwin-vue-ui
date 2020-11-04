@@ -85,6 +85,7 @@ export default {
 // always include tokens unscoped
 @import "../../assets/styles/tokens/outline";
 @import "../../assets/styles/tokens/links";
+@import "../../assets/styles/tokens/typography";
 </style>
 
 <style scoped lang="scss">
