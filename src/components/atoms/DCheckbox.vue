@@ -16,6 +16,8 @@
         <DIconChecked :disabled="$attrs.disabled" class="checked-icon" />
       </span>
 
+      <span class="outline" />
+
       <DTypography class="label" :size="size" :content="label" />
     </label>
 
@@ -151,6 +153,22 @@ export default {
   opacity: 0;
   height: 0;
   width: 0;
+
+  &.focus-visible + .mark + .outline {
+    // emulates outline property
+    // TODO: make mixin ???
+    // TODO: include reset by default???
+    box-sizing: border-box;
+    position: absolute;
+    content: " ";
+    border: var(--outline-width) solid var(--outline-color);
+    z-index: -1;
+    top: calc(var(--outline-width) * -1);
+    right: calc(var(--outline-width) * -1);
+    left: calc(var(--outline-width) * -1);
+    bottom: calc(var(--outline-width) * -1);
+    width: calc(100% + 2 * var(--outline-width));
+  }
 }
 
 .checked-icon {
