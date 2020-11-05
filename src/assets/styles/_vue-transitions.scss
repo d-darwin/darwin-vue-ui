@@ -1,6 +1,5 @@
 @import "./mixins/transitions";
 @import "./tokens/typography";
-@import "./tokens/controls";
 
 .control-error-enter-from,
 .control-error-leave-to {
@@ -15,7 +14,7 @@
   opacity: 1;
   transform: translateY(0);
   // error message shouldn't be too long
-  max-height: calc(var(--small-control-height) * 3);
+  max-height: calc(var(--small-line-height) * 3);
 }
 
 .control-error-enter-active,
