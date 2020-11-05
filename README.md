@@ -83,6 +83,8 @@ See more in component code: '@dariwn-studio/ui-vue/components/development/DGridD
 See more in component code: '@dariwn-studio/ui-vue/components/containers/DTypography.vue'.
 * **DButton**. Renders button of various appearance and behavior. 
 Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DButton.vue'.
+* **DCheckbox**. Renders checkbox of various appearance. 
+Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DCheckbox.vue'.
 * **DCopyright**. Renders standard copyright string with company name and years. 
 See more in component code: '@dariwn-studio/ui-vue/components/atoms/DCopyright.vue'.
 * **DInput**. Renders input field of various appearance. 

@@ -12,8 +12,13 @@
       />
 
       <span :class="{ [`__${color}`]: color }" class="mark">
-        <DIconUnchecked :disabled="$attrs.disabled" class="unchecked-icon" />
-        <DIconChecked :disabled="$attrs.disabled" class="checked-icon" />
+        <DIconUnchecked v-if="!$slots['icon-unchecked']" :disabled="$attrs.disabled" class="icon-unchecked" />
+        <!-- @slot You can replace default unchecked icon by passing your own here. -->
+        <slot v-else name="icon-unchecked" />
+
+        <DIconChecked v-if="!$slots['icon-checked']"  :disabled="$attrs.disabled" class="icon-checked" />
+        <!-- @slot You can replace default checked icon by passing your own here. -->
+        <slot v-else name="icon-checked" />
       </span>
 
       <span class="outline" />
@@ -171,18 +176,19 @@ export default {
   }
 }
 
-.checked-icon {
+.icon-checked {
   opacity: 0;
 }
-.unchecked-icon {
+
+.icon-unchecked {
   opacity: 1;
   color: var(--text-aux);
   position: absolute;
 }
 
 .label,
-.checked-icon,
-.unchecked-icon {
+.icon-checked,
+.icon-unchecked {
   @include transition-short;
 }
 
@@ -195,11 +201,11 @@ export default {
 
 input:checked {
   + .mark {
-    .checked-icon {
+    .icon-checked {
       opacity: 1;
     }
 
-    .unchecked-icon {
+    .icon-unchecked {
       opacity: 0;
     }
   }
