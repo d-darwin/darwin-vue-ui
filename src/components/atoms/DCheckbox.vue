@@ -42,7 +42,7 @@ import DIconChecked from "../icons/DIconChecked";
 import DTypography from "../containers/DTypography";
 
 /**
- * Компонент дублирует поведение тега <b>input</b> с атрибутом <i>type="checkbox"</i>.
+ * Renders <b>input</b> tag with <i>type="checkbox"</i> and custom icons.
  *
  * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
