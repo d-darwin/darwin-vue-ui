@@ -63,28 +63,41 @@ export default {
 
 ### Documentation
 
-For now there isn't any fancy documentation site to check out.  
-All component documentation is in their source code. You can find components' source code in '@dariwn-studio/ui-vue/src/components'.  
-In the future we are planing to use Storybook for the documentation.
+For now there isn't any fancy documentation site to check out. 
+All component documentation is in their source code. You can find components' source code in '@dariwn-studio/ui-vue/src/components'. 
+In the future we are planing to use Storybook for the documentation when it will be integrated with Vue 3.
 
 ### More details  
 
 #### Components
 
 For now a few basic components implemented: 
-* **DGrid**. Helps arrange child elements by grid. See more in component code: '@dariwn-studio/ui-vue/components/containers/DGrid.vue'.
-* **DGridDebug**. Adds grid visualisation to help catch up arrangement errors. See more in component code: '@dariwn-studio/ui-vue/components/development/DGridDebug.vue'.
-* **DTypography**. Renders HTML strings according to defined design tokens. See more in component code: '@dariwn-studio/ui-vue/components/containers/DTypography.vue'.
-* **DButton**. Renders button of various appearance and behavior. Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DButton.vue'.
-* **DCopyright**. Renders standard copyright string with company name and years. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DCopyright.vue'.
-* **DInput**. Renders input field of various appearance. Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DInput.vue'.
-* **DLink**. Renders link of various appearance. Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DLink.vue'.
-* **DSelect**. Renders select of various appearance. Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DLink.vue'.
-* **DSwitch**. Renders switch or toggle of various colors. Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DLink.vue'.
+* **DGrid**. Helps arrange child elements by grid. 
+See more in component code: '@dariwn-studio/ui-vue/components/containers/DGrid.vue'.
+* **DGridDebug**. Adds grid visualisation to help catch up arrangement errors. 
+See more in component code: '@dariwn-studio/ui-vue/components/development/DGridDebug.vue'.
+* **DTypography**. Renders HTML strings according to defined design tokens. 
+See more in component code: '@dariwn-studio/ui-vue/components/containers/DTypography.vue'.
+* **DButton**. Renders button of various appearance and behavior. 
+Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DButton.vue'.
+* **DCopyright**. Renders standard copyright string with company name and years. 
+See more in component code: '@dariwn-studio/ui-vue/components/atoms/DCopyright.vue'.
+* **DInput**. Renders input field of various appearance. 
+Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DInput.vue'.
+* **DLink**. Renders link of various appearance. 
+Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DLink.vue'.
+* **DSelect**. Renders select of various appearance. 
+Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DSelect.vue'.
+* **DSwitch**. Renders switch or toggle of various colors. 
+Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DSwitch.vue'.
 
 #### Design Tokens  
 
-Your can find all design tokens in '@dariwn-studio/ui-vue/src/assets/styles/tokens' folder.
+Feel free to customize default appearance of the components by 
+redefining design tokens either in build time via SCSS variables or 
+in runtime via CSS custom properties. 
+You can even import design token to your *.js files. 
+Check out what you can redefine in '@dariwn-studio/ui-vue/src/assets/styles/tokens'.
 
 #### Reset styles  
 
