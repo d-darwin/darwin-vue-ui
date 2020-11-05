@@ -2,6 +2,7 @@
 
 ### What is it?
 It's lightweight and performant UI Library for Vue 3.  
+Check [Bundlephobia](https://bundlephobia.com/result?p=@darwin-studio/ui-vue) report for proof.
 
 🚧 DISCLAIMER: Under construction. Not even close to alpha. So please, don't use in production.
 
@@ -42,7 +43,7 @@ export default {
 
   data() {
     return {
-      htmlString: '<p><b>DTypography</b> content prop can contains any HTML string.</p>'
+      htmlString: '<p>Content prop can contains <b>any HTML string.</b></p>'
     }
   }
   //...
@@ -67,6 +68,19 @@ All component documentation is in their source code. You can find components' so
 In the future we are planing to use Storybook for the documentation.
 
 ### More details  
+
+#### Components
+
+For now a few basic components implemented: 
+* **DGrid**. Helps arrange child elements by grid. See more in component code: '@dariwn-studio/ui-vue/components/containers/DGrid.vue'.
+* **DGridDebug**. Adds grid visualisation to help catch up arrangement errors. See more in component code: '@dariwn-studio/ui-vue/components/development/DGridDebug.vue'.
+* **DTypography**. Renders HTML strings according to defined design tokens. See more in component code: '@dariwn-studio/ui-vue/components/containers/DTypography.vue'.
+* **DButton**. Renders button of various appearance and behavior. Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DButton.vue'.
+* **DCopyright**. Renders standard copyright string with company name and years. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DCopyright.vue'.
+* **DInput**. Renders input field of various appearance. Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DInput.vue'.
+* **DLink**. Renders link of various appearance. Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DLink.vue'.
+* **DSelect**. Renders select of various appearance. Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DLink.vue'.
+* **DSwitch**. Renders switch or toggle of various colors. Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DLink.vue'.
 
 #### Design Tokens  
 
