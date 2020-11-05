@@ -1,8 +1,8 @@
 ## DARWIN Studio UI Library
 
 ### What is it?
-It's lightweight and performant UI Library for Vue 3.  
-Check [Bundlephobia](https://bundlephobia.com/result?p=@darwin-studio/ui-vue) report for proof.
+It's lightweight and performant UI Library for Vue 3. 
+Just check out [Bundlephobia report](https://bundlephobia.com/result?p=@darwin-studio/ui-vue).
 
 🚧 DISCLAIMER: Under construction. Not even close to alpha. So please, don't use in production.
 
