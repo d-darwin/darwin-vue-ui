@@ -7,16 +7,14 @@ Just check out [Bundlephobia report](https://bundlephobia.com/result?p=@darwin-s
 🚧 DISCLAIMER: Under construction. Not even close to alpha. So please, don't use in production.
 
 ### Key features
-- Design tokens represented as SCSS variables, CSS custom properties and exported as JS variables, so you can redefine design tokens either on build time or in runtime.  
 - Components created by [Brad Frost's Atomic Design](https://atomicdesign.bradfrost.com/) methodology, so you can go along with it creating and maintaining your Design System.  
-- Container components presented to define presentation of their children.  
-- Developer components presented to help developers do their job.
+- Design tokens represented to customize component appearance.    
 - Build in optional reset style.
 - Build in optional fonts.
 - Icon set agnostic.
-- Uses focus-visible polyfill for a11y reasons.
+- Uses focus-visible polyfill to emulate :focus-visible CSS prop.
 
-⚠ WARNING: Components of the library have to be compiled with sass-loader, so you need sass-loader package as a dev dependency. 
+⚠ WARNING: Components of the library have to be compiled with sass-loader, so you need to have sass-loader package as a dev dependency. 
 
 ### Installation
 ```shell script
@@ -28,7 +26,11 @@ npm i -D sass-loader sass
 ```vue
 <template>
   <!--...-->
-  <d-typography :content="htmlString" />
+  <DTypography :content="htmlString" />
+  <!-- or -->
+  <DTypography>
+    <h1>Hi there!</h1>
+  </DTypography>
   <!--...-->
 </template>
 
@@ -54,6 +56,7 @@ export default {
 /* By convention root element of all components has eponymous class name. */
 .d-typography {
   /* You can override css custom props to redefine design tokens on runtime. */
+  --text: #222;
   --general-font-size: 16px;
   --general-line-height: 24px;
   --general-font-weight: bold;
@@ -63,9 +66,9 @@ export default {
 
 ### Documentation
 
-For now there isn't any fancy documentation site to check out. 
-All component documentation is in their source code. You can find components' source code in '@dariwn-studio/ui-vue/src/components'. 
-In the future we are planing to use Storybook for the documentation when it will be integrated with Vue 3.
+For now there isn't any fancy documentation site to check out, 
+but we are planing to use Storybook for the documentation when it will be integrated with Vue 3.   
+You can find particular component documentation in its source code. 
 
 ### More details  
 

@@ -1,5 +1,8 @@
 <template>
-  <div class="d-switch">
+  <div
+    :class="{ __disabled: $attrs.disabled !== undefined }"
+    class="d-switch"
+  >
     <div class="control-group">
       <d-typography
         v-if="labels && labels.falsy"
@@ -19,7 +22,10 @@
         />
 
         <span
-          :class="{ [`__${type}`]: type, [`__toggle`]: values, __error: error }"
+          :class="{
+            [`__${color}`]: color,
+            [`__toggle`]: values
+          }"
           class="slider"
         />
 
@@ -73,10 +79,10 @@ export default {
     /**
      * Defines color of the component.
      */
-    type: {
+    color: {
       type: String,
       default: "primary",
-      validator: val => ["primary", "secondary", "tertiary"].includes(val)
+      validator: val => ["primary", "accent", "text"].includes(val)
     },
 
     /**
@@ -217,17 +223,13 @@ export default {
       background-color: var(--primary);
     }
 
-    &.__secondary {
+    &.__accent {
       background-color: var(--accent);
     }
 
-    &.__tertiary {
+    &.__text {
       background-color: var(--text);
     }
-  }
-
-  &.__error {
-    border-color: var(--red);
   }
 }
 
@@ -245,7 +247,7 @@ export default {
   content: "";
   height: 20px;
   width: 20px;
-  left: 2px;
+  left: 1px;
   bottom: 1px;
   background-color: var(--white);
   border-radius: 50%;
@@ -261,17 +263,25 @@ export default {
       background-color: var(--primary);
     }
 
-    &.__secondary {
+    &.__accent {
       background-color: var(--accent);
     }
 
-    &.__tertiary {
+    &.__text {
       background-color: var(--text);
     }
   }
 }
 
-.input:focus + .slider {
-  // box-shadow: 0 0 1px #2196f3;
+.__disabled {
+  .value-label {
+    color: var(--text-aux);
+  }
+
+  .input + .slider,
+  .input:checked + .slider {
+    background-color: var(--separator);
+    cursor: not-allowed;
+  }
 }
 </style>

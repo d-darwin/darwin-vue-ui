@@ -9,8 +9,7 @@
           [`__${size}`]: size,
           [`__${roundness}`]: roundness,
           ['__icon-only']: iconOnly,
-          __disabled: $attrs.disabled !== undefined,
-          __error: error
+          __disabled: $attrs.disabled !== undefined
         }"
         :aria-disabled="$attrs.disabled"
         :role="['router-link', 'a'].includes(el) ? 'link' : 'button'"
@@ -166,10 +165,6 @@ export default {
       bottom: calc(var(--outline-width) * -1 - 1px); // border
       width: calc(100% + 2 * var(--outline-width) + 2px); // border
     }
-  }
-
-  &.__error {
-    border-color: var(--red);
   }
 }
 

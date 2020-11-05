@@ -16,7 +16,7 @@
 
 <script>
 /**
- * Component contains svg-code.
+ * Contains svg-code.
  *
  * @version 1.0.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)

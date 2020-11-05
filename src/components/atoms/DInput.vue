@@ -4,7 +4,7 @@
       :class="{
         [`__${size}`]: size,
         [`__${roundness}`]: roundness,
-        __disabled: $attrs.disabled
+        __disabled: $attrs.disabled !== undefined
       }"
       class="control-group"
     >
@@ -21,8 +21,7 @@
         :id="inputId"
         :class="{
           [`__${roundness}`]: roundness,
-          __borderless: borderless,
-          __error: error
+          __borderless: borderless
         }"
         v-bind="{
           ...$attrs,
@@ -203,10 +202,6 @@ export default {
     left: calc(var(--outline-width) * -1);
     bottom: calc(var(--outline-width) * -1);
     width: calc(100% + 2 * var(--outline-width));
-  }
-
-  &.__error {
-    border-color: var(--red);
   }
 }
 

@@ -23,8 +23,7 @@
         }"
         :class="{
           [`__${roundness}`]: roundness,
-          __borderless: borderless,
-          __error: error
+          __borderless: borderless
         }"
         class="select"
       >
@@ -225,10 +224,6 @@ export default {
     left: calc(var(--outline-width) * -1);
     bottom: calc(var(--outline-width) * -1);
     width: calc(100% + 2 * var(--outline-width));
-  }
-
-  &.__error {
-    border-color: var(--red);
   }
 }
 
