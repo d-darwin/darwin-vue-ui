@@ -19,12 +19,13 @@ export default {
 
   mounted() {
     // hold pointer to the event listener to release it while unmount
-    this.keydownEventListener = window.addEventListener("keydown", e => {
+    this.keydownEventListener = e => {
       if (e.ctrlKey && e.altKey && e.key === "d") {
         const body = document.getElementsByTagName("body")[0];
         body.classList.toggle("__debug");
       }
-    });
+    };
+    window.addEventListener("keydown", this.keydownEventListener);
   },
 
   unmounted() {
