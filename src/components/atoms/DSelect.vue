@@ -60,6 +60,8 @@ import DTypography from "../containers/DTypography";
 
 /**
  * Renders standard <b>select</b> tag with <b>label</b>.<br>
+ * Feel free to use any attrs you expect with <b>select</b> tag,
+ * they will be pass to the tag automatically.<br>
  * May be in various sizes and have different corner roundness.<br>
  * Renders error string if any passed to a prop.
  *

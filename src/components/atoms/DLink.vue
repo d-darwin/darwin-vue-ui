@@ -29,6 +29,8 @@ import DIconExternalLink from "../../components/icons/DIconExternalLink";
 
 /**
  * Component renders as a <b>router-link</b> or just as an <b>a</b> tag of differed colors and sized.<br>
+ * Feel free to use any attrs you expect with <b>router-link</b> or <b>a</b> tag,
+ * they will be pass to the tag automatically.<br>
  * If <i>href</i> is a link to external resource, optional icon added to the left side of the default slot. You can turn off this behavior or pass your own icon.<br>
  *
  * @version 1.0.3

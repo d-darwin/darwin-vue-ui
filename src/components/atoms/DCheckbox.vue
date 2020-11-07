@@ -42,7 +42,9 @@ import DIconChecked from "../icons/DIconChecked";
 import DTypography from "../containers/DTypography";
 
 /**
- * Renders <b>input</b> tag with <i>type="checkbox"</i> and custom icons.
+ * Renders <b>input</b> tag with <i>type="checkbox"</i> and custom icons.<br>
+ * Feel free to use any attrs you expect with <b>input</b> tag with <i>type="checkbox"</i>,
+ * they will be pass to the tag automatically.
  *
  * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)

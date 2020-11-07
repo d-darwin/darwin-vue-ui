@@ -30,7 +30,9 @@
 import DTypography from "../containers/DTypography";
 
 /**
- * The component renders as a <b>button</b>, <b>router-link</b> or <b>a</b> depending on props.
+ * The component renders as a <b>button</b>, <b>router-link</b> or <b>a</b> depending on props.<br>
+ * Feel free to use any attrs you expect with specific tag,
+ * they will be pass to the tag automatically.<br>
  * May be in various sizes and have different corner roundness.
  *
  * @version 1.0.3

@@ -54,6 +54,8 @@ import DTypography from "../containers/DTypography";
 
 /**
  * The components renders switch (has true / false value) or toggle (has custom values).<br>
+ * Feel free to use any attrs you expect with <b>input</b> tag with <i>type="checkbox"</i>,
+ * they will be pass to the tag automatically.<br>
  * If values prop defined the component will be rendered as toggle (slightly different appearance).
  *
  * @version 1.0.1
