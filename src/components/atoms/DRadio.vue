@@ -259,10 +259,10 @@ export default {
   text-overflow: ellipsis;
   display: inline-block;
   overflow: hidden;
-  /* width: 300px; */
   white-space: nowrap;
   vertical-align: middle;
-  // text-decoration: none;
+  // TODO: add global reset style ??
+  box-sizing: border-box;
 
   color: var(--text);
   background: var(--white);
@@ -343,10 +343,6 @@ input:disabled {
     cursor: not-allowed;
     color: var(--text-aux);
   }
-}
-
-.button {
-  // pointer-events: none;
 }
 
 .__disabled ~ .label {
