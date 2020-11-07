@@ -10,7 +10,12 @@ import DTypography from "./components/containers/DTypography";
 import DGrid from "./components/containers/DGrid";
 
 /** icons **/
+import DIconChecked from "./components/icons/DIconChecked";
+import DIconDirection from "./components/icons/DIconDirection";
 import DIconExternalLink from "./components/icons/DIconExternalLink";
+import DIconRadioChecked from "./components/icons/DIconRadioChecked";
+import DIconRadioUnchecked from "./components/icons/DIconRadioUnchecked";
+import DIconUnchecked from "./components/icons/DIconUnchecked";
 
 /** atoms **/
 import DCopyright from "./components/atoms/DCopyright";
@@ -35,7 +40,12 @@ export {
   DTypography,
   DGrid,
   /** icons **/
+  DIconChecked,
+  DIconDirection,
   DIconExternalLink,
+  DIconRadioChecked,
+  DIconRadioUnchecked,
+  DIconUnchecked,
   /** atoms **/
   DCopyright,
   DInput,
