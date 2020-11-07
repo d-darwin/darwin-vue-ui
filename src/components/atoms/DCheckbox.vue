@@ -11,12 +11,21 @@
         class="input"
       />
 
-      <span :class="{ [`__${color}`]: color }" class="mark">
-        <DIconUnchecked v-if="!$slots['icon-unchecked']" :disabled="$attrs.disabled" class="icon-unchecked" />
+      <span
+        :class="{
+          [`__${color}`]: color,
+          __disabled: $attrs.disabled !== undefined
+        }"
+        class="mark"
+      >
+        <DIconUnchecked
+          v-if="!$slots['icon-unchecked']"
+          class="icon-unchecked"
+        />
         <!-- @slot You can replace default unchecked icon by passing your own here. -->
         <slot v-else name="icon-unchecked" />
 
-        <DIconChecked v-if="!$slots['icon-checked']"  :disabled="$attrs.disabled" class="icon-checked" />
+        <DIconChecked v-if="!$slots['icon-checked']" class="icon-checked" />
         <!-- @slot You can replace default checked icon by passing your own here. -->
         <slot v-else name="icon-checked" />
       </span>
@@ -153,6 +162,11 @@ export default {
   &.__accent {
     color: var(--accent);
   }
+
+  &.__disabled {
+    color: var(--separator);
+    cursor: not-allowed;
+  }
 }
 
 .input {
@@ -213,11 +227,9 @@ input:checked {
   }
 }
 
-input:disabled {
-  + * + .label {
-    cursor: not-allowed;
-    color: var(--text-aux);
-  }
+.__disabled + * + .label {
+  cursor: not-allowed;
+  color: var(--text-aux);
 }
 
 .error {

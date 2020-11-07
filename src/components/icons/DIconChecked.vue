@@ -1,6 +1,5 @@
 <template>
   <svg
-    :class="{ __disabled: disabled }"
     class="d-icon-checked"
     width="16"
     height="16"
@@ -20,36 +19,18 @@
 /**
  * Contains svg-code.
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
-  name: 'DIconChecked',
-
-  props: {
-    /**
-     * Defines color of the component
-     */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-  },
-}
+  name: "DIconChecked"
+};
 </script>
 
 <style scoped lang="scss">
-@import '../../assets/styles/tokens/colors';
-
 .d-icon-checked {
   path {
     fill: currentColor;
-  }
-
-  &.__disabled {
-    path {
-      fill: var(--separator);
-    }
   }
 }
 </style>
