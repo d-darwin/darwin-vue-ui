@@ -1,6 +1,6 @@
 <template>
   <svg
-    class="icon"
+    class="d-icon-radio-unchecked"
     width="16"
     height="16"
     viewBox="0 0 16 16"
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.icon {
+.d-icon-radio-unchecked {
   rect {
     stroke: currentColor;
   }

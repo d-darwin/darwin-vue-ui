@@ -113,8 +113,8 @@ export default {
 @import "../../assets/styles/mixins/controls";
 @import "../../assets/styles/mixins/typography";
 @import "../../assets/styles/mixins/transitions";
-@import "../../assets/styles/focus-visible";
 @import "../../assets/styles/vue-transitions";
+// @import "../../assets/styles/focus-visible";
 
 .control-group {
   position: relative;
@@ -147,6 +147,26 @@ export default {
     cursor: pointer;
   }
 
+
+  &.__large {
+    @include large-control;
+
+    padding: 12px 23px;
+  }
+
+  &.__medium {
+    @include medium-control;
+
+    padding: 7px 19px;
+  }
+
+  &.__small {
+    @include small-control;
+    @include small-text;
+
+    padding: 3px 9px;
+  }
+
   &.__disabled {
     cursor: not-allowed;
   }
@@ -175,25 +195,6 @@ export default {
   color: var(--danger);
   text-overflow: ellipsis;
   overflow: hidden;
-}
-
-.__large {
-  @include large-control;
-
-  padding: 12px 23px;
-}
-
-.__medium {
-  @include medium-control;
-
-  padding: 7px 19px;
-}
-
-.__small {
-  @include small-control;
-  @include small-text;
-
-  padding: 3px 9px;
 }
 
 .__primary {

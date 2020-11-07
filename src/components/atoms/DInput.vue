@@ -160,8 +160,8 @@ export default {
 @import "../../assets/styles/mixins/controls";
 @import "../../assets/styles/mixins/typography";
 @import "../../assets/styles/mixins/transitions";
-@import "../../assets/styles/focus-visible";
 @import "../../assets/styles/vue-transitions";
+// @import "../../assets/styles/focus-visible";
 
 .control-group {
   display: flex;

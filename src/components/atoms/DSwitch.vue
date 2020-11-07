@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="{ __disabled: $attrs.disabled !== undefined }"
-    class="d-switch"
-  >
+  <div :class="{ __disabled: $attrs.disabled !== undefined }" class="d-switch">
     <div class="control-group">
       <d-typography
         v-if="labels && labels.falsy"
@@ -146,8 +143,8 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/styles/mixins/transitions";
-@import "../../assets/styles/focus-visible";
 @import "../../assets/styles/vue-transitions";
+// @import "../../assets/styles/focus-visible";
 
 .control-group {
   display: inline-flex;

@@ -94,7 +94,7 @@ export default {
 @import "../../assets/styles/mixins/links";
 @import "../../assets/styles/mixins/typography";
 @import "../../assets/styles/mixins/transitions";
-@import "../../assets/styles/focus-visible";
+@import "../../assets/styles/_focus-visible";
 
 .d-link {
   @include transition-short;

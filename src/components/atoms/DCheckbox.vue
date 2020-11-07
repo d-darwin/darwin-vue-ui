@@ -73,12 +73,13 @@ export default {
     },
 
     /**
-     * Defines color of the component's default icons.
+     * Defines color of the component's default icons.<br>
+     * Takes values: "primary", "accent", "text".
      */
     color: {
       type: String,
       default: "primary",
-      validator: val => ["primary", "accent"].includes(val)
+      validator: val => ["primary", "accent", "text"].includes(val)
     },
 
     /**
@@ -137,6 +138,7 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/styles/mixins/transitions";
+@import "../../assets/styles/vue-transitions";
 
 .control-group {
   position: relative;
@@ -160,9 +162,16 @@ export default {
     color: var(--accent);
   }
 
+  &.__text {
+    color: var(--text);
+  }
+
   &.__disabled {
-    color: var(--separator);
     cursor: not-allowed;
+
+    > * {
+      color: var(--separator);
+    }
   }
 }
 
@@ -172,7 +181,7 @@ export default {
   height: 0;
   width: 0;
 
-  &.focus-visible + .mark + .outline {
+  &.focus-visible ~ .outline {
     // emulates outline property
     // TODO: make mixin ???
     // TODO: include reset by default???
@@ -199,7 +208,6 @@ export default {
   position: absolute;
 }
 
-.label,
 .d-icon-checked,
 .d-icon-unchecked {
   @include transition-short;
@@ -213,7 +221,7 @@ export default {
 }
 
 .input:checked {
-  + .mark {
+  ~ .mark {
     .d-icon-checked {
       opacity: 1;
     }
@@ -224,12 +232,8 @@ export default {
   }
 }
 
-.__disabled + * + .label {
+.__disabled ~ .label {
   cursor: not-allowed;
   color: var(--text-aux);
-}
-
-.error {
-  margin-top: var(--gap-base);
 }
 </style>

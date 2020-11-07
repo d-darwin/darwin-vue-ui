@@ -70,7 +70,7 @@ export default {
 <style lang="scss">
 @import "../../assets/styles/mixins/links";
 @import "../../assets/styles/tokens/outline";
-@import "../../assets/styles/focus-visible";
+@import "../../assets/styles/_focus-visible";
 
 .d-typography a {
   position: relative;

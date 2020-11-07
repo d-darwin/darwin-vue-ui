@@ -16,7 +16,13 @@
       />
 
       <template v-if="type === 'base'">
-        <span :class="{ [`__${color}`]: color }" class="mark">
+        <span
+          :class="{
+            [`__${color}`]: color,
+            __disabled: $attrs.disabled !== undefined
+          }"
+          class="mark"
+        >
           <DIconRadioUnchecked v-if="!$slots['icon-unchecked']" />
           <!-- @slot You can replace default unchecked icon by passing your own here. -->
           <slot v-else name="icon-unchecked" />
@@ -25,6 +31,7 @@
           <!-- @slot You can replace default checked icon by passing your own here. -->
           <slot v-else name="icon-checked" />
         </span>
+
         <DTypography :content="label" class="label" />
       </template>
 
@@ -34,9 +41,13 @@
         class="button __smooth"
         v-text="label"
       />
+
+      <span class="outline" />
     </label>
 
-    <DTypography v-if="error" :content="error" size="small" class="error" />
+    <transition name="control-error">
+      <DTypography v-if="error" :content="error" size="small" class="error" />
+    </transition>
   </div>
 </template>
 
@@ -86,12 +97,13 @@ export default {
     },
 
     /**
-     * Defines color of the component's default icons.
+     * Defines color of the component's default icons.<br>
+     * Takes values: "primary", "accent", "text".
      */
     color: {
       type: String,
       default: "primary",
-      validator: val => ["primary", "accent"].includes(val)
+      validator: val => ["primary", "accent", "text"].includes(val)
     },
 
     /**
@@ -143,6 +155,7 @@ export default {
 @import "../../assets/styles/mixins/transitions";
 @import "../../assets/styles/mixins/typography";
 @import "../../assets/styles/mixins/controls";
+@import "../../assets/styles/vue-transitions";
 
 .d-radio {
   max-width: 100%;
@@ -171,9 +184,16 @@ export default {
     color: var(--accent);
   }
 
+  &.__text {
+    color: var(--text);
+  }
+
   &.__disabled {
-    color: var(--separator);
     cursor: not-allowed;
+
+    > * {
+      color: var(--separator);
+    }
   }
 }
 
@@ -182,25 +202,48 @@ export default {
   opacity: 0;
   height: 0;
   width: 0;
+
+  &.focus-visible ~ .outline {
+    // emulates outline property
+    // TODO: make mixin ???
+    // TODO: include reset by default???
+    box-sizing: border-box;
+    position: absolute;
+    content: " ";
+    border: var(--outline-width) solid var(--outline-color);
+    z-index: -1;
+    top: calc(var(--outline-width) * -1);
+    right: calc(var(--outline-width) * -1);
+    left: calc(var(--outline-width) * -1);
+    bottom: calc(var(--outline-width) * -1);
+    width: calc(100% + 2 * var(--outline-width));
+  }
 }
 
 .label {
-  @include transition-short;
-
   color: var(--text);
 }
 
-.checked-icon {
-  @include transition-short;
-
+.d-icon-radio-checked {
   opacity: 0;
 }
 
-.unchecked-icon {
-  @include transition-short;
-
+.d-icon-radio-unchecked {
   opacity: 1;
+  color: var(--text-aux);
   position: absolute;
+}
+
+.d-icon-radio-checked,
+.d-icon-radio-unchecked {
+  @include transition-short;
+}
+
+.error {
+  margin-top: var(--gap-base);
+  color: var(--danger);
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .button {
@@ -238,29 +281,54 @@ export default {
 }
 
 input:checked {
-  + .mark {
-    .checked-icon {
+  ~ .mark {
+    .d-icon-radio-checked {
       opacity: 1;
     }
 
-    .unchecked-icon {
+    .d-icon-radio-unchecked {
       opacity: 0;
     }
   }
 
-  + * + .label {
+  ~ .label {
     color: var(--text);
   }
 
-  + .button {
+  ~ .button {
     color: var(--white);
-    background: var(--primary);
-    border-color: var(--primary);
 
-    &:hover,
-    &:active {
-      background: var(--primary-active);
-      border-color: var(--primary-active);
+    &.__primary {
+      background: var(--primary);
+      border-color: var(--primary);
+
+      &:hover,
+      &:active {
+        background: var(--primary-active);
+        border-color: var(--primary-active);
+      }
+    }
+
+    &.__accent {
+      background: var(--accent);
+      border-color: var(--accent);
+
+      &:hover,
+      &:active {
+        background: var(--accent-active);
+        border-color: var(--accent-active);
+      }
+    }
+
+    &.__text {
+      background: var(--text);
+      border-color: var(--text);
+
+      &:hover,
+      &:active {
+        background: var(--text-aux);
+        border-color: var(--text-aux);
+      }
     }
 
     &.__disabled {
@@ -271,7 +339,7 @@ input:checked {
 }
 
 input:disabled {
-  + * + .label {
+  ~ .label {
     cursor: not-allowed;
     color: var(--text-aux);
   }
@@ -281,7 +349,8 @@ input:disabled {
   // pointer-events: none;
 }
 
-.error {
-  margin-top: var(--gap-base);
+.__disabled ~ .label {
+  cursor: not-allowed;
+  color: var(--text-aux);
 }
 </style>
