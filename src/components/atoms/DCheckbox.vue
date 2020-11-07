@@ -1,6 +1,6 @@
 <template>
   <div class="d-checkbox">
-    <label :for="inputId" :class="{ __error: error }" class="control-group">
+    <label :for="inputId" class="control-group">
       <input
         :id="inputId"
         v-bind="{
@@ -18,14 +18,11 @@
         }"
         class="mark"
       >
-        <DIconUnchecked
-          v-if="!$slots['icon-unchecked']"
-          class="icon-unchecked"
-        />
+        <DIconUnchecked v-if="!$slots['icon-unchecked']" />
         <!-- @slot You can replace default unchecked icon by passing your own here. -->
         <slot v-else name="icon-unchecked" />
 
-        <DIconChecked v-if="!$slots['icon-checked']" class="icon-checked" />
+        <DIconChecked v-if="!$slots['icon-checked']" />
         <!-- @slot You can replace default checked icon by passing your own here. -->
         <slot v-else name="icon-checked" />
       </span>
@@ -192,19 +189,19 @@ export default {
   }
 }
 
-.icon-checked {
+.d-icon-checked {
   opacity: 0;
 }
 
-.icon-unchecked {
+.d-icon-unchecked {
   opacity: 1;
   color: var(--text-aux);
   position: absolute;
 }
 
 .label,
-.icon-checked,
-.icon-unchecked {
+.d-icon-checked,
+.d-icon-unchecked {
   @include transition-short;
 }
 
@@ -215,13 +212,13 @@ export default {
   overflow: hidden;
 }
 
-input:checked {
+.input:checked {
   + .mark {
-    .icon-checked {
+    .d-icon-checked {
       opacity: 1;
     }
 
-    .icon-unchecked {
+    .d-icon-unchecked {
       opacity: 0;
     }
   }

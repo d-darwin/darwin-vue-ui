@@ -20,6 +20,7 @@ import DLink from "./components/atoms/DLink";
 import DSwitch from "./components/atoms/DSwitch";
 import DSelect from "./components/atoms/DSelect";
 import DCheckbox from "./components/atoms/DCheckbox";
+import DRadio from "./components/atoms/DRadio";
 
 /** molecules **/
 
@@ -42,7 +43,8 @@ export {
   DLink,
   DSwitch,
   DSelect,
-  DCheckbox
+  DCheckbox,
+  DRadio
   /** molecules **/
 
   /** organisms **/

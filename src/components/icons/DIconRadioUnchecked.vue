@@ -1,6 +1,5 @@
 <template>
   <svg
-    :class="{ __disabled: disabled }"
     class="icon"
     width="16"
     height="16"
@@ -14,40 +13,20 @@
 
 <script>
 /**
- * Компонент содержит svg-код.
+ * Contains svg-code.
  *
  * @version 1.0.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
-  name: 'IconRadioButtonUnchecked',
-
-  props: {
-    /**
-     * Определяет цвет компонента.
-     */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-  },
-}
+  name: "DIconRadioUnchecked"
+};
 </script>
 
 <style scoped lang="scss">
-@import './assets/styles/colors';
-
 .icon {
   rect {
-    stroke: $text-aux;
-  }
-
-  &.__disabled {
-    cursor: not-allowed;
-
-    rect {
-      stroke: $separator;
-    }
+    stroke: currentColor;
   }
 }
 </style>
