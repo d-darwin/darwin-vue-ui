@@ -76,27 +76,27 @@ You can find particular component documentation in its source code.
 
 For now a few basic components implemented: 
 * **DGrid**. Helps arrange child elements by grid. 
-See more in component code: '@dariwn-studio/ui-vue/components/containers/DGrid.vue'.
+More details: '@dariwn-studio/ui-vue/components/containers/DGrid.vue'.
 * **DGridDebug**. Adds grid visualisation to help catch up arrangement errors. 
-See more in component code: '@dariwn-studio/ui-vue/components/development/DGridDebug.vue'.
-* **DTypography**. Renders HTML strings according to defined design tokens. 
-See more in component code: '@dariwn-studio/ui-vue/components/containers/DTypography.vue'.
-* **DButton**. Renders button of various appearance and behavior. 
-Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DButton.vue'.
-* **DCheckbox**. Renders checkbox of various appearance. 
-Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DCheckbox.vue'.
+More details: '@dariwn-studio/ui-vue/components/development/DGridDebug.vue'.
+* **DTypography**. Renders an HTML strings according to defined design tokens. 
+More details: '@dariwn-studio/ui-vue/components/containers/DTypography.vue'.
+* **DButton**. Renders a button of various appearance and behavior. 
+Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DButton.vue'.
+* **DCheckbox**. Renders a checkbox of various appearance. 
+Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DCheckbox.vue'.
 * **DCopyright**. Renders standard copyright string with company name and years. 
-See more in component code: '@dariwn-studio/ui-vue/components/atoms/DCopyright.vue'.
-* **DInput**. Renders input field of various appearance. 
-Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DInput.vue'.
-* **DLink**. Renders link of various appearance. 
-Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DLink.vue'.
-* **DRadio**. Renders radio buttons of various appearance. 
-Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DRadio.vue'.
-* **DSelect**. Renders select of various appearance. 
-Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DSelect.vue'.
-* **DSwitch**. Renders switch or toggle of various colors. 
-Customisable focus-visible presented. See more in component code: '@dariwn-studio/ui-vue/components/atoms/DSwitch.vue'.
+More details: '@dariwn-studio/ui-vue/components/atoms/DCopyright.vue'.
+* **DInput**. Renders an input field of various appearance. 
+Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DInput.vue'.
+* **DLink**. Renders a link of various appearance. 
+Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DLink.vue'.
+* **DRadio**. Renders a radio buttons of various appearance. 
+Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DRadio.vue'.
+* **DSelect**. Renders a select of various appearance. 
+Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSelect.vue'.
+* **DSwitch**. Renders a switch or a toggle of various colors. 
+Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSwitch.vue'.
 
 #### Design Tokens  
 
