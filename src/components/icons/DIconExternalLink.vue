@@ -28,18 +28,16 @@
   </svg>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
+<script>
 /**
  * Contains svg-code.
  *
- * @version 1.0.1
+ * @version 1.0.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
-export default defineComponent({
+export default {
   name: "DIconExternalLink"
-});
+};
 </script>
 
 <style scoped lang="scss">
