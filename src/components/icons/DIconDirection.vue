@@ -14,14 +14,16 @@
   </svg>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from "vue";
+
 /**
  * Contains svg-code.
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
-export default {
+export default defineComponent({
   name: "DIconDirection",
 
   props: {
@@ -32,10 +34,10 @@ export default {
     type: {
       type: String,
       default: "down",
-      validator: val => ["up", "right", "down", "left"].includes(val)
+      validator: (val: string) => ["up", "right", "down", "left"].includes(val)
     }
   }
-};
+});
 </script>
 
 <style scoped lang="scss">

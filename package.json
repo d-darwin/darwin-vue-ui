@@ -1,21 +1,17 @@
 {
   "name": "@darwin-studio/ui-vue",
-  "description": "Vue 3 based lightweight ui-library",
   "version": "0.11.4",
+  "description": "Vue 3 based lightweight ui-library",
   "author": "Dmitrii Bykov <d@darwin.st> (https://darwin.st/)",
-  "license": "MIT",
-  "homepage": "https://github.com/d-darwin/darwin-vue-ui#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/d-darwin/darwin-vue-ui.git"
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "build-lib": "vue-cli-service build --target lib --name ui-vue ./src/index.js",
+    "test": "vue-cli-service test:unit --config ./jest.config.json"
   },
-  "bugs": {
-    "url": "https://github.com/d-darwin/darwin-vue-ui/issues"
-  },
-  "type": "module",
   "main": "src/index.js",
   "module": "src/index.js",
-  "sideEffects": false,
   "files": [
     "src/assets/*",
     "src/components/*",
@@ -26,42 +22,51 @@
     "*.json",
     "*.js"
   ],
+  "dependencies": {
+    "focus-visible": "^5.2.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
+    "@vue/cli-plugin-babel": "^4.5.8",
+    "@vue/cli-plugin-eslint": "^4.5.8",
+    "@vue/cli-plugin-typescript": "^4.5.8",
+    "@vue/cli-service": "^4.5.8",
+    "@vue/compiler-sfc": "^3.0.2",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^5.0.2",
+    "autoprefixer": "^10.0.1",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.1.0",
+    "core-js": "^3.7.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-vue": "^7.1.0",
+    "postcss": "^8.1.6",
+    "prettier": "^1.19.1",
+    "sass": "^1.29.0",
+    "sass-loader": "^10.0.5",
+    "typescript": "~3.9.3",
+    "vue": "^3.0.2"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.2"
+  },
+  "bugs": {
+    "url": "https://github.com/d-darwin/darwin-vue-ui/issues"
+  },
+  "homepage": "https://github.com/d-darwin/darwin-vue-ui#readme",
   "keywords": [
     "Vue 3",
     "UI library",
     "Visual components",
     "CSS custom properties"
   ],
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "test": "vue-cli-service test:unit --config ./jest.config.json",
-    "build": "vue-cli-service build",
-    "build-lib": "vue-cli-service build --target lib --name ui-vue ./src/index.js",
-    "lint": "vue-cli-service lint"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d-darwin/darwin-vue-ui.git"
   },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.5.8",
-    "@vue/cli-plugin-eslint": "^4.5.8",
-    "@vue/cli-service": "^4.5.8",
-    "@vue/compiler-sfc": "^3.0.2",
-    "@vue/eslint-config-prettier": "^6.0.0",
-    "autoprefixer": "^10.0.1",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "^10.1.0",
-    "core-js": "^3.6.5",
-    "eslint": "^6.7.2",
-    "eslint-plugin-prettier": "^3.1.3",
-    "eslint-plugin-vue": "^7.1.0",
-    "postcss": "^8.1.4",
-    "prettier": "^1.19.1",
-    "sass": "^1.29.0",
-    "sass-loader": "^10.0.5",
-    "vue": "^3.0.2"
-  },
-  "peerDependencies": {
-    "vue": "^3.0.2"
-  },
-  "dependencies": {
-    "focus-visible": "^5.2.0"
-  }
+  "sideEffects": false,
+  "type": "module"
 }

@@ -15,16 +15,18 @@
   </svg>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from "vue";
+
 /**
  * Contains svg-code.
  *
- * @version 1.0.1
+ * @version 1.0.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
-export default {
+export default defineComponent({
   name: "DIconUnchecked"
-};
+});
 </script>
 
 <style scoped lang="scss">
