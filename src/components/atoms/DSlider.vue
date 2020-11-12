@@ -131,7 +131,7 @@ export default {
 
 .label {
   display: flex;
-  margin-bottom: calc(20px / 2 + 2px);
+  margin-bottom: 2px;
 
   &.__disabled {
     color: var(--text-aux);
@@ -146,7 +146,7 @@ export default {
   width: 100%;
   height: 2px;
   border-radius: 1px;
-  margin: 0;
+  margin: 9px 0;
   background: var(--separator);
   // TODO: include reset by default???
   box-sizing: border-box;
@@ -278,13 +278,13 @@ export default {
     height: calc(20px + 2 * var(--outline-width));
     right: calc(var(--outline-width) * -1);
     left: calc(var(--outline-width) * -1);
-    bottom: calc((20px + var(--outline-width)) / 2 * -1);
+    bottom: calc(var(--outline-width) * -1);
     width: calc(100% + 2 * var(--outline-width));
   }
 }
 
 .error {
-  margin-top: calc(20px / 2 + var(--gap-base));
+  margin-top: var(--gap-base);
   color: var(--danger);
   text-overflow: ellipsis;
   overflow: hidden;
