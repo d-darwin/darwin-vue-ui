@@ -91,6 +91,8 @@ More details: '@dariwn-studio/ui-vue/components/atoms/DCopyright.vue'.
 Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DInput.vue'.
 * **DLink**. Renders a link of various appearance. 
 Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DLink.vue'.
+* **DSlider**. Renders a slider of various appearance. 
+Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSlider.vue'.
 * **DRadio**. Renders a radio buttons of various appearance. 
 Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DRadio.vue'.
 * **DSelect**. Renders a select of various appearance. 

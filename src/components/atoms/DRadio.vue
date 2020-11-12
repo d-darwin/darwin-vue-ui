@@ -61,7 +61,7 @@ import DIconRadioChecked from "../icons/DIconRadioChecked";
 import DTypography from "../containers/DTypography";
 
 /**
- * Renders <b>input</b> tag with <i>type="radio"</i> and custom icons.<br>
+ * The component renders <b>input</b> tag with <i>type="radio"</i> and custom icons.<br>
  * Feel free to use any attrs you expect with <b>input</b> tag with <i>type="radio"</i>,
  * they will be pass to the tag automatically.
  *
@@ -149,6 +149,7 @@ export default {
 // always include tokens unscoped
 @import "../../assets/styles/tokens/colors";
 @import "../../assets/styles/tokens/gaps";
+@import "../../assets/styles/tokens/outline";
 </style>
 
 <style scoped lang="scss">

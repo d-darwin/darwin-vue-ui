@@ -26,6 +26,7 @@ import DSwitch from "./components/atoms/DSwitch";
 import DSelect from "./components/atoms/DSelect";
 import DCheckbox from "./components/atoms/DCheckbox";
 import DRadio from "./components/atoms/DRadio";
+import DSlider from "./components/atoms/DSlider";
 
 /** molecules **/
 
@@ -54,7 +55,8 @@ export {
   DSwitch,
   DSelect,
   DCheckbox,
-  DRadio
+  DRadio,
+  DSlider
   /** molecules **/
 
   /** organisms **/

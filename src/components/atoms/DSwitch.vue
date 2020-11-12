@@ -139,6 +139,8 @@ export default {
 <style lang="scss">
 // always include tokens unscoped
 @import "../../assets/styles/tokens/colors";
+@import "../../assets/styles/tokens/gaps";
+@import "../../assets/styles/tokens/outline";
 </style>
 
 <style scoped lang="scss">
