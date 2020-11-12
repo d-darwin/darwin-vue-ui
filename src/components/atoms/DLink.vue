@@ -5,7 +5,7 @@
       [`__${size}`]: size,
       [`__${type}`]: type
     }"
-    v-bind="{ ...$props, ...$attrs }"
+    v-bind="{ ...$props, ...$attrs, rel, target }"
     role="link"
     class="d-link"
   >
@@ -33,7 +33,7 @@ import DIconExternalLink from "../../components/icons/DIconExternalLink";
  * they will be pass to the tag automatically.<br>
  * If <i>href</i> is a link to external resource, optional icon added to the left side of the default slot. You can turn off this behavior or pass your own icon.<br>
  *
- * @version 1.0.3
+ * @version 1.0.4
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -77,7 +77,27 @@ export default {
     },
 
     isExternalLink() {
-      return this.$attrs.href && this.$attrs.href.substring(0, 4) === "http";
+      return (
+        this.$attrs.href &&
+        (this.$attrs.href.substring(0, 4) === "http" ||
+          this.$attrs.href.substring(0, 2) === "//")
+      );
+    },
+
+    rel() {
+      return this.$attrs.rel
+        ? this.$attrs.rel
+        : this.isExternalLink
+        ? "nofollow noopener noreferer"
+        : "";
+    },
+
+    target() {
+      return this.$attrs.target
+        ? this.$attrs.target
+        : this.isExternalLink
+        ? "_blank"
+        : "";
     }
   }
 };
