@@ -91,6 +91,11 @@ More details: '@dariwn-studio/ui-vue/components/atoms/DCopyright.vue'.
 Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DInput.vue'.
 * **DLink**. Renders a link of various appearance. 
 Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DLink.vue'.
+* **DLoader**. Renders an animated svg which used in other components such as DPicture. 
+More details: '@dariwn-studio/ui-vue/components/atoms/DLoader.vue'.
+* **DPicture**. Renders a picture according to Responsive Image principle. 
+Supports lazy loading, aspect-ratio prop, no image fallback and loading placeholder.  
+More details: '@dariwn-studio/ui-vue/components/atoms/DPicture.vue'.
 * **DSlider**. Renders a slider of various appearance. 
 Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSlider.vue'.
 * **DRadio**. Renders a radio buttons of various appearance. 

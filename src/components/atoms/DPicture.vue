@@ -32,7 +32,7 @@
         <slot v-else name="no-image" />
       </template>
 
-      <transition name="opacity" mode="out-in">
+      <transition name="opacity">
         <template v-if="!isLoaded && hasSource">
           <DLoader v-if="!$slots['loader']" />
           <!-- @slot You can replace default loader by passing your own here. -->
