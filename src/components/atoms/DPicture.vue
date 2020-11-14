@@ -4,10 +4,7 @@
       :class="{ 'aspect-ratio-box': aspectRatio }"
       :style="{
         ...pictureStyle,
-        height:
-          aspectRatio && aspectRatio !== '0'
-            ? '0'
-            : pictureStyle && pictureStyle.height,
+        height,
         paddingBottom
       }"
     >
@@ -18,7 +15,6 @@
         :srcset="item.srcset"
         :data-src="item.src"
       />
-      <!--TODO: check lazy loading-->
       <img
         v-if="hasSource"
         ref="image"
@@ -59,7 +55,7 @@ import DTypography from "../containers/DTypography";
  *  Supports plain string image asset or an array of image assets for different screen width and pixel density.<br>
  *  Also supports lazy loading, aspect-ration and renders <b>DIconImage</b> icon <i>source</i> prop is empty.
  *
- * @version 1.3.0
+ * @version 1.3.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -71,10 +67,18 @@ export default {
 
   props: {
     /**
-     * An image asset or an array of such assets. If not presented, the component renders default <b>DIconImage</b>
-     * or you custom content if <i>no-icon</i> slot presented.<br>
-     * Пример массива:<br>
-     * <i>[{min_width: 768, src: 'img_src_path1'}, {min_width: 1024, srcset: [{density: '1x', src: 'img_src_path2'}, {density: '2x', src: 'img_src_path3'}]}]</i>.
+     * An image asset or an array of such assets.
+     * If empty, the component renders default <b>DIconImage</b> or you custom content if <i>no-icon</i> slot presented.<br>
+     * Expected formats:<br>
+     * * '/image_src_string' or<br>
+     * * [<br>
+     *    { min_width: 320, src: 'img_src_string_xs' }, <br>
+     *    { min_width: 480, srcset: [<br>
+     *      { density: '1x', src: 'img_src_string_sm_1x' }, <br>
+     *      { density: '2x', src: 'img_src_string_sm2x' }<br>
+     *      ]<br>
+     *    }<br>
+     *  ].
      */
     source: {
       type: [Array, String],
@@ -82,7 +86,7 @@ export default {
     },
 
     /**
-     * Подпись к компоненту.
+     * Image caption. Also used as <i>alt</i> and <i>title</> attrs if they aren't presented.
      */
     caption: {
       type: String,
@@ -90,23 +94,24 @@ export default {
     },
 
     /**
-     * Соотношение сторон компонента в формате x:y.<br>
-     * Может быть проигнорирован если заданы другие свойства размера компонента.
+     * Aspect ratio of the image in height:width format.
      */
     aspectRatio: {
       type: String,
       default: ""
     },
 
+    /**
+     * Pass any style object here for <b>picture</b> tag if needed.
+     */
     pictureStyle: {
       type: Object,
       default: () => {}
     },
 
     /**
-     * Определяет атрибут <i>object-fit</i> тега <b>img</b>/
+     * Pass any style object here for <b>img</b> tag if needed.
      */
-
     imgStyle: {
       type: Object,
       default: () => {}
@@ -121,6 +126,12 @@ export default {
   },
 
   computed: {
+    height() {
+      return this.aspectRatio && this.aspectRatio !== "0"
+        ? "0"
+        : this.pictureStyle && this.pictureStyle.height;
+    },
+
     alt() {
       return this.$attrs.alt ? this.$attrs.alt : this.caption;
     },
@@ -157,7 +168,7 @@ export default {
       } else if (typeof outPicture === "string") {
         return [{ min_width: 0, src: outPicture }];
       } else {
-        return [];
+        return this.source;
       }
       return outPicture;
     }
