@@ -30,10 +30,18 @@
         @load="loadedHandler"
       />
 
-      <DIconImage v-else />
+      <transition name="opacity" mode="out-in">
+        <template v-else>
+          <DIconImage v-if="!$slots['no-image']" />
+          <!-- @slot You can replace default no-image icon by passing your own here. -->
+          <slot v-else name="no-image" />
+        </template>
 
-      <transition name="opacity">
-        <DLoader v-if="!isLoaded && hasSource" />
+        <template v-if="!isLoaded && hasSource">
+          <DLoader v-if="!$slots['loader']" />
+          <!-- @slot You can replace default loader by passing your own here. -->
+          <slot v-else name="loader" />
+        </template>
       </transition>
     </picture>
 
@@ -42,17 +50,14 @@
 </template>
 
 <script>
-/** components **/
 import DLoader from "../atoms/DLoader";
 import DIconImage from "../icons/DIconImage";
 import DTypography from "../containers/DTypography";
 
 /**
- * Компонент реализует принцип Responsive Image.
- *  Может работать с одним изображением или набором изображений
- *  для различных ширин и плотности пикселей экрана.
- *  Рендериться в тег <b>picture</b>, поддерживает ленивую загрузку
- *  и отображает компонент <b>GraphicsNoImage</b>, если свойство <i>source</i> пусто.
+ * The component renders <b>picture</> tag according to Responsive Image principle.<br>
+ *  Supports plain string image asset or an array of image assets for different screen width and pixel density.<br>
+ *  Also supports lazy loading, aspect-ration and renders <b>DIconImage</b> icon <i>source</i> prop is empty.
  *
  * @version 1.3.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
@@ -66,7 +71,8 @@ export default {
 
   props: {
     /**
-     * Ссылка на изображение. Может быть простой строкой или массивом объектов с изображениями для разных ширин и плотностей пикселей экрана.<br>
+     * An image asset or an array of such assets. If not presented, the component renders default <b>DIconImage</b>
+     * or you custom content if <i>no-icon</i> slot presented.<br>
      * Пример массива:<br>
      * <i>[{min_width: 768, src: 'img_src_path1'}, {min_width: 1024, srcset: [{density: '1x', src: 'img_src_path2'}, {density: '2x', src: 'img_src_path3'}]}]</i>.
      */
