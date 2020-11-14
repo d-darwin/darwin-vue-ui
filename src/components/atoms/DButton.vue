@@ -11,8 +11,6 @@
           ['__icon-only']: iconOnly,
           __disabled: $attrs.disabled !== undefined
         }"
-        :aria-disabled="$attrs.disabled"
-        :role="['router-link', 'a'].includes(el) ? 'link' : 'button'"
         class="control-button"
       >
         <!-- @slot May contains a string, an icon or an combination. -->

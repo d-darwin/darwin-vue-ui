@@ -6,7 +6,6 @@
       [`__${type}`]: type
     }"
     v-bind="{ ...$props, ...$attrs, rel, target }"
-    role="link"
     class="d-link"
   >
     <!-- @slot May contains a string or any content you want. -->
