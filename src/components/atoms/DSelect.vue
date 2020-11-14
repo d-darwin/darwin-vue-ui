@@ -70,7 +70,9 @@ import DTypography from "../containers/DTypography";
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
-  name: "ControlSelect",
+  name: "DSelect",
+
+  inheritAttrs: false,
 
   components: { DTypography, DIconDirection },
 

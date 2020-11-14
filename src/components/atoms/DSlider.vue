@@ -52,6 +52,8 @@ import DTypography from "../containers/DTypography";
 export default {
   name: "DSlider",
 
+  inheritAttrs: false,
+
   components: { DTypography },
 
   props: {

@@ -71,6 +71,8 @@ import DTypography from "../containers/DTypography";
 export default {
   name: "DRadio",
 
+  inheritAttrs: false,
+
   components: {
     DTypography,
     DIconRadioUnchecked,

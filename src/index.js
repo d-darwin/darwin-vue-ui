@@ -16,6 +16,7 @@ import DIconExternalLink from "./components/icons/DIconExternalLink";
 import DIconRadioChecked from "./components/icons/DIconRadioChecked";
 import DIconRadioUnchecked from "./components/icons/DIconRadioUnchecked";
 import DIconUnchecked from "./components/icons/DIconUnchecked";
+import DIconImage from "./components/icons/DIconImage";
 
 /** atoms **/
 import DCopyright from "./components/atoms/DCopyright";
@@ -28,6 +29,7 @@ import DCheckbox from "./components/atoms/DCheckbox";
 import DRadio from "./components/atoms/DRadio";
 import DSlider from "./components/atoms/DSlider";
 import DLoader from "./components/atoms/DLoader";
+import DPicture from "./components/atoms/DPicture";
 
 /** molecules **/
 
@@ -48,6 +50,7 @@ export {
   DIconRadioChecked,
   DIconRadioUnchecked,
   DIconUnchecked,
+  DIconImage,
   /** atoms **/
   DCopyright,
   DInput,
@@ -58,7 +61,8 @@ export {
   DCheckbox,
   DRadio,
   DSlider,
-  DLoader
+  DLoader,
+  DPicture
   /** molecules **/
 
   /** organisms **/

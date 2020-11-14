@@ -38,8 +38,10 @@ import DTypography from "../containers/DTypography";
  */
 export default {
   name: "DButton",
-  components: { DTypography },
+
   inheritAttrs: false,
+
+  components: { DTypography },
 
   props: {
     /**
@@ -146,7 +148,6 @@ export default {
   &:not(.__disabled):active {
     cursor: pointer;
   }
-
 
   &.__large {
     @include large-control;

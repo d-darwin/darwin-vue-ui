@@ -61,9 +61,9 @@ import DTypography from "../containers/DTypography";
 export default {
   name: "DSwitch",
 
-  components: { DTypography },
-
   inheritAttrs: false,
+
+  components: { DTypography },
 
   props: {
     /**

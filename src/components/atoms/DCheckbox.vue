@@ -56,11 +56,11 @@ import DTypography from "../containers/DTypography";
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
-  name: "ControlCheckbox",
-
-  components: { DTypography, DIconChecked, DIconUnchecked },
+  name: "DCheckbox",
 
   inheritAttrs: false,
+
+  components: { DTypography, DIconChecked, DIconUnchecked },
 
   props: {
     /**

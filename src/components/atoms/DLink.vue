@@ -38,6 +38,8 @@ import DIconExternalLink from "../../components/icons/DIconExternalLink";
 export default {
   name: "DLink",
 
+  inheritAttrs: false,
+
   components: {
     DIconExternalLink
   },
