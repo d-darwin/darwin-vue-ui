@@ -232,10 +232,6 @@ export default {
   position: relative;
 }
 
-.d-loader {
-  z-index: 1;
-}
-
 .d-typography {
   margin-top: var(--gap-2x);
 }
@@ -255,13 +251,6 @@ picture {
     object-fit: cover;
   }
 
-  .d-icon-image {
-    position: absolute;
-    left: calc(50% - 12px);
-    top: calc(50% - 12px);
-    color: var(--text-aux);
-  }
-
   &.aspect-ratio-box {
     position: relative;
     display: block;
@@ -277,5 +266,16 @@ picture {
       height: 100%;
     }
   }
+}
+
+.d-loader {
+  z-index: 1;
+}
+
+.d-icon-image {
+  position: absolute;
+  left: calc(50% - 12px);
+  top: calc(50% - 12px);
+  color: var(--text-aux);
 }
 </style>
