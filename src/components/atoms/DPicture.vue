@@ -53,7 +53,7 @@ import DTypography from "../containers/DTypography";
 /**
  * The component renders <b>picture</> tag according to Responsive Image principle.<br>
  *  Supports plain string image asset or an array of image assets for different screen width and pixel density.<br>
- *  Also supports lazy loading, aspect-ration and renders <b>DIconImage</b> icon <i>source</i> prop is empty.
+ *  Also supports lazy loading with <b>DLoader</b> placeholder, aspect-ration and renders <b>DIconImage</b> icon if <i>source</i> prop is empty.
  *
  * @version 1.3.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
@@ -68,14 +68,14 @@ export default {
   props: {
     /**
      * An image asset or an array of such assets.
-     * If empty, the component renders default <b>DIconImage</b> or you custom content if <i>no-icon</i> slot presented.<br>
+     * If empty, the component renders default <b>DIconImage</b>.<br>
      * Expected formats:<br>
      * * '/image_src_string' or<br>
      * * [<br>
-     *    { min_width: 320, src: 'img_src_string_xs' }, <br>
+     *    { min_width: 320, src: 'img_src_string_xs' },<br>
      *    { min_width: 480, srcset: [<br>
-     *      { density: '1x', src: 'img_src_string_sm_1x' }, <br>
-     *      { density: '2x', src: 'img_src_string_sm2x' }<br>
+     *      { density: '1x', src: 'img_src_string_sm_1x' },<br>
+     *      { density: '2x', src: 'img_src_string_sm_2x' }<br>
      *      ]<br>
      *    }<br>
      *  ].
@@ -86,7 +86,7 @@ export default {
     },
 
     /**
-     * Image caption. Also used as <i>alt</i> and <i>title</> attrs if they aren't presented.
+     * The picture caption. Also used as <i>alt</i> and <i>title</> attrs if they aren't presented.
      */
     caption: {
       type: String,
@@ -94,7 +94,8 @@ export default {
     },
 
     /**
-     * Aspect ratio of the image in height:width format.
+     * Aspect ratio of the picture. Padding-bottom / zero height hack used to simulate aspect-ratio CSS property.<br>
+     * Expected format: 'height:width'.
      */
     aspectRatio: {
       type: String,
@@ -194,7 +195,8 @@ export default {
        */
       const widthHeight = this.aspectRatio.split(":");
       if (widthHeight[0] && widthHeight[1]) {
-        this.paddingBottom = (100 * widthHeight[0]) / widthHeight[1] + "%";
+        this.paddingBottom =
+          (100 * parseInt(widthHeight[0])) / parseInt(widthHeight[1]) + "%";
       } else {
         this.paddingBottom = 0;
       }
