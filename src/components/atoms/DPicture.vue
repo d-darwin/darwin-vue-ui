@@ -31,11 +31,11 @@
       />
 
       <DIconImage v-else />
-    </picture>
 
-    <transition name="opacity">
-      <DLoader v-if="!isLoaded && hasSource" />
-    </transition>
+      <transition name="opacity">
+        <DLoader v-if="!isLoaded && hasSource" />
+      </transition>
+    </picture>
 
     <d-typography v-if="caption" :content="caption" size="small" />
   </div>
