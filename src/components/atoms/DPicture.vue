@@ -30,13 +30,13 @@
         @load="loadedHandler"
       />
 
-      <transition name="opacity" mode="out-in">
-        <template v-else>
-          <DIconImage v-if="!$slots['no-image']" />
-          <!-- @slot You can replace default no-image icon by passing your own here. -->
-          <slot v-else name="no-image" />
-        </template>
+      <template v-else>
+        <DIconImage v-if="!$slots['no-image']" />
+        <!-- @slot You can replace default no-image icon by passing your own here. -->
+        <slot v-else name="no-image" />
+      </template>
 
+      <transition name="opacity" mode="out-in">
         <template v-if="!isLoaded && hasSource">
           <DLoader v-if="!$slots['loader']" />
           <!-- @slot You can replace default loader by passing your own here. -->

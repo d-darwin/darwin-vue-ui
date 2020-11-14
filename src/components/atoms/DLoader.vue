@@ -16,7 +16,6 @@
           cx="50"
           cy="35.6"
           r="10"
-          fill="#321f54"
           style="animation-play-state: running; animation-delay: 0s;"
         >
           <animateTransform
@@ -43,7 +42,6 @@
           cx="50"
           cy="35.6"
           r="10"
-          fill="#ff843f"
           style="animation-play-state: running; animation-delay: 0s;"
         >
           <animateTransform
@@ -83,6 +81,11 @@ export default {
 };
 </script>
 
+<style lang="scss">
+// always include tokens unscoped
+@import "../../assets/styles/tokens/colors";
+</style>
+
 <style scoped lang="scss">
 .d-loader {
   position: absolute;
@@ -95,7 +98,7 @@ export default {
   justify-content: center;
   pointer-events: none;
 
-  > * {
+  svg {
     min-height: 64px;
     min-width: 64px;
     margin: auto;
@@ -106,6 +109,14 @@ export default {
     background-position: initial initial;
     background-repeat: initial initial;
     z-index: -1;
+  }
+
+  circle:nth-child(1) {
+    fill: var(--primary);
+  }
+
+  circle:nth-child(2) {
+    fill: var(--accent);
   }
 }
 </style>
