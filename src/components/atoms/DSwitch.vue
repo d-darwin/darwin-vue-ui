@@ -217,7 +217,7 @@ export default {
   // TODO: attach reset by default???
   box-sizing: border-box;
 
-  background-color: var(--text-alt);
+  background-color: var(--color-text-alt);
 
   &.__toggle {
     &.__primary {
@@ -225,18 +225,18 @@ export default {
     }
 
     &.__accent {
-      background-color: var(--accent);
+      background-color: var(--color-accent);
     }
 
     &.__text {
-      background-color: var(--text);
+      background-color: var(--color-text);
     }
   }
 }
 
 .error {
   margin-top: var(--gap-base);
-  color: var(--danger);
+  color: var(--color-danger);
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -265,23 +265,23 @@ export default {
     }
 
     &.__accent {
-      background-color: var(--accent);
+      background-color: var(--color-accent);
     }
 
     &.__text {
-      background-color: var(--text);
+      background-color: var(--color-text);
     }
   }
 }
 
 .__disabled {
   .value-label {
-    color: var(--text-aux);
+    color: var(--color-text-aux);
   }
 
   .input + .slider,
   .input:checked + .slider {
-    background-color: var(--separator);
+    background-color: var(--color-separator);
     cursor: not-allowed;
   }
 }

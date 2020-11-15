@@ -184,18 +184,18 @@ export default {
   }
 
   &.__accent {
-    color: var(--accent);
+    color: var(--color-accent);
   }
 
   &.__text {
-    color: var(--text);
+    color: var(--color-text);
   }
 
   &.__disabled {
     cursor: not-allowed;
 
     > * {
-      color: var(--separator);
+      color: var(--color-separator);
     }
   }
 }
@@ -224,7 +224,7 @@ export default {
 }
 
 .label {
-  color: var(--text);
+  color: var(--color-text);
 }
 
 .d-icon-radio-checked {
@@ -233,7 +233,7 @@ export default {
 
 .d-icon-radio-unchecked {
   opacity: 1;
-  color: var(--text-aux);
+  color: var(--color-text-aux);
   position: absolute;
 }
 
@@ -244,7 +244,7 @@ export default {
 
 .error {
   margin-top: var(--gap-base);
-  color: var(--danger);
+  color: var(--color-danger);
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -257,7 +257,7 @@ export default {
   font-weight: 500;
   padding: 7px 19px;
   width: 100%;
-  border: 1px solid var(--separator);
+  border: 1px solid var(--color-separator);
   text-align: center;
   text-overflow: ellipsis;
   display: inline-block;
@@ -267,19 +267,19 @@ export default {
   // TODO: add global reset style ??
   box-sizing: border-box;
 
-  color: var(--text);
+  color: var(--color-text);
   background: var(--white);
 
   &:hover,
   &:active {
     cursor: pointer;
-    background: var(--background);
+    background: var(--color-background);
   }
 
   &.__disabled {
     cursor: not-allowed;
     background: var(--white);
-    color: var(--text-alt);
+    color: var(--color-text-alt);
   }
 }
 
@@ -295,7 +295,7 @@ input:checked {
   }
 
   ~ .label {
-    color: var(--text);
+    color: var(--color-text);
   }
 
   ~ .button {
@@ -312,25 +312,25 @@ input:checked {
       }
     }
 
-    &.__accent {
-      background: var(--accent);
-      border-color: var(--accent);
+    &.__color-accent {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
 
       &:hover,
       &:active {
-        background: var(--accent-active);
-        border-color: var(--accent-active);
+        background: var(--color-accent-active);
+        border-color: var(--color-accent-active);
       }
     }
 
     &.__text {
-      background: var(--text);
-      border-color: var(--text);
+      background: var(--color-text);
+      border-color: var(--color-text);
 
       &:hover,
       &:active {
-        background: var(--text-aux);
-        border-color: var(--text-aux);
+        background: var(--color-text-aux);
+        border-color: var(--color-text-aux);
       }
     }
 
@@ -344,12 +344,12 @@ input:checked {
 input:disabled {
   ~ .label {
     cursor: not-allowed;
-    color: var(--text-aux);
+    color: var(--color-text-aux);
   }
 }
 
 .__disabled ~ .label {
   cursor: not-allowed;
-  color: var(--text-aux);
+  color: var(--color-text-aux);
 }
 </style>

@@ -11,9 +11,9 @@ $red: #ca2b2b;
  * special colors
  */
 
-$facebook: #3b5998;
-$twitter: #00acee;
-$vkontakte: #4a76a8;
+$color-facebook: #3b5998;
+$color-twitter: #00acee;
+$color-vkontakte: #4a76a8;
 
 /**
  * main colors
@@ -72,22 +72,22 @@ $gray-100: shade($gray-900, 8 * $gray-shade-step);
  * semantic colors
  */
 
-$primary: $purple-500;
-$primary-active: $purple-400;
-$primary-disabled: $purple-200;
+$color-primary: $purple-500;
+$color-primary-active: $purple-400;
+$color-primary-disabled: $purple-200;
 
-$accent: $tangerine-500;
-$accent-active: $tangerine-400;
-$accent-disabled: $tangerine-200;
+$color-accent: $tangerine-500;
+$color-accent-active: $tangerine-400;
+$color-accent-disabled: $tangerine-200;
 
-$text: $gray-900;
-$text-aux: $gray-650;
-$text-alt: $gray-400;
+$color-text: $gray-900;
+$color-text-aux: $gray-650;
+$color-text-alt: $gray-400;
 
-$background: $gray-100;
-$separator: $gray-200;
+$color-background: $gray-100;
+$color-separator: $gray-200;
 
-$danger: $red;
+$color-danger: $red;
 $link: $blue;
 
 /**
@@ -108,9 +108,9 @@ $link: $blue;
    * special colors
    */
 
-  --facebook: #{$facebook};
-  --twitter: #{$twitter};
-  --vkontakte: #{$vkontakte};
+  --color-facebook: #{$color-facebook};
+  --color-twitter: #{$color-twitter};
+  --color-vkontakte: #{$color-vkontakte};
 
   /**
    * main colors
@@ -158,22 +158,22 @@ $link: $blue;
    * semantic colors
    */
 
-  --primary: var(--purple-500);
-  --primary-active: var(--purple-400);
-  --primary-disabled: var(--purple-200);
+  --color-primary: var(--purple-500);
+  --color-primary-active: var(--purple-400);
+  --color-primary-disabled: var(--purple-200);
 
-  --accent: var(--tangerine-500);
-  --accent-active: var(--tangerine-400);
-  --accent-disabled: var(--tangerine-200);
+  --color-accent: var(--tangerine-500);
+  --color-accent-active: var(--tangerine-400);
+  --color-accent-disabled: var(--tangerine-200);
 
-  --text: var(--gray-900);
-  --text-aux: var(--gray-650);
-  --text-alt: var(--gray-400);
+  --color-text: var(--gray-900);
+  --color-text-aux: var(--gray-650);
+  --color-text-alt: var(--gray-400);
 
-  --background: var(--gray-100);
-  --separator: var(--gray-200);
+  --color-background: var(--gray-100);
+  --color-separator: var(--gray-200);
 
-  --danger: var(--red);
+  --color-danger: var(--red);
   --link: var(--blue);
 }
 
@@ -194,9 +194,9 @@ $link: $blue;
    * special colors
    */
 
-  facebook: $facebook;
-  twitter: $twitter;
-  vkontakte: $vkontakte;
+  color-facebook: $color-facebook;
+  color-twitter: $color-twitter;
+  color-vkontakte: $color-vkontakte;
 
   /**
    * main colors
@@ -244,21 +244,21 @@ $link: $blue;
    * semantic colors
    */
 
-  primary: $primary;
-  primary-active: $primary-active;
-  primary-disabled: $primary-disabled;
+  color-primary: $color-primary;
+  color-primary-active: $color-primary-active;
+  color-primary-disabled: $color-primary-disabled;
 
-  accent: $accent;
-  accent-active: $accent-active;
-  accent-disabled: $accent-disabled;
+  color-accent: $color-accent;
+  color-accent-active: $color-accent-active;
+  color-accent-disabled: $color-accent-disabled;
 
-  text: $text;
-  text-aux: $text-aux;
-  text-alt: $text-alt;
+  color-text: $color-text;
+  color-text-aux: $color-text-aux;
+  color-text-alt: $color-text-alt;
 
-  background: $background;
-  separator: $separator;
+  color-background: $color-background;
+  color-separator: $color-separator;
 
-  danger: $danger;
+  color-danger: $color-danger;
   link: $link;
 }

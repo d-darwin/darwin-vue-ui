@@ -1,48 +1,48 @@
 @import "colors";
 
-$link-primary-color: var(--link);
+$link-primary-color: var(--color-link);
 $link-primary-text-decoration: none;
-$link-primary-visited-color: var(--link);
+$link-primary-visited-color: var(--color-link);
 $link-primary-visited-text-decoration: none;
-$link-primary-hover-color: var(--link);
+$link-primary-hover-color: var(--color-link);
 $link-primary-hover-text-decoration: underline;
-$link-primary-active-color: var(--link);
+$link-primary-active-color: var(--color-link);
 $link-primary-active-text-decoration: underline;
 
-$link-secondary-color: var(--text);
+$link-secondary-color: var(--color-text);
 $link-secondary-text-decoration: none;
-$link-secondary-visited-color: var(--text);
+$link-secondary-visited-color: var(--color-text);
 $link-secondary-visited-text-decoration: none;
-$link-secondary-hover-color: var(--primary-active);
+$link-secondary-hover-color: var(--color-primary-active);
 $link-secondary-hover-text-decoration: none;
-$link-secondary-active-color: var(--primary-active);
+$link-secondary-active-color: var(--color-primary-active);
 $link-secondary-active-text-decoration: none;
 
-$link-tertiary-color: var(--text-aux);
+$link-tertiary-color: var(--color-text-aux);
 $link-tertiary-text-decoration: none;
-$link-tertiary-visited-color: var(--text-aux);
+$link-tertiary-visited-color: var(--color-text-aux);
 $link-tertiary-visited-text-decoration: none;
-$link-tertiary-hover-color: var(--text-aux);
+$link-tertiary-hover-color: var(--color-text-aux);
 $link-tertiary-hover-text-decoration: underline;
-$link-tertiary-active-color: var(--text-aux);
+$link-tertiary-active-color: var(--color-text-aux);
 $link-tertiary-active-text-decoration: underline;
 
 $link-inverse-color: var(--white);
 $link-inverse-text-decoration: none;
 $link-inverse-visited-color: var(--white);
 $link-inverse-visited-text-decoration: none;
-$link-inverse-hover-color: var(--primary-disabled);
+$link-inverse-hover-color: var(--color-primary-disabled);
 $link-inverse-hover-text-decoration: none;
-$link-inverse-active-color: var(--primary-disabled);
+$link-inverse-active-color: var(--color-primary-disabled);
 $link-inverse-active-text-decoration: none;
 
-$link-danger-color: var(--danger);
+$link-danger-color: var(--color-danger);
 $link-danger-text-decoration: none;
-$link-danger-visited-color: var(--danger);
+$link-danger-visited-color: var(--color-danger);
 $link-danger-visited-text-decoration: none;
-$link-danger-hover-color: var(--danger);
+$link-danger-hover-color: var(--color-danger);
 $link-danger-hover-text-decoration: underline;
-$link-danger-active-color: var(--danger);
+$link-danger-active-color: var(--color-danger);
 $link-danger-active-text-decoration: underline;
 
 /**

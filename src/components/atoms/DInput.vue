@@ -184,8 +184,8 @@ export default {
   display: inline-block;
   // min-width: 240px;
   width: 100%;
-  border: 1px solid var(--separator);
-  color: var(--text);
+  border: 1px solid var(--color-separator);
+  color: var(--color-text);
   text-overflow: ellipsis;
 
   outline: none;
@@ -209,7 +209,7 @@ export default {
 
 .error {
   margin-top: var(--gap-base);
-  color: var(--danger);
+  color: var(--color-danger);
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -220,42 +220,42 @@ export default {
 
 .input:focus,
 .input:active {
-  border-color: var(--text-alt);
+  border-color: var(--color-text-alt);
 }
 
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: var(--text-aux);
+  color: var(--color-text-aux);
   opacity: 1; /* Firefox */
 }
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: var(--text-aux);
+  color: var(--color-text-aux);
 }
 ::-ms-input-placeholder {
   /* Microsoft Edge */
-  color: var(--text-aux);
+  color: var(--color-text-aux);
 }
 
 .__disabled {
   .label {
-    color: var(--text-alt);
+    color: var(--color-text-alt);
   }
 
   .input {
-    color: var(--text-alt);
+    color: var(--color-text-alt);
     background: var(--white);
     cursor: not-allowed;
   }
 
   ::placeholder {
-    color: var(--text-alt);
+    color: var(--color-text-alt);
   }
   :-ms-input-placeholder {
-    color: var(--text-alt);
+    color: var(--color-text-alt);
   }
   ::-ms-input-placeholder {
-    color: var(--text-alt);
+    color: var(--color-text-alt);
   }
 }
 

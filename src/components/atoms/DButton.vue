@@ -193,70 +193,70 @@ export default {
 
 .error {
   margin-top: var(--gap-base);
-  color: var(--danger);
+  color: var(--color-danger);
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
 .__primary {
   color: var(--white);
-  background: var(--primary);
-  border-color: var(--primary);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
 
   &:not(.__disabled):hover,
   &:not(.__disabled):active {
-    background: var(--primary-active);
-    border-color: var(--primary-active);
+    background: var(--color-primary-active);
+    border-color: var(--color-primary-active);
   }
 
   &.__disabled {
-    background: var(--primary-disabled);
-    border-color: var(--primary-disabled);
+    background: var(--color-primary-disabled);
+    border-color: var(--color-primary-disabled);
   }
 }
 
 .__secondary {
-  color: var(--text);
+  color: var(--color-text);
   background: var(--white);
-  border-color: var(--separator);
+  border-color: var(--color-separator);
 
   &:not(.__disabled):hover,
   &:not(.__disabled):active {
-    background: var(--background);
+    background: var(--color-background);
   }
 
   &.__disabled {
     background: var(--white);
-    color: var(--text-alt);
+    color: var(--color-text-alt);
   }
 }
 
 .__alternative {
   color: var(--white);
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
 
   &:not(.__disabled):hover,
   &:not(.__disabled):active {
-    background: var(--accent-active);
-    border-color: var(--accent-active);
+    background: var(--color-accent-active);
+    border-color: var(--color-accent-active);
   }
 
   &.__disabled {
-    background: var(--accent-disabled);
-    border-color: var(--accent-disabled);
+    background: var(--color-accent-disabled);
+    border-color: var(--color-accent-disabled);
   }
 }
 
 .__inverse {
-  color: var(--primary);
+  color: var(--color-primary);
   background: var(--white);
   border-color: var(--white);
 
   &:not(.__disabled):hover,
   &:not(.__disabled):active {
-    background: var(--background);
-    border-color: var(--background);
+    background: var(--color-background);
+    border-color: var(--color-background);
   }
 
   &.__disabled {

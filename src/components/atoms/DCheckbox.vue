@@ -156,22 +156,22 @@ export default {
   align-items: center;
 
   &.__primary {
-    color: var(--primary);
+    color: var(--color-primary);
   }
 
   &.__accent {
-    color: var(--accent);
+    color: var(--color-accent);
   }
 
   &.__text {
-    color: var(--text);
+    color: var(--color-text);
   }
 
   &.__disabled {
     cursor: not-allowed;
 
     > * {
-      color: var(--separator);
+      color: var(--color-separator);
     }
   }
 }
@@ -205,7 +205,7 @@ export default {
 
 .d-icon-unchecked {
   opacity: 1;
-  color: var(--text-aux);
+  color: var(--color-text-aux);
   position: absolute;
 }
 
@@ -216,7 +216,7 @@ export default {
 
 .error {
   margin-top: var(--gap-base);
-  color: var(--danger);
+  color: var(--color-danger);
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -235,6 +235,6 @@ export default {
 
 .__disabled ~ .label {
   cursor: not-allowed;
-  color: var(--text-aux);
+  color: var(--color-text-aux);
 }
 </style>

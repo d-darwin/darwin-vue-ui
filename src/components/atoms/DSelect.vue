@@ -200,9 +200,9 @@ export default {
   @include general-text;
   @include transition-short;
 
-  color: var(--text);
+  color: var(--color-text);
   background: var(--white);
-  border: 1px solid var(--separator);
+  border: 1px solid var(--color-separator);
   cursor: pointer;
   width: 100%;
 
@@ -237,7 +237,7 @@ export default {
 
 .error {
   margin-top: var(--gap-base);
-  color: var(--danger);
+  color: var(--color-danger);
   text-overflow: ellipsis;
   overflow: hidden;
 }

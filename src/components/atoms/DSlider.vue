@@ -136,7 +136,7 @@ export default {
   margin-bottom: 2px;
 
   &.__disabled {
-    color: var(--text-aux);
+    color: var(--color-text-aux);
   }
 }
 
@@ -149,7 +149,7 @@ export default {
   height: 2px;
   border-radius: 1px;
   margin: 9px 0;
-  background: var(--separator);
+  background: var(--color-separator);
   // TODO: include reset by default???
   box-sizing: border-box;
 
@@ -183,84 +183,84 @@ export default {
 
   &.__primary {
     &::-webkit-slider-thumb {
-      background: var(--primary);
+      background: var(--color-primary);
     }
 
     &::-moz-range-thumb {
-      background: var(--primary);
+      background: var(--color-primary);
     }
 
     &:hover::-webkit-slider-thumb {
-      background: var(--primary-active);
+      background: var(--color-primary-active);
     }
 
     &:hover::-moz-range-thumb {
-      background: var(--primary-active);
+      background: var(--color-primary-active);
     }
 
     &:disabled::-webkit-slider-thumb {
-      background: var(--primary-disabled);
+      background: var(--color-primary-disabled);
       cursor: not-allowed;
     }
 
     &:disabled::-moz-range-thumb {
-      background: var(--primary-disabled);
+      background: var(--color-primary-disabled);
       cursor: not-allowed;
     }
   }
 
   &.__accent {
     &::-webkit-slider-thumb {
-      background: var(--accent);
+      background: var(--color-accent);
     }
 
     &::-moz-range-thumb {
-      background: var(--accent);
+      background: var(--color-accent);
     }
 
     &:hover::-webkit-slider-thumb {
-      background: var(--accent-active);
+      background: var(--color-accent-active);
     }
 
     &:hover::-moz-range-thumb {
-      background: var(--accent-active);
+      background: var(--color-accent-active);
     }
 
     &:disabled::-webkit-slider-thumb {
-      background: var(--accent-disabled);
+      background: var(--color-accent-disabled);
       cursor: not-allowed;
     }
 
     &:disabled::-moz-range-thumb {
-      background: var(--accent-disabled);
+      background: var(--color-accent-disabled);
       cursor: not-allowed;
     }
   }
 
   &.__text {
     &::-webkit-slider-thumb {
-      background: var(--text);
+      background: var(--color-text);
     }
 
     &::-moz-range-thumb {
-      background: var(--text);
+      background: var(--color-text);
     }
 
     &:hover::-webkit-slider-thumb {
-      background: var(--text-aux);
+      background: var(--color-text-aux);
     }
 
     &:hover::-moz-range-thumb {
-      background: var(--text-aux);
+      background: var(--color-text-aux);
     }
 
     &:disabled::-webkit-slider-thumb {
-      background: var(--text-alt);
+      background: var(--color-text-alt);
       cursor: not-allowed;
     }
 
     &:disabled::-moz-range-thumb {
-      background: var(--text-disabled);
+      background: var(--color-text-disabled);
       cursor: not-allowed;
     }
   }
@@ -287,7 +287,7 @@ export default {
 
 .error {
   margin-top: var(--gap-base);
-  color: var(--danger);
+  color: var(--color-danger);
   text-overflow: ellipsis;
   overflow: hidden;
 }

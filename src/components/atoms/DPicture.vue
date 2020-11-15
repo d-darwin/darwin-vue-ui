@@ -241,7 +241,7 @@ picture {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: var(--background);
+  background: var(--color-background);
   z-index: 10;
 
   img {
@@ -276,6 +276,6 @@ picture {
   position: absolute;
   left: calc(50% - 12px);
   top: calc(50% - 12px);
-  color: var(--text-aux);
+  color: var(--color-text-aux);
 }
 </style>

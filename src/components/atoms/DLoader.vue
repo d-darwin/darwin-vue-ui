@@ -112,11 +112,11 @@ export default {
   }
 
   circle:nth-child(1) {
-    fill: var(--primary);
+    fill: var(--color-primary);
   }
 
   circle:nth-child(2) {
-    fill: var(--accent);
+    fill: var(--color-accent);
   }
 }
 </style>
