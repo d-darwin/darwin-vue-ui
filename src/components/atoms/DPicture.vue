@@ -1,12 +1,10 @@
 <template>
   <div class="d-picture">
-    <picture
-      :class="{ 'aspect-ratio-box': aspectRatio }"
-      :style="{
-        ...pictureStyle,
-        height,
-        paddingBottom
-      }"
+    <component
+      :is="tag"
+      :style="pictureStyle"
+      v-bind="tagProps"
+      class="picture"
     >
       <source
         v-for="(item, index) in sortedItems"
@@ -23,6 +21,7 @@
         :src="sortedItems[0].src"
         :style="imgStyle"
         loading="lazy"
+        class="img"
         @load="loadedHandler"
       />
 
@@ -39,7 +38,7 @@
           <slot v-else name="loader" />
         </template>
       </transition>
-    </picture>
+    </component>
 
     <d-typography v-if="caption" :content="caption" size="small" />
   </div>
@@ -49,6 +48,7 @@
 import DLoader from "../atoms/DLoader";
 import DIconImage from "../icons/DIconImage";
 import DTypography from "../containers/DTypography";
+import DAspectRatioBox from "../containers/DAspectRatioBox";
 
 /**
  * The component renders <b>picture</> tag according to Responsive Image principle.<br>
@@ -63,7 +63,7 @@ export default {
 
   inheritAttrs: false,
 
-  components: { DTypography, DLoader, DIconImage },
+  components: { DTypography, DLoader, DIconImage, DAspectRatioBox },
 
   props: {
     /**
@@ -94,7 +94,7 @@ export default {
     },
 
     /**
-     * Aspect ratio of the picture. Padding-bottom / zero height hack used to simulate aspect-ratio CSS property.<br>
+     * Aspect ratio of the picture.
      * Expected format: 'height:width'.
      */
     aspectRatio: {
@@ -121,16 +121,24 @@ export default {
 
   data() {
     return {
-      paddingBottom: 0,
       isLoaded: false
     };
   },
 
   computed: {
-    height() {
-      return this.aspectRatio && this.aspectRatio !== "0"
-        ? "0"
-        : this.pictureStyle && this.pictureStyle.height;
+    tag() {
+      return this.aspectRatio ? "DAspectRatioBox" : "picture";
+    },
+
+    tagProps() {
+      if (this.aspectRatio) {
+        return {
+          "aspect-ratio": this.aspectRatio,
+          tag: "picture"
+        };
+      } else {
+        return null;
+      }
     },
 
     alt() {
@@ -175,33 +183,7 @@ export default {
     }
   },
 
-  watch: {
-    aspectRatio() {
-      this.recalculatePadding();
-    }
-  },
-
-  mounted() {
-    if (this.aspectRatio) {
-      this.recalculatePadding();
-    }
-  },
-
   methods: {
-    recalculatePadding() {
-      /**
-       * Used to correct vertical size of the picture with aspectRatio when it is changed
-       * @type {string[]}
-       */
-      const widthHeight = this.aspectRatio.split(":");
-      if (widthHeight[0] && widthHeight[1]) {
-        this.paddingBottom =
-          (100 * parseInt(widthHeight[0])) / parseInt(widthHeight[1]) + "%";
-      } else {
-        this.paddingBottom = 0;
-      }
-    },
-
     constructMediaQuery(item) {
       if (item.min_width && item.max_width) {
         return `(min-width: ${item.min_width}px) and (max-width: ${item.max_width}px)`;
@@ -236,38 +218,6 @@ export default {
   margin-top: var(--gap-2x);
 }
 
-picture {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: var(--color-background);
-  z-index: 10;
-
-  img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  &.aspect-ratio-box {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 0;
-    content: "";
-
-    img {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-    }
-  }
-}
-
 .d-loader {
   z-index: 1;
 }
@@ -277,5 +227,21 @@ picture {
   left: calc(50% - 12px);
   top: calc(50% - 12px);
   color: var(--color-text-aux);
+}
+
+.picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--color-background);
+  z-index: 10;
+}
+
+.img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 </style>

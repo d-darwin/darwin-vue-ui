@@ -8,6 +8,7 @@ import DGridDebug from "./components/development/DGridDebug";
 /** containers **/
 import DTypography from "./components/containers/DTypography";
 import DGrid from "./components/containers/DGrid";
+import DAspectRatioBox from "./components/containers/DAspectRatioBox";
 
 /** icons **/
 import DIconChecked from "./components/icons/DIconChecked";
@@ -43,6 +44,7 @@ export {
   /** containers **/
   DTypography,
   DGrid,
+  DAspectRatioBox,
   /** icons **/
   DIconChecked,
   DIconDirection,
