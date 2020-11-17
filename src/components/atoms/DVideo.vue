@@ -44,7 +44,9 @@ import DTypography from "../containers/DTypography";
 import DAspectRatioBox from "../containers/DAspectRatioBox";
 
 /**
- * Компонент предназначен для вставки видео. Рендериться в тег <b>iframe</b> или <b>video</b> и поддерживает ленивую загрузку.
+ * The component intents to insert video into your page.<br>
+ * It renders <b>iframe</b> or <b>video</b> or any iframe depending on your source value.<br>
+ * Supports lazy loading with <b>DLoader</b> placeholder, aspect-ration and renders <b>DIconVideo</b> icon if <i>source</i> prop is empty.
  *
  * @version 1.3.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
@@ -58,7 +60,7 @@ export default {
 
   props: {
     /**
-     * Принимает ссылку на youtube, vimeo, vk, mp4 или iframe code.
+     * Pass youtube, vimeo, vine, videopress link, local video path or any iframe code.
      */
     source: {
       type: String,
@@ -66,7 +68,7 @@ export default {
     },
 
     /**
-     * Если видео в формате mp4, то необходимо задать значение 'video/mp4'.
+     * Format of the video source if it is local.
      */
     format: {
       type: String,

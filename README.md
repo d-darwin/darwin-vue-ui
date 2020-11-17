@@ -106,6 +106,9 @@ Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/compo
 Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSelect.vue'.
 * **DSwitch**. Renders a switch or a toggle of various colors. 
 Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSwitch.vue'.
+* **DVideo**. Renders a video of different formats and video hosting services. 
+Supports lazy loading, aspect-ratio prop, no image fallback and loading placeholder.  
+More details. More details: '@dariwn-studio/ui-vue/components/atoms/DVideo.vue'.
 
 #### Design Tokens  
 
