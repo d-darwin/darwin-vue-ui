@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.d-icon-unchecked {
+.d-icon-video {
   path {
     stroke: currentColor;
   }

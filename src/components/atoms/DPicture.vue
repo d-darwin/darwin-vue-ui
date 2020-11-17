@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import DLoader from "../atoms/DLoader";
+import DLoader from "./DLoader";
 import DIconImage from "../icons/DIconImage";
 import DTypography from "../containers/DTypography";
 import DAspectRatioBox from "../containers/DAspectRatioBox";
@@ -212,6 +212,8 @@ export default {
 <style scoped lang="scss">
 .d-picture {
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .d-typography {
@@ -223,25 +225,25 @@ export default {
 }
 
 .d-icon-image {
-  position: absolute;
-  left: calc(50% - 12px);
-  top: calc(50% - 12px);
+  // position: absolute;
+  // left: calc(50% - 12px);
+  // top: calc(50% - 12px);
   color: var(--color-text-aux);
+  max-width: 24px;
+  max-height: 24px;
 }
 
 .picture {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 1;
   overflow: hidden;
   background: var(--color-background);
   z-index: 10;
 }
 
 .img {
-  display: block;
-  width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 </style>

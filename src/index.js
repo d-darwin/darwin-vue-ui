@@ -32,6 +32,7 @@ import DRadio from "./components/atoms/DRadio";
 import DSlider from "./components/atoms/DSlider";
 import DLoader from "./components/atoms/DLoader";
 import DPicture from "./components/atoms/DPicture";
+import DVideo from "./components/atoms/DVideo";
 
 /** molecules **/
 
@@ -66,7 +67,8 @@ export {
   DRadio,
   DSlider,
   DLoader,
-  DPicture
+  DPicture,
+  DVideo
   /** molecules **/
 
   /** organisms **/

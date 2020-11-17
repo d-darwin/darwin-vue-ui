@@ -1,30 +1,47 @@
 <template>
-  <div :class="{ __embedded: format }" class="video-container">
-    <div
-      :style="{
-        height: aspectRatio && aspectRatio !== '0' ? '0' : height,
-        width,
-        minHeight,
-        minWidth,
-        maxHeight,
-        maxWidth,
-        paddingBottom,
-      }"
-      :class="{ 'aspect-ratio-box': aspectRatio }"
-      class="video-wrap"
-      v-html="videoCode"
-    />
+  <div class="d-video">
+    <component
+      :is="containerTag"
+      :style="videoContainerStyle"
+      v-bind="containerTagProps"
+      class="video-container"
+    >
+      <component
+        v-if="videoCode"
+        :is="videoTag"
+        :style="videoStyle"
+        v-bind="videoTagProps"
+        v-html="videoCode"
+        class="video"
+      />
 
-    <DLoader />
+      <template v-else>
+        <DIconVideo v-if="!$slots['no-video']" />
+        <!-- @slot You can replace default no-video icon by passing your own here. -->
+        <slot v-else name="no-video" />
+      </template>
+
+      <transition name="opacity">
+        <template v-if="!isLoaded && videoCode">
+          <DLoader v-if="!$slots['loader']" />
+          <!-- @slot You can replace default loader by passing your own here. -->
+          <slot v-else name="loader" />
+        </template>
+      </transition>
+    </component>
+
+    <DTypography v-if="caption" :content="caption" size="small" />
   </div>
 </template>
 
 <script>
-import getVideoId from 'get-video-id'
+import getVideoId from "get-video-id";
 
 /** components **/
-import DLoader from './DLoader'
-
+import DLoader from "./DLoader";
+import DIconVideo from "../icons/DIconVideo";
+import DTypography from "../containers/DTypography";
+import DAspectRatioBox from "../containers/DAspectRatioBox";
 
 /**
  * Компонент предназначен для вставки видео. Рендериться в тег <b>iframe</b> или <b>video</b> и поддерживает ленивую загрузку.
@@ -33,19 +50,19 @@ import DLoader from './DLoader'
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
-  name: 'DVideo',
+  name: "DVideo",
 
   inheritAttrs: false,
 
-  components: { DLoader },
+  components: { DTypography, DIconVideo, DLoader, DAspectRatioBox },
 
   props: {
     /**
      * Принимает ссылку на youtube, vimeo, vk, mp4 или iframe code.
      */
-    content: {
+    source: {
       type: String,
-      default: '',
+      default: ""
     },
 
     /**
@@ -53,180 +70,184 @@ export default {
      */
     format: {
       type: String,
-      default: '',
-      // TODO: expand if needed.
-      validator: (val) => ['', 'video/mp4'].includes(val),
+      default: null,
+      validator: val =>
+        [
+          null,
+          "video/mp4",
+          "video/mpeg",
+          "video/ogg",
+          "video/webm",
+          "video/3gpp",
+          "video/3gpp2",
+          "video/mp2t"
+        ].includes(val)
     },
 
     /**
-     * Автоматический запуск видео при загрузке компонента.
+     * Pass any style object <i>.video-container</i> if needed.
      */
-    autoplay: {
-      // TODO: expand to vimeo/youtube.
-      type: Boolean,
-      default: false,
+    videoContainerStyle: {
+      type: Object,
+      default: () => {}
     },
 
     /**
-     * Отключает звук видео.
+     * Pass any style object here for <b>img</b> tag if needed.
      */
-    muted: {
-      // TODO: expand to vimeo/youtube.
-      type: Boolean,
-      default: false,
+    videoStyle: {
+      type: Object,
+      default: () => {}
     },
 
     /**
-     * Зацикливает видео.
+     * The picture caption. Also used as <i>alt</i> and <i>title</> attrs if they aren't presented.
      */
-    loop: {
-      // TODO: expand to vimeo/youtube
-      type: Boolean,
-      default: false,
+    caption: {
+      type: String,
+      default: ""
     },
 
     /**
-     * Соотношение сторон компонента в формате x:y.<br>
-     * Может быть проигнорирован если заданы другие свойства размера компонента.
+     * Aspect ratio of the picture.
+     * Expected format: 'height:width'.
      */
     aspectRatio: {
       type: String,
-      default: '',
-    },
+      default: ""
+    }
   },
 
   data() {
     return {
-      paddingBottom: 0,
-    }
+      isLoaded: false
+    };
   },
 
   computed: {
+    containerTag() {
+      return this.aspectRatio ? "DAspectRatioBox" : "div";
+    },
+
+    containerTagProps() {
+      if (this.aspectRatio) {
+        return {
+          "aspect-ratio": this.aspectRatio
+        };
+      } else {
+        return null;
+      }
+    },
+
+    videoTag() {
+      return this.format ? "video" : "iframe";
+    },
+
+    videoTagProps() {
+      if (this.format) {
+        return {
+          ...this.$attrs,
+          onLoadeddata: () => (this.isLoaded = true)
+        };
+      } else {
+        return {
+          ...this.$attrs
+        };
+      }
+    },
+
     videoCode() {
       /**
-       * If content prop contains simple link to video service, converts this link to <iframe .../>
+       * If source prop contains simple link to video service, converts this link to <iframe .../>
        */
-      let content = this.content
-      const linkData = getVideoId(this.content) // if content is link
-      if (Object.keys(linkData).length) {
-        // TODO: refactor these, make more readable
-        if (linkData.service === 'youtube') {
-          const allow = this.autoplay ? 'allow="autoplay"' : ''
-          const params = this.autoplay ? '?autoplay=1' : ''
-          content =
-            '<iframe width="100%" height="100%" ' +
-            allow +
-            ' src="https://www.youtube.com/embed/' +
-            linkData.id +
-            params +
-            '" allowfullscreen loading="lazy"></iframe>'
-        } else if (linkData.service === 'vimeo') {
-          content =
-            '<iframe width="100%" height="100%" ' +
-            'src="https://player.vimeo.com/video/' +
-            linkData.id +
-            '" loading="lazy"></iframe>'
-        } else {
-          // console.log('Unsupported service:', linkData.service)
-        }
-      } else if (content.includes('//vk.com/video')) {
-        content = `<iframe src="${content}" height="100%" width="100%" allowfullscreen loading="lazy"></iframe>`
-      } else {
-        // console.log('Unsupported content:', this.content)
-      }
-
-      if (this.format === 'video/mp4') {
+      let source = this.source;
+      if (this.format === "video/mp4") {
+        // local video
         // TODO: check format by extension
-        const autoplay = this.autoplay ? 'autoplay' : null
-        const loop = this.loop ? 'loop' : ''
-        const muted = this.muted ? 'muted' : ''
-        content =
-          `<video ${autoplay} ${loop} ${muted} playsinline preload="none">` +
-          `<source src="${this.content}" type="video/mp4" />` +
-          '</video>'
-      }
-      return content
-    },
-  },
-
-  watch: {
-    aspectRatio() {
-      this.recalculatePadding()
-    },
-  },
-
-  mounted() {
-    if (this.aspectRatio) {
-      this.recalculatePadding()
-    }
-  },
-
-  methods: {
-    recalculatePadding() {
-      /**
-       * Used to correct vertical size of the map with aspectRatio when it is changed
-       * @type {string[]}
-       */
-      const widthHeight = this.aspectRatio.split(':')
-      if (widthHeight[0] && widthHeight[1]) {
-        this.paddingBottom = (100 * widthHeight[0]) / widthHeight[1] + '%'
+        // const autoplay = this.autoplay ? "autoplay" : null;
+        // const loop = this.loop ? "loop" : "";
+        // const muted = this.muted ? "muted" : "";
+        source =
+          // `<video ${autoplay} ${loop} ${muted} playsinline preload="none">` +
+          `<source src="${this.source}" type="${this.format}" />`;
+        // "</video>";
       } else {
-        this.paddingBottom = 0
+        // external video
+        const linkData = getVideoId(this.source); // if source is link
+        if (Object.keys(linkData).length) {
+          // TODO: refactor these, make more readable
+          if (linkData.service === "youtube") {
+            const allow = this.autoplay ? 'allow="autoplay"' : "";
+            const params = this.autoplay ? "?autoplay=1" : "";
+            source =
+              '<iframe width="100%" height="100%" ' +
+              allow +
+              ' src="https://www.youtube.com/embed/' +
+              linkData.id +
+              params +
+              '" allowfullscreen loading="lazy" />';
+          } else if (linkData.service === "vimeo") {
+            source =
+              '<iframe width="100%" height="100%" ' +
+              'src="https://player.vimeo.com/video/' +
+              linkData.id +
+              '" loading="lazy" />';
+          } else {
+            // console.log('Unsupported service:', linkData.service)
+          }
+        } else if (source.includes("//vk.com/video")) {
+          source = `<iframe src="${source}" height="100%" width="100%" allowfullscreen loading="lazy" />`;
+        } else {
+          // console.log('Unsupported source:', this.source)
+        }
       }
-    },
-  },
-}
+
+      return source;
+    }
+  }
+};
 </script>
 
 <style lang="scss">
-.video-container {
+// always include tokens unscoped
+@import "../../assets/styles/tokens/gaps";
+@import "../../assets/styles/tokens/colors";
+</style>
+
+<style scoped lang="scss">
+.d-video {
   position: relative;
-  max-width: 100%;
-  max-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.video-wrap {
+.d-typography {
+  margin-top: var(--gap-2x);
+}
+
+.d-loader {
+  z-index: -1;
+}
+
+.d-icon-video {
+  // position: absolute;
+  // left: calc(50% - 12px);
+  // top: calc(50% - 12px);
+  color: var(--color-text-aux);
+}
+
+.video-container {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 1;
   overflow: hidden;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  max-height: 100%;
-
-  > * {
-    overflow: hidden;
-    display: block;
-    border: none;
-    // TODO: remove !important ???
-    width: 100% !important;
-    height: 100% !important;
-  }
+  background: var(--color-background);
+  z-index: 10;
 }
 
-.aspect-ratio-box {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 0;
-  content: '';
-  overflow: hidden;
-
-  > * {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-  }
-}
-
-.__embedded {
-  .aspect-ratio-box {
-    > * {
-      object-fit: cover;
-    }
-  }
+.video {
+  flex: 1;
+  object-fit: cover;
 }
 </style>
