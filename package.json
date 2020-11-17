@@ -62,6 +62,7 @@
     "vue": "^3.0.2"
   },
   "dependencies": {
-    "focus-visible": "^5.2.0"
+    "focus-visible": "^5.2.0",
+    "get-video-id": "^3.1.5"
   }
 }

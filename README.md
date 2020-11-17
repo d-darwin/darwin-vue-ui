@@ -75,13 +75,13 @@ You can find particular component documentation in its source code.
 #### Components
 
 For now a few basic components implemented: 
-* **DGrid**. Helps arrange child elements by grid. 
-More details: '@dariwn-studio/ui-vue/components/containers/DGrid.vue'.
 * **DGridDebug**. Adds grid visualisation to help catch up arrangement errors. 
 More details: '@dariwn-studio/ui-vue/components/development/DGridDebug.vue'.
+* **DGrid**. Helps arrange child elements by grid. 
+More details: '@dariwn-studio/ui-vue/components/containers/DGrid.vue'.
 * **DTypography**. Renders an HTML strings according to defined design tokens. 
 More details: '@dariwn-studio/ui-vue/components/containers/DTypography.vue'.
-* **DAspectRationBox**. Simulates aspect-ratio CSS prop to help keep aspect ratio of the container content. 
+* **DAspectRationBox**. Simulates aspect-ratio CSS prop to keep aspect ratio of the container content. 
 More details: '@dariwn-studio/ui-vue/components/containers/DAspectRationBox.vue'.
 * **DButton**. Renders a button of various appearance and behavior. 
 Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DButton.vue'.

@@ -18,6 +18,7 @@ import DIconRadioChecked from "./components/icons/DIconRadioChecked";
 import DIconRadioUnchecked from "./components/icons/DIconRadioUnchecked";
 import DIconUnchecked from "./components/icons/DIconUnchecked";
 import DIconImage from "./components/icons/DIconImage";
+import DIconVideo from "./components/icons/DIconVideo";
 
 /** atoms **/
 import DCopyright from "./components/atoms/DCopyright";
@@ -53,6 +54,7 @@ export {
   DIconRadioUnchecked,
   DIconUnchecked,
   DIconImage,
+  DIconVideo,
   /** atoms **/
   DCopyright,
   DInput,
