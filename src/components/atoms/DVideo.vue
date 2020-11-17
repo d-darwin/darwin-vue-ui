@@ -7,11 +7,11 @@
       class="video-container"
     >
       <component
-        v-if="videoCode"
+        v-if="source"
         :is="videoTag"
         :style="videoStyle"
         v-bind="videoTagProps"
-        v-html="videoCode"
+        v-html="videoHTML"
         class="video"
       />
 
@@ -22,7 +22,7 @@
       </template>
 
       <transition name="opacity">
-        <template v-if="!isLoaded && videoCode">
+        <template v-if="!isLoaded && source">
           <DLoader v-if="!$slots['loader']" />
           <!-- @slot You can replace default loader by passing your own here. -->
           <slot v-else name="loader" />
@@ -150,59 +150,38 @@ export default {
           onLoadeddata: () => (this.isLoaded = true)
         };
       } else {
+        const linkData = getVideoId(this.source); // if source is link
+        let src = null;
+        if (Object.keys(linkData).length) {
+          src = linkData.id;
+          if (linkData.service === "youtube") {
+            src = "https://www.youtube.com/embed/" + src;
+          } else if (linkData.service === "vimeo") {
+            src = "https://player.vimeo.com/video/" + src;
+          } else if (linkData.service === "vine") {
+            src = `https://vine.co/v/${src}/embed/simple`;
+          } else if (linkData.service === "videopress") {
+            src = "https://videopress.com/embed/" + src;
+          } else {
+            throw new Error("Unsupported video service");
+          }
+        } else {
+          src = this.source;
+        }
+
         return {
-          ...this.$attrs
+          ...this.$attrs,
+          src,
+          loading: "lazy"
         };
       }
     },
 
-    videoCode() {
-      /**
-       * If source prop contains simple link to video service, converts this link to <iframe .../>
-       */
-      let source = this.source;
-      if (this.format === "video/mp4") {
-        // local video
-        // TODO: check format by extension
-        // const autoplay = this.autoplay ? "autoplay" : null;
-        // const loop = this.loop ? "loop" : "";
-        // const muted = this.muted ? "muted" : "";
-        source =
-          // `<video ${autoplay} ${loop} ${muted} playsinline preload="none">` +
-          `<source src="${this.source}" type="${this.format}" />`;
-        // "</video>";
-      } else {
-        // external video
-        const linkData = getVideoId(this.source); // if source is link
-        if (Object.keys(linkData).length) {
-          // TODO: refactor these, make more readable
-          if (linkData.service === "youtube") {
-            const allow = this.autoplay ? 'allow="autoplay"' : "";
-            const params = this.autoplay ? "?autoplay=1" : "";
-            source =
-              '<iframe width="100%" height="100%" ' +
-              allow +
-              ' src="https://www.youtube.com/embed/' +
-              linkData.id +
-              params +
-              '" allowfullscreen loading="lazy" />';
-          } else if (linkData.service === "vimeo") {
-            source =
-              '<iframe width="100%" height="100%" ' +
-              'src="https://player.vimeo.com/video/' +
-              linkData.id +
-              '" loading="lazy" />';
-          } else {
-            // console.log('Unsupported service:', linkData.service)
-          }
-        } else if (source.includes("//vk.com/video")) {
-          source = `<iframe src="${source}" height="100%" width="100%" allowfullscreen loading="lazy" />`;
-        } else {
-          // console.log('Unsupported source:', this.source)
-        }
+    videoHTML() {
+      if (this.format) {
+        return `<source src="${this.source}" type="${this.format}" />`;
       }
-
-      return source;
+      return null;
     }
   }
 };
@@ -230,9 +209,6 @@ export default {
 }
 
 .d-icon-video {
-  // position: absolute;
-  // left: calc(50% - 12px);
-  // top: calc(50% - 12px);
   color: var(--color-text-aux);
 }
 
@@ -247,7 +223,9 @@ export default {
 }
 
 .video {
-  flex: 1;
+  height: 100%;
+  width: 100%;
+  border: none;
   object-fit: cover;
 }
 </style>

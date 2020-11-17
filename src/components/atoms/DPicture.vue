@@ -225,12 +225,7 @@ export default {
 }
 
 .d-icon-image {
-  // position: absolute;
-  // left: calc(50% - 12px);
-  // top: calc(50% - 12px);
   color: var(--color-text-aux);
-  max-width: 24px;
-  max-height: 24px;
 }
 
 .picture {
