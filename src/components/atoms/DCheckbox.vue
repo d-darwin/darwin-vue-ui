@@ -32,7 +32,7 @@
       <DTypography class="label" :size="size" :content="label" />
     </label>
 
-    <DError :text="error" />
+    <DControlError :text="error" />
   </div>
 </template>
 
@@ -44,7 +44,7 @@ import uuid from "../../utils/uuid";
 import DIconUnchecked from "../icons/DIconUnchecked";
 import DIconChecked from "../icons/DIconChecked";
 import DTypography from "../containers/DTypography";
-import DError from "./DControlError";
+import DControlError from "./DControlError";
 
 /**
  * Renders <b>input</b> tag with <i>type="checkbox"</i> and custom icons.<br>
@@ -59,7 +59,7 @@ export default {
 
   inheritAttrs: false,
 
-  components: { DError, DTypography, DIconChecked, DIconUnchecked },
+  components: { DControlError, DTypography, DIconChecked, DIconUnchecked },
 
   props: {
     /**

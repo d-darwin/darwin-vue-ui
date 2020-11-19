@@ -45,7 +45,7 @@
       <span class="outline" />
     </label>
 
-    <DError :text="error" />
+    <DControlError :text="error" />
   </div>
 </template>
 
@@ -57,7 +57,7 @@ import uuid from "../../utils/uuid";
 import DIconRadioUnchecked from "../icons/DIconRadioUnchecked";
 import DIconRadioChecked from "../icons/DIconRadioChecked";
 import DTypography from "../containers/DTypography";
-import DError from "./DControlError";
+import DControlError from "./DControlError";
 
 /**
  * The component renders <b>input</b> tag with <i>type="radio"</i> and custom icons.<br>
@@ -73,7 +73,7 @@ export default {
   inheritAttrs: false,
 
   components: {
-    DError,
+    DControlError,
     DTypography,
     DIconRadioUnchecked,
     DIconRadioChecked

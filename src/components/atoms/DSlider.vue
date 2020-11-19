@@ -28,7 +28,7 @@
       <div class="outline" />
     </div>
 
-    <DError :text="error" />
+    <DControlError :text="error" />
   </div>
 </template>
 
@@ -38,7 +38,7 @@ import uuid from "../../utils/uuid";
 
 /** components **/
 import DTypography from "../containers/DTypography";
-import DError from "./DControlError";
+import DControlError from "./DControlError";
 
 /**
  * The components renders custom <b>input</b> tag with <i>type="range"</i> of different colors.<br>
@@ -53,7 +53,7 @@ export default {
 
   inheritAttrs: false,
 
-  components: { DError, DTypography },
+  components: { DControlError, DTypography },
 
   props: {
     /**

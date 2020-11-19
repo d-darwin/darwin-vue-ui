@@ -18,12 +18,12 @@
       </component>
     </div>
 
-    <DError :text="error" />
+    <DControlError :text="error" />
   </div>
 </template>
 
 <script>
-import DError from "./DControlError";
+import DControlError from "./DControlError";
 
 /**
  * The component renders as a <b>button</b>, <b>router-link</b> or <b>a</b> depending on props.<br>
@@ -39,7 +39,7 @@ export default {
 
   inheritAttrs: false,
 
-  components: { DError },
+  components: { DControlError },
 
   props: {
     /**

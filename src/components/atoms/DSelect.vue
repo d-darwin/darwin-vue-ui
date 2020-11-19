@@ -45,7 +45,7 @@
       <slot v-else name="icon-dropdown" />
     </div>
 
-    <DError :text="error" />
+    <DControlError :text="error" />
   </div>
 </template>
 
@@ -56,7 +56,7 @@ import uuid from "../../utils/uuid";
 /** components **/
 import DIconDirection from "../icons/DIconDirection";
 import DTypography from "../containers/DTypography";
-import DError from "./DControlError";
+import DControlError from "./DControlError";
 
 /**
  * Renders standard <b>select</b> tag with <b>label</b>.<br>
@@ -73,7 +73,7 @@ export default {
 
   inheritAttrs: false,
 
-  components: { DError, DTypography, DIconDirection },
+  components: { DControlError, DTypography, DIconDirection },
 
   props: {
     /**

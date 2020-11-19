@@ -34,7 +34,7 @@
       <div class="outline" />
     </div>
 
-    <DError :text="error" />
+    <DControlError :text="error" />
   </div>
 </template>
 
@@ -44,7 +44,7 @@ import uuid from "../../utils/uuid";
 
 /** components **/
 import DTypography from "../containers/DTypography";
-import DError from "./DControlError";
+import DControlError from "./DControlError";
 
 /**
  * The component renders <b>input</b> tag with <b>label</b>.<br>
@@ -61,7 +61,7 @@ export default {
 
   inheritAttrs: false,
 
-  components: { DError, DTypography },
+  components: { DControlError, DTypography },
 
   props: {
     /**
