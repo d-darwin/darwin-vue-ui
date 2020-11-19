@@ -62,7 +62,7 @@ export default {
 
   inheritAttrs: false,
 
-  components: {DError, DTypography },
+  components: { DError, DTypography },
 
   props: {
     /**

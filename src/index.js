@@ -33,6 +33,7 @@ import DSlider from "./components/atoms/DSlider";
 import DLoader from "./components/atoms/DLoader";
 import DPicture from "./components/atoms/DPicture";
 import DVideo from "./components/atoms/DVideo";
+import DError from "./components/atoms/DError";
 
 /** molecules **/
 
@@ -68,7 +69,8 @@ export {
   DSlider,
   DLoader,
   DPicture,
-  DVideo
+  DVideo,
+  DError
   /** molecules **/
 
   /** organisms **/
