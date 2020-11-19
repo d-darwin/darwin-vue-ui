@@ -89,6 +89,8 @@ Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/compo
 Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DCheckbox.vue'.
 * **DCopyright**. Renders standard copyright string with company name and years. 
 More details: '@dariwn-studio/ui-vue/components/atoms/DCopyright.vue'.
+* **DError**. Helps unify control components error output. 
+More details: '@dariwn-studio/ui-vue/components/atoms/DError.vue'.
 * **DInput**. Renders an input field of various appearance. 
 Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DInput.vue'.
 * **DLink**. Renders a link of various appearance. 

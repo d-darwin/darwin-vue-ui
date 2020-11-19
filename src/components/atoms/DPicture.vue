@@ -40,7 +40,7 @@
       </transition>
     </component>
 
-    <d-typography v-if="caption" :content="caption" size="small" />
+    <DTypography v-if="caption" :content="caption" size="small" />
   </div>
 </template>
 

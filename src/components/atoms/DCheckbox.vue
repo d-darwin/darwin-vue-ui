@@ -32,9 +32,7 @@
       <DTypography class="label" :size="size" :content="label" />
     </label>
 
-    <transition name="control-error">
-      <DTypography v-if="error" :content="error" size="small" class="error" />
-    </transition>
+    <DError :text="error" />
   </div>
 </template>
 
@@ -46,6 +44,7 @@ import uuid from "../../utils/uuid";
 import DIconUnchecked from "../icons/DIconUnchecked";
 import DIconChecked from "../icons/DIconChecked";
 import DTypography from "../containers/DTypography";
+import DError from "./DError";
 
 /**
  * Renders <b>input</b> tag with <i>type="checkbox"</i> and custom icons.<br>
@@ -60,7 +59,7 @@ export default {
 
   inheritAttrs: false,
 
-  components: { DTypography, DIconChecked, DIconUnchecked },
+  components: { DError, DTypography, DIconChecked, DIconUnchecked },
 
   props: {
     /**
@@ -133,7 +132,6 @@ export default {
 <style lang="scss">
 // always include tokens unscoped
 @import "../../assets/styles/tokens/colors";
-@import "../../assets/styles/tokens/gaps";
 @import "../../assets/styles/tokens/outline";
 </style>
 
@@ -212,13 +210,6 @@ export default {
 .d-icon-checked,
 .d-icon-unchecked {
   @include transition-short;
-}
-
-.error {
-  margin-top: var(--gap-base);
-  color: var(--color-danger);
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 
 .input:checked {

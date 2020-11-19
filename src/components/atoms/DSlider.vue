@@ -28,9 +28,7 @@
       <div class="outline" />
     </div>
 
-    <transition name="control-error">
-      <DTypography v-if="error" :content="error" size="small" class="error" />
-    </transition>
+    <DError :text="error" />
   </div>
 </template>
 
@@ -40,13 +38,14 @@ import uuid from "../../utils/uuid";
 
 /** components **/
 import DTypography from "../containers/DTypography";
+import DError from "./DError";
 
 /**
  * The components renders custom <b>input</b> tag with <i>type="range"</i> of different colors.<br>
  * Feel free to use any attrs you expect with <b>input</b> tag with <i>type="range"</i>,
  * they will be pass to the tag automatically.
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -54,7 +53,7 @@ export default {
 
   inheritAttrs: false,
 
-  components: { DTypography },
+  components: {DError, DTypography },
 
   props: {
     /**
@@ -117,7 +116,6 @@ export default {
 <style lang="scss">
 // always include tokens unscoped
 @import "../../assets/styles/tokens/colors";
-@import "../../assets/styles/tokens/gaps";
 @import "../../assets/styles/tokens/outline";
 </style>
 
@@ -283,12 +281,5 @@ export default {
     bottom: calc(var(--outline-width) * -1);
     width: calc(100% + 2 * var(--outline-width));
   }
-}
-
-.error {
-  margin-top: var(--gap-base);
-  color: var(--color-danger);
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 </style>

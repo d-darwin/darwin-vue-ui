@@ -1,7 +1,7 @@
 <template>
   <div :class="{ __disabled: $attrs.disabled !== undefined }" class="d-switch">
     <div class="control-group">
-      <d-typography
+      <DTypography
         v-if="labels && labels.falsy"
         :content="labels.falsy"
         class="value-label"
@@ -29,16 +29,14 @@
         <span class="outline" />
       </label>
 
-      <d-typography
+      <DTypography
         v-if="labels && labels.truthy"
         :content="labels.truthy"
         class="value-label"
       />
     </div>
 
-    <transition name="control-error">
-      <DTypography v-if="error" :content="error" size="small" class="error" />
-    </transition>
+    <DError :text="error" />
   </div>
 </template>
 
@@ -48,6 +46,7 @@ import uuid from "../../utils/uuid";
 
 /** components **/
 import DTypography from "../containers/DTypography";
+import DError from "./DError";
 
 /**
  * The components renders switch (has true / false value) or toggle (has custom values).<br>
@@ -63,7 +62,7 @@ export default {
 
   inheritAttrs: false,
 
-  components: { DTypography },
+  components: {DError, DTypography },
 
   props: {
     /**
@@ -232,13 +231,6 @@ export default {
       background-color: var(--color-text);
     }
   }
-}
-
-.error {
-  margin-top: var(--gap-base);
-  color: var(--color-danger);
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 
 .slider:before {
