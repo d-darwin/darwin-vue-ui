@@ -5,7 +5,7 @@ import { h } from "vue";
  * This development component intents to help while positioning elements inside <b>DGrid</b> component.</br>
  * It renders independent grid visualization on <i>Ctrl + Alt + D</i>.
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -40,7 +40,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/tokens/breakpoints";
+@import "../../assets/styles/tokens/grid";
 
 body.__debug::before {
   position: fixed;
@@ -49,15 +49,9 @@ body.__debug::before {
   right: 0;
   bottom: 0;
   left: 0;
-  margin: 0 auto;
-  pointer-events: none;
   z-index: 9999;
+  pointer-events: none;
 
-  --grid-columns-count: 2;
-  --grid-offset: 18px;
-  --grid-gutter: 18px;
-
-  --grid-width: calc(100% - var(--grid-offset) * 2);
   --grid-column-color: rgba(0, 0, 0, 0.05);
   --grid-gutter-color: transparent;
   --grid-column-width: calc(
@@ -65,10 +59,11 @@ body.__debug::before {
       var(--grid-columns-count)
   );
 
-  width: calc(var(--grid-width) + var(--grid-offset) * 2);
-
-  border: solid transparent;
-  border-width: 0 calc(var(--grid-offset) - var(--grid-gutter) / 2);
+  width: calc(var(--grid-width) - var(--grid-offset) * 2 + var(--grid-gutter));
+  margin: 0
+    calc(
+      50% - var(--grid-width) / 2 + var(--grid-offset) - var(--grid-gutter) / 2
+    );
 
   background-repeat: no-repeat;
   //noinspection CssInvalidFunction
@@ -83,37 +78,5 @@ body.__debug::before {
       calc(var(--grid-column-width) + var(--grid-gutter) / 2),
     var(--grid-gutter-color) calc(var(--grid-column-width) + var(--grid-gutter))
   );
-}
-
-@media (min-width: $sm-breakpoint) {
-  body.__debug::before {
-    --grid-columns-count: 6;
-  }
-}
-
-@media (min-width: $md-breakpoint) {
-  body.__debug::before {
-    --grid-columns-count: 12;
-    --grid-offset: 24px;
-    --grid-gutter: 24px;
-  }
-}
-
-@media (min-width: $lg-breakpoint) {
-  body.__debug::before {
-    --grid-width: 960px;
-  }
-}
-
-@media (min-width: $xl-breakpoint) {
-  body.__debug::before {
-    --grid-width: 1140px;
-  }
-}
-
-@media (min-width: $xxl-breakpoint) {
-  body.__debug::before {
-    --grid-width: 1320px;
-  }
 }
 </style>

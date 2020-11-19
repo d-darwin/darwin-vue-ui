@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import cssColumnCountList from "../../assets/styles/tokens/_grid.scss";
+import cssGridTokens from "../../assets/styles/tokens/_grid.scss";
 
 /**
  * The container allows you an easy way to arrange child nodes in a grid template.
@@ -53,13 +53,13 @@ export default {
   data() {
     return {
       defaultColumnCountList: {
-        // TODO: too verbose...
-        xs: parseInt(cssColumnCountList.xs),
-        sm: parseInt(cssColumnCountList.sm),
-        md: parseInt(cssColumnCountList.md),
-        lg: parseInt(cssColumnCountList.lg),
-        xl: parseInt(cssColumnCountList.xl),
-        xxl: parseInt(cssColumnCountList.xxl)
+        // TODO: too verbose and so flexible
+        xs: parseInt(cssGridTokens["xs-grid-columns-count"]),
+        sm: parseInt(cssGridTokens["sm-grid-columns-count"]),
+        md: parseInt(cssGridTokens["md-grid-columns-count"]),
+        lg: parseInt(cssGridTokens["lg-grid-columns-count"]),
+        xl: parseInt(cssGridTokens["xl-grid-columns-count"]),
+        xxl: parseInt(cssGridTokens["xxl-grid-columns-count"])
       },
       throttledFunction: null
     };
@@ -98,6 +98,8 @@ export default {
   padding-right: var(--grid-offset);
   width: var(--grid-width);
 
+  grid-template-columns: repeat(var(--grid-columns-count), 1fr);
+
   &:not(.__condensed) {
     grid-column-gap: var(--grid-gutter);
   }
@@ -105,8 +107,6 @@ export default {
 
 @include xs-device {
   .d-grid {
-    grid-template-columns: repeat($xs-grid-columns-count, 1fr);
-
     @for $i from 1 through $xs-grid-columns-count {
       &.grid-xs-#{$i} > ::v-slotted(*) {
         grid-column-end: span #{$i};
@@ -117,8 +117,6 @@ export default {
 
 @include sm-device {
   .d-grid {
-    grid-template-columns: repeat($sm-grid-columns-count, 1fr);
-
     @for $i from 1 through $sm-grid-columns-count {
       &.grid-sm-#{$i} > ::v-slotted(*) {
         grid-column-end: span #{$i};
@@ -129,8 +127,6 @@ export default {
 
 @include md-device {
   .d-grid {
-    grid-template-columns: repeat($md-grid-columns-count, 1fr);
-
     @for $i from 1 through $md-grid-columns-count {
       &.grid-md-#{$i} > ::v-slotted(*) {
         grid-column-end: span #{$i};
@@ -141,8 +137,6 @@ export default {
 
 @include lg-device {
   .d-grid {
-    grid-template-columns: repeat($lg-grid-columns-count, 1fr);
-
     @for $i from 1 through $lg-grid-columns-count {
       &.grid-lg-#{$i} > ::v-slotted(*) {
         grid-column-end: span #{$i};
@@ -153,8 +147,6 @@ export default {
 
 @include xl-device {
   .d-grid {
-    grid-template-columns: repeat($xl-grid-columns-count, 1fr);
-
     @for $i from 1 through $xl-grid-columns-count {
       &.grid-xl-#{$i} > ::v-slotted(*) {
         grid-column-end: span #{$i};
@@ -165,8 +157,6 @@ export default {
 
 @include xxl-device {
   .d-grid {
-    grid-template-columns: repeat($xxl-grid-columns-count, 1fr);
-
     @for $i from 1 through $xxl-grid-columns-count {
       &.grid-xxl-#{$i} > ::v-slotted(*) {
         grid-column-end: span #{$i};

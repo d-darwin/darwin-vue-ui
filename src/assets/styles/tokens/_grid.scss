@@ -1,69 +1,113 @@
 @import "../mixins/breakpoints";
 
-// it's not very convenient but we have to use scss variables
-// to use them in @for loop in DGrid component
+// It's not very convenient but we have to use scss variables
+// to use them in @for loop in DGrid component.
+// TODO: Unfortunately we can't redefine columns-count on runtime.
 $xs-grid-columns-count: 2;
+$xs-grid-offset: 18px;
+$xs-grid-gutter: 18px;
+$xs-grid-width: 100%;
+
 $sm-grid-columns-count: 6;
+$sm-grid-offset: 18px;
+$sm-grid-gutter: 18px;
+$sm-grid-width: 100%;
+
 $md-grid-columns-count: 12;
+$md-grid-offset: 24px;
+$md-grid-gutter: 24px;
+$md-grid-width: 100%;
+
 $lg-grid-columns-count: 12;
+$lg-grid-offset: 0px;
+$lg-grid-gutter: 24px;
+$lg-grid-width: 960px;
+
 $xl-grid-columns-count: 12;
+$xl-grid-offset: 0px;
+$xl-grid-gutter: 24px;
+$xl-grid-width: 1140px;
+
 $xxl-grid-columns-count: 12;
+$xxl-grid-offset: 0px;
+$xxl-grid-gutter: 24px;
+$xxl-grid-width: 1320px;
 
 :root {
   @include xs-device {
     --grid-columns-count: #{$xs-grid-columns-count};
-    --grid-offset: 18px;
-    --grid-gutter: 18px;
-    --grid-width: 100%;
+    --grid-offset: #{$xs-grid-offset};
+    --grid-gutter: #{$xs-grid-gutter};
+    --grid-width: #{$xs-grid-width};
   }
 
   @include sm-device {
     --grid-columns-count: #{$sm-grid-columns-count};
-    --grid-offset: 18px;
-    --grid-gutter: 18px;
-    --grid-width: 100%;
+    --grid-offset: #{$sm-grid-offset};
+    --grid-gutter: #{$sm-grid-gutter};
+    --grid-width: #{$sm-grid-width};
   }
 
   @include md-device {
     --grid-columns-count: #{$md-grid-columns-count};
-    --grid-offset: 24px;
-    --grid-gutter: 24px;
-    --grid-width: 100%;
+    --grid-offset: #{$md-grid-offset};
+    --grid-gutter: #{$md-grid-gutter};
+    --grid-width: #{$md-grid-width};
   }
 
   @include lg-device {
     --grid-columns-count: #{$lg-grid-columns-count};
-    --grid-offset: 0;
-    --grid-gutter: 24px;
-    --grid-width: 960px;
+    --grid-offset: #{$lg-grid-offset};
+    --grid-gutter: #{$lg-grid-gutter};
+    --grid-width: #{$lg-grid-width};
   }
 
   @include xl-device {
     --grid-columns-count: #{$xl-grid-columns-count};
-    --grid-offset: 0;
-    --grid-gutter: 24px;
-    --grid-width: 1140px;
+    --grid-offset: #{$xl-grid-offset};
+    --grid-gutter: #{$xl-grid-gutter};
+    --grid-width: #{$xl-grid-width};
   }
 
   @include xxl-device {
     --grid-columns-count: #{$xxl-grid-columns-count};
-    --grid-offset: 0;
-    --grid-gutter: 24px;
-    --grid-width: 1320px;
+    --grid-offset: #{$xxl-grid-offset};
+    --grid-gutter: #{$xxl-grid-gutter};
+    --grid-width: #{$xxl-grid-width};
   }
-
 }
 
 // the :export directive is the magic sauce for webpack.
 // this variables will be available to js on build time.
 // noinspection CssUnknownProperty
 :export {
-  xs: $xs-grid-columns-count;
-  sm: $sm-grid-columns-count;
-  md: $md-grid-columns-count;
-  lg: $lg-grid-columns-count;
-  xl: $xl-grid-columns-count;
-  xxl: $xxl-grid-columns-count;
+  xs-grid-columns-count: $xs-grid-columns-count;
+  xs-grid-offset: $xs-grid-offset;
+  xs-grid-gutter: $xs-grid-gutter;
+  xs-grid-width: $xs-grid-width;
 
-  // TODO: export other gird tokens ???
+  sm-grid-columns-count: $sm-grid-columns-count;
+  sm-grid-offset: $sm-grid-offset;
+  sm-grid-gutter: $sm-grid-gutter;
+  sm-grid-width: $sm-grid-width;
+
+  md-grid-columns-count: $md-grid-columns-count;
+  md-grid-offset: $md-grid-offset;
+  md-grid-gutter: $md-grid-gutter;
+  md-grid-width: $md-grid-width;
+
+  lg-grid-columns-count: $lg-grid-columns-count;
+  lg-grid-offset: $lg-grid-offset;
+  lg-grid-gutter: $lg-grid-gutter;
+  lg-grid-width: $lg-grid-width;
+
+  xl-grid-columns-count: $xl-grid-columns-count;
+  xl-grid-offset: $xl-grid-offset;
+  xl-grid-gutter: $xl-grid-gutter;
+  xl-grid-width: $xl-grid-width;
+
+  xxl-grid-columns-count: $xxl-grid-columns-count;
+  xxl-grid-offset: $xxl-grid-offset;
+  xxl-grid-gutter: $xxl-grid-gutter;
+  xxl-grid-width: $xxl-grid-width;
 }
