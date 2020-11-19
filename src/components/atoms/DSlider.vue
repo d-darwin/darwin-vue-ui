@@ -38,7 +38,7 @@ import uuid from "../../utils/uuid";
 
 /** components **/
 import DTypography from "../containers/DTypography";
-import DError from "./DError";
+import DError from "./DControlError";
 
 /**
  * The components renders custom <b>input</b> tag with <i>type="range"</i> of different colors.<br>

@@ -53,7 +53,7 @@ export default {
   data() {
     return {
       defaultColumnCountList: {
-        // TODO: too verbose and so flexible
+        // TODO: too verbose and not so flexible
         xs: parseInt(cssGridTokens["xs-grid-columns-count"]),
         sm: parseInt(cssGridTokens["sm-grid-columns-count"]),
         md: parseInt(cssGridTokens["md-grid-columns-count"]),

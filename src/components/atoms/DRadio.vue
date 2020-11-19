@@ -57,7 +57,7 @@ import uuid from "../../utils/uuid";
 import DIconRadioUnchecked from "../icons/DIconRadioUnchecked";
 import DIconRadioChecked from "../icons/DIconRadioChecked";
 import DTypography from "../containers/DTypography";
-import DError from "./DError";
+import DError from "./DControlError";
 
 /**
  * The component renders <b>input</b> tag with <i>type="radio"</i> and custom icons.<br>

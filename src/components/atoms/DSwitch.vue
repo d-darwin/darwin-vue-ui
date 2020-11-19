@@ -46,7 +46,7 @@ import uuid from "../../utils/uuid";
 
 /** components **/
 import DTypography from "../containers/DTypography";
-import DError from "./DError";
+import DError from "./DControlError";
 
 /**
  * The components renders switch (has true / false value) or toggle (has custom values).<br>
@@ -144,8 +144,6 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/styles/mixins/transitions";
-// @import "../../assets/styles/vue-transitions";
-// @import "../../assets/styles/focus-visible";
 
 .control-group {
   display: inline-flex;

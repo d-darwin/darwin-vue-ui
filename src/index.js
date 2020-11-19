@@ -33,7 +33,7 @@ import DSlider from "./components/atoms/DSlider";
 import DLoader from "./components/atoms/DLoader";
 import DPicture from "./components/atoms/DPicture";
 import DVideo from "./components/atoms/DVideo";
-import DError from "./components/atoms/DError";
+import DError from "./components/atoms/DControlError";
 
 /** molecules **/
 

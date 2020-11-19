@@ -44,7 +44,7 @@ import uuid from "../../utils/uuid";
 import DIconUnchecked from "../icons/DIconUnchecked";
 import DIconChecked from "../icons/DIconChecked";
 import DTypography from "../containers/DTypography";
-import DError from "./DError";
+import DError from "./DControlError";
 
 /**
  * Renders <b>input</b> tag with <i>type="checkbox"</i> and custom icons.<br>

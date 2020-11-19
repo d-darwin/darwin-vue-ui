@@ -44,7 +44,7 @@ import uuid from "../../utils/uuid";
 
 /** components **/
 import DTypography from "../containers/DTypography";
-import DError from "./DError";
+import DError from "./DControlError";
 
 /**
  * The component renders <b>input</b> tag with <b>label</b>.<br>
@@ -158,8 +158,6 @@ export default {
 @import "../../assets/styles/mixins/controls";
 @import "../../assets/styles/mixins/typography";
 @import "../../assets/styles/mixins/transitions";
-// @import "../../assets/styles/vue-transitions";
-// @import "../../assets/styles/focus-visible";
 
 .control-group {
   display: flex;

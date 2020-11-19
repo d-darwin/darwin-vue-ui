@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import DError from "./DError";
+import DError from "./DControlError";
 
 /**
  * The component renders as a <b>button</b>, <b>router-link</b> or <b>a</b> depending on props.<br>
@@ -113,8 +113,6 @@ export default {
 @import "../../assets/styles/mixins/controls";
 @import "../../assets/styles/mixins/typography";
 @import "../../assets/styles/mixins/transitions";
-// @import "../../assets/styles/vue-transitions";
-// @import "../../assets/styles/focus-visible";
 
 .control-group {
   position: relative;

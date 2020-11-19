@@ -56,7 +56,7 @@ import uuid from "../../utils/uuid";
 /** components **/
 import DIconDirection from "../icons/DIconDirection";
 import DTypography from "../containers/DTypography";
-import DError from "./DError";
+import DError from "./DControlError";
 
 /**
  * Renders standard <b>select</b> tag with <b>label</b>.<br>
@@ -179,8 +179,6 @@ export default {
 @import "../../assets/styles/mixins/typography";
 @import "../../assets/styles/mixins/controls";
 @import "../../assets/styles/mixins/transitions";
-// @import "../../assets/styles/vue-transitions";
-// @import "../../assets/styles/focus-visible";
 
 .control-group {
   display: flex;
