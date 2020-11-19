@@ -18,14 +18,12 @@
       </component>
     </div>
 
-    <transition name="control-error">
-      <DTypography v-if="error" :content="error" size="small" class="error" />
-    </transition>
+    <DError :text="error" />
   </div>
 </template>
 
 <script>
-import DTypography from "../containers/DTypography";
+import DError from "./DError";
 
 /**
  * The component renders as a <b>button</b>, <b>router-link</b> or <b>a</b> depending on props.<br>
@@ -33,7 +31,7 @@ import DTypography from "../containers/DTypography";
  * they will be pass to the tag automatically.<br>
  * May be in various sizes and have different corner roundness.
  *
- * @version 1.0.3
+ * @version 1.0.4
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -41,7 +39,7 @@ export default {
 
   inheritAttrs: false,
 
-  components: { DTypography },
+  components: { DError },
 
   props: {
     /**
@@ -189,13 +187,6 @@ export default {
       width: calc(100% + 2 * var(--outline-width) + 2px); // border
     }
   }
-}
-
-.error {
-  margin-top: var(--gap-base);
-  color: var(--color-danger);
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 
 .__primary {

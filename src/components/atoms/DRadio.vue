@@ -45,9 +45,7 @@
       <span class="outline" />
     </label>
 
-    <transition name="control-error">
-      <DTypography v-if="error" :content="error" size="small" class="error" />
-    </transition>
+    <DError :text="error" />
   </div>
 </template>
 
@@ -59,13 +57,14 @@ import uuid from "../../utils/uuid";
 import DIconRadioUnchecked from "../icons/DIconRadioUnchecked";
 import DIconRadioChecked from "../icons/DIconRadioChecked";
 import DTypography from "../containers/DTypography";
+import DError from "./DError";
 
 /**
  * The component renders <b>input</b> tag with <i>type="radio"</i> and custom icons.<br>
  * Feel free to use any attrs you expect with <b>input</b> tag with <i>type="radio"</i>,
  * they will be pass to the tag automatically.
  *
- * @version 1.0.1
+ * @version 1.0.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -74,6 +73,7 @@ export default {
   inheritAttrs: false,
 
   components: {
+    DError,
     DTypography,
     DIconRadioUnchecked,
     DIconRadioChecked
@@ -240,13 +240,6 @@ export default {
 .d-icon-radio-checked,
 .d-icon-radio-unchecked {
   @include transition-short;
-}
-
-.error {
-  margin-top: var(--gap-base);
-  color: var(--color-danger);
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 
 .button {
