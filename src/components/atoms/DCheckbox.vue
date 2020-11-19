@@ -137,7 +137,7 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/styles/mixins/transitions";
-@import "../../assets/styles/vue-transitions";
+// @import "../../assets/styles/vue-transitions";
 
 .control-group {
   position: relative;

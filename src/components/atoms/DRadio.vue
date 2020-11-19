@@ -157,7 +157,7 @@ export default {
 @import "../../assets/styles/mixins/transitions";
 @import "../../assets/styles/mixins/typography";
 @import "../../assets/styles/mixins/controls";
-@import "../../assets/styles/vue-transitions";
+// @import "../../assets/styles/vue-transitions";
 
 .d-radio {
   max-width: 100%;

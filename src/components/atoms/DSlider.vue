@@ -53,7 +53,7 @@ export default {
 
   inheritAttrs: false,
 
-  components: {DError, DTypography },
+  components: { DError, DTypography },
 
   props: {
     /**
@@ -120,7 +120,8 @@ export default {
 </style>
 
 <style scoped lang="scss">
-@import "../../assets/styles/vue-transitions";
+@import "../../assets/styles/mixins/transitions";
+// @import "../../assets/styles/vue-transitions";
 
 .control-group {
   display: flex;

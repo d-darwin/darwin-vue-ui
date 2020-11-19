@@ -40,7 +40,7 @@ export default {
 </style>
 
 <style scoped lang="scss">
-// @import "../../assets/styles/vue-transitions";
+@import "../../assets/styles/vue-transitions";
 
 .d-error {
   margin-top: var(--gap-base);
