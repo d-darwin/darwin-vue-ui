@@ -1,6 +1,6 @@
 @import "../tokens/outline";
 
-@mixin focus-visible-base {
+@mixin outline {
   // emulates outline property
   position: absolute;
   content: " ";

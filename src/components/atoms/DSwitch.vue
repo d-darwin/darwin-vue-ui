@@ -54,7 +54,7 @@ import DControlError from "./DControlError";
  * they will be pass to the tag automatically.<br>
  * If values prop defined the component will be rendered as toggle (slightly different appearance).
  *
- * @version 1.0.2
+ * @version 1.0.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -144,7 +144,7 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/styles/mixins/transitions";
-@import "../../assets/styles/mixins/focus-visible-base";
+@import "../../assets/styles/mixins/outline";
 
 .control-group {
   display: inline-flex;
@@ -178,7 +178,8 @@ export default {
   height: 0;
 
   &.focus-visible ~ .outline {
-    @include focus-visible-base;
+    @include outline;
+
     border-radius: calc(12px + var(--outline-width));
   }
 }

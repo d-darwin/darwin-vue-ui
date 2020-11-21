@@ -64,7 +64,7 @@ import DControlError from "./DControlError";
  * Feel free to use any attrs you expect with <b>input</b> tag with <i>type="radio"</i>,
  * they will be pass to the tag automatically.
  *
- * @version 1.0.2
+ * @version 1.0.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -157,18 +157,13 @@ export default {
 @import "../../assets/styles/mixins/transitions";
 @import "../../assets/styles/mixins/typography";
 @import "../../assets/styles/mixins/controls";
-// @import "../../assets/styles/vue-transitions";
-
-.d-radio {
-  max-width: 100%;
-}
+@import "../../assets/styles/mixins/outline";
 
 .control-group {
   position: relative;
   display: flex;
-  align-items: center;
-  width: auto;
-  max-width: 100%;
+  align-items: flex-start;
+  width: fit-content;
   cursor: pointer;
 }
 
@@ -206,19 +201,7 @@ export default {
   width: 0;
 
   &.focus-visible ~ .outline {
-    // emulates outline property
-    // TODO: make mixin ???
-    // TODO: include reset by default???
-    box-sizing: border-box;
-    position: absolute;
-    content: " ";
-    border: var(--outline-width) solid var(--outline-color);
-    z-index: -1;
-    top: calc(var(--outline-width) * -1);
-    right: calc(var(--outline-width) * -1);
-    left: calc(var(--outline-width) * -1);
-    bottom: calc(var(--outline-width) * -1);
-    width: calc(100% + 2 * var(--outline-width));
+    @include outline;
   }
 }
 

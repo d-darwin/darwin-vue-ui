@@ -31,7 +31,7 @@ import DControlError from "./DControlError";
  * they will be pass to the tag automatically.<br>
  * May be in various sizes and have different corner roundness.
  *
- * @version 1.0.4
+ * @version 1.0.5
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -113,7 +113,7 @@ export default {
 @import "../../assets/styles/mixins/controls";
 @import "../../assets/styles/mixins/typography";
 @import "../../assets/styles/mixins/transitions";
-@import "../../assets/styles/mixins/focus-visible-base";
+@import "../../assets/styles/mixins/outline";
 
 .control-group {
   position: relative;
@@ -171,7 +171,8 @@ export default {
 
   &.focus-visible {
     &:before {
-      @include focus-visible-base;
+      @include outline;
+
       margin: -1px; // border
       width: calc(100% + 2 * var(--outline-width) + 2px); // border
     }

@@ -53,7 +53,7 @@ import DControlError from "./DControlError";
  * May be in various sizes and have different corner roundness.<br>
  * Renders error string if any passed to a prop.
  *
- * @version 1.0.4
+ * @version 1.0.5
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -158,12 +158,12 @@ export default {
 @import "../../assets/styles/mixins/controls";
 @import "../../assets/styles/mixins/typography";
 @import "../../assets/styles/mixins/transitions";
+@import "../../assets/styles/mixins/outline";
 
 .control-group {
   display: flex;
   flex-direction: column;
   position: relative;
-  // max-width: 240px;
 }
 
 .label {
@@ -178,7 +178,6 @@ export default {
   // TODO: include reset by default???
   box-sizing: border-box;
   display: inline-block;
-  // min-width: 240px;
   width: 100%;
   border: 1px solid var(--color-separator);
   color: var(--color-text);
@@ -187,19 +186,9 @@ export default {
   outline: none;
 
   &.focus-visible ~ .outline {
-    // emulates outline property
-    // TODO: make mixin ???
-    // TODO: include reset by default???
-    box-sizing: border-box;
-    position: absolute;
-    content: " ";
-    border: var(--outline-width) solid var(--outline-color);
-    z-index: -1;
-    // top: calc(var(--outline-width) * -1);
-    right: calc(var(--outline-width) * -1);
-    left: calc(var(--outline-width) * -1);
-    bottom: calc(var(--outline-width) * -1);
-    width: calc(100% + 2 * var(--outline-width));
+    @include outline;
+
+    top: unset;
   }
 }
 
