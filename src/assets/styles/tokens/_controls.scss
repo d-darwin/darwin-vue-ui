@@ -4,6 +4,8 @@ $large-control-height: 48px;
 $medium-control-height: 38px;
 $small-control-height: 28px;
 
+$control-min-width: 240px;
+
 $border-radius: 4px;
 
 $button-font-weight: 500;
@@ -16,6 +18,8 @@ $button-font-weight: 500;
   --large-control-height: #{$large-control-height};
   --medium-control-height: #{$medium-control-height};
   --small-control-height: #{$small-control-height};
+
+  --control-min-width: #{$control-min-width};
 
   --border-radius: #{$border-radius};
 

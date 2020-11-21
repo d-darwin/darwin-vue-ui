@@ -160,6 +160,11 @@ export default {
 @import "../../assets/styles/mixins/transitions";
 @import "../../assets/styles/mixins/outline";
 
+.d-input {
+  width: fit-content;
+  min-width: var(--control-min-width);
+}
+
 .control-group {
   display: flex;
   flex-direction: column;

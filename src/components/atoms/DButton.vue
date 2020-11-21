@@ -135,8 +135,6 @@ export default {
   white-space: nowrap;
   text-decoration: none;
 
-  outline: none;
-
   > * + * {
     margin-left: 6px;
   }
@@ -168,6 +166,8 @@ export default {
   &.__disabled {
     cursor: not-allowed;
   }
+
+  outline: none;
 
   &.focus-visible {
     &:before {
