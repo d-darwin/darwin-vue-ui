@@ -186,7 +186,7 @@ export default {
 
   outline: none;
 
-  &.focus-visible + .outline {
+  &.focus-visible ~ .outline {
     // emulates outline property
     // TODO: make mixin ???
     // TODO: include reset by default???
@@ -254,7 +254,7 @@ export default {
 
     padding: 12px 0 12px 15px;
 
-    &.focus-visible + .outline {
+    &.focus-visible ~ .outline {
       height: calc(var(--large-control-height) + 2 * var(--outline-width));
     }
   }
@@ -272,7 +272,7 @@ export default {
 
     padding: 7px 0 7px 11px;
 
-    &.focus-visible + .outline {
+    &.focus-visible ~ .outline {
       height: calc(var(--medium-control-height) + 2 * var(--outline-width));
     }
   }

@@ -179,7 +179,7 @@ export default {
   align-items: center;
 
   &.__primary {
-    color: var(--primary);
+    color: var(--color-primary);
   }
 
   &.__accent {
@@ -294,13 +294,13 @@ input:checked {
     color: var(--white);
 
     &.__primary {
-      background: var(--primary);
-      border-color: var(--primary);
+      background: var(--color-primary);
+      border-color: var(--color-primary);
 
       &:hover,
       &:active {
-        background: var(--primary-active);
-        border-color: var(--primary-active);
+        background: var(--color-primary-active);
+        border-color: var(--color-primary-active);
       }
     }
 
@@ -327,8 +327,8 @@ input:checked {
     }
 
     &.__disabled {
-      background: var(--primary-disabled);
-      border-color: var(--primary-disabled);
+      background: var(--color-primary-disabled);
+      border-color: var(--color-primary-disabled);
     }
   }
 }

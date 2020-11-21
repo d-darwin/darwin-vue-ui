@@ -1,0 +1,16 @@
+@import "../tokens/outline";
+
+@mixin focus-visible-base {
+  // emulates outline property
+  position: absolute;
+  content: " ";
+  border: var(--outline-width) solid var(--outline-color);
+  z-index: -1;
+  width: calc(100% + 2 * var(--outline-width));
+  top: calc(var(--outline-width) * -1);
+  left: calc(var(--outline-width) * -1);
+  right: calc(var(--outline-width) * -1);
+  bottom: calc(var(--outline-width) * -1);
+  // TODO: include reset style by default???
+  box-sizing: border-box;
+}

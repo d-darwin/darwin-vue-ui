@@ -266,7 +266,7 @@ export default {
 
   outline: none;
 
-  &.focus-visible + .outline {
+  &.focus-visible ~ .outline {
     // emulates outline property
     // TODO: make mixin ???
     // TODO: include reset by default???

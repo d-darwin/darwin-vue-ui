@@ -54,7 +54,7 @@ import DControlError from "./DControlError";
  * they will be pass to the tag automatically.<br>
  * If values prop defined the component will be rendered as toggle (slightly different appearance).
  *
- * @version 1.0.1
+ * @version 1.0.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -144,6 +144,7 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/styles/mixins/transitions";
+@import "../../assets/styles/mixins/focus-visible-base";
 
 .control-group {
   display: inline-flex;
@@ -171,29 +172,13 @@ export default {
   height: 24px;
 }
 
-.outline {
-  pointer-events: none;
-}
-
 .input {
   opacity: 0;
   width: 0;
   height: 0;
 
-  &.focus-visible + .slider + .outline {
-    // emulates outline property
-    // TODO: make mixin ???
-    // TODO: include reset by default???
-    box-sizing: border-box;
-    position: absolute;
-    content: " ";
-    border: var(--outline-width) solid var(--outline-color);
-    z-index: -1;
-    top: calc(var(--outline-width) * -1);
-    right: calc(var(--outline-width) * -1);
-    left: calc(var(--outline-width) * -1);
-    bottom: calc(var(--outline-width) * -1);
-    width: calc(100% + 2 * var(--outline-width));
+  &.focus-visible ~ .outline {
+    @include focus-visible-base;
     border-radius: calc(12px + var(--outline-width));
   }
 }
@@ -218,7 +203,7 @@ export default {
 
   &.__toggle {
     &.__primary {
-      background-color: var(--primary);
+      background-color: var(--color-primary);
     }
 
     &.__accent {
@@ -245,13 +230,13 @@ export default {
 }
 
 .input:checked {
-  & + .slider {
+  & ~ .slider {
     &:before {
       transform: translateX(20px);
     }
 
     &.__primary {
-      background-color: var(--primary);
+      background-color: var(--color-primary);
     }
 
     &.__accent {
