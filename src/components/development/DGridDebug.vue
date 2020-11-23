@@ -1,5 +1,17 @@
+<template>
+  <DButton
+    :icon-only="true"
+    roundness="boxed"
+    class="d-grid-debug"
+    @click="toggleGridVisualization"
+  >
+    <DIconColumns />
+  </DButton>
+</template>
+
 <script>
-import { h } from "vue";
+import DIconColumns from "../icons/DIconColumns";
+import DButton from "../atoms/DButton";
 
 /**
  * This development component intents to help while positioning elements inside <b>DGrid</b> component.</br>
@@ -10,7 +22,7 @@ import { h } from "vue";
  */
 export default {
   name: "DGridDebug",
-
+  components: { DButton, DIconColumns },
   data() {
     return {
       keydownEventListener: null
@@ -21,8 +33,7 @@ export default {
     // hold pointer to the event listener to release it while unmount
     this.keydownEventListener = e => {
       if (e.ctrlKey && e.altKey && e.key === "d") {
-        const body = document.getElementsByTagName("body")[0];
-        body.classList.toggle("__debug");
+        this.toggleGridVisualization();
       }
     };
     window.addEventListener("keydown", this.keydownEventListener);
@@ -33,8 +44,11 @@ export default {
     window.removeEventListener("keydown", this.keydownEventListener);
   },
 
-  render() {
-    return h("div");
+  methods: {
+    toggleGridVisualization() {
+      const body = document.getElementsByTagName("body")[0];
+      body.classList.toggle("__debug");
+    }
   }
 };
 </script>
@@ -78,5 +92,31 @@ body.__debug::before {
       calc(var(--grid-column-width) + var(--grid-gutter) / 2),
     var(--grid-gutter-color) calc(var(--grid-column-width) + var(--grid-gutter))
   );
+}
+</style>
+
+<style scoped lang="scss">
+@import "../../assets/styles/mixins/transitions";
+@import "../../assets/styles/tokens/gaps";
+@import "../../assets/styles/tokens/colors";
+
+.d-grid-debug {
+  @include transition-short;
+
+  color: var(--white);
+  bottom: $gap-3x;
+  left: $gap-4x;
+  position: fixed;
+  opacity: 0.3;
+  z-index: 9999;
+}
+
+.d-grid-debug:hover {
+  opacity: 1;
+}
+
+.d-icon-columns {
+  min-height: 24px;
+  min-width: 24px;
 }
 </style>

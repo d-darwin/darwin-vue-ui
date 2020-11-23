@@ -1,5 +1,5 @@
 <template>
-  <div class="d-button">
+  <div :class="$attrs.class" class="d-button">
     <div class="control-group">
       <component
         :is="el"
