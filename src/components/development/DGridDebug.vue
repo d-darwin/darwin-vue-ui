@@ -105,7 +105,7 @@ body.__debug::before {
 
   color: var(--white);
   bottom: $gap-3x;
-  left: $gap-4x;
+  left: $gap-3x;
   position: fixed;
   opacity: 0.3;
   z-index: 9999;

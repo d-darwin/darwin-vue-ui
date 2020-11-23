@@ -1,5 +1,8 @@
 <template>
-  <div :class="$attrs.class" :class="{ __disabled: $attrs.disabled !== undefined }" class="d-switch">
+  <div
+    :class="{ ...$attrs.class, __disabled: $attrs.disabled !== undefined }"
+    class="d-switch"
+  >
     <div class="control-group">
       <DTypography
         v-if="labels && labels.falsy"
