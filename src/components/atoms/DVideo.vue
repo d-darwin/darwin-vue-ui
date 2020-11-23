@@ -1,5 +1,5 @@
 <template>
-  <div class="d-video">
+  <div :class="$attrs.class" class="d-video">
     <component
       :is="containerTag"
       :style="videoContainerStyle"

@@ -1,5 +1,5 @@
 <template>
-  <div class="d-picture">
+  <div :class="$attrs.class" class="d-picture">
     <component
       :is="tag"
       :style="pictureStyle"

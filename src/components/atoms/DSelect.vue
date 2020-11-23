@@ -1,5 +1,5 @@
 <template>
-  <div class="d-select">
+  <div :class="$attrs.class" class="d-select">
     <div
       :class="{
         [`__${size}`]: size,

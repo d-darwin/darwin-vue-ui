@@ -2,6 +2,7 @@
   <component
     :is="el"
     :class="{
+      ...$attrs.class,
       [`__${size}`]: size,
       [`__${type}`]: type
     }"

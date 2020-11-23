@@ -1,5 +1,5 @@
 <template>
-  <div class="d-checkbox">
+  <div :class="$attrs.class" class="d-checkbox">
     <label :for="inputId" class="control-group">
       <input
         :id="inputId"

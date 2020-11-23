@@ -1,5 +1,5 @@
 <template>
-  <div class="d-input">
+  <div :class="$attrs.class" class="d-input">
     <div
       :class="{
         [`__${size}`]: size,
