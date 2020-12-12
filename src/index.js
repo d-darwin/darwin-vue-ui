@@ -20,6 +20,8 @@ import DIconUnchecked from "./components/icons/DIconUnchecked";
 import DIconImage from "./components/icons/DIconImage";
 import DIconVideo from "./components/icons/DIconVideo";
 import DIconColumns from "./components/icons/DIconColumns";
+import DIconPaperclip from "./components/icons/DIconPaperclip";
+import DIconFile from "./components/icons/DIconFile";
 
 /** atoms **/
 import DCopyright from "./components/atoms/DCopyright";
@@ -35,6 +37,7 @@ import DLoader from "./components/atoms/DLoader";
 import DPicture from "./components/atoms/DPicture";
 import DVideo from "./components/atoms/DVideo";
 import DError from "./components/atoms/DControlError";
+import DFiles from "./components/atoms/DFiles";
 
 /** molecules **/
 
@@ -59,6 +62,8 @@ export {
   DIconImage,
   DIconVideo,
   DIconColumns,
+  DIconPaperclip,
+  DIconFile,
   /** atoms **/
   DCopyright,
   DInput,
@@ -72,7 +77,8 @@ export {
   DLoader,
   DPicture,
   DVideo,
-  DError
+  DError,
+  DFiles
   /** molecules **/
 
   /** organisms **/

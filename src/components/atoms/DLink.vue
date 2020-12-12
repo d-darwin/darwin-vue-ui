@@ -86,6 +86,7 @@ export default {
       );
     },
 
+    // TODO: use attrs???
     rel() {
       return this.$attrs.rel
         ? this.$attrs.rel
@@ -94,6 +95,7 @@ export default {
         : "";
     },
 
+    // TODO: use attrs???
     target() {
       return this.$attrs.target
         ? this.$attrs.target

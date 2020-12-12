@@ -128,7 +128,7 @@ export default {
   data() {
     return {
       // TODO: move al inputId logic to mixin or composition API ???
-      inputId: this.id ? this.id : uuid()
+      inputId: this.id || uuid()
     };
   },
 

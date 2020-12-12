@@ -88,7 +88,7 @@ $color-background: $gray-100;
 $color-separator: $gray-200;
 
 $color-danger: $red;
-$link: $blue;
+$color-link: $blue;
 
 /**
  * Map to CSS custom properties
@@ -174,7 +174,7 @@ $link: $blue;
   --color-separator: var(--gray-200);
 
   --color-danger: var(--red);
-  --link: var(--blue);
+  --color-link: var(--blue);
 }
 
 // the :export directive is the magic sauce for webpack.
@@ -260,5 +260,5 @@ $link: $blue;
   color-separator: $color-separator;
 
   color-danger: $color-danger;
-  link: $link;
+  color-link: $color-link;
 }

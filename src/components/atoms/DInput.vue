@@ -120,7 +120,8 @@ export default {
 
   data() {
     return {
-      inputId: this.id ? this.id : uuid()
+      // TODO: move al inputId logic to mixin or composition API ???
+      inputId: this.id || uuid()
     };
   },
 
