@@ -1,26 +1,38 @@
 <template>
-  <div class="d-files">
-    <label :for="inputId" class="label">
-      <DLink type="secondary" href="#" @click.prevent="$refs.input.click()">
+  <div
+    :class="{ ...$attrs.class, __disabled: $attrs.disabled !== undefined }"
+    class="d-files"
+  >
+    <DLink
+      :href="$attrs.disabled !== undefined ? null : '#'"
+      type="secondary"
+      @click.prevent="$refs.input.click()"
+    >
+      <label :for="inputId" :style="labelStyle" class="label">
         <DIconPaperclip v-if="!$slots['icon-attach']" />
         <!-- @slot You can replace default attach icon by passing your own here. -->
         <slot v-else name="icon-attach" />
 
         <DTypography v-if="label" :content="label" />
-      </DLink>
-    </label>
+      </label>
+    </DLink>
 
     <DControlError :text="error" />
 
-    <transition-group tag="ul" name="list" class="list">
+    <transition-group :style="listStyle" tag="ul" name="list" class="list">
       <li
         v-for="(file, index) in uploadedFiles"
         :key="file.name"
+        :style="listItemStyle"
         class="list-item"
       >
         <DTypography :content="file.name" tag="span" />
 
-        <DLink type="secondary" href="#" @click.prevent="removeFromList(index)">
+        <DLink
+          :href="$attrs.disabled !== undefined ? null : '#'"
+          type="secondary"
+          @click.prevent="removeFromList(index)"
+        >
           <DIconCloseCircle v-if="!$slots['icon-remove']" />
           <!-- @slot You can replace default remove icon by passing your own here. -->
           <slot v-else name="icon-remove" />
@@ -98,6 +110,30 @@ export default {
     },
 
     /**
+     * Pass any style object to <i>.label</i> if needed.
+     */
+    labelStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Pass any style object to <i>.list</i> if needed.
+     */
+    listStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Pass any style object to <i>.list-item</i> if needed.
+     */
+    listItemStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
      * If not empty renders as an error string below the <b>input</b> tag.
      */
     error: {
@@ -142,9 +178,10 @@ export default {
     },
 
     removeFromList(index) {
-      // both arrays have the same index
-      this.uploadedFiles.splice(index, 1);
-      // TODO: emit change event with files list
+      if (!this.disabled) {
+        this.uploadedFiles.splice(index, 1);
+        // TODO: emit change event with files list
+      }
     }
   }
 };
@@ -159,6 +196,15 @@ export default {
 <style scoped lang="scss">
 @import "../../assets/styles/mixins/links";
 @import "../../assets/styles/vue-transition-list";
+
+.d-files {
+  &.__disabled {
+    .d-link {
+      cursor: not-allowed;
+      color: var(--color-primary-disabled);
+    }
+  }
+}
 
 .control-form,
 .file-input-fake {
