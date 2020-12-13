@@ -50,8 +50,8 @@
 </template>
 
 <script>
-/** utils **/
-import uuid from "../../utils/uuid";
+/** use **/
+import useInputId from "../../use/useInputId";
 
 /** components **/
 import DIconRadioUnchecked from "../icons/DIconRadioUnchecked";
@@ -125,11 +125,8 @@ export default {
     }
   },
 
-  data() {
-    return {
-      // TODO: move al inputId logic to mixin or composition API ???
-      inputId: this.id || uuid()
-    };
+  setup(props) {
+    return { ...useInputId(props) };
   },
 
   methods: {
