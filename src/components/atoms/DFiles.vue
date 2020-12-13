@@ -1,48 +1,43 @@
 <template>
   <div class="d-files">
-    <!--Form is used just to reset input-->
-    <form ref="form" class="control-form">
-      <input
-        :id="inputId + '_file_input'"
-        :multiple="multiple"
-        type="file"
-        class="file-input-fake"
-        @change="addToList($event)"
-      />
-    </form>
-
-    <label :for="inputId + '_file_input'">
-      <span class="attach-file-wrap">
+    <DLink type="secondary">
+      <label :for="inputId" class="label">
         <DIconPaperclip v-if="!$slots['icon-attach']" />
         <!-- @slot You can replace default attach icon by passing your own here. -->
         <slot v-else name="icon-attach" />
+        <!--TODO: add configurable size???-->
+        <DTypography v-if="label" :content="label" />
+      </label>
+    </DLink>
 
-        <span class="attach-file-text" v-text="attachText" />
-      </span>
-    </label>
-
-    <ul class="files-list">
+    <transition-group tag="ul" name="list" class="list">
       <li
         v-for="(file, index) in uploadedFiles"
         :key="file.name"
-        class="file-item"
+        class="list-item"
       >
-        <DIconFile v-if="!$slots['icon-file']" />
-        <!-- @slot You can replace default file icon by passing your own here. -->
-        <slot v-else name="icon-file" />
+        <DTypography :content="file.name" tag="span" />
 
-        <div>
-          <!--TODO: use DTypography-->
-          <span class="file-item-name" v-text="file.name" />
-
-          <span
-            class="file-item-remove small-text"
-            @click="removeFromList(index)"
-            v-text="removeText"
-          />
-        </div>
+        <DLink type="secondary" @click="removeFromList(index)">
+          <DIconCloseCircle v-if="!$slots['icon-remove']" />
+          <!-- @slot You can replace default remove icon by passing your own here. -->
+          <slot v-else name="icon-remove" />
+        </DLink>
       </li>
-    </ul>
+    </transition-group>
+
+    <!--Form is used just to reset input-->
+    <form ref="form" class="control-form">
+      <input
+        :id="inputId"
+        v-bind="{
+          ...$attrs,
+          onChange: addToList
+        }"
+        type="file"
+        class="file-input-fake"
+      />
+    </form>
   </div>
 </template>
 
@@ -52,11 +47,15 @@ import uuid from "../../utils/uuid";
 
 /** components **/
 import DIconPaperclip from "../icons/DIconPaperclip";
-import DIconFile from "../icons/DIconFile";
+import DIconCloseCircle from "../icons/DIconCloseCircle";
+import DTypography from "../containers/DTypography";
+import DLink from "../atoms/DLink";
 
 /**
  * This is a reusable file input component.
  * Prevents duplicates uploading and allows file deletion one by one.
+ * Feel free to use any attrs you expect with file <b>input</b> tag,
+ * they will be pass to the tag automatically.<br>
  * While submitted uploadedFiles array need to be processed with FormData().
  *
  * @version 1.0.0
@@ -68,7 +67,7 @@ export default {
 
   inheritAttrs: false,
 
-  components: { DIconPaperclip, DIconFile },
+  components: { DLink, DTypography, DIconPaperclip, DIconCloseCircle },
 
   props: {
     /**
@@ -81,28 +80,11 @@ export default {
     },
 
     /**
-     * TODO: use attrs
-     * If multiple file selection allows
+     * Defines content of the <b>label</b> tag.
      */
-    multiple: {
-      type: Boolean,
-      default: true
-    },
-
-    /**
-     * Text for add files area
-     */
-    attachText: {
+    label: {
       type: String,
-      default: "Attach file(s)"
-    },
-
-    /**
-     * Text for remove file link
-     */
-    removeText: {
-      type: String,
-      default: "Remove file"
+      default: ""
     }
   },
 
@@ -110,8 +92,7 @@ export default {
     return {
       // TODO: move al inputId logic to mixin or composition API ???
       inputId: this.id || uuid(),
-      uploadedFiles: [],
-      filenames: [] // just for quick check for duplicates
+      uploadedFiles: []
     };
   },
 
@@ -131,21 +112,21 @@ export default {
     addToList(event) {
       for (let i = 0; i < event.target.files.length; i++) {
         const newFile = event.target.files[i];
-        if (!this.filenames.includes(newFile.name)) {
+        if (!this.uploadedFiles.find(f => f.name === newFile.name)) {
           // the old one file with the same name stays at uploadedFiles
           this.uploadedFiles.push(event.target.files[i]);
-          this.filenames.push(newFile.name);
         }
       }
       // Input is used only to collect uploadedFiles array
       // This array is needed to be processed via FormData() while uploading
       this.$refs.form.reset();
+      // TODO: emit change event with files list
     },
 
     removeFromList(index) {
       // both arrays have the same index
       this.uploadedFiles.splice(index, 1);
-      this.filenames.splice(index, 1);
+      // TODO: emit change event with files list
     }
   }
 };
@@ -159,6 +140,7 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/styles/mixins/links";
+@import "../../assets/styles/vue-transition-list";
 
 .control-form,
 .file-input-fake {
@@ -167,43 +149,38 @@ export default {
   width: 0;
 }
 
-.attach-file-wrap {
+.d-icon-close-circle {
+  min-width: 1em;
+  min-height: 1em;
+  width: 1em;
+  height: 1em;
+}
+
+.label {
   display: flex;
   align-items: center;
   cursor: pointer;
+
+  .d-typography {
+    margin-left: var(--gap-2x);
+  }
 }
 
-.attach-file-text {
-  // TODO: use gaps
-  margin-left: 8px;
+.list {
+  margin-top: var(--gap-2x);
 }
 
-.files-list {
-  // TODO: use gaps
-  margin-top: 8px;
-}
+.list-item {
+  position: relative;
 
-.file-item {
-  display: flex;
-  align-items: flex-start;
-}
+  & + & {
+    margin-top: var(--gap-base);
+  }
 
-.file-item + .file-item {
-  // TODO: use gaps
-  margin-top: 8px;
-}
-
-.file-item-name {
-  // TODO: use gaps
-  margin-left: 8px;
-}
-
-.file-item-remove {
-  @include link-primary;
-
-  cursor: pointer;
-  // TODO: use gaps
-  padding-top: 4px;
-  margin-left: 16px;
+  .d-link {
+    margin-left: var(--gap-2x);
+    position: absolute;
+    bottom: 4px;
+  }
 }
 </style>

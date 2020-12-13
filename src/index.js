@@ -21,7 +21,7 @@ import DIconImage from "./components/icons/DIconImage";
 import DIconVideo from "./components/icons/DIconVideo";
 import DIconColumns from "./components/icons/DIconColumns";
 import DIconPaperclip from "./components/icons/DIconPaperclip";
-import DIconFile from "./components/icons/DIconFile";
+import DIconCloseCircle from "./components/icons/DIconCloseCircle";
 
 /** atoms **/
 import DCopyright from "./components/atoms/DCopyright";
@@ -63,7 +63,7 @@ export {
   DIconVideo,
   DIconColumns,
   DIconPaperclip,
-  DIconFile,
+  DIconCloseCircle,
   /** atoms **/
   DCopyright,
   DInput,

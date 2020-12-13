@@ -1,6 +1,6 @@
 <template>
   <svg
-    class="icon"
+    class="d-icon-close-circle"
     width="24"
     height="24"
     viewBox="0 0 24 24"
@@ -36,12 +36,12 @@
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
-  name: 'IconCloseCircle',
-}
+  name: "DIconCloseCircle"
+};
 </script>
 
 <style scoped lang="scss">
-.icon {
+.d-icon-close-circle {
   path {
     stroke: currentColor;
   }

@@ -1,0 +1,18 @@
+@import "./mixins/transitions";
+
+.list-enter,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(32px);
+}
+
+.list-enter-to,
+.list-leave {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.list-enter-active,
+.list-leave-active {
+  @include transition-short;
+}
