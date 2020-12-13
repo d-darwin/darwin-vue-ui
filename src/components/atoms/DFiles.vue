@@ -155,10 +155,10 @@ export default {
   watch: {
     uploadedFiles() {
       /**
-       * File list was changed. Payload contains files array to be uploaded and component uid.
+       * File list was changed. Payload contains files array to be uploaded and component id.
        *
        * @event changed
-       * @type {Array, Number}
+       * @type {Array, String}
        */
       this.$emit("changed", this.uploadedFiles, this.inputId);
     }

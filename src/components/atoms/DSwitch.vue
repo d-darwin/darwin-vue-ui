@@ -120,17 +120,17 @@ export default {
   methods: {
     emitChange(event) {
       /**
-       * Checked attr of the <b>input</b> tag updated. Contains new <i>value</i>.<br>
+       * Checked attr of the <b>input</b> tag updated. Contains new <i>value</i> and component id.<br>
        * Use @update:value="fn" to catch this event.
        *
        * @event update:value
-       * @type {Boolean | String | Number}
+       * @type {Boolean | String | Number, String}
        */
       const value = event.target.checked
         ? (this.values && this.values.truthy) || true
         : (this.values && this.values.falsy) || false;
 
-      this.$emit("update:value", value);
+      this.$emit("update:value", value, this.inputId);
     }
   }
 };

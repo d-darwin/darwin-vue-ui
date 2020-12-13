@@ -100,12 +100,12 @@ export default {
     emitChange(e) {
       /**
        * Selected <b>option</b> was changed.<br>
-       * Events contain <i>value</i> of the selected <i>option</i>.
+       * Events contain <i>value</i> of the selected <i>option</i> and component id.
        *
        * @event update:value
-       * @type {String}
+       * @type {String, String}
        */
-      this.$emit("update:value", e.target.value);
+      this.$emit("update:value", e.target.value, this.inputId);
     }
   }
 };

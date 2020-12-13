@@ -132,13 +132,13 @@ export default {
   methods: {
     emitChange(event) {
       /**
-       * Component was clicked. Contains value of the <b>input</b>.<br>
+       * Component was clicked. Contains value of the <b>input</b> and component id.<br>
        * Use @update:value="fn" to catch this event.
        *
        * @event update:value
-       * @type {Boolean}
+       * @type {Boolean, String}
        */
-      this.$emit("update:value", event.target.value);
+      this.$emit("update:value", event.target.value, this.inputId);
     }
   }
 };

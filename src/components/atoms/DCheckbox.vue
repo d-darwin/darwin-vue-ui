@@ -115,13 +115,13 @@ export default {
   methods: {
     emitChange(event) {
       /**
-       * Checked attr of the <b>input</b> tag updated. Contains new value of <i>checked</i> prop.<br>
+       * Checked attr of the <b>input</b> tag updated. Contains new value of <i>checked</i> prop and component id.<br>
        * Use @update:value="fn" to catch this event.
        *
        * @event update:value
-       * @type {Boolean}
+       * @type {Boolean, String}
        */
-      this.$emit("update:value", event.target.checked);
+      this.$emit("update:value", event.target.checked, this.inputId);
     }
   }
 };

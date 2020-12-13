@@ -125,13 +125,13 @@ export default {
   methods: {
     emitValue(event) {
       /**
-       * Value of the <b>input</b> tag updated. Contains new <i>value</i>.<br>
+       * Value of the <b>input</b> tag updated. Contains new <i>value</i> and component id.<br>
        * Use @update:value="fn" to catch this event.
        *
        * @event update:value
-       * @type {String}
+       * @type {String, String}
        */
-      this.$emit("update:value", event.target.value);
+      this.$emit("update:value", event.target.value, this.inputId);
     },
 
     emitSubmit() {
