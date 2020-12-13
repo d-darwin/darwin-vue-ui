@@ -57,8 +57,8 @@
 </template>
 
 <script>
-/** utils **/
-import uuid from "../../utils/uuid";
+/** use **/
+import useInputId from "../../use/useInputId";
 
 /** components **/
 import DIconPaperclip from "../icons/DIconPaperclip";
@@ -142,10 +142,12 @@ export default {
     }
   },
 
+  setup(props) {
+    return { ...useInputId(props) };
+  },
+
   data() {
     return {
-      // TODO: move al inputId logic to mixin or composition API ???
-      inputId: this.id || uuid(),
       uploadedFiles: []
     };
   },
@@ -158,7 +160,7 @@ export default {
        * @event changed
        * @type {Array, Number}
        */
-      this.$emit("changed", this.uploadedFiles, this.id);
+      this.$emit("changed", this.uploadedFiles, this.inputId);
     }
   },
 
@@ -174,13 +176,11 @@ export default {
       // Input is used only to collect uploadedFiles array
       // This array is needed to be processed via FormData() while uploading
       this.$refs.form.reset();
-      // TODO: emit change event with files list
     },
 
     removeFromList(index) {
       if (!this.disabled) {
         this.uploadedFiles.splice(index, 1);
-        // TODO: emit change event with files list
       }
     }
   }
