@@ -1,14 +1,14 @@
 <template>
   <div class="d-files">
-    <DLink type="secondary">
-      <label :for="inputId" class="label">
+    <label :for="inputId" class="label">
+      <DLink type="secondary" href="#" @click.prevent="$refs.input.click()">
         <DIconPaperclip v-if="!$slots['icon-attach']" />
         <!-- @slot You can replace default attach icon by passing your own here. -->
         <slot v-else name="icon-attach" />
         <!--TODO: add configurable size???-->
         <DTypography v-if="label" :content="label" />
-      </label>
-    </DLink>
+      </DLink>
+    </label>
 
     <transition-group tag="ul" name="list" class="list">
       <li
@@ -18,7 +18,7 @@
       >
         <DTypography :content="file.name" tag="span" />
 
-        <DLink type="secondary" @click="removeFromList(index)">
+        <DLink type="secondary" href="#" @click.prevent="removeFromList(index)">
           <DIconCloseCircle v-if="!$slots['icon-remove']" />
           <!-- @slot You can replace default remove icon by passing your own here. -->
           <slot v-else name="icon-remove" />
@@ -30,6 +30,7 @@
     <form ref="form" class="control-form">
       <input
         :id="inputId"
+        ref="input"
         v-bind="{
           ...$attrs,
           onChange: addToList
