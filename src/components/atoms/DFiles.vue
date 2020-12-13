@@ -5,10 +5,12 @@
         <DIconPaperclip v-if="!$slots['icon-attach']" />
         <!-- @slot You can replace default attach icon by passing your own here. -->
         <slot v-else name="icon-attach" />
-        <!--TODO: add configurable size???-->
+
         <DTypography v-if="label" :content="label" />
       </DLink>
     </label>
+
+    <DControlError :text="error" />
 
     <transition-group tag="ul" name="list" class="list">
       <li
@@ -51,6 +53,7 @@ import DIconPaperclip from "../icons/DIconPaperclip";
 import DIconCloseCircle from "../icons/DIconCloseCircle";
 import DTypography from "../containers/DTypography";
 import DLink from "../atoms/DLink";
+import DControlError from "../atoms/DControlError";
 
 /**
  * This is a reusable file input component.
@@ -68,7 +71,13 @@ export default {
 
   inheritAttrs: false,
 
-  components: { DLink, DTypography, DIconPaperclip, DIconCloseCircle },
+  components: {
+    DControlError,
+    DLink,
+    DTypography,
+    DIconPaperclip,
+    DIconCloseCircle
+  },
 
   props: {
     /**
@@ -84,6 +93,14 @@ export default {
      * Defines content of the <b>label</b> tag.
      */
     label: {
+      type: String,
+      default: ""
+    },
+
+    /**
+     * If not empty renders as an error string below the <b>input</b> tag.
+     */
+    error: {
       type: String,
       default: ""
     }
