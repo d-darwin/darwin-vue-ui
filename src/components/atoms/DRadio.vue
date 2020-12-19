@@ -136,7 +136,7 @@ export default {
        * Use @update:value="fn" to catch this event.
        *
        * @event update:value
-       * @type {Boolean, String}
+       * @type {{Boolean, String}}
        */
       this.$emit("update:value", {
         value: event.target.value,

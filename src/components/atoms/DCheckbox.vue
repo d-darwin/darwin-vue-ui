@@ -12,6 +12,7 @@
       />
 
       <span
+        :style="markStyle"
         :class="{
           [`__${color}`]: color,
           __disabled: $attrs.disabled !== undefined
@@ -29,7 +30,12 @@
 
       <span class="outline" />
 
-      <DTypography class="label" :size="size" :content="label" />
+      <DTypography
+        :size="size"
+        :style="labelStyle"
+        :content="label"
+        class="label"
+      />
     </label>
 
     <DControlError :text="error" />
@@ -82,7 +88,23 @@ export default {
     },
 
     /**
-     * Defines vertical size of the <b>input</b> tag.<br>
+     * Pass any style object to <i>.mark</i> if needed.
+     */
+    markStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Pass any style object to <i>.label</i> if needed.
+     */
+    labelStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Defines DTypography size.<br>
      * Takes values: 'large', 'medium'.
      */
     size: {
@@ -116,11 +138,11 @@ export default {
     emitChange(event) {
       /**
        * Checked attr of the <b>input</b> tag updated.
-       * Contains new value of <i>checked</i> prop and component id.<br>
+       * Contains new value of <i>checked</i> and <i>value</i> props, and component id.<br>
        * Use @update:value="fn" to catch this event.
        *
        * @event update:value
-       * @type {Boolean, String, String}
+       * @type {{Boolean, String, String}}
        */
       this.$emit("update:value", {
         checked: event.target.checked,

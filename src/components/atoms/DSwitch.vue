@@ -124,7 +124,7 @@ export default {
        * Use @update:value="fn" to catch this event.
        *
        * @event update:value
-       * @type {Boolean | String | Number, String}
+       * @type {{Boolean | String | Number, String}}
        */
       const value = event.target.checked
         ? (this.values && this.values.truthy) || true
