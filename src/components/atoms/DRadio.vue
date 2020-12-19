@@ -41,9 +41,11 @@
         />
       </template>
 
+      <!--TODO: use DButtons-->
       <span
         v-if="type === 'button'"
         :class="{ [`__${color}`]: color }"
+        :style="buttonStyle"
         class="button __smooth"
         v-text="label"
       />
@@ -123,6 +125,14 @@ export default {
     },
 
     /**
+     * Pass any style object to <i>.mark</i> if needed.
+     */
+    buttonStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
      * Defines content of the <b>label</b> tag.
      */
     label: {
@@ -164,7 +174,8 @@ export default {
   methods: {
     emitChange(event) {
       /**
-       * Component was clicked. Contains value of the <b>input</b> and component id.<br>
+       * Checked attr of the <b>input</b> tag updated.
+       * Contains new value of <i>checked</i>, <i>value</i> attrs and component id.<br>
        * Use @update:value="fn" to catch this event.
        *
        * @event update:value
@@ -320,7 +331,7 @@ input:checked {
       }
     }
 
-    &.__color-accent {
+    &.__accent {
       background: var(--color-accent);
       border-color: var(--color-accent);
 

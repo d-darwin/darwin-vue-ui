@@ -138,7 +138,7 @@ export default {
     emitChange(event) {
       /**
        * Checked attr of the <b>input</b> tag updated.
-       * Contains new value of <i>checked</i> and <i>value</i> props, and component id.<br>
+       * Contains new value of <i>checked</i>, <i>value</i> attrs and component id.<br>
        * Use @update:value="fn" to catch this event.
        *
        * @event update:value

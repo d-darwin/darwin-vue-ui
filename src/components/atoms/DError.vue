@@ -1,6 +1,12 @@
 <template>
   <transition name="control-error">
-    <DTypography v-if="text" :content="text" size="small" class="d-error" />
+    <DTypography
+      v-if="text"
+      :class="{ ...$attrs.class }"
+      :content="text"
+      size="small"
+      class="d-error"
+    />
   </transition>
 </template>
 
@@ -16,6 +22,8 @@ import DTypography from "../containers/DTypography";
  */
 export default {
   name: "DError",
+
+  inheritAttrs: false,
 
   components: {
     DTypography

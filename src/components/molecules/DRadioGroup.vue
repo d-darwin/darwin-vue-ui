@@ -1,5 +1,5 @@
 <template>
-  <div class="d-radio-group">
+  <div :class="{ ...$attrs.class }" class="d-radio-group">
     <DTypography
       v-if="title"
       :content="title"
@@ -11,7 +11,7 @@
       <DRadio
         v-for="(item, index) in itemList"
         :key="index"
-        v-bind="{ ...item, name }"
+        v-bind="{ ...item, name, type }"
         @update:value="emitChange(index, $event)"
       />
     </div>
@@ -36,7 +36,7 @@ import DError from "../atoms/DError";
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
-  name: "ControlRadioButtonsGroup",
+  name: "DRadioGroup",
 
   inheritAttrs: false,
 
@@ -53,6 +53,15 @@ export default {
     name: {
       type: String,
       default: `radio_group_${uuid()}`
+    },
+
+    /**
+     * Defines appearance of <b>DRadio</> components.
+     */
+    type: {
+      type: String,
+      default: "base",
+      validator: val => ["base", "button"].includes(val)
     },
 
     /**
@@ -94,17 +103,40 @@ export default {
   },
 
   methods: {
-    emitChange(value) {
+    emitChange(index, { checked, value, id }) {
       /**
-       * Компонент изменил свое состояние. Событие содержит значение атрибута <i>value</i> нажатого компонента <b>ControlRadioButton</b>.
+       * Checked attr of some of the containing <b>DRadio</b> updated.
+       * Contains new value of <i>checked</i>, <i>value</i> attrs, <b>DRadio</b> id and index.<br>
+       * Use @update:value="fn" to catch this event.
        *
-       * @event change
-       * @type {String}
+       * @event update:value
+       * @type {{Boolean, String, String, Number}}
        */
-      this.$emit("change", value);
+      this.$emit("update:value", { index, checked, value, id });
     }
   }
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style lang="scss">
+// always include tokens unscoped
+@import "../../assets/styles/tokens/gaps";
+</style>
+
+<style scoped lang="scss">
+.list {
+  margin-top: var(--gap-2x);
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: calc(var(--gap-2x) * -1);
+}
+
+.d-radio {
+  margin-right: var(--gap-8x);
+  margin-bottom: var(--gap-2x);
+
+  &:last-child {
+    margin-top: 0;
+  }
+}
+</style>

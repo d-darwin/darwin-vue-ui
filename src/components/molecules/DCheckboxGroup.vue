@@ -1,5 +1,5 @@
 <template>
-  <div class="d-checkbox-group">
+  <div :class="{ ...$attrs.class }" class="d-checkbox-group">
     <DTypography
       v-if="title"
       :content="title"
@@ -29,7 +29,7 @@ import DError from "../atoms/DError";
 /**
  * The component ...<b>DCheckbox</b>
  *
- * @version 1.0.3
+ * @version 1.0.4
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -84,11 +84,14 @@ export default {
   methods: {
     emitChange(index, { checked, value, id }) {
       /**
+       * Checked attr of some of the containing <b>DCheckbox</b> updated.
+       * Contains new value of <i>checked</i>, <i>value</i> attrs, <b>DCheckbox</b> id and index.<br>
+       * Use @update:value="fn" to catch this event.
        *
-       * @event change
+       * @event update:value
        * @type {{Boolean, String, String, Number}}
        */
-      this.$emit("update:value", { checked, value, id, index });
+      this.$emit("update:value", { index, checked, value, id });
     }
   }
 };
@@ -101,15 +104,15 @@ export default {
 
 <style scoped lang="scss">
 .list {
-  margin-top: var(--gap-base);
+  margin-top: var(--gap-2x);
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: calc(var(--gap-base) * -1);
+  margin-bottom: calc(var(--gap-2x) * -1);
 }
 
 .d-checkbox {
   margin-right: var(--gap-8x);
-  margin-bottom: var(--gap-base);
+  margin-bottom: var(--gap-2x);
 
   &:last-child {
     margin-top: 0;
