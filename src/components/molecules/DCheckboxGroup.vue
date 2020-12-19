@@ -7,7 +7,7 @@
       class="title"
     />
 
-    <div :style="checkboxListStyle" class="checkbox-list">
+    <div :style="listStyle" class="list">
       <DCheckbox
         v-for="(item, index) in itemList"
         :key="index"
@@ -29,7 +29,7 @@ import DError from "../atoms/DError";
 /**
  * The component ...
  *
- * @version 1.0.1
+ * @version 1.0.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -63,15 +63,15 @@ export default {
     },
 
     /**
-     * Pass any style object to <i>.checkbox-list</i> if needed.
+     * Pass any style object to <i>.list</i> if needed.
      */
-    checkboxListStyle: {
+    ListStyle: {
       type: Object,
       default: () => {}
     },
 
     /**
-     * If not empty renders as an error string below the <i>.checkbox-list</b>.
+     * If not empty renders as an error string below the <i>.list</b>.
      */
     error: {
       type: String,
@@ -98,7 +98,7 @@ export default {
 </style>
 
 <style scoped lang="scss">
-.checkbox-list {
+.list {
   margin-top: var(--gap-base);
   display: flex;
   flex-wrap: wrap;
