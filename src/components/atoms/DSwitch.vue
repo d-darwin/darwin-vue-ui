@@ -130,7 +130,7 @@ export default {
         ? (this.values && this.values.truthy) || true
         : (this.values && this.values.falsy) || false;
 
-      this.$emit("update:value", value, this.inputId);
+      this.$emit("update:value", { value, id: this.inputId });
     }
   }
 };

@@ -138,7 +138,10 @@ export default {
        * @event update:value
        * @type {Boolean, String}
        */
-      this.$emit("update:value", event.target.value, this.inputId);
+      this.$emit("update:value", {
+        value: event.target.value,
+        id: this.inputId
+      });
     }
   }
 };

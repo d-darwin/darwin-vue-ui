@@ -161,7 +161,7 @@ export default {
        * @event update:value
        * @type {String, String}
        */
-      this.$emit("update:value", e.target.value, this.inputId);
+      this.$emit("update:value", { value: e.target.value, id: this.inputId });
     }
   }
 };

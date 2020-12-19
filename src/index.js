@@ -40,6 +40,7 @@ import DError from "./components/atoms/DControlError";
 import DFiles from "./components/atoms/DFiles";
 
 /** molecules **/
+import DCheckboxGroup from "./components/molecules/DCheckboxGroup";
 
 /** organisms **/
 
@@ -78,8 +79,8 @@ export {
   DPicture,
   DVideo,
   DError,
-  DFiles
+  DFiles,
   /** molecules **/
-
+  DCheckboxGroup
   /** organisms **/
 };
