@@ -20,6 +20,7 @@ import DVideo from "./components/atoms/DVideo";
 
 /** molecules **/
 import DCheckboxGroup from "./components/molecules/DCheckboxGroup";
+import DRadioGroup from "./components/molecules/DRadioGroup";
 
 /** organisms **/
 
@@ -64,6 +65,7 @@ export {
   DVideo,
   /** molecules **/
   DCheckboxGroup,
+  DRadioGroup,
   /** organisms **/
   /** development **/
   DGridDebug,

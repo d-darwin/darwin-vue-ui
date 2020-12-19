@@ -27,31 +27,33 @@ import DCheckbox from "../atoms/DCheckbox";
 import DError from "../atoms/DError";
 
 /**
- * The component ...
+ * The component ...<b>DCheckbox</b>
  *
- * @version 1.0.2
+ * @version 1.0.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
   name: "DCheckboxGroup",
 
+  inheritAttrs: false,
+
   components: { DError, DTypography, DCheckbox },
 
   props: {
     /**
-     *
-     */
-    title: {
-      type: String,
-      default: ""
-    },
-
-    /**
-     *  <b>ControlCheckbox</b>
+     *  <b>DCheckbox</b>
      */
     itemList: {
       type: Array,
       default: () => []
+    },
+
+    /**
+     * Title of the group.
+     */
+    title: {
+      type: String,
+      default: ""
     },
 
     /**
@@ -65,7 +67,7 @@ export default {
     /**
      * Pass any style object to <i>.list</i> if needed.
      */
-    ListStyle: {
+    listStyle: {
       type: Object,
       default: () => {}
     },
