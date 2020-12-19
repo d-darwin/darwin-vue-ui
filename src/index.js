@@ -6,9 +6,9 @@ import focusVisiblePolyfill from "focus-visible/dist/focus-visible.min.js";
 import DGridDebug from "./components/development/DGridDebug";
 
 /** containers **/
-import DTypography from "./components/containers/DTypography";
+import DAspectRatio from "./components/containers/DAspectRatio";
 import DGrid from "./components/containers/DGrid";
-import DAspectRatioBox from "./components/containers/DAspectRatioBox";
+import DTypography from "./components/containers/DTypography";
 
 /** icons **/
 import DIconChecked from "./components/icons/DIconChecked";
@@ -27,17 +27,17 @@ import DIconCloseCircle from "./components/icons/DIconCloseCircle";
 import DButton from "./components/atoms/DButton";
 import DCheckbox from "./components/atoms/DCheckbox";
 import DCopyright from "./components/atoms/DCopyright";
-import DInput from "./components/atoms/DInput";
-import DLink from "./components/atoms/DLink";
-import DSwitch from "./components/atoms/DSwitch";
-import DSelect from "./components/atoms/DSelect";
-import DRadio from "./components/atoms/DRadio";
-import DSlider from "./components/atoms/DSlider";
-import DLoader from "./components/atoms/DLoader";
-import DPicture from "./components/atoms/DPicture";
-import DVideo from "./components/atoms/DVideo";
 import DError from "./components/atoms/DError";
 import DFiles from "./components/atoms/DFiles";
+import DInput from "./components/atoms/DInput";
+import DLink from "./components/atoms/DLink";
+import DLoader from "./components/atoms/DLoader";
+import DPicture from "./components/atoms/DPicture";
+import DRadio from "./components/atoms/DRadio";
+import DSelect from "./components/atoms/DSelect";
+import DSlider from "./components/atoms/DSlider";
+import DSwitch from "./components/atoms/DSwitch";
+import DVideo from "./components/atoms/DVideo";
 
 /** molecules **/
 import DCheckboxGroup from "./components/molecules/DCheckboxGroup";
@@ -52,7 +52,7 @@ export {
   /** containers **/
   DTypography,
   DGrid,
-  DAspectRatioBox,
+  DAspectRatio,
   /** icons **/
   DIconChecked,
   DIconDirection,

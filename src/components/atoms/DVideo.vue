@@ -41,7 +41,7 @@ import getVideoId from "get-video-id";
 import DLoader from "./DLoader";
 import DIconVideo from "../icons/DIconVideo";
 import DTypography from "../containers/DTypography";
-import DAspectRatioBox from "../containers/DAspectRatioBox";
+import DAspectRatio from "../containers/DAspectRatio";
 
 /**
  * The component intents to insert video into your page.<br>
@@ -56,7 +56,7 @@ export default {
 
   inheritAttrs: false,
 
-  components: { DTypography, DIconVideo, DLoader, DAspectRatioBox },
+  components: { DTypography, DIconVideo, DLoader, DAspectRatio },
 
   props: {
     /**
@@ -128,7 +128,7 @@ export default {
 
   computed: {
     containerTag() {
-      return this.aspectRatio ? "DAspectRatioBox" : "div";
+      return this.aspectRatio ? "DAspectRatio" : "div";
     },
 
     containerTagProps() {

@@ -48,7 +48,7 @@
 import DLoader from "./DLoader";
 import DIconImage from "../icons/DIconImage";
 import DTypography from "../containers/DTypography";
-import DAspectRatioBox from "../containers/DAspectRatioBox";
+import DAspectRatio from "../containers/DAspectRatio";
 
 /**
  * The component renders <b>picture</> tag according to Responsive Image principle.<br>
@@ -63,7 +63,7 @@ export default {
 
   inheritAttrs: false,
 
-  components: { DTypography, DLoader, DIconImage, DAspectRatioBox },
+  components: { DTypography, DLoader, DIconImage, DAspectRatio },
 
   props: {
     /**
@@ -127,7 +127,7 @@ export default {
 
   computed: {
     tag() {
-      return this.aspectRatio ? "DAspectRatioBox" : "picture";
+      return this.aspectRatio ? "DAspectRatio" : "picture";
     },
 
     tagProps() {

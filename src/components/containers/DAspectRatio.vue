@@ -12,7 +12,7 @@
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
-  name: "DAspectRatioBox",
+  name: "DAspectRatio",
 
   props: {
     /**
