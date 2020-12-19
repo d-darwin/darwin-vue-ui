@@ -51,7 +51,7 @@
 
 <script>
 /** use **/
-import useInputId from "../../use/useInputId";
+import inputId from "../../use/inputId";
 
 /** components **/
 import DIconRadioUnchecked from "../icons/DIconRadioUnchecked";
@@ -126,7 +126,7 @@ export default {
   },
 
   setup(props) {
-    return { ...useInputId(props) };
+    return { ...inputId(props) };
   },
 
   methods: {

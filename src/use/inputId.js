@@ -1,7 +1,7 @@
 import { ref, watchEffect } from "vue";
 import uuid from "../utils/uuid";
 
-export default function usInputId(props) {
+export default function inputId(props) {
   const inputId = ref(props.id || uuid());
 
   watchEffect(() => {

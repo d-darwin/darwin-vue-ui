@@ -29,17 +29,17 @@ import DError from "../atoms/DError";
 /**
  * The component ...
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
-  name: "ControlCheckboxGroup",
+  name: "DCheckboxGroup",
 
   components: { DError, DTypography, DCheckbox },
 
   props: {
     /**
-     * Получает название компонента.
+     *
      */
     title: {
       type: String,
@@ -47,7 +47,7 @@ export default {
     },
 
     /**
-     * Свойства, передаваемые в компоненты <b>ControlCheckbox</b>
+     *  <b>ControlCheckbox</b>
      */
     itemList: {
       type: Array,
