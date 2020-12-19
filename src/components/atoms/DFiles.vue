@@ -17,7 +17,7 @@
       </label>
     </DLink>
 
-    <DControlError :text="error" />
+    <DError :text="error" />
 
     <transition-group :style="listStyle" tag="ul" name="list" class="list">
       <li
@@ -65,7 +65,7 @@ import DIconPaperclip from "../icons/DIconPaperclip";
 import DIconCloseCircle from "../icons/DIconCloseCircle";
 import DTypography from "../containers/DTypography";
 import DLink from "../atoms/DLink";
-import DControlError from "../atoms/DControlError";
+import DError from "./DError";
 
 /**
  * This is a reusable file input component.
@@ -84,7 +84,7 @@ export default {
   inheritAttrs: false,
 
   components: {
-    DControlError,
+    DError,
     DLink,
     DTypography,
     DIconPaperclip,

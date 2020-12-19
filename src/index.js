@@ -24,19 +24,19 @@ import DIconPaperclip from "./components/icons/DIconPaperclip";
 import DIconCloseCircle from "./components/icons/DIconCloseCircle";
 
 /** atoms **/
+import DButton from "./components/atoms/DButton";
+import DCheckbox from "./components/atoms/DCheckbox";
 import DCopyright from "./components/atoms/DCopyright";
 import DInput from "./components/atoms/DInput";
-import DButton from "./components/atoms/DButton";
 import DLink from "./components/atoms/DLink";
 import DSwitch from "./components/atoms/DSwitch";
 import DSelect from "./components/atoms/DSelect";
-import DCheckbox from "./components/atoms/DCheckbox";
 import DRadio from "./components/atoms/DRadio";
 import DSlider from "./components/atoms/DSlider";
 import DLoader from "./components/atoms/DLoader";
 import DPicture from "./components/atoms/DPicture";
 import DVideo from "./components/atoms/DVideo";
-import DError from "./components/atoms/DControlError";
+import DError from "./components/atoms/DError";
 import DFiles from "./components/atoms/DFiles";
 
 /** molecules **/

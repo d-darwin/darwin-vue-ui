@@ -39,7 +39,7 @@
       />
     </div>
 
-    <DControlError :text="error" />
+    <DError :text="error" />
   </div>
 </template>
 
@@ -49,7 +49,7 @@ import useInputId from "../../use/useInputId";
 
 /** components **/
 import DTypography from "../containers/DTypography";
-import DControlError from "./DControlError";
+import DError from "./DError";
 
 /**
  * The components renders switch (has true / false value) or toggle (has custom values).<br>
@@ -65,7 +65,7 @@ export default {
 
   inheritAttrs: false,
 
-  components: { DControlError, DTypography },
+  components: { DError, DTypography },
 
   props: {
     /**

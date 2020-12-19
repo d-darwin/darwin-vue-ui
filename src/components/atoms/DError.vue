@@ -15,7 +15,7 @@ import DTypography from "../containers/DTypography";
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
-  name: "DControlError",
+  name: "DError",
 
   components: {
     DTypography

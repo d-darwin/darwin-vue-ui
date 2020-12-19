@@ -16,7 +16,7 @@
       />
     </div>
 
-    <DControlError :text="error" />
+    <DError :text="error" />
   </div>
 </template>
 
@@ -24,7 +24,7 @@
 /** components **/
 import DTypography from "../containers/DTypography";
 import DCheckbox from "../atoms/DCheckbox";
-import DControlError from "../atoms/DControlError";
+import DError from "../atoms/DError";
 
 /**
  * The component ...
@@ -35,7 +35,7 @@ import DControlError from "../atoms/DControlError";
 export default {
   name: "ControlCheckboxGroup",
 
-  components: { DControlError, DTypography, DCheckbox },
+  components: { DError, DTypography, DCheckbox },
 
   props: {
     /**
