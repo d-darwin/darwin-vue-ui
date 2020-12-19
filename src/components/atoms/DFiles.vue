@@ -58,7 +58,7 @@
 
 <script>
 /** use **/
-import inputId from "../../use/inputId";
+import useInputId from "../../use/inputId";
 
 /** components **/
 import DIconPaperclip from "../icons/DIconPaperclip";
@@ -143,7 +143,7 @@ export default {
   },
 
   setup(props) {
-    return { ...inputId(props) };
+    return { ...useInputId(props) };
   },
 
   data() {

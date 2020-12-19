@@ -40,7 +40,7 @@
 
 <script>
 /** use **/
-import inputId from "../../use/inputId";
+import useInputId from "../../use/inputId";
 
 /** components **/
 import DTypography from "../containers/DTypography";
@@ -119,7 +119,7 @@ export default {
   },
 
   setup(props) {
-    return { ...inputId(props) };
+    return { ...useInputId(props) };
   },
 
   methods: {
