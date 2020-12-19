@@ -27,7 +27,7 @@ import DCheckbox from "../atoms/DCheckbox";
 import DError from "../atoms/DError";
 
 /**
- * The component ...<b>DCheckbox</b>
+ * The component a group of <b>DCheckbox</b> components.
  *
  * @version 1.0.4
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
@@ -41,7 +41,7 @@ export default {
 
   props: {
     /**
-     *  <b>DCheckbox</b>
+     * List of props objects to pass to <b>DCheckbox</b> components.
      */
     itemList: {
       type: Array,

@@ -30,9 +30,9 @@ import DRadio from "../atoms/DRadio";
 import DError from "../atoms/DError";
 
 /**
- * Компонент рендерится в группу компонентов <b>DRadio</b>.
+ * The component renders a group of <b>DRadio</b> components with title.
  *
- * @version 1.0.1
+ * @version 1.0.4
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -48,24 +48,7 @@ export default {
 
   props: {
     /**
-     * Value of the <i>name</i> attr of the <b>input</b> tags.
-     */
-    name: {
-      type: String,
-      default: `radio_group_${uuid()}`
-    },
-
-    /**
-     * Defines appearance of <b>DRadio</> components.
-     */
-    type: {
-      type: String,
-      default: "base",
-      validator: val => ["base", "button"].includes(val)
-    },
-
-    /**
-     *  <b>DRadio</b>
+     * List of props objects to pass to <b>DRadio</b> components.
      */
     itemList: {
       type: Array,
@@ -86,6 +69,23 @@ export default {
     titleStyle: {
       type: Object,
       default: () => {}
+    },
+
+    /**
+     * Value of the <i>name</i> attr of the <b>input</b> tags.
+     */
+    name: {
+      type: String,
+      default: `radio_group_${uuid()}`
+    },
+
+    /**
+     * Defines appearance of <b>DRadio</> components.
+     */
+    type: {
+      type: String,
+      default: "base",
+      validator: val => ["base", "button"].includes(val)
     },
 
     /**

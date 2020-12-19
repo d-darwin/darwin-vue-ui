@@ -93,7 +93,7 @@ For now a few basic components implemented:
 - **DCheckbox**. Renders a checkbox of various appearance.
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DCheckbox.vue'.
 - **DCheckboxGroup**. Renders a group of checkboxes with title.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DCheckbox.vue'.
+  More details: '@dariwn-studio/ui-vue/components/molecules/DCheckboxGroup.vue'.
 - **DCopyright**. Renders standard copyright string with company name and years.
   More details: '@dariwn-studio/ui-vue/components/atoms/DCopyright.vue'.
 - **DFiles**. Renders custom files input.
@@ -113,6 +113,8 @@ For now a few basic components implemented:
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSlider.vue'.
 - **DRadio**. Renders a radio buttons of various appearance.
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DRadio.vue'.
+- **DRadioGroup**. Renders a group of radio buttons with title.
+  More details: '@dariwn-studio/ui-vue/components/molecules/DRadioGroup.vue'.
 - **DSelect**. Renders a select of various appearance.
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSelect.vue'.
 - **DSwitch**. Renders a switch or a toggle of various colors.
