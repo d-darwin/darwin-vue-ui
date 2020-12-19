@@ -1,28 +1,32 @@
 ## DARWIN Studio UI Library
 
 ### What is it?
-It's lightweight and performant UI Library for Vue 3. 
+
+It's lightweight and performant UI Library for Vue 3.
 Just check out [Bundlephobia report](https://bundlephobia.com/result?p=@darwin-studio/ui-vue).
 
 🚧 DISCLAIMER: Under construction. Not even close to alpha. So please, don't use in production.
 
 ### Key features
-- Components created by [Brad Frost's Atomic Design](https://atomicdesign.bradfrost.com/) methodology, so you can go along with it creating and maintaining your Design System.  
-- Design tokens represented to customize component appearance.    
+
+- Components created by [Brad Frost's Atomic Design](https://atomicdesign.bradfrost.com/) methodology, so you can go along with it creating and maintaining your Design System.
+- Design tokens represented to customize component appearance.
 - Build in optional reset style.
 - Build in optional fonts.
 - Icon set agnostic.
 - Uses focus-visible polyfill to emulate :focus-visible CSS prop.
 
-⚠ WARNING: Components of the library have to be compiled with sass-loader, so you need to have sass-loader package as a dev dependency. 
+⚠ WARNING: Components of the library have to be compiled with sass-loader, so you need to have sass-loader package as a dev dependency.
 
 ### Installation
+
 ```shell script
 npm i @darwin-studio/ui-vue
 npm i -D sass-loader sass
-```  
+```
 
 ### Basic Usage
+
 ```vue
 <template>
   <!--...-->
@@ -35,7 +39,7 @@ npm i -D sass-loader sass
 </template>
 
 <script>
-import { DTypography } from "@darwin-studio/ui-vue"
+import { DTypography } from "@darwin-studio/ui-vue";
 
 export default {
   //...
@@ -45,11 +49,11 @@ export default {
 
   data() {
     return {
-      htmlString: '<p>Content prop can contains <b>any HTML string.</b></p>'
-    }
+      htmlString: "<p>Content prop can contains <b>any HTML string.</b></p>"
+    };
   }
   //...
-}
+};
 </script>
 
 <style>
@@ -62,80 +66,87 @@ export default {
   --general-font-weight: bold;
 }
 </style>
-```   
+```
 
 ### Documentation
 
-For now there isn't any fancy documentation site to check out, 
-but we are planing to use Storybook for the documentation when it will be integrated with Vue 3.   
-You can find particular component documentation in its source code. 
+For now there isn't any fancy documentation site to check out,
+but we are planing to use Storybook for the documentation when it will be integrated with Vue 3.  
+You can find particular component documentation in its source code.
 
-### More details  
+### More details
 
 #### Components
 
-For now a few basic components implemented: 
-* **DGridDebug**. Adds grid visualisation to help catch up arrangement errors. 
-More details: '@dariwn-studio/ui-vue/components/development/DGridDebug.vue'.
-* **DGrid**. Helps arrange child elements by grid. 
-More details: '@dariwn-studio/ui-vue/components/containers/DGrid.vue'.
-* **DTypography**. Renders an HTML strings according to defined design tokens. 
-More details: '@dariwn-studio/ui-vue/components/containers/DTypography.vue'.
-* **DAspectRationBox**. Simulates aspect-ratio CSS prop to keep aspect ratio of the container content. 
-More details: '@dariwn-studio/ui-vue/components/containers/DAspectRationBox.vue'.
-* **DButton**. Renders a button of various appearance and behavior. 
-Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DButton.vue'.
-* **DCheckbox**. Renders a checkbox of various appearance. 
-Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DCheckbox.vue'.
-* **DCopyright**. Renders standard copyright string with company name and years. 
-More details: '@dariwn-studio/ui-vue/components/atoms/DCopyright.vue'.
-* **DFiles**. Renders custom files input. 
-Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DFiles.vue'.
-* **DError**. Helps unify control components error output. 
-More details: '@dariwn-studio/ui-vue/components/atoms/DError.vue'.
-* **DInput**. Renders an input field of various appearance. 
-Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DInput.vue'.
-* **DLink**. Renders a link of various appearance. 
-Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DLink.vue'.
-* **DLoader**. Renders an animated svg which used in other components such as DPicture. 
-More details: '@dariwn-studio/ui-vue/components/atoms/DLoader.vue'.
-* **DPicture**. Renders a picture according to Responsive Image principle. 
-Supports lazy loading, aspect-ratio prop, no image fallback and loading placeholder.  
-More details: '@dariwn-studio/ui-vue/components/atoms/DPicture.vue'.
-* **DSlider**. Renders a slider of various appearance. 
-Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSlider.vue'.
-* **DRadio**. Renders a radio buttons of various appearance. 
-Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DRadio.vue'.
-* **DSelect**. Renders a select of various appearance. 
-Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSelect.vue'.
-* **DSwitch**. Renders a switch or a toggle of various colors. 
-Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSwitch.vue'.
-* **DVideo**. Renders a video of different formats and video hosting services. 
-Supports lazy loading, aspect-ratio prop, no image fallback and loading placeholder.  
-More details. More details: '@dariwn-studio/ui-vue/components/atoms/DVideo.vue'.
+For now a few basic components implemented:
 
-#### Design Tokens  
+- **DGridDebug**. Adds grid visualisation to help catch up arrangement errors.
+  More details: '@dariwn-studio/ui-vue/components/development/DGridDebug.vue'.
+- **DGrid**. Helps arrange child elements by grid.
+  More details: '@dariwn-studio/ui-vue/components/containers/DGrid.vue'.
+- **DTypography**. Renders an HTML strings according to defined design tokens.
+  More details: '@dariwn-studio/ui-vue/components/containers/DTypography.vue'.
+- **DAspectRationBox**. Simulates aspect-ratio CSS prop to keep aspect ratio of the container content.
+  More details: '@dariwn-studio/ui-vue/components/containers/DAspectRationBox.vue'.
+- **DButton**. Renders a button of various appearance and behavior.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DButton.vue'.
+- **DCheckbox**. Renders a checkbox of various appearance.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DCheckbox.vue'.
+- **DCheckboxGroup**. Renders a group of checkboxes with title.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DCheckbox.vue'.
+- **DCopyright**. Renders standard copyright string with company name and years.
+  More details: '@dariwn-studio/ui-vue/components/atoms/DCopyright.vue'.
+- **DFiles**. Renders custom files input.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DFiles.vue'.
+- **DError**. Helps unify control components error output.
+  More details: '@dariwn-studio/ui-vue/components/atoms/DError.vue'.
+- **DInput**. Renders an input field of various appearance.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DInput.vue'.
+- **DLink**. Renders a link of various appearance.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DLink.vue'.
+- **DLoader**. Renders an animated svg which used in other components such as DPicture.
+  More details: '@dariwn-studio/ui-vue/components/atoms/DLoader.vue'.
+- **DPicture**. Renders a picture according to Responsive Image principle.
+  Supports lazy loading, aspect-ratio prop, no image fallback and loading placeholder.  
+  More details: '@dariwn-studio/ui-vue/components/atoms/DPicture.vue'.
+- **DSlider**. Renders a slider of various appearance.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSlider.vue'.
+- **DRadio**. Renders a radio buttons of various appearance.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DRadio.vue'.
+- **DSelect**. Renders a select of various appearance.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSelect.vue'.
+- **DSwitch**. Renders a switch or a toggle of various colors.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSwitch.vue'.
+- **DVideo**. Renders a video of different formats and video hosting services.
+  Supports lazy loading, aspect-ratio prop, no image fallback and loading placeholder.  
+  More details. More details: '@dariwn-studio/ui-vue/components/atoms/DVideo.vue'.
 
-Feel free to customize default appearance of the components by 
-redefining design tokens either in build time via SCSS variables or 
-in runtime via CSS custom properties. 
-You can even import design token to your *.js files. 
+#### Design Tokens
+
+Feel free to customize default appearance of the components by
+redefining design tokens either in build time via SCSS variables or
+in runtime via CSS custom properties.
+You can even import design token to your \*.js files.
 Check out what you can redefine in '@dariwn-studio/ui-vue/src/assets/styles/tokens'.
 
-#### Reset styles  
+#### Reset styles
 
 Just add following line into your general scss file to reset all browser-specific styles.
+
 ```scss
 @import "@darwin-studio/ui-vue/src/assets/styles/reset";
 ```
 
-#### Fonts  
+#### Fonts
 
-You can easily add to your project one of the popular open source custom font by adding following line. 
+You can easily add to your project one of the popular open source custom font by adding following line.
+
 ```scss
 @import "@darwin-studio/ui-vue/src/assets/styles/fonts/[font-family-name]";
 ```
-List of supported [font-family-names]:  
+
+List of supported [font-family-names]:
+
 - inter;
 - fira-sans;
 - manrope;
@@ -147,8 +158,7 @@ List of supported [font-family-names]:
 - anonymous-pro;
 - roboto.
 
-#### Icons  
+#### Icons
 
 We don't want to stick with one of icon sets, so decided allow you to choose one yourself.  
 To do so just use [@iconify/vue](https://docs.iconify.design/implementations/vue/) package or any you prefer.
-
