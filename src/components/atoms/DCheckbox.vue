@@ -12,11 +12,11 @@
       />
 
       <span
-        :style="markStyle"
         :class="{
           [`__${color}`]: color,
           __disabled: $attrs.disabled !== undefined
         }"
+        :style="markStyle"
         class="mark"
       >
         <DIconUnchecked v-if="!$slots['icon-unchecked']" />
