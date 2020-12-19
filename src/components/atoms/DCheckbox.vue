@@ -31,9 +31,9 @@
       <span class="outline" />
 
       <DTypography
-        :size="size"
-        :style="labelStyle"
         :content="label"
+        :size="labelSize"
+        :style="labelStyle"
         class="label"
       />
     </label>
@@ -57,7 +57,7 @@ import DError from "./DError";
  * Feel free to use any attrs you expect with <b>input</b> tag with <i>type="checkbox"</i>,
  * they will be pass to the tag automatically.
  *
- * @version 1.0.3
+ * @version 1.0.4
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -96,29 +96,29 @@ export default {
     },
 
     /**
-     * Pass any style object to <i>.label</i> if needed.
+     * Defines content of the <b>label</b> tag.
      */
-    labelStyle: {
-      type: Object,
-      default: () => {}
+    label: {
+      type: String,
+      default: "Label"
     },
 
     /**
-     * Defines DTypography size.<br>
+     * Defines <b>DTypography</b> size.<br>
      * Takes values: 'large', 'medium'.
      */
-    size: {
+    labelSize: {
       type: String,
       default: "general",
       validator: val => ["general", "small"].includes(val)
     },
 
     /**
-     * Defines content of the <b>label</b> tag.
+     * Pass any style object to <i>.label</i> if needed.
      */
-    label: {
-      type: String,
-      default: "Label"
+    labelStyle: {
+      type: Object,
+      default: () => {}
     },
 
     /**

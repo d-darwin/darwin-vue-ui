@@ -17,6 +17,7 @@
 
       <template v-if="type === 'base'">
         <span
+          :style="markStyle"
           :class="{
             [`__${color}`]: color,
             __disabled: $attrs.disabled !== undefined
@@ -32,7 +33,12 @@
           <slot v-else name="icon-checked" />
         </span>
 
-        <DTypography :content="label" class="label" />
+        <DTypography
+          :content="label"
+          :size="size"
+          :style="labelStyle"
+          class="label"
+        />
       </template>
 
       <span
@@ -106,6 +112,32 @@ export default {
       type: String,
       default: "primary",
       validator: val => ["primary", "accent", "text"].includes(val)
+    },
+
+    /**
+     * Pass any style object to <i>.mark</i> if needed.
+     */
+    markStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Pass any style object to <i>.label</i> if needed.
+     */
+    labelStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Defines <b>DTypography</b> size.<br>
+     * Takes values: 'large', 'medium'.
+     */
+    size: {
+      type: String,
+      default: "general",
+      validator: val => ["general", "small"].includes(val)
     },
 
     /**
