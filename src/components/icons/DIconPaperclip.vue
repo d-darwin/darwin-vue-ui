@@ -24,8 +24,8 @@
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
-  name: 'DIconPaperclip',
-}
+  name: "DIconPaperclip"
+};
 </script>
 
 <style scoped lang="scss">

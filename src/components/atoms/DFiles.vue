@@ -30,8 +30,7 @@
         v-for="(file, index) in uploadedFiles"
         :key="file.name"
         :style="{
-          transitionDelay: delay(index) + 'ms',
-          background: 'red',
+          transitionDelay: itemDelay(index),
           ...listItemStyle
         }"
         class="list-item"
@@ -69,6 +68,9 @@
 <script>
 /** use **/
 import useInputId from "../../use/inputId";
+
+/** design tokens **/
+import transitionsTokens from "../../assets/styles/tokens/_transitions.scss";
 
 /** components **/
 import DIconPaperclip from "../icons/DIconPaperclip";
@@ -194,8 +196,9 @@ export default {
       }
     },
 
-    delay(index) {
-      return index * 30;
+    itemDelay(index) {
+      const delay = parseInt(transitionsTokens["transition-delay-short"]);
+      return index * delay + "ms";
     }
   }
 };

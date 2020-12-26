@@ -11,12 +11,13 @@
 </template>
 
 <script>
-import cssGridTokens from "../../assets/styles/tokens/_grid.scss";
+/** design tokens **/
+import gridTokens from "../../assets/styles/tokens/_grid.scss";
 
 /**
  * The container allows you an easy way to arrange child nodes in a grid template.
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -54,12 +55,12 @@ export default {
     return {
       defaultColumnCountList: {
         // TODO: too verbose and not so flexible
-        xs: parseInt(cssGridTokens["xs-grid-columns-count"]),
-        sm: parseInt(cssGridTokens["sm-grid-columns-count"]),
-        md: parseInt(cssGridTokens["md-grid-columns-count"]),
-        lg: parseInt(cssGridTokens["lg-grid-columns-count"]),
-        xl: parseInt(cssGridTokens["xl-grid-columns-count"]),
-        xxl: parseInt(cssGridTokens["xxl-grid-columns-count"])
+        xs: parseInt(gridTokens["xs-grid-columns-count"]),
+        sm: parseInt(gridTokens["sm-grid-columns-count"]),
+        md: parseInt(gridTokens["md-grid-columns-count"]),
+        lg: parseInt(gridTokens["lg-grid-columns-count"]),
+        xl: parseInt(gridTokens["xl-grid-columns-count"]),
+        xxl: parseInt(gridTokens["xxl-grid-columns-count"])
       },
       throttledFunction: null
     };

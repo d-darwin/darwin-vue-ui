@@ -2,6 +2,10 @@ $transition-time-short: 150ms;
 $transition-time-medium: 300ms;
 $transition-time-long: 600ms;
 
+$transition-delay-short: 30ms;
+$transition-delay-medium: 60ms;
+$transition-delay-long: 120ms;
+
 $transition-property: all;
 $transition-function: ease;
 
@@ -14,6 +18,10 @@ $transition-function: ease;
   --transition-time-medium: #{$transition-time-medium};
   --transition-time-long: #{$transition-time-long};
 
+  --transition-delay-short: #{$transition-delay-short};
+  --transition-delay-medium: #{$transition-delay-medium};
+  --transition-delay-long: #{$transition-delay-long};
+
   --transition-property: #{$transition-property};
   --transition-function: #{$transition-function};
 }
@@ -25,6 +33,10 @@ $transition-function: ease;
   transition-time-short: $transition-time-short;
   transition-time-medium: $transition-time-medium;
   transition-time-long: $transition-time-long;
+
+  transition-delay-short: $transition-delay-short;
+  transition-delay-medium: $transition-delay-medium;
+  transition-delay-long: $transition-delay-long;
 
   transition-property: $transition-property;
   transition-function: $transition-function;
