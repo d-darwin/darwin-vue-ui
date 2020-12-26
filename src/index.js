@@ -24,6 +24,7 @@ import DRadioGroup from "./components/molecules/DRadioGroup";
 import DGridDebug from "./components/development/DGridDebug";
 /** containers **/
 import DAspectRatio from "./components/containers/DAspectRatio";
+import DEqualWidth from "./components/containers/DEqualWidth";
 import DGrid from "./components/containers/DGrid";
 import DTypography from "./components/containers/DTypography";
 /** icons **/
@@ -65,6 +66,7 @@ export {
   DGridDebug,
   /** containers **/
   DAspectRatio,
+  DEqualWidth,
   DGrid,
   DTypography,
   /** icons **/

@@ -1,22 +1,20 @@
 <template>
   <div :class="$attrs.class" class="d-button">
-    <div class="control-group">
-      <component
-        :is="el"
-        v-bind="{ ...$props, ...$attrs }"
-        :class="{
-          [`__${type}`]: type,
-          [`__${size}`]: size,
-          [`__${roundness}`]: roundness,
-          ['__icon-only']: iconOnly,
-          __disabled: $attrs.disabled !== undefined
-        }"
-        class="control-button"
-      >
-        <!-- @slot May contains a string, an icon or an combination. -->
-        <slot />
-      </component>
-    </div>
+    <component
+      :is="el"
+      v-bind="{ ...$props, ...$attrs }"
+      :class="{
+        [`__${type}`]: type,
+        [`__${size}`]: size,
+        [`__${roundness}`]: roundness,
+        ['__icon-only']: iconOnly,
+        __disabled: $attrs.disabled !== undefined
+      }"
+      class="control-button"
+    >
+      <!-- @slot May contains a string, an icon or an combination. -->
+      <slot />
+    </component>
 
     <DError :text="error" />
   </div>
@@ -31,7 +29,7 @@ import DError from "./DError";
  * they will be pass to the tag automatically.<br>
  * May be in various sizes and have different corner roundness.
  *
- * @version 1.0.5
+ * @version 1.0.6
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -134,6 +132,7 @@ export default {
   text-align: center;
   white-space: nowrap;
   text-decoration: none;
+  width: 100%;
 
   > * + * {
     margin-left: 6px;
