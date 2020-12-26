@@ -19,11 +19,21 @@
 
     <DError :text="error" />
 
-    <transition-group :style="listStyle" tag="ul" name="list" class="list">
+    <transition-group
+      :style="listStyle"
+      tag="ul"
+      name="list"
+      class="list"
+      mode="out-in"
+    >
       <li
         v-for="(file, index) in uploadedFiles"
         :key="file.name"
-        :style="listItemStyle"
+        :style="{
+          transitionDelay: delay(index) + 'ms',
+          background: 'red',
+          ...listItemStyle
+        }"
         class="list-item"
       >
         <DTypography :content="file.name" tag="span" />
@@ -74,7 +84,7 @@ import DError from "./DError";
  * they will be pass to the tag automatically.<br>
  * While submitted uploadedFiles array need to be processed with FormData().
  *
- * @version 1.0.1
+ * @version 1.0.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 
@@ -182,6 +192,10 @@ export default {
       if (!this.disabled) {
         this.uploadedFiles.splice(index, 1);
       }
+    },
+
+    delay(index) {
+      return index * 30;
     }
   }
 };
