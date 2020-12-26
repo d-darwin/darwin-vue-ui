@@ -6,6 +6,8 @@
     <div class="control-group">
       <DTypography
         v-if="labels && labels.falsy"
+        tag="label"
+        :for="inputId"
         :content="labels.falsy"
         class="value-label"
       />
@@ -34,6 +36,8 @@
 
       <DTypography
         v-if="labels && labels.truthy"
+        tag="label"
+        :for="inputId"
         :content="labels.truthy"
         class="value-label"
       />
@@ -57,7 +61,7 @@ import DError from "./DError";
  * they will be pass to the tag automatically.<br>
  * If values prop defined the component will be rendered as toggle (slightly different appearance).
  *
- * @version 1.0.3
+ * @version 1.0.4
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -155,6 +159,7 @@ export default {
 
 .value-label {
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .value-label:first-child {
@@ -254,6 +259,7 @@ export default {
 .__disabled {
   .value-label {
     color: var(--color-text-aux);
+    cursor: not-allowed;
   }
 
   .input + .slider,
