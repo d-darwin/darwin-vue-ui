@@ -16,7 +16,7 @@ Just check out [Bundlephobia report](https://bundlephobia.com/result?p=@darwin-s
 - Icon set agnostic.
 - Uses focus-visible polyfill to emulate :focus-visible CSS prop.
 
-⚠ WARNING: Components of the library have to be compiled with sass-loader, so you need to have sass-loader package as a dev dependency.
+⚠️ WARNING: Components of the library have to be compiled with sass-loader, so you need to have sass-loader package as a dev dependency.
 
 ### Installation
 
