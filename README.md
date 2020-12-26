@@ -86,8 +86,10 @@ For now a few basic components implemented:
   More details: '@dariwn-studio/ui-vue/components/containers/DGrid.vue'.
 - **DTypography**. Renders an HTML strings according to defined design tokens.
   More details: '@dariwn-studio/ui-vue/components/containers/DTypography.vue'.
-- **DAspectRationBox**. Simulates aspect-ratio CSS prop to keep aspect ratio of the container content.
-  More details: '@dariwn-studio/ui-vue/components/containers/DAspectRationBox.vue'.
+- **DAspectRation**. Simulates aspect-ratio CSS prop to keep aspect ratio of the container content.
+  More details: '@dariwn-studio/ui-vue/components/containers/DAspectRation.vue'.
+- **DEqualWidth**. Forces default slot elements to be equal width.
+  More details: '@dariwn-studio/ui-vue/components/containers/DEqualWidth.vue'.
 - **DButton**. Renders a button of various appearance and behavior.
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DButton.vue'.
 - **DCheckbox**. Renders a checkbox of various appearance.

@@ -10,7 +10,7 @@
 
 <script>
 /**
- * Component arrange default slot elements ...TODO
+ * The component forces default slot elements to be equal width, equal to the biggest one.
  *
  * @version 1.0.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
@@ -44,7 +44,6 @@ export default {
 </style>
 
 <style scoped lang="scss">
-// @import "../../assets/styles";
 .d-equal-width {
   width: 100%;
 }
@@ -59,10 +58,8 @@ export default {
   width: auto;
 
   > ::v-slotted(*) {
-    padding: 0 var(--gap-base); // TODO
-    width: auto; // TODO
+    padding: 0 var(--gap-base);
     display: table-cell;
-    margin: 0;
   }
 
   > ::v-slotted(*:first-child) {
