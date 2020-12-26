@@ -6,7 +6,7 @@
     <div class="control-group">
       <DTypography
         v-if="labels && labels.falsy"
-        tag="label"
+        :tag="isChecked ? 'label' : 'div'"
         :for="inputId"
         :content="labels.falsy"
         class="value-label"
@@ -36,7 +36,7 @@
 
       <DTypography
         v-if="labels && labels.truthy"
-        tag="label"
+        :tag="isChecked ? 'div' : 'label'"
         :for="inputId"
         :content="labels.truthy"
         class="value-label"
@@ -121,8 +121,16 @@ export default {
     return { ...useInputId(props) };
   },
 
+  data() {
+    return {
+      isChecked: this.$attrs.checked
+    };
+  },
+
   methods: {
     emitChange(event) {
+      this.isChecked = event.target.checked;
+
       /**
        * Checked attr of the <b>input</b> tag updated. Contains new <i>value</i> and component id.<br>
        * Use @update:value="fn" to catch this event.
@@ -157,9 +165,12 @@ export default {
   align-items: center;
 }
 
+label {
+  cursor: pointer;
+}
+
 .value-label {
   white-space: nowrap;
-  cursor: pointer;
 }
 
 .value-label:first-child {
