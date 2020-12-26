@@ -74,7 +74,7 @@ import DError from "./DError";
  * they will be pass to the tag automatically.<br>
  * While submitted uploadedFiles array need to be processed with FormData().
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 
@@ -236,6 +236,7 @@ export default {
 
 .list-item {
   position: relative;
+  overflow-wrap: break-word;
 
   & + & {
     margin-top: var(--gap-base);
