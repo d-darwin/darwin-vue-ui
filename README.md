@@ -90,6 +90,8 @@ For now a few basic components implemented:
   More details: '@dariwn-studio/ui-vue/components/containers/DAspectRatio.vue'.
 - **DEqualWidth**. Forces default slot elements to be equal width.
   More details: '@dariwn-studio/ui-vue/components/containers/DEqualWidth.vue'.
+- **DFullScreen**. Adds full screen mode to default slot content.
+  More details: '@dariwn-studio/ui-vue/components/containers/DFullScreen.vue'.
 - **DButton**. Renders a button of various appearance and behavior.
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DButton.vue'.
 - **DCheckbox**. Renders a checkbox of various appearance.

@@ -35,6 +35,7 @@ import DIconColumns from "./components/icons/DIconColumns";
 import DIconDirection from "./components/icons/DIconDirection";
 import DIconExternalLink from "./components/icons/DIconExternalLink";
 import DIconImage from "./components/icons/DIconImage";
+import DIconMaximize from "./components/icons/DIconMaximize";
 import DIconPaperclip from "./components/icons/DIconPaperclip";
 import DIconRadioChecked from "./components/icons/DIconRadioChecked";
 import DIconRadioUnchecked from "./components/icons/DIconRadioUnchecked";
@@ -78,6 +79,7 @@ export {
   DIconDirection,
   DIconExternalLink,
   DIconImage,
+  DIconMaximize,
   DIconPaperclip,
   DIconRadioChecked,
   DIconRadioUnchecked,
