@@ -25,6 +25,7 @@ import DGridDebug from "./components/development/DGridDebug";
 /** containers **/
 import DAspectRatio from "./components/containers/DAspectRatio";
 import DEqualWidth from "./components/containers/DEqualWidth";
+import DFullScreen from "./components/containers/DFullScreen";
 import DGrid from "./components/containers/DGrid";
 import DTypography from "./components/containers/DTypography";
 /** icons **/
@@ -67,6 +68,7 @@ export {
   /** containers **/
   DAspectRatio,
   DEqualWidth,
+  DFullScreen,
   DGrid,
   DTypography,
   /** icons **/
