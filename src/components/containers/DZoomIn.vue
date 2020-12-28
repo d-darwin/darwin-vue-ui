@@ -5,8 +5,7 @@
     class="d-zoom-in"
   >
     <div v-if="!isZoomed" class="content-wrap" @click="zoomInHandler">
-      <slot v-if="$slots.minimized" name="minimized" />
-      <slot v-else />
+      <slot />
     </div>
 
     <transition name="opacity">
@@ -32,7 +31,10 @@
         class="content-zoom-wrap"
       >
         <transition name="scale">
-          <slot v-if="isZoomed" />
+          <template v-if="isZoomed">
+            <slot v-if="$slots.zoomed" name="zoomed" />
+            <slot v-else />
+          </template>
         </transition>
       </div>
     </transition>
@@ -45,7 +47,8 @@ import DIconClose from "../icons/DIconClose";
 import DButton from "../atoms/DButton";
 
 /**
- * The component ...TODO
+ * The component allows zoom in slot content to cover all browser viewport.</br>
+ * You can pass other content for zoomed contend via slot:zoomed.
  *
  * @version 1.0.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
@@ -58,13 +61,17 @@ export default {
   components: { DIconClose, DButton },
 
   props: {
-    // TODO
+    /**
+     * Pass any <b>DButton</b> props if needed.
+     */
     closeButtonProps: {
       type: Object,
       default: () => {}
     },
 
-    // TODO
+    /**
+     * Pass any style object to <i>.content-zoom-wrap</i> if needed.
+     */
     contentZoomWrapStyle: {
       type: Object,
       default: () => {}

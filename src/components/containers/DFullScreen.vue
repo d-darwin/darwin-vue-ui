@@ -52,7 +52,7 @@ export default {
     },
 
     /**
-     * Pass any <b>DLink</b>. props if needed.
+     * Pass any <b>DLink</b> props if needed.
      */
     linkProps: {
       type: Object,
@@ -68,7 +68,7 @@ export default {
     },
 
     /**
-     * Pass any <b>DTypography</b>. props if needed.
+     * Pass any <b>DTypography</b> props if needed.
      */
     typographyProps: {
       type: Object,
