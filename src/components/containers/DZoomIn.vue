@@ -87,7 +87,6 @@ export default {
   methods: {
     zoomInHandler() {
       this.isZoomed = true;
-      // this.$refs.content_zoom_container.classList.add("__zoomed");
 
       const body = document.getElementsByTagName("body")[0];
       body.classList.add("__blocked-scroll");
@@ -95,7 +94,6 @@ export default {
 
     zoomOutHandler() {
       this.isZoomed = false;
-      // this.$refs.content_zoom_container.classList.remove("__zoomed");
 
       const body = document.getElementsByTagName("body")[0];
       body.classList.remove("__blocked-scroll");
