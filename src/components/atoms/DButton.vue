@@ -29,7 +29,7 @@ import DError from "./DError";
  * they will be pass to the tag automatically.<br>
  * May be in various sizes and have different corner roundness.
  *
- * @version 1.0.6
+ * @version 1.0.7
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -42,13 +42,15 @@ export default {
   props: {
     /**
      * Defines background and border colors of the component as well as :hover and :active behavior.<br>
-     * Takes values: 'primary', 'secondary', 'alternative', 'inverse'.
+     * Takes values: 'primary', 'secondary', 'alternative', 'inverse', 'danger'.
      */
     type: {
       type: String,
       default: "primary",
       validator: val =>
-        ["primary", "secondary", "alternative", "inverse"].includes(val)
+        ["primary", "secondary", "alternative", "inverse", "danger"].includes(
+          val
+        )
     },
 
     /**
@@ -166,6 +168,28 @@ export default {
     cursor: not-allowed;
   }
 
+  &.__icon-only {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.__large {
+      height: var(--large-control-height);
+      width: var(--large-control-height);
+    }
+
+    &.__medium {
+      height: var(--medium-control-height);
+      width: var(--medium-control-height);
+    }
+
+    &.__small {
+      height: var(--small-control-height);
+      width: var(--small-control-height);
+    }
+  }
+
   outline: none;
 
   &.focus-visible {
@@ -245,25 +269,20 @@ export default {
   }
 }
 
-.__icon-only {
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.__danger {
+  color: var(--white);
+  background: var(--color-danger);
+  border-color: var(--color-danger);
 
-  &.__large {
-    height: var(--large-control-height);
-    width: var(--large-control-height);
+  &:not(.__disabled):hover,
+  &:not(.__disabled):active {
+    background: var(--color-danger-active);
+    border-color: var(--color-danger-active);
   }
 
-  &.__medium {
-    height: var(--medium-control-height);
-    width: var(--medium-control-height);
-  }
-
-  &.__small {
-    height: var(--small-control-height);
-    width: var(--small-control-height);
+  &.__disabled {
+    background: var(--color-danger-disabled);
+    border-color: var(--color-danger-disabled);
   }
 }
 </style>

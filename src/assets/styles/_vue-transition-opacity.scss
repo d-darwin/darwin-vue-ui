@@ -1,16 +1,16 @@
 @import "./mixins/transitions";
 
-.list-enter-from,
-.list-leave-to {
+.opacity-enter-from,
+.opacity-leave-to {
   opacity: 0;
 }
 
-.list-enter-to,
-.list-leave-from {
+.opacity-enter-to,
+.opacity-leave-from {
   opacity: 1;
 }
 
-.list-enter-active,
-.list-leave-active {
+.opacity-enter-active,
+.opacity-leave-active {
   @include transition-short;
 }

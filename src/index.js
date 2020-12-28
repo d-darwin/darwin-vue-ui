@@ -1,6 +1,7 @@
 /** core **/
 import { createApp } from "vue";
 import focusVisiblePolyfill from "focus-visible/dist/focus-visible.min.js";
+
 /** atoms **/
 import DButton from "./components/atoms/DButton";
 import DCheckbox from "./components/atoms/DCheckbox";
@@ -28,8 +29,10 @@ import DEqualWidth from "./components/containers/DEqualWidth";
 import DFullScreen from "./components/containers/DFullScreen";
 import DGrid from "./components/containers/DGrid";
 import DTypography from "./components/containers/DTypography";
+import DZoomIn from "./components/containers/DZoomIn";
 /** icons **/
 import DIconChecked from "./components/icons/DIconChecked";
+import DIconClose from "./components/icons/DIconClose";
 import DIconCloseCircle from "./components/icons/DIconCloseCircle";
 import DIconColumns from "./components/icons/DIconColumns";
 import DIconDirection from "./components/icons/DIconDirection";
@@ -72,8 +75,10 @@ export {
   DFullScreen,
   DGrid,
   DTypography,
+  DZoomIn,
   /** icons **/
   DIconChecked,
+  DIconClose,
   DIconCloseCircle,
   DIconColumns,
   DIconDirection,

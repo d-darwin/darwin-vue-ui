@@ -1,0 +1,16 @@
+@import "./mixins/transitions";
+
+.scale-enter-from,
+.scale-leave-to {
+  transform: scale(0);
+}
+
+.scale-enter-to,
+.scale-leave-from {
+  transform: scale(1);
+}
+
+.scale-enter-active,
+.scale-leave-active {
+  @include transition-short;
+}

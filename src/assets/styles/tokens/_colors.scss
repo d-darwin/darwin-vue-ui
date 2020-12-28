@@ -88,6 +88,12 @@ $color-background: $gray-100;
 $color-separator: $gray-200;
 
 $color-danger: $red;
+$danger-shade-step: 10;
+// $color-danger-active: #d94e4e;
+$color-danger-active: shade($color-danger, 2 * $danger-shade-step);
+// $color-danger-disabled: #eba2a2;
+$color-danger-disabled: shade($color-danger, 6 * $danger-shade-step);
+
 $color-link: $blue;
 
 /**
@@ -173,8 +179,11 @@ $color-link: $blue;
   --color-background: var(--gray-100);
   --color-separator: var(--gray-200);
 
-  --color-danger: var(--red);
-  --color-link: var(--blue);
+  --color-danger: #{$color-danger};
+  --color-danger-active: #{$color-danger-active};
+  --color-danger-disabled: #{$color-danger-disabled};
+
+  --color-link: #{$color-link};
 }
 
 // the :export directive is the magic sauce for webpack.
@@ -260,5 +269,8 @@ $color-link: $blue;
   color-separator: $color-separator;
 
   color-danger: $color-danger;
+  color-danger-active: $color-danger-active;
+  color-danger-disabled: $color-danger-disabled;
+
   color-link: $color-link;
 }
