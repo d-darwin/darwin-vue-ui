@@ -1,7 +1,7 @@
 {
   "name": "@darwin-studio/ui-vue",
   "description": "Vue 3 based lightweight ui-library",
-  "version": "0.23.4",
+  "version": "0.23.5",
   "author": "Dmitrii Bykov <d@darwin.st> (https://darwin.st/)",
   "license": "MIT",
   "homepage": "https://github.com/d-darwin/darwin-vue-ui#readme",
