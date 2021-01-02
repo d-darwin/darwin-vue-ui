@@ -11,6 +11,7 @@ import DFiles from "./components/atoms/DFiles";
 import DInput from "./components/atoms/DInput";
 import DLink from "./components/atoms/DLink";
 import DLoader from "./components/atoms/DLoader";
+import DNotification from "./components/atoms/DNotification";
 import DPicture from "./components/atoms/DPicture";
 import DRadio from "./components/atoms/DRadio";
 import DSelect from "./components/atoms/DSelect";
@@ -57,6 +58,7 @@ export {
   DInput,
   DLink,
   DLoader,
+  DNotification,
   DPicture,
   DRadio,
   DSelect,
