@@ -114,6 +114,8 @@ For now a few basic components implemented:
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DLink.vue'.
 - **DLoader**. Renders an animated svg which used in other components such as DPicture.
   More details: '@dariwn-studio/ui-vue/components/atoms/DLoader.vue'.
+- **DNotification**. Renders text notification for a given duration.
+  More details: '@dariwn-studio/ui-vue/components/atoms/DNotification.vue'.
 - **DPicture**. Renders a picture according to Responsive Image principle.
   Supports lazy loading, aspect-ratio prop, no image fallback and loading placeholder.  
   More details: '@dariwn-studio/ui-vue/components/atoms/DPicture.vue'.

@@ -8,7 +8,7 @@
       }"
       class="d-notification"
     >
-      <!--TODO: use DTypography slot-->
+      <!--TODO: use DTypography slot as an alternative-->
       <DTypography
         :content="content"
         v-bind="typographyProps"
@@ -24,7 +24,7 @@ import DTypography from "../containers/DTypography";
 /**
  * The component renders text notification for a given duration.
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
