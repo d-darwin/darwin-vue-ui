@@ -1,11 +1,11 @@
 ## DARWIN Studio UI Library
 
 [![Known Vulnerabilities](https://snyk.io/test/npm/@darwin-studio/ui-vue/badge.svg)](https://snyk.io/test/npm/@darwin-studio/ui-vue)
+[![Minified Gzipped Size](https://badgen.net/bundlephobia/minzip/@darwin-studio/ui-vue)](https://bundlephobia.com/result?p=@darwin-studio/ui-vue)
 
 ### What is it?
 
 It's lightweight and performant UI Library for Vue 3.
-Just check out [Bundlephobia report](https://bundlephobia.com/result?p=@darwin-studio/ui-vue).
 
 🚧 DISCLAIMER: Under construction. Not even close to alpha. So please, don't use in production.
 
