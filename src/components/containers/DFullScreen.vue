@@ -150,6 +150,10 @@ export default {
 <style scoped lang="scss">
 @import "../../assets/styles/tokens/gaps";
 
+.d-full-screen {
+  height: fit-content;
+}
+
 .d-link {
   > * + * {
     margin-left: var(--gap-base);

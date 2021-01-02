@@ -1,9 +1,5 @@
 <template>
-  <div
-    :class="$attrs.class"
-    class="d-zoom-in"
-    @keydown.esc="zoomOutHandler"
-  >
+  <div :class="$attrs.class" class="d-zoom-in" @keydown.esc="zoomOutHandler">
     <DLink
       v-show="!isZoomed"
       ref="zoom-in-link"
@@ -33,16 +29,12 @@
 
     <transition name="opacity">
       <div
-        v-show="isZoomed"
+        v-if="isZoomed"
         :style="contentZoomWrapStyle"
         class="content-zoom-wrap"
       >
-        <transition name="scale">
-          <template v-if="isZoomed">
-            <slot v-if="$slots.zoomed" name="zoomed" />
-            <slot v-else />
-          </template>
-        </transition>
+        <slot v-if="$slots.zoomed" name="zoomed" />
+        <slot v-else />
       </div>
     </transition>
   </div>
@@ -58,7 +50,7 @@ import DLink from "../atoms/DLink";
  * The component allows zoom in slot content to cover all browser viewport.</br>
  * You can pass other content for zoomed contend via slot:zoomed.
  *
- * @version 1.0.3
+ * @version 1.0.4
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -132,7 +124,6 @@ body {
 @import "../../assets/styles/mixins/breakpoints";
 @import "../../assets/styles/mixins/transitions";
 @import "../../assets/styles/vue-transition-opacity";
-@import "../../assets/styles/vue-transition-scale";
 
 .d-zoom-in {
   // @include transition-long;

@@ -55,7 +55,7 @@ import DAspectRatio from "../containers/DAspectRatio";
  *  Supports plain string image asset or an array of image assets for different screen width and pixel density.<br>
  *  Also supports lazy loading with <b>DLoader</b> placeholder, aspect-ration and renders <b>DIconImage</b> icon if <i>source</i> prop is empty.
  *
- * @version 1.3.2
+ * @version 1.3.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -215,8 +215,8 @@ export default {
   display: flex;
   flex-direction: column;
   margin: auto;
-  max-height: 100%;
-  max-width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 .d-typography {
