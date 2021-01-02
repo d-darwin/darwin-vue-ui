@@ -2,9 +2,9 @@
   <component
     :is="el"
     :class="{
-      [`${$attrs.class}`]: $attrs.class,
       [`__${size}`]: size,
-      [`__${type}`]: type
+      [`__${type}`]: type,
+      [`${$attrs.class}`]: $attrs.class
     }"
     v-bind="{ ...$props, ...$attrs, rel, target }"
     class="d-link"

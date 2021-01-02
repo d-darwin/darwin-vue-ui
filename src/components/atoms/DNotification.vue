@@ -1,6 +1,13 @@
 <template>
   <transition name="opacity">
-    <div v-if="shown && content" class="d-notification">
+    <div
+      v-if="shown && content"
+      :class="{
+        [`__${position}`]: position,
+        [`${$attrs.class}`]: $attrs.class
+      }"
+      class="d-notification"
+    >
       <!--TODO: use DTypography slot-->
       <DTypography
         :content="content"
@@ -15,7 +22,7 @@
 import DTypography from "../containers/DTypography";
 
 /**
- * The component TODO
+ * The component renders text notification for a given duration.
  *
  * @version 1.0.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
@@ -23,15 +30,45 @@ import DTypography from "../containers/DTypography";
 export default {
   name: "DNotification",
 
+  inheritAttrs: false,
+
   components: { DTypography },
 
   props: {
     /**
-     * TODO
+     * Simple string or any HTML.
      */
     content: {
       type: String,
       default: ""
+    },
+
+    /**
+     * Defines how long the notification will be displayed.
+     */
+    displayDuration: {
+      type: Number,
+      default: 5
+    },
+
+    /**
+     * Positions on the window.
+     * Takes values: 'top', 'top-right', 'right', 'bottom-right', 'bottom', 'bottom-left', 'left', 'top-left'.
+     */
+    position: {
+      type: String,
+      default: "bottom",
+      validator: val =>
+        [
+          "top",
+          "top-right",
+          "right",
+          "bottom-right",
+          "bottom",
+          "bottom-left",
+          "left",
+          "top-left"
+        ].includes(val)
     },
 
     /**
@@ -48,14 +85,6 @@ export default {
     typographyStyle: {
       type: Object,
       default: () => {}
-    },
-
-    /**
-     * TODO
-     */
-    duration: {
-      type: Number,
-      default: 5
     }
   },
 
@@ -67,7 +96,7 @@ export default {
   },
 
   watch: {
-    // TODO: move to setup
+    // TODO: move to setup() ???
     content(value) {
       if (value) {
         this.showNotification();
@@ -91,7 +120,7 @@ export default {
 
       this.timeoutHandler = setTimeout(() => {
         this.shown = false;
-      }, this.duration * 1000);
+      }, this.displayDuration * 1000);
     }
   }
 };
@@ -112,20 +141,55 @@ export default {
 
 .d-notification {
   position: fixed;
-  width: 100vw;
-  bottom: var(--gap-6x);
+  width: 100%;
+  height: 100%;
+  top: 0;
   left: 0;
   display: flex;
-  justify-content: center;
-  min-height: var(--medium-control-height);
-  height: fit-content;
   z-index: 100;
   pointer-events: none;
+
+  padding: var(--gap-6x) var(--gap-3x);
+
+  &.__top {
+    justify-content: center;
+  }
+
+  &.__top-right {
+    justify-content: flex-end;
+  }
+
+  &.__right {
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &.__bottom-right {
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  &.__bottom {
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  &.__bottom-left {
+    align-items: flex-end;
+  }
+
+  &.__left {
+    align-items: center;
+  }
+
+  /*&.__top-left {
+  }*/
 }
 
 .d-typography {
   @include shadow;
 
+  height: fit-content;
   background: var(--color-text);
   color: var(--white);
   padding: var(--gap-2x) var(--gap-5x);

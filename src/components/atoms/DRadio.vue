@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="{ [`${$attrs.class}`]: $attrs.class, [`__${type}`]: type }"
+    :class="{ [`__${type}`]: type, [`${$attrs.class}`]: $attrs.class }"
     class="d-radio"
   >
     <label

@@ -141,7 +141,7 @@ export default {
 
   methods: {
     requestFullScreen() {
-      document.getElementById(this.id).requestFullscreen();
+      document.getElementById(this && this.id).requestFullscreen();
     }
   }
 };

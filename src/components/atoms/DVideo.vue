@@ -155,7 +155,7 @@ export default {
         const linkData = getVideoId(this.source); // if source is link
         let src = null;
         if (Object.keys(linkData).length) {
-          src = linkData.id;
+          src = linkData && linkData.id;
           if (linkData.service === "youtube") {
             src = "https://www.youtube.com/embed/" + src;
           } else if (linkData.service === "vimeo") {
