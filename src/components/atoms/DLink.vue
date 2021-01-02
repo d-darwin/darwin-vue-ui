@@ -2,7 +2,7 @@
   <component
     :is="el"
     :class="{
-      ...$attrs.class,
+      [`${$attrs.class}`]: $attrs.class,
       [`__${size}`]: size,
       [`__${type}`]: type
     }"
@@ -33,7 +33,7 @@ import DIconExternalLink from "../../components/icons/DIconExternalLink";
  * they will be pass to the tag automatically.<br>
  * If <i>href</i> is a link to external resource, optional icon added to the left side of the default slot. You can turn off this behavior or pass your own icon.<br>
  *
- * @version 1.0.4
+ * @version 1.0.5
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {

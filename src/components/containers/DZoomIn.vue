@@ -4,12 +4,19 @@
     :class="{ ...$attrs.class }"
     class="d-zoom-in"
   >
-    <div v-if="!isZoomed" class="content-wrap" @click="zoomInHandler">
+    <DLink
+      v-show="!isZoomed"
+      ref="zoom-in-link"
+      href="#"
+      class="content-wrap"
+      @click="zoomInHandler"
+    >
       <slot />
-    </div>
+    </DLink>
 
     <transition name="opacity">
       <DButton
+        ref="close-button"
         v-show="isZoomed"
         v-bind="{
           iconOnly: true,
@@ -45,6 +52,7 @@
 /** components **/
 import DIconClose from "../icons/DIconClose";
 import DButton from "../atoms/DButton";
+import DLink from "../atoms/DLink";
 
 /**
  * The component allows zoom in slot content to cover all browser viewport.</br>
@@ -58,7 +66,7 @@ export default {
 
   inheritAttrs: false,
 
-  components: { DIconClose, DButton },
+  components: { DLink, DIconClose, DButton },
 
   props: {
     /**
@@ -90,6 +98,9 @@ export default {
 
       const body = document.getElementsByTagName("body")[0];
       body.classList.add("__blocked-scroll");
+
+      const closeButton = this.$refs["close-button"].$el.children[0];
+      this.$nextTick(() => closeButton.focus());
     },
 
     zoomOutHandler() {
@@ -97,6 +108,9 @@ export default {
 
       const body = document.getElementsByTagName("body")[0];
       body.classList.remove("__blocked-scroll");
+
+      const zoomInLink = this.$refs["zoom-in-link"].$el;
+      this.$nextTick(() => zoomInLink.focus());
     }
   }
 };

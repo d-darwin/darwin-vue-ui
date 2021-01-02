@@ -14,8 +14,6 @@
 /** design tokens **/
 import gridTokens from "../../assets/styles/tokens/_grid.scss";
 
-import deviceWidth from "../../mixins/deviceWidth";
-
 /**
  * The container allows you an easy way to arrange child nodes in a grid template.
  *
@@ -24,8 +22,6 @@ import deviceWidth from "../../mixins/deviceWidth";
  */
 export default {
   name: "DGrid",
-
-  mixins: [deviceWidth],
 
   props: {
     /**
@@ -52,12 +48,6 @@ export default {
     isCondensed: {
       type: Boolean,
       default: false
-    }
-  },
-
-  watch: {
-    deviceWidth(value) {
-      console.log(value);
     }
   },
 
