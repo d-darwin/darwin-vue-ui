@@ -26,7 +26,7 @@
 import fontSizeProp from "../../utils/fontSizeProp";
 
 /** mixins **/
-import LinkClickRouting from "../../mixins/LinkClickRouting";
+import linkClickRouting from "../../mixins/linkClickRouting";
 
 /**
  * Renders typography text according to design tokens from './src/assets/styles/tokens/_typography.scss'.<br>
@@ -38,7 +38,7 @@ import LinkClickRouting from "../../mixins/LinkClickRouting";
 export default {
   name: "DTypography",
 
-  mixins: [LinkClickRouting],
+  mixins: [linkClickRouting],
 
   props: {
     /**
