@@ -1,5 +1,7 @@
 ## DARWIN Studio UI Library
 
+[![Known Vulnerabilities](https://snyk.io/test/npm/@darwin-studio/ui-vue/badge.svg)](https://snyk.io/test/npm/@darwin-studio/ui-vue)
+
 ### What is it?
 
 It's lightweight and performant UI Library for Vue 3.

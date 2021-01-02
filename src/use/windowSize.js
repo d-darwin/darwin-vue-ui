@@ -7,7 +7,7 @@ import throttle from "../utils/throttle";
 import breakpointTokens from "../assets/styles/tokens/_breakpoints.scss";
 
 /**
- * Watches for resize and change windowHeight, windowWidth and deviceWidth if some breakpoint crossed
+ * Watches for resize and change windowHeight, windowWidth and deviceWidth if any breakpoint was crossed
  */
 export default function useWindowSize() {
   const windowHeight = ref(null);
