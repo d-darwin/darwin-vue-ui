@@ -87,13 +87,13 @@ For now a few basic components implemented:
 - **DEqualWidth**. Forces default slot elements to be equal width.
   More details: '@dariwn-studio/ui-vue/components/containers/DEqualWidth.vue'.
 - **DFullScreen**. Adds full screen mode to default slot content.
-  More details: '@dariwn-studio/ui-vue/components/containers/DFullScreen.vue'.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/containers/DFullScreen.vue'.
 - **DGrid**. Helps arrange child elements by grid.
   More details: '@dariwn-studio/ui-vue/components/containers/DGrid.vue'.
 - **DTypography**. Renders an HTML strings according to defined design tokens.
-  More details: '@dariwn-studio/ui-vue/components/containers/DTypography.vue'.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/containers/DTypography.vue'.
 - **DZoomIn**. The component allows zoom in slot content to cover all browser viewport.
-  More details: '@dariwn-studio/ui-vue/components/containers/DZoomIn.vue'.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/containers/DZoomIn.vue'.
 - **DButton**. Renders a button of various appearance and behavior.
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DButton.vue'.
 - **DCheckbox**. Renders a checkbox of various appearance.
