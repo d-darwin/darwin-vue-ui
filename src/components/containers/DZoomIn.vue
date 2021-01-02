@@ -123,7 +123,7 @@ body {
 <style scoped lang="scss">
 @import "../../assets/styles/mixins/breakpoints";
 @import "../../assets/styles/mixins/transitions";
-@import "../../assets/styles/vue-transition-opacity";
+@import "../../assets/styles/transitions/opacity";
 
 .d-zoom-in {
   // @include transition-long;

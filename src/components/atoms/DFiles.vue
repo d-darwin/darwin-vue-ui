@@ -215,7 +215,7 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/styles/mixins/links";
-@import "../../assets/styles/vue-transition-list";
+@import "../../assets/styles/transitions/list";
 
 .d-files {
   &.__disabled {
