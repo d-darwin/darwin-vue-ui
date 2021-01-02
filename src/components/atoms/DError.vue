@@ -2,7 +2,7 @@
   <transition name="control-error">
     <DTypography
       v-if="text"
-      :class="{ ...$attrs.class }"
+      :class="$attrs.class"
       :content="text"
       size="small"
       class="d-error"

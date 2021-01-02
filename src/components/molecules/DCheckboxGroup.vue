@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ ...$attrs.class }" class="d-checkbox-group">
+  <div :class="$attrs.class" class="d-checkbox-group">
     <DTypography
       v-if="title"
       :content="title"

@@ -1,8 +1,8 @@
 <template>
   <div
-    ref="content_zoom_container"
-    :class="{ ...$attrs.class }"
+    :class="$attrs.class"
     class="d-zoom-in"
+    @keydown.esc="zoomOutHandler"
   >
     <DLink
       v-show="!isZoomed"

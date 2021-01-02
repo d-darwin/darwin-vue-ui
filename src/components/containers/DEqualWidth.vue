@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ ...$attrs.class }" class="d-equal-width">
+  <div :class="$attrs.class" class="d-equal-width">
     <div class="table">
       <div ref="row" class="row">
         <slot />

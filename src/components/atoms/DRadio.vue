@@ -1,5 +1,8 @@
 <template>
-  <div :class="{ ...$attrs.class, [`__${type}`]: type }" class="d-radio">
+  <div
+    :class="{ [`${$attrs.class}`]: $attrs.class, [`__${type}`]: type }"
+    class="d-radio"
+  >
     <label
       :for="inputId"
       :class="{ __disabled: $attrs.disabled !== undefined }"

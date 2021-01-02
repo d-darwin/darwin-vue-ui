@@ -1,6 +1,9 @@
 <template>
   <div
-    :class="{ ...$attrs.class, __disabled: $attrs.disabled !== undefined }"
+    :class="{
+      [`${$attrs.class}`]: $attrs.class,
+      __disabled: $attrs.disabled !== undefined
+    }"
     class="d-files"
   >
     <DLink

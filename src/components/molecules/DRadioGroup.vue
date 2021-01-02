@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ ...$attrs.class }" class="d-radio-group">
+  <div :class="$attrs.class" class="d-radio-group">
     <DTypography
       v-if="title"
       :content="title"
