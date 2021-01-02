@@ -2,7 +2,7 @@
 import { createApp } from "vue";
 import focusVisiblePolyfill from "focus-visible/dist/focus-visible.min.js";
 
-/** atoms **/
+/** components: atoms **/
 import DButton from "./components/atoms/DButton";
 import DCheckbox from "./components/atoms/DCheckbox";
 import DCopyright from "./components/atoms/DCopyright";
@@ -18,20 +18,25 @@ import DSelect from "./components/atoms/DSelect";
 import DSlider from "./components/atoms/DSlider";
 import DSwitch from "./components/atoms/DSwitch";
 import DVideo from "./components/atoms/DVideo";
-/** molecules **/
+
+/** components: molecules **/
 import DCheckboxGroup from "./components/molecules/DCheckboxGroup";
 import DRadioGroup from "./components/molecules/DRadioGroup";
-/** organisms **/
-/** development **/
+
+/** components: organisms **/
+
+/** components: development **/
 import DGridDebug from "./components/development/DGridDebug";
-/** containers **/
+
+/** components: containers **/
 import DAspectRatio from "./components/containers/DAspectRatio";
 import DEqualWidth from "./components/containers/DEqualWidth";
 import DFullScreen from "./components/containers/DFullScreen";
 import DGrid from "./components/containers/DGrid";
 import DTypography from "./components/containers/DTypography";
 import DZoomIn from "./components/containers/DZoomIn";
-/** icons **/
+
+/** components: icons **/
 import DIconChecked from "./components/icons/DIconChecked";
 import DIconClose from "./components/icons/DIconClose";
 import DIconCloseCircle from "./components/icons/DIconCloseCircle";
@@ -45,12 +50,25 @@ import DIconRadioChecked from "./components/icons/DIconRadioChecked";
 import DIconRadioUnchecked from "./components/icons/DIconRadioUnchecked";
 import DIconUnchecked from "./components/icons/DIconUnchecked";
 import DIconVideo from "./components/icons/DIconVideo";
-/** composition functions **/
+
+/** compositions **/
+
+import useInputId from "./use/inputId";
+import useWindowSize from "./use/windowSize";
+
 /** mixins **/
+import linkClickRouting from "./mixins/linkClickRouting";
+
 /** utils **/
+import copyToClipboard from "./utils/copyToClipboard";
+import debounce from "./utils/debounce";
+import fontSizeProp from "./utils/fontSizeProp";
+import throttle from "./utils/throttle";
+import uuid from "./utils/uuid";
 
 createApp({}).use(focusVisiblePolyfill);
 
+/** components **/
 export {
   /** atoms **/
   DButton,
@@ -95,4 +113,21 @@ export {
   DIconRadioUnchecked,
   DIconUnchecked,
   DIconVideo
+};
+
+export const composition = {
+  useInputId,
+  useWindowSize
+};
+
+export const mixins = {
+  linkClickRouting
+};
+
+export const utils = {
+  copyToClipboard,
+  debounce,
+  fontSizeProp,
+  throttle,
+  uuid
 };
