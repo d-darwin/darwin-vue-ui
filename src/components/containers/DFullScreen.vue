@@ -3,8 +3,10 @@
     <slot />
 
     <DLink
+      ref="request-full-screen-link"
       v-show="!isFullScreen"
       v-bind="{ ...linkProps, onClick: requestFullScreen }"
+      href="#"
       :style="linkStyle"
     >
       <DIconMaximize v-if="!$slots['icon-maximize']" />
@@ -32,7 +34,7 @@ import DTypography from "../containers/DTypography";
 /**
  * The component adds full screen mode to default slot content.
  *
- * @version 1.0.0
+ * @version 1.0.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -95,6 +97,13 @@ export default {
     // hold pointer to the event listener to release it while unmount
     this.fullScreenEventListener = () => {
       this.isFullScreen = !!document.fullscreenElement;
+
+      if (!this.isFullScreen) {
+        // move focus to requestFullScreenLink
+        const requestFullScreenLink = this.$refs["request-full-screen-link"]
+          .$el;
+        this.$nextTick(() => requestFullScreenLink.focus());
+      }
     };
 
     window.addEventListener(
@@ -116,7 +125,6 @@ export default {
 
   beforeUnmount() {
     // remove all added event listeners to avoid memory leaks
-    window.removeEventListener("message", this.messageEventListener);
     window.removeEventListener(
       "fullscreenchange",
       this.fullScreenEventListener

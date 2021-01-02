@@ -8,7 +8,7 @@
       v-show="!isZoomed"
       ref="zoom-in-link"
       href="#"
-      class="content-wrap"
+      class="zoom-in-link"
       @click="zoomInHandler"
     >
       <slot />
@@ -58,7 +58,7 @@ import DLink from "../atoms/DLink";
  * The component allows zoom in slot content to cover all browser viewport.</br>
  * You can pass other content for zoomed contend via slot:zoomed.
  *
- * @version 1.0.2
+ * @version 1.0.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -109,6 +109,7 @@ export default {
       const body = document.getElementsByTagName("body")[0];
       body.classList.remove("__blocked-scroll");
 
+      // move focus to zoom-in-link
       const zoomInLink = this.$refs["zoom-in-link"].$el;
       this.$nextTick(() => zoomInLink.focus());
     }
@@ -136,7 +137,7 @@ body {
 .d-zoom-in {
   // @include transition-long;
 
-  .content-wrap {
+  .zoom-in-link {
     cursor: zoom-in;
   }
 
