@@ -80,7 +80,7 @@ You can find particular component documentation in its source code.
 
 #### Components
 
-For now a few basic components implemented:  
+For now a few basic components implemented:
 
 ##### Atoms
 
@@ -127,7 +127,7 @@ For now a few basic components implemented:
   More details: '@dariwn-studio/ui-vue/components/molecules/DCheckboxGroup.vue'.
 - **DRadioGroup**. Renders a group of radio buttons with title.
   More details: '@dariwn-studio/ui-vue/components/molecules/DRadioGroup.vue'.
-  
+
 ##### Containers
 
 - **DAspectRatio**. Simulates aspect-ratio CSS prop to keep aspect ratio of the container content.
@@ -142,17 +142,24 @@ For now a few basic components implemented:
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/containers/DTypography.vue'.
 - **DZoomIn**. The component allows zoom in slot content to cover all browser viewport.
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/containers/DZoomIn.vue'.
-  
-##### Development components  
+
+##### Development components
 
 - **DGridDebug**. Adds grid visualisation to help catch up arrangement errors.
   More details: '@dariwn-studio/ui-vue/components/development/DGridDebug.vue'.
+
+##### Icon components
+
+The library also exports default icons which used in components.
+You can easily replace them with your own by using appropriate component slots.
+Here you can find default icons: '@dariwn-studio/ui-vue/components/icons'.
 
 #### Reusability and code splitting
 
 We use composition API, mixins and utils to reuse and split code.
 More details you can find in appropriate directory.
-- Compositions: '@dariwn-studio/ui-vue/compositions/'.  
+
+- Compositions: '@dariwn-studio/ui-vue/compositions/'.
 - Mixins: '@dariwn-studio/ui-vue/mixins/'.
 - Utils: '@dariwn-studio/ui-vue/utils/'.
 

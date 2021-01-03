@@ -35,6 +35,9 @@ import DGrid from "./components/containers/DGrid";
 import DTypography from "./components/containers/DTypography";
 import DZoomIn from "./components/containers/DZoomIn";
 
+/** components: development **/
+import DGridDebug from "./components/development/DGridDebug";
+
 /** components: icons **/
 import DIconChecked from "./components/icons/DIconChecked";
 import DIconClose from "./components/icons/DIconClose";
@@ -49,9 +52,6 @@ import DIconRadioChecked from "./components/icons/DIconRadioChecked";
 import DIconRadioUnchecked from "./components/icons/DIconRadioUnchecked";
 import DIconUnchecked from "./components/icons/DIconUnchecked";
 import DIconVideo from "./components/icons/DIconVideo";
-
-/** components: development **/
-import DGridDebug from "./components/development/DGridDebug";
 
 /** compositions **/
 import useInputId from "./compositions/inputId";
@@ -100,6 +100,8 @@ export {
   DGrid,
   DTypography,
   DZoomIn,
+  /** development **/
+  DGridDebug,
   /** icons **/
   DIconChecked,
   DIconClose,
@@ -113,9 +115,7 @@ export {
   DIconRadioChecked,
   DIconRadioUnchecked,
   DIconUnchecked,
-  DIconVideo,
-  /** development **/
-  DGridDebug
+  DIconVideo
 };
 
 export const compositions = {
