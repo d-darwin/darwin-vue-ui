@@ -5,6 +5,7 @@ import focusVisiblePolyfill from "focus-visible/dist/focus-visible.min.js";
 /** components: atoms **/
 import DButton from "./components/atoms/DButton";
 import DCheckbox from "./components/atoms/DCheckbox";
+import DContentCopy from "./components/atoms/DContentCopy";
 import DCopyright from "./components/atoms/DCopyright";
 import DError from "./components/atoms/DError";
 import DFiles from "./components/atoms/DFiles";
@@ -72,6 +73,7 @@ export {
   /** atoms **/
   DButton,
   DCheckbox,
+  DContentCopy,
   DCopyright,
   DError,
   DFiles,
