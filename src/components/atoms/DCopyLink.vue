@@ -1,8 +1,10 @@
 <template>
   <div :class="$attrs.class" class="d-copy-link">
     <DLink
+      ref="copy-link"
       v-bind="{
         size: 'small',
+        href: '#',
         ...linkProps,
         onClick: copyLink
       }"
@@ -33,7 +35,7 @@ import DTypography from "../containers/DTypography";
 /**
  * The component allows user to copy current page URL.
  *
- * @version 1.0.1
+ * @version 1.0.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -86,7 +88,7 @@ export default {
   },
 
   methods: {
-    copyLink() {
+    async copyLink() {
       copyToClipboard(window.location.href);
       /**
        * Page link was copied.
@@ -94,7 +96,11 @@ export default {
        * @event copied
        * @type {undefined}
        */
-      this.$emit("copied");
+      await this.$emit("copied");
+
+      // reset focus to copy-link
+      const copy = this.$refs["copy-link"].$el;
+      await this.$nextTick(() => copy.focus());
     }
   }
 };

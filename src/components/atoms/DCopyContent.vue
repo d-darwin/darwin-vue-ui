@@ -102,6 +102,7 @@ export default {
        */
       await this.$emit("copied");
 
+      // reset focus to copy-button
       const copy = this.$refs["copy-button"].$el.children[0];
       await this.$nextTick(() => copy.focus());
     }

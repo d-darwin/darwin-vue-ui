@@ -15,6 +15,7 @@ import DLink from "./components/atoms/DLink";
 import DLoader from "./components/atoms/DLoader";
 import DNotification from "./components/atoms/DNotification";
 import DPicture from "./components/atoms/DPicture";
+import DProgressBar from "./components/atoms/DProgressBar";
 import DRadio from "./components/atoms/DRadio";
 import DSelect from "./components/atoms/DSelect";
 import DSlider from "./components/atoms/DSlider";
@@ -84,6 +85,7 @@ export {
   DLoader,
   DNotification,
   DPicture,
+  DProgressBar,
   DRadio,
   DSelect,
   DSlider,
