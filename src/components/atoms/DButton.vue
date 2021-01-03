@@ -29,7 +29,7 @@ import DError from "./DError";
  * they will be pass to the tag automatically.<br>
  * May be in various sizes and have different corner roundness.
  *
- * @version 1.0.7
+ * @version 1.0.8
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -42,15 +42,20 @@ export default {
   props: {
     /**
      * Defines background and border colors of the component as well as :hover and :active behavior.<br>
-     * Takes values: 'primary', 'secondary', 'alternative', 'inverse', 'danger'.
+     * Takes values: 'primary', 'secondary', 'alternative', 'inverse', 'danger', 'backgroundless'.
      */
     type: {
       type: String,
       default: "primary",
       validator: val =>
-        ["primary", "secondary", "alternative", "inverse", "danger"].includes(
-          val
-        )
+        [
+          "primary",
+          "secondary",
+          "alternative",
+          "inverse",
+          "danger",
+          "backgroundless"
+        ].includes(val)
     },
 
     /**
@@ -283,6 +288,22 @@ export default {
   &.__disabled {
     background: var(--color-danger-disabled);
     border-color: var(--color-danger-disabled);
+  }
+}
+
+.__backgroundless {
+  transition: none;
+  color: var(--text-aux);
+  background: transparent;
+  border-color: transparent;
+
+  &:not(.__disabled):hover,
+  &:not(.__disabled):active {
+    opacity: 0.8;
+  }
+
+  &.__disabled {
+    color: var(--text-alt);
   }
 }
 </style>

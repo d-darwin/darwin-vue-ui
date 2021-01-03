@@ -31,8 +31,8 @@
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
-  name: 'DIconCopy',
-}
+  name: "DIconCopy"
+};
 </script>
 
 <style scoped lang="scss">

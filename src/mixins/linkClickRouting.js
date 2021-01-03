@@ -22,13 +22,12 @@ export default {
   },
 
   updated() {
-      if (this.$router) {
-        this.removeListeners();
-        this.$nextTick(() => {
-          this.addListeners();
-        });
-      }
-
+    if (this.$router) {
+      this.removeListeners();
+      this.$nextTick(() => {
+        this.addListeners();
+      });
+    }
   },
 
   methods: {

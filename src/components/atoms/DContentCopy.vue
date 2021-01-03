@@ -9,8 +9,12 @@
     />
 
     <DButton
+      ref="copy-button"
       v-bind="{
         'icon-only': true,
+        size: 'small',
+        roundness: 'boxed',
+        type: 'backgroundless',
         ...buttonProps,
         onClick: copyText
       }"
@@ -33,7 +37,7 @@ import DButton from "./DButton";
 import DIconCopy from "../icons/DIconCopy";
 
 /**
- * TODO
+ * The component allows user to copy string passed to component in <i>content</i> prop.
  *
  * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
@@ -88,7 +92,7 @@ export default {
   },
 
   methods: {
-    copyText() {
+    async copyText() {
       copyToClipboard(this.content);
       /**
        * Content string was copied.
@@ -96,7 +100,10 @@ export default {
        * @event copied
        * @type {undefined}
        */
-      this.$emit("copied");
+      await this.$emit("copied");
+
+      const copy = this.$refs["copy-button"].$el.children[0];
+      await this.$nextTick(() => copy.focus());
     }
   }
 };
