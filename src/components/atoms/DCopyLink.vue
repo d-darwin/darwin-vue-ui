@@ -31,7 +31,7 @@ import DIconCopy from "../icons/DIconCopy";
 import DTypography from "../containers/DTypography";
 
 /**
- * The component user to copy current page URL.
+ * The component allows user to copy current page URL.
  *
  * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)

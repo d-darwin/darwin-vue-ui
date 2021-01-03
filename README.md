@@ -88,7 +88,10 @@ For now a few basic components implemented:
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DButton.vue'.
 - **DCheckbox**. Renders a checkbox of various appearance.
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DCheckbox.vue'.
-  
+- **DCopyContent**. Allows user to copy string passed to component in <i>content</i> prop.
+  More details: '@dariwn-studio/ui-vue/components/atoms/DCopyContent.vue'.
+- **DCopyLink**. Allows user to copy current page URL.
+  More details: '@dariwn-studio/ui-vue/components/atoms/DCopyLink.vue'.
 - **DCopyright**. Renders standard copyright string with company name and years.
   More details: '@dariwn-studio/ui-vue/components/atoms/DCopyright.vue'.
 - **DError**. Helps unify control components error output.
