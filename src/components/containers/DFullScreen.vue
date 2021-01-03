@@ -14,8 +14,8 @@
       <slot v-else name="icon-maximize" />
 
       <DTypography
-        v-if="typographyProps.content"
-        v-bind="typographyProps"
+        v-if="linkText"
+        v-bind="{ content: linkText, ...typographyProps }"
         :style="typographyStyle"
       />
     </DLink>
@@ -34,7 +34,7 @@ import DTypography from "../containers/DTypography";
 /**
  * The component adds full screen mode to default slot content.
  *
- * @version 1.0.3
+ * @version 1.0.4
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -51,6 +51,14 @@ export default {
     id: {
       type: String,
       default: `d_full_screen_${uuid()}`
+    },
+
+    /**
+     * Link text string.
+     */
+    linkText: {
+      type: String,
+      default: ""
     },
 
     /**

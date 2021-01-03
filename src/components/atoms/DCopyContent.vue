@@ -1,5 +1,5 @@
 <template>
-  <div :class="$attrs.class" class="d-content-copy">
+  <div :class="$attrs.class" class="d-copy-content">
     <DTypography
       v-bind="{
         content,
@@ -32,18 +32,18 @@
 import copyToClipboard from "../../utils/copyToClipboard";
 
 /** components **/
-import DTypography from "../containers/DTypography";
-import DButton from "./DButton";
 import DIconCopy from "../icons/DIconCopy";
+import DButton from "./DButton";
+import DTypography from "../containers/DTypography";
 
 /**
  * The component allows user to copy string passed to component in <i>content</i> prop.
  *
- * @version 1.0.1
+ * @version 1.0.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
-  name: "DContentCopy",
+  name: "DCopyContent",
 
   inheritAttrs: false,
 
@@ -111,12 +111,11 @@ export default {
 
 <style lang="scss">
 // always include tokens unscoped
-@import "../../assets/styles/tokens/colors";
 @import "../../assets/styles/tokens/gaps";
 </style>
 
 <style scoped lang="scss">
-.d-content-copy {
+.d-copy-content {
   display: flex;
   align-items: center;
 
