@@ -110,7 +110,7 @@ For now a few basic components implemented:
   Supports lazy loading, aspect-ratio prop, no image fallback and loading placeholder.  
   More details: '@dariwn-studio/ui-vue/components/atoms/DPicture.vue'.
 - **DProgressBar**. Renders custom progress bar.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DProgressBar.vue'.
+  More details: '@dariwn-studio/ui-vue/components/atoms/DProgressBar.vue'.
 - **DRadio**. Renders a radio buttons of various appearance.
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DRadio.vue'.
 - **DSelect**. Renders a select of various appearance.
