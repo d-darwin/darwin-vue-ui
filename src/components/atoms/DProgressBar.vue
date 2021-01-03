@@ -1,10 +1,21 @@
 <template>
-  <div class="d-progress-bar">
-    <div class="bar-wrap">
-      <div :style="{ width }" :class="{ __full: value === 100 }" class="bar" />
+  <div :class="$attrs.class" class="d-progress-bar">
+    <div class="bar-wrap" :style="barWrapStyle">
+      <div
+        :class="{ __full: value === 100 }"
+        :style="{ width, ...barStyle }"
+        class="bar"
+      />
     </div>
 
-    <DTypography :content="`${value || 0}%`" size="small" />
+    <DTypography
+      v-bind="{
+        content: `${value || 0}%`,
+        size: 'small',
+        ...typographyProps
+      }"
+      :style="typographyStyle"
+    />
   </div>
 </template>
 
@@ -12,7 +23,7 @@
 import DTypography from "../containers/DTypography";
 
 /**
- * TODO
+ * Renders custom progress bar.
  *
  * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
@@ -20,16 +31,50 @@ import DTypography from "../containers/DTypography";
 export default {
   name: "DProgressBar",
 
+  inheritAttrs: false,
+
   components: { DTypography },
 
   props: {
     /**
-     * TODO
+     * Percentage of progress.
      */
     value: {
       type: Number,
       default: 0,
       validator: val => val >= 0 && val <= 100
+    },
+
+    /**
+     * Pass any style object to <i>.bar-wrap</i> if needed.
+     */
+    barWrapStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Pass any style object to <i>.bar</i> if needed.
+     */
+    barStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Pass any <b>DTypography</b> props if needed.
+     */
+    typographyProps: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Pass any style object to <i>.d-typography</i> if needed.
+     */
+    typographyStyle: {
+      type: Object,
+      default: () => {}
     }
   },
 
