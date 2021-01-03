@@ -51,7 +51,7 @@
 
 <script>
 /** use **/
-import useInputId from "../../use/inputId";
+import useInputId from "../../compositions/inputId";
 
 /** components **/
 import DIconDirection from "../icons/DIconDirection";

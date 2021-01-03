@@ -19,7 +19,7 @@
   "files": [
     "src/assets/*",
     "src/components/*",
-    "src/use/*",
+    "src/compositions/*",
     "src/mixins/*",
     "src/utils/*",
     "src/index.js",

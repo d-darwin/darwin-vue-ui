@@ -1,3 +1,7 @@
+/**
+ * If children of a component contains relative HTML links
+ *  the mixins handles these as routes.
+ */
 export default {
   data() {
     return {
@@ -17,15 +21,14 @@ export default {
     }
   },
 
-  watch: {
-    content() {
+  updated() {
       if (this.$router) {
         this.removeListeners();
         this.$nextTick(() => {
           this.addListeners();
         });
       }
-    }
+
   },
 
   methods: {

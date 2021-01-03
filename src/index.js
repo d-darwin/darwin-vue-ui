@@ -53,8 +53,8 @@ import DIconVideo from "./components/icons/DIconVideo";
 
 /** compositions **/
 
-import useInputId from "./use/inputId";
-import useWindowSize from "./use/windowSize";
+import useInputId from "./compositions/inputId";
+import useWindowSize from "./compositions/windowSize";
 
 /** mixins **/
 import linkClickRouting from "./mixins/linkClickRouting";
@@ -115,7 +115,7 @@ export {
   DIconVideo
 };
 
-export const composition = {
+export const compositions = {
   useInputId,
   useWindowSize
 };

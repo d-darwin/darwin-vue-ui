@@ -1,3 +1,11 @@
+/**
+ * Simple implementation of the debounce technique
+ *  which allows us to “group” multiple sequential calls in a single one after X milliseconds of “silence“.
+ *
+ * @param func
+ * @param ms
+ * @returns {function(): undefined}
+ */
 export default function debounce(func, ms) {
   let isCooldown = false;
 

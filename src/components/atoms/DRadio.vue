@@ -62,7 +62,7 @@
 
 <script>
 /** use **/
-import useInputId from "../../use/inputId";
+import useInputId from "../../compositions/inputId";
 
 /** components **/
 import DIconRadioUnchecked from "../icons/DIconRadioUnchecked";

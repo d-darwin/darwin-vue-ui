@@ -70,7 +70,7 @@
 
 <script>
 /** use **/
-import useInputId from "../../use/inputId";
+import useInputId from "../../compositions/inputId";
 
 /** design tokens **/
 import transitionsTokens from "../../assets/styles/tokens/_transitions.scss";

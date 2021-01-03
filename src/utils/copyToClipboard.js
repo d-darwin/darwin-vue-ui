@@ -1,3 +1,9 @@
+/**
+ * Copies 'text' to the system's clipboard.
+ * See example usage in '@dariwn-studio/ui-vue/components/atoms/DTextCopy.vue'.
+ *
+ * @param text
+ */
 export default text => {
   const dummyElement = document.createElement("input");
 

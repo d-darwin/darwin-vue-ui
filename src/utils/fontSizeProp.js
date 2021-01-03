@@ -1,3 +1,7 @@
+/**
+ * Uses as possible font sizes props of components.
+ * See example usage in '@dariwn-studio/ui-vue/components/containers/DTypography.vue'.
+ */
 export default {
   type: String,
   default: "general",
