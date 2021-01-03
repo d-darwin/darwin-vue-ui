@@ -25,9 +25,6 @@ import DRadioGroup from "./components/molecules/DRadioGroup";
 
 /** components: organisms **/
 
-/** components: development **/
-import DGridDebug from "./components/development/DGridDebug";
-
 /** components: containers **/
 import DAspectRatio from "./components/containers/DAspectRatio";
 import DEqualWidth from "./components/containers/DEqualWidth";
@@ -51,8 +48,10 @@ import DIconRadioUnchecked from "./components/icons/DIconRadioUnchecked";
 import DIconUnchecked from "./components/icons/DIconUnchecked";
 import DIconVideo from "./components/icons/DIconVideo";
 
-/** compositions **/
+/** components: development **/
+import DGridDebug from "./components/development/DGridDebug";
 
+/** compositions **/
 import useInputId from "./compositions/inputId";
 import useWindowSize from "./compositions/windowSize";
 
@@ -90,8 +89,6 @@ export {
   DCheckboxGroup,
   DRadioGroup,
   /** organisms **/
-  /** development **/
-  DGridDebug,
   /** containers **/
   DAspectRatio,
   DEqualWidth,
@@ -112,7 +109,9 @@ export {
   DIconRadioChecked,
   DIconRadioUnchecked,
   DIconUnchecked,
-  DIconVideo
+  DIconVideo,
+  /** development **/
+  DGridDebug
 };
 
 export const compositions = {

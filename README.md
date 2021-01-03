@@ -80,10 +80,52 @@ You can find particular component documentation in its source code.
 
 #### Components
 
-For now a few basic components implemented:
+For now a few basic components implemented:  
 
-- **DGridDebug**. Adds grid visualisation to help catch up arrangement errors.
-  More details: '@dariwn-studio/ui-vue/components/development/DGridDebug.vue'.
+##### Atoms
+
+- **DButton**. Renders a button of various appearance and behavior.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DButton.vue'.
+- **DCheckbox**. Renders a checkbox of various appearance.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DCheckbox.vue'.
+- **DCopyright**. Renders standard copyright string with company name and years.
+  More details: '@dariwn-studio/ui-vue/components/atoms/DCopyright.vue'.
+- **DError**. Helps unify control components error output.
+  More details: '@dariwn-studio/ui-vue/components/atoms/DError.vue'.
+- **DFiles**. Renders custom files input.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DFiles.vue'.
+- **DInput**. Renders an input field of various appearance.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DInput.vue'.
+- **DLink**. Renders a link of various appearance.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DLink.vue'.
+- **DLoader**. Renders an animated svg which used in other components such as DPicture.
+  More details: '@dariwn-studio/ui-vue/components/atoms/DLoader.vue'.
+- **DNotification**. Renders text notification for a given duration.
+  More details: '@dariwn-studio/ui-vue/components/atoms/DNotification.vue'.
+- **DPicture**. Renders a picture according to Responsive Image principle.
+  Supports lazy loading, aspect-ratio prop, no image fallback and loading placeholder.  
+  More details: '@dariwn-studio/ui-vue/components/atoms/DPicture.vue'.
+- **DRadio**. Renders a radio buttons of various appearance.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DRadio.vue'.
+- **DSelect**. Renders a select of various appearance.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSelect.vue'.
+- **DSlider**. Renders a slider of various appearance.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSlider.vue'.
+- **DSwitch**. Renders a switch or a toggle of various colors.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSwitch.vue'.
+- **DVideo**. Renders a video of different formats and video hosting services.
+  Supports lazy loading, aspect-ratio prop, no image fallback and loading placeholder.  
+  More details. More details: '@dariwn-studio/ui-vue/components/atoms/DVideo.vue'.
+
+##### Molecules
+
+- **DCheckboxGroup**. Renders a group of checkboxes with title.
+  More details: '@dariwn-studio/ui-vue/components/molecules/DCheckboxGroup.vue'.
+- **DRadioGroup**. Renders a group of radio buttons with title.
+  More details: '@dariwn-studio/ui-vue/components/molecules/DRadioGroup.vue'.
+  
+##### Containers
+
 - **DAspectRatio**. Simulates aspect-ratio CSS prop to keep aspect ratio of the container content.
   More details: '@dariwn-studio/ui-vue/components/containers/DAspectRatio.vue'.
 - **DEqualWidth**. Forces default slot elements to be equal width.
@@ -96,42 +138,19 @@ For now a few basic components implemented:
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/containers/DTypography.vue'.
 - **DZoomIn**. The component allows zoom in slot content to cover all browser viewport.
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/containers/DZoomIn.vue'.
-- **DButton**. Renders a button of various appearance and behavior.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DButton.vue'.
-- **DCheckbox**. Renders a checkbox of various appearance.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DCheckbox.vue'.
-- **DCheckboxGroup**. Renders a group of checkboxes with title.
-  More details: '@dariwn-studio/ui-vue/components/molecules/DCheckboxGroup.vue'.
-- **DCopyright**. Renders standard copyright string with company name and years.
-  More details: '@dariwn-studio/ui-vue/components/atoms/DCopyright.vue'.
-- **DFiles**. Renders custom files input.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DFiles.vue'.
-- **DError**. Helps unify control components error output.
-  More details: '@dariwn-studio/ui-vue/components/atoms/DError.vue'.
-- **DInput**. Renders an input field of various appearance.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DInput.vue'.
-- **DLink**. Renders a link of various appearance.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DLink.vue'.
-- **DLoader**. Renders an animated svg which used in other components such as DPicture.
-  More details: '@dariwn-studio/ui-vue/components/atoms/DLoader.vue'.
-- **DNotification**. Renders text notification for a given duration.
-  More details: '@dariwn-studio/ui-vue/components/atoms/DNotification.vue'.
-- **DPicture**. Renders a picture according to Responsive Image principle.
-  Supports lazy loading, aspect-ratio prop, no image fallback and loading placeholder.  
-  More details: '@dariwn-studio/ui-vue/components/atoms/DPicture.vue'.
-- **DSlider**. Renders a slider of various appearance.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSlider.vue'.
-- **DRadio**. Renders a radio buttons of various appearance.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DRadio.vue'.
-- **DRadioGroup**. Renders a group of radio buttons with title.
-  More details: '@dariwn-studio/ui-vue/components/molecules/DRadioGroup.vue'.
-- **DSelect**. Renders a select of various appearance.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSelect.vue'.
-- **DSwitch**. Renders a switch or a toggle of various colors.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSwitch.vue'.
-- **DVideo**. Renders a video of different formats and video hosting services.
-  Supports lazy loading, aspect-ratio prop, no image fallback and loading placeholder.  
-  More details. More details: '@dariwn-studio/ui-vue/components/atoms/DVideo.vue'.
+  
+##### Development components  
+
+- **DGridDebug**. Adds grid visualisation to help catch up arrangement errors.
+  More details: '@dariwn-studio/ui-vue/components/development/DGridDebug.vue'.
+
+#### Reusability and code splitting
+
+We use composition API, mixins and utils to reuse and split code.
+More details you can find in appropriate directory.
+- Compositions: '@dariwn-studio/ui-vue/compositions/'.  
+- Mixins: '@dariwn-studio/ui-vue/mixins/'.
+- Utils: '@dariwn-studio/ui-vue/utils/'.
 
 #### Design Tokens
 
