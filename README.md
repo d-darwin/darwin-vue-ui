@@ -171,6 +171,16 @@ in runtime via CSS custom properties.
 You can even import design token to your \*.js files.
 Check out what you can redefine in '@dariwn-studio/ui-vue/src/assets/styles/tokens'.
 
+#### Style mixins
+
+Some reusable component styles extract to SCSS mixins. Feel free to reuse them in your own project.  
+More details you can find in '@dariwn-studio/ui-vue/src/assets/styles/mixins'.
+
+#### Vue transitions
+
+Some common component transitions extract to separate directory. Feel free to reuse them in your own project.  
+More details you can find in '@dariwn-studio/ui-vue/src/assets/styles/transitions'.
+
 #### Reset styles
 
 Just add following line into your general scss file to reset all browser-specific styles.
