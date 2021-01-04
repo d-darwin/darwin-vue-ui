@@ -163,6 +163,7 @@ export default {
 @import "../../assets/styles/mixins/transitions";
 @import "../../assets/styles/mixins/outline";
 
+// TODO: share styles with DTextarea ???
 .d-input {
   width: fit-content;
   min-width: var(--control-min-width);

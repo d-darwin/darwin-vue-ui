@@ -49,9 +49,13 @@ import DTypography from "../containers/DTypography";
 import DError from "./DError";
 
 /**
- * TODO
+ * The component renders <b>textarea</b> tag with <b>label</b>.<br>
+ * Feel free to use any attrs you expect with <b>textarea</b> tag,
+ * they will be pass to the tag automatically.<br>
+ * May be in various sizes and have different corner roundness.<br>
+ * Renders error string if any passed to a prop.
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -150,6 +154,7 @@ export default {
 @import "../../assets/styles/mixins/transitions";
 @import "../../assets/styles/mixins/outline";
 
+// TODO: share styles with DInput ???
 .d-textarea {
   width: fit-content;
   min-width: var(--control-min-width);
