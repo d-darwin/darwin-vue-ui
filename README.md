@@ -119,6 +119,8 @@ For now a few basic components implemented:
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSlider.vue'.
 - **DSwitch**. Renders a switch or a toggle of various colors.
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSwitch.vue'.
+- **DTextarea**. Renders a textarea field of various appearance.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DTextarea.vue'.
 - **DVideo**. Renders a video of different formats and video hosting services.
   Supports lazy loading, aspect-ratio prop, no image fallback and loading placeholder.  
   More details. More details: '@dariwn-studio/ui-vue/components/atoms/DVideo.vue'.
