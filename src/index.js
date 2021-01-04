@@ -20,6 +20,7 @@ import DRadio from "./components/atoms/DRadio";
 import DSelect from "./components/atoms/DSelect";
 import DSlider from "./components/atoms/DSlider";
 import DSwitch from "./components/atoms/DSwitch";
+import DTextarea from "./components/atoms/DTextarea";
 import DVideo from "./components/atoms/DVideo";
 
 /** components: molecules **/
@@ -90,6 +91,7 @@ export {
   DSelect,
   DSlider,
   DSwitch,
+  DTextarea,
   DVideo,
   /** molecules **/
   DCheckboxGroup,

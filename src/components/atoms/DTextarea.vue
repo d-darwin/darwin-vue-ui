@@ -6,7 +6,7 @@
       [`__${roundness}`]: roundness,
       __disabled: $attrs.disabled !== undefined
     }"
-    class="d-input"
+    class="d-textarea"
   >
     <DTypography
       v-if="label"
@@ -17,9 +17,9 @@
       class="label"
     />
 
-    <div :class="{}" class="control-group">
+    <div class="control-group">
       <!--need roundness class here for uniformity with other controls-->
-      <input
+      <textarea
         :id="inputId"
         :class="{
           [`__${roundness}`]: roundness,
@@ -30,9 +30,9 @@
           onInput: emitValue,
           onChange: emitValue
         }"
-        class="input"
-        @keyup.enter.prevent="emitSubmit"
+        class="textarea"
       />
+
       <div class="outline" />
     </div>
 
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-/** use **/
+/** utils **/
 import useInputId from "../../compositions/inputId";
 
 /** components **/
@@ -49,17 +49,13 @@ import DTypography from "../containers/DTypography";
 import DError from "./DError";
 
 /**
- * The component renders <b>input</b> tag with <b>label</b>.<br>
- * Feel free to use any attrs you expect with <b>input</b> tag,
- * they will be pass to the tag automatically.<br>
- * May be in various sizes and have different corner roundness.<br>
- * Renders error string if any passed to a prop.
+ * TODO
  *
- * @version 1.0.6
+ * @version 1.0.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
-  name: "DInput",
+  name: "DTextarea",
 
   inheritAttrs: false,
 
@@ -67,7 +63,7 @@ export default {
 
   props: {
     /**
-     * Defines <i>id</i> attr of th <b>input</b> tag.<br>
+     * Defines <i>id</i> attr of th <b>textarea</b> tag.<br>
      * If you don't want to specify it, it will be generated automatically.
      */
     id: {
@@ -76,7 +72,7 @@ export default {
     },
 
     /**
-     * Defines vertical size of the <b>input</b> tag.<br>
+     * Defines vertical size of the <b>textarea</b> tag.<br>
      * Takes values: 'large', 'medium'.
      */
     size: {
@@ -86,7 +82,7 @@ export default {
     },
 
     /**
-     * Defines corner's roundness of the <b>input</b> tag.<br>
+     * Defines corner's roundness of the <b>textarea</b> tag.<br>
      * Takes values: 'smooth', 'rounded', 'boxed'.
      */
     roundness: {
@@ -104,7 +100,7 @@ export default {
     },
 
     /**
-     * Defines if <b>input</b> tag has to have border.
+     * Defines if <b>textarea</b> tag has to have border.
      */
     borderless: {
       type: Boolean,
@@ -112,7 +108,7 @@ export default {
     },
 
     /**
-     * If not empty renders as an error string below the <b>input</b> tag.
+     * If not empty renders as an error string below the <b>textarea</b> tag.
      */
     error: {
       type: String,
@@ -127,7 +123,7 @@ export default {
   methods: {
     emitValue(event) {
       /**
-       * Value of the <b>input</b> tag updated. Contains new <i>value</i> and component id.<br>
+       * Value of the <b>textarea</b> tag updated. Contains new <i>value</i> and component id.<br>
        * Use @update:value="fn" to catch this event.
        *
        * @event update:value
@@ -137,15 +133,6 @@ export default {
         value: event.target.value,
         id: this.inputId
       });
-    },
-
-    emitSubmit() {
-      /**
-       * Enter clicked while focus on the <b>input</b>.
-       *
-       * @event submitted
-       */
-      this.$emit("submitted");
     }
   }
 };
@@ -163,7 +150,7 @@ export default {
 @import "../../assets/styles/mixins/transitions";
 @import "../../assets/styles/mixins/outline";
 
-.d-input {
+.d-textarea {
   width: fit-content;
   min-width: var(--control-min-width);
 }
@@ -172,6 +159,7 @@ export default {
   display: flex;
   flex-direction: column;
   position: relative;
+  width: fit-content;
 }
 
 .label {
@@ -179,7 +167,7 @@ export default {
   margin-bottom: 2px;
 }
 
-.input {
+.textarea {
   @include general-text;
   @include transition-short;
 
@@ -193,6 +181,7 @@ export default {
 
   outline: none;
 
+  // TODO: outline is visible even if use mouse
   &.focus-visible ~ .outline {
     @include outline;
 
@@ -204,8 +193,8 @@ export default {
   border-color: var(--white);
 }
 
-.input:focus,
-.input:active {
+.textarea:focus,
+.textarea:active {
   border-color: var(--color-text-alt);
 }
 
@@ -228,7 +217,7 @@ export default {
     color: var(--color-text-alt);
   }
 
-  .input {
+  .textarea {
     color: var(--color-text-alt);
     background: var(--white);
     cursor: not-allowed;
@@ -246,10 +235,10 @@ export default {
 }
 
 .__large {
-  .input {
+  .textarea {
     @include large-control;
 
-    padding: 12px 0 12px 15px;
+    padding: 12px 15px;
   }
 
   &.__smooth {
@@ -260,10 +249,10 @@ export default {
 }
 
 .__medium {
-  .input {
+  .textarea {
     @include medium-control;
 
-    padding: 7px 0 7px 11px;
+    padding: 7px 11px;
   }
 
   &.__smooth {
