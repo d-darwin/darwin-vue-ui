@@ -10,45 +10,49 @@
 </template>
 
 <script>
+/** compositions **/
+import useKeyboardListener from "../../compositions/keyboardListener";
+
+/** components **/
 import DIconColumns from "../icons/DIconColumns";
 import DButton from "../atoms/DButton";
 
 /**
  * This development component intents to help while positioning elements inside <b>DGrid</b> component.</br>
- * It renders independent grid visualization on <i>Ctrl + Alt + D</i>.
+ * It renders independent grid visualization on <i>Ctrl + Alt + d</i>.
  *
- * @version 1.0.1
+ * @version 1.1.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
   name: "DGridDebug",
+
   components: { DButton, DIconColumns },
+
   data() {
     return {
       keydownEventListener: null
     };
   },
 
-  mounted() {
-    // hold pointer to the event listener to release it while unmount
-    this.keydownEventListener = e => {
-      if (e.ctrlKey && e.altKey && e.key === "d") {
-        this.toggleGridVisualization();
-      }
-    };
-    window.addEventListener("keydown", this.keydownEventListener);
-  },
-
-  unmounted() {
-    // remove all added event listeners to avoid memory leaks
-    window.removeEventListener("keydown", this.keydownEventListener);
-  },
-
-  methods: {
-    toggleGridVisualization() {
+  setup() {
+    const toggleGridVisualization = () => {
       const body = document.getElementsByTagName("body")[0];
       body.classList.toggle("__debug");
-    }
+    };
+
+    useKeyboardListener([
+      {
+        ctrlKey: true,
+        altKey: true,
+        key: "d",
+        func: toggleGridVisualization
+      }
+    ]);
+
+    return {
+      toggleGridVisualization
+    };
   }
 };
 </script>
@@ -100,6 +104,7 @@ body.__debug::before {
 @import "../../assets/styles/tokens/gaps";
 @import "../../assets/styles/tokens/colors";
 
+// button styles
 .d-grid-debug {
   @include transition-short;
 
