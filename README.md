@@ -85,87 +85,87 @@ For now a few basic components implemented:
 ##### Atoms
 
 - **DButton**. Renders a button of various appearance and behavior.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DButton.vue'.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DButton.vue'.
 - **DCheckbox**. Renders a checkbox of various appearance.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DCheckbox.vue'.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DCheckbox.vue'.
 - **DCopyContent**. Allows user to copy string passed to component in <i>content</i> prop.
-  More details: '@dariwn-studio/ui-vue/components/atoms/DCopyContent.vue'.
+  More details: '@dariwn-studio/ui-vue/src/components/atoms/DCopyContent.vue'.
 - **DCopyLink**. Allows user to copy current page URL.
-  More details: '@dariwn-studio/ui-vue/components/atoms/DCopyLink.vue'.
+  More details: '@dariwn-studio/ui-vue/src/components/atoms/DCopyLink.vue'.
 - **DCopyright**. Renders standard copyright string with company name and years.
-  More details: '@dariwn-studio/ui-vue/components/atoms/DCopyright.vue'.
+  More details: '@dariwn-studio/ui-vue/src/components/atoms/DCopyright.vue'.
 - **DError**. Helps unify control components error output.
-  More details: '@dariwn-studio/ui-vue/components/atoms/DError.vue'.
+  More details: '@dariwn-studio/ui-vue/src/components/atoms/DError.vue'.
 - **DFiles**. Renders custom files input.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DFiles.vue'.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DFiles.vue'.
 - **DInput**. Renders an input field of various appearance.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DInput.vue'.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DInput.vue'.
 - **DLink**. Renders a link of various appearance.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DLink.vue'.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DLink.vue'.
 - **DLoader**. Renders an animated svg which used in other components such as DPicture.
-  More details: '@dariwn-studio/ui-vue/components/atoms/DLoader.vue'.
+  More details: '@dariwn-studio/ui-vue/src/components/atoms/DLoader.vue'.
 - **DNotification**. Renders text notification for a given duration.
-  More details: '@dariwn-studio/ui-vue/components/atoms/DNotification.vue'.
+  More details: '@dariwn-studio/ui-vue/src/components/atoms/DNotification.vue'.
 - **DPicture**. Renders a picture according to Responsive Image principle.
   Supports lazy loading, aspect-ratio prop, no image fallback and loading placeholder.  
-  More details: '@dariwn-studio/ui-vue/components/atoms/DPicture.vue'.
+  More details: '@dariwn-studio/ui-vue/src/components/atoms/DPicture.vue'.
 - **DProgressBar**. Renders custom progress bar.
-  More details: '@dariwn-studio/ui-vue/components/atoms/DProgressBar.vue'.
+  More details: '@dariwn-studio/ui-vue/src/components/atoms/DProgressBar.vue'.
 - **DRadio**. Renders a radio buttons of various appearance.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DRadio.vue'.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DRadio.vue'.
 - **DSelect**. Renders a select of various appearance.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSelect.vue'.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DSelect.vue'.
 - **DSlider**. Renders a slider of various appearance.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSlider.vue'.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DSlider.vue'.
 - **DSwitch**. Renders a switch or a toggle of various colors.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DSwitch.vue'.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DSwitch.vue'.
 - **DTextarea**. Renders a textarea field of various appearance.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/atoms/DTextarea.vue'.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DTextarea.vue'.
 - **DVideo**. Renders a video of different formats and video hosting services.
   Supports lazy loading, aspect-ratio prop, no image fallback and loading placeholder.  
-  More details. More details: '@dariwn-studio/ui-vue/components/atoms/DVideo.vue'.
+  More details. More details: '@dariwn-studio/ui-vue/src/components/atoms/DVideo.vue'.
 
 ##### Molecules
 
 - **DCheckboxGroup**. Renders a group of checkboxes with title.
-  More details: '@dariwn-studio/ui-vue/components/molecules/DCheckboxGroup.vue'.
+  More details: '@dariwn-studio/ui-vue/src/components/molecules/DCheckboxGroup.vue'.
 - **DRadioGroup**. Renders a group of radio buttons with title.
-  More details: '@dariwn-studio/ui-vue/components/molecules/DRadioGroup.vue'.
+  More details: '@dariwn-studio/ui-vue/src/components/molecules/DRadioGroup.vue'.
 
 ##### Containers
 
 - **DAspectRatio**. Simulates aspect-ratio CSS prop to keep aspect ratio of the container content.
-  More details: '@dariwn-studio/ui-vue/components/containers/DAspectRatio.vue'.
+  More details: '@dariwn-studio/ui-vue/src/components/containers/DAspectRatio.vue'.
 - **DEqualWidth**. Forces default slot elements to be equal width.
-  More details: '@dariwn-studio/ui-vue/components/containers/DEqualWidth.vue'.
+  More details: '@dariwn-studio/ui-vue/src/components/containers/DEqualWidth.vue'.
 - **DFullScreen**. Adds full screen mode to default slot content.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/containers/DFullScreen.vue'.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/containers/DFullScreen.vue'.
 - **DGrid**. Helps arrange child elements by grid.
-  More details: '@dariwn-studio/ui-vue/components/containers/DGrid.vue'.
+  More details: '@dariwn-studio/ui-vue/src/components/containers/DGrid.vue'.
 - **DTypography**. Renders an HTML strings according to defined design tokens.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/containers/DTypography.vue'.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/containers/DTypography.vue'.
 - **DZoomIn**. The component allows zoom in slot content to cover all browser viewport.
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/components/containers/DZoomIn.vue'.
+  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/containers/DZoomIn.vue'.
 
 ##### Development components
 
 - **DGridDebug**. Adds grid visualisation to help catch up arrangement errors.
-  More details: '@dariwn-studio/ui-vue/components/development/DGridDebug.vue'.
+  More details: '@dariwn-studio/ui-vue/src/components/development/DGridDebug.vue'.
 
 ##### Icon components
 
 The library also exports default icons which used in components.
 You can easily replace them with your own by using appropriate component slots.
-Here you can find default icons: '@dariwn-studio/ui-vue/components/icons'.
+Here you can find default icons: '@dariwn-studio/ui-vue/src/components/icons'.
 
 #### Reusability and code splitting
 
 We use composition API, mixins and utils to reuse and split code.
 More details you can find in appropriate directory.
 
-- Compositions: '@dariwn-studio/ui-vue/compositions/'.
-- Mixins: '@dariwn-studio/ui-vue/mixins/'.
-- Utils: '@dariwn-studio/ui-vue/utils/'.
+- Compositions: '@dariwn-studio/ui-vue/src/compositions/'.
+- Mixins: '@dariwn-studio/ui-vue/src/mixins/'.
+- Utils: '@dariwn-studio/ui-vue/src/utils/'.
 
 #### Design Tokens
 
