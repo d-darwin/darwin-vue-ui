@@ -17,7 +17,7 @@ export default {
     if (options.fontFamily) {
       try {
         // TODO: how to config font string (:ital,wght@0,400;0,700;1,400;1,700&display=swap) ???
-        await import(`./assets/styles/fonts/_${options.fontFamily}.scss`);
+        await import(`../assets/styles/fonts/_${options.fontFamily}.scss`);
       } catch {
         warn(
           `Can't find font "${options.fontFamily}".
