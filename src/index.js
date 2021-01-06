@@ -70,7 +70,7 @@ import throttle from "./utils/throttle";
 import uuid from "./utils/uuid";
 
 /** plugin **/
-import darwinStudioUi from "./plugin/darwinStudioUi";
+import darwinStudioUiPlugin from "./plugin/darwinStudioUi";
 
 createApp({}).use(focusVisiblePolyfill);
 
@@ -142,4 +142,4 @@ export const utils = {
   uuid
 };
 
-export default darwinStudioUi;
+export { darwinStudioUiPlugin };
