@@ -69,6 +69,9 @@ import fontSizeProp from "./utils/fontSizeProp";
 import throttle from "./utils/throttle";
 import uuid from "./utils/uuid";
 
+/** plugin **/
+import darwinStudioUi from "./plugin/darwinStudioUi";
+
 createApp({}).use(focusVisiblePolyfill);
 
 /** components **/
@@ -138,3 +141,5 @@ export const utils = {
   throttle,
   uuid
 };
+
+export default darwinStudioUi;
