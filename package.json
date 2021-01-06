@@ -22,6 +22,7 @@
     "src/compositions/*",
     "src/mixins/*",
     "src/utils/*",
+    "src/plugin/*",
     "src/index.js",
     "*.json",
     "*.js"
