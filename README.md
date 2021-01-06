@@ -187,7 +187,21 @@ More details you can find in '@dariwn-studio/ui-vue/src/assets/styles/transition
 
 #### Reset styles
 
-Just add following line into your general scss file to reset all browser-specific styles.
+Use the library plugin options to reset styles as follows:
+
+```javascript
+import { createApp } from "vue";
+// ...
+import { darwinStudioUiPlugin } from "@darwin-studio/ui-vue";
+
+createApp(App)
+  .use(darwinStudioUiPlugin, {
+    resetStyles: true // default is true so you don't have to specify it here
+  })
+  .mount("#app");
+```
+
+Alternatively just add following line into your general scss file to reset all browser-specific styles.
 
 ```scss
 @import "@darwin-studio/ui-vue/src/assets/styles/reset";
@@ -195,7 +209,21 @@ Just add following line into your general scss file to reset all browser-specifi
 
 #### Fonts
 
-You can easily add to your project one of the popular open source custom font by adding following line.
+You can easily add to your project one of the popular open source custom font by using the library plugin.
+
+```javascript
+import { createApp } from "vue";
+// ...
+import { darwinStudioUiPlugin } from "@darwin-studio/ui-vue";
+
+createApp(App)
+  .use(darwinStudioUiPlugin, {
+    fontFamily: "montserrat" // by default is null
+  })
+  .mount("#app");
+```
+
+Alternatively just add following line into your general scss file.
 
 ```scss
 @import "@darwin-studio/ui-vue/src/assets/styles/fonts/[font-family-name]";
