@@ -1,7 +1,7 @@
 import warn from "../utils/warn";
 
 const defaultOptions = {
-  stylesReset: true,
+  resetStyles: true,
   fontFamily: null
 };
 
@@ -10,7 +10,7 @@ export default {
     // merge user options with the defaults ones
     options = Object.assign(defaultOptions, options);
 
-    if (options.stylesReset) {
+    if (options.resetStyles) {
       await import("../assets/styles/_reset.scss");
     }
 
