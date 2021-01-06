@@ -1,17 +1,17 @@
-import warn from "./utils/warn";
+import warn from "../utils/warn";
 
 const defaultOptions = {
   stylesReset: true,
   fontFamily: null
 };
 
-export const darwinStudioUi = {
+export default {
   install: async (app, options) => {
     // merge user options with the defaults ones
     options = Object.assign(defaultOptions, options);
 
     if (options.stylesReset) {
-      await import("./assets/styles/_reset.scss");
+      await import("../assets/styles/_reset.scss");
     }
 
     if (options.fontFamily) {
