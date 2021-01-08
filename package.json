@@ -65,6 +65,7 @@
   },
   "dependencies": {
     "focus-visible": "^5.2.0",
-    "get-video-id": "^3.1.5"
+    "get-video-id": "^3.1.5",
+    "webfontloader": "^1.6.28"
   }
 }

@@ -2,7 +2,9 @@ import warn from "../utils/warn";
 
 const defaultOptions = {
   resetStyles: true,
-  fontFamily: null
+  googleFonts: null,
+  googleFontsText: null,
+  googleFontsApi: "https://fonts.googleapis.com/css"
 };
 
 export default {
@@ -14,15 +16,25 @@ export default {
       await import("../assets/styles/_reset.scss");
     }
 
-    if (options.fontFamily) {
+    if (options.googleFonts && options.googleFonts.length) {
       try {
-        // TODO: how to config font string (:ital,wght@0,400;0,700;1,400;1,700&display=swap) ???
-        await import(`../assets/styles/fonts/_${options.fontFamily}.scss`);
-      } catch {
-        warn(
-          `Can't find font "${options.fontFamily}".
-          Double check docs if it supports by the library.`
+        const WebFont = await import("webfontloader");
+
+        console.log(
+          options.googleFonts.map(font => `${font.family}:${font.props || ""}`)
         );
+
+        await WebFont.load({
+          google: {
+            families: options.googleFonts.map(
+              font => `${font.family}${font.props ? ":" + font.props : ""}`
+            ),
+            text: options.googleFontsText,
+            api: options.googleFontsApi
+          }
+        });
+      } catch {
+        warn(`Can't load google font "${options.fontFamily}".`);
       }
     }
   }
