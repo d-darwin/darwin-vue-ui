@@ -196,7 +196,8 @@ import { darwinStudioUiPlugin } from "@darwin-studio/ui-vue";
 
 createApp(App)
   .use(darwinStudioUiPlugin, {
-    resetStyles: true // default is true so you don't have to specify it here
+    // Plugin options
+    resetStyles: true // default is true so you don't have to specify it explicitly
   })
   .mount("#app");
 ```
@@ -209,27 +210,55 @@ Alternatively just add following line into your general scss file to reset all b
 
 #### Fonts
 
-You can easily add to your project one of the popular open source custom font by using the library plugin.
+You can easily add any google font to your project by using the library plugin.
 
 ```javascript
 import { createApp } from "vue";
 // ...
+// import plugin
 import { darwinStudioUiPlugin } from "@darwin-studio/ui-vue";
 
 createApp(App)
   .use(darwinStudioUiPlugin, {
-    fontFamily: "montserrat" // by default is null
+    // Plugin options
+    googleFonts: [
+      {
+        // Specify font family name
+        family: "Montserrat",
+        // Specify font family properties to improve load speed
+        props: "wght@100&display=swap"
+      },
+      {
+        family: "Inter"
+      }
+    ],
+    // Specify only chars you are going to use to improve load speed
+    googleFontsText: "abcdefghijklmnopqrst",
+    // Specify google font's API url if you need
+    googleFontsApi: "https://fonts.googleapis.com/css"
   })
   .mount("#app");
 ```
 
-Alternatively just add following line into your general scss file.
+Then you can use specified font families in your scss/css files as usual.
+
+```scss
+.some-class {
+  font-family: "Montserrat", sans-serif;
+}
+
+.some-other-class {
+  font-family: "Inter", sans-serif;
+}
+```
+
+⚠️ Deprecated: Alternatively just add following line into your general scss file.
 
 ```scss
 @import "@darwin-studio/ui-vue/src/assets/styles/fonts/[font-family-name]";
 ```
 
-List of supported [font-family-names]:
+⚠️ Deprecated: List of supported [font-family-names]:
 
 - inter;
 - fira-sans;

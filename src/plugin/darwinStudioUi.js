@@ -9,7 +9,7 @@ const defaultOptions = {
 
 export default {
   install: async (app, options) => {
-    // merge user options with the defaults ones
+    // merge user options with default ones
     options = Object.assign(defaultOptions, options);
 
     if (options.resetStyles) {
@@ -20,10 +20,6 @@ export default {
       try {
         const WebFont = await import("webfontloader");
 
-        console.log(
-          options.googleFonts.map(font => `${font.family}:${font.props || ""}`)
-        );
-
         await WebFont.load({
           google: {
             families: options.googleFonts.map(
@@ -33,8 +29,8 @@ export default {
             api: options.googleFontsApi
           }
         });
-      } catch {
-        warn(`Can't load google font "${options.fontFamily}".`);
+      } catch (e) {
+        warn(`Can't load google fonts "${options.googleFonts}".`, e);
       }
     }
   }
