@@ -6,7 +6,7 @@
       class="d-modal"
       @click="closeHandler"
     >
-      <div class="modal" @click.stop="">
+      <div :style="modalStyle" class="modal" @click.stop="">
         <DButton
           v-bind="{
             id: closeButtonId,
@@ -119,6 +119,14 @@ export default {
     isShown: {
       type: Boolean,
       default: true
+    },
+
+    /**
+     * Pass any style object to <i>.modal</i> if needed.
+     */
+    modalStyle: {
+      type: Object,
+      default: () => {}
     },
 
     /**
