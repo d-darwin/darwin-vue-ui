@@ -192,6 +192,7 @@ Use the library plugin options to reset styles as follows:
 ```javascript
 import { createApp } from "vue";
 // ...
+// Import plugin
 import { darwinStudioUiPlugin } from "@darwin-studio/ui-vue";
 
 createApp(App)
@@ -215,7 +216,7 @@ You can easily add any google font to your project by using the library plugin.
 ```javascript
 import { createApp } from "vue";
 // ...
-// import plugin
+// Import plugin
 import { darwinStudioUiPlugin } from "@darwin-studio/ui-vue";
 
 createApp(App)
@@ -243,6 +244,11 @@ createApp(App)
 Then you can use specified font families in your scss/css files as usual.
 
 ```scss
+:root {
+  // Set --font-family CSS custom property to set default font.
+  --font-family: "Montserrat", sans-serif;
+}
+
 .some-class {
   font-family: "Montserrat", sans-serif;
 }

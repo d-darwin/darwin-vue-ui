@@ -28,6 +28,7 @@ import DCheckboxGroup from "./components/molecules/DCheckboxGroup";
 import DRadioGroup from "./components/molecules/DRadioGroup";
 
 /** components: organisms **/
+import DModal from "./components/organisms/DModal";
 
 /** components: containers **/
 import DAspectRatio from "./components/containers/DAspectRatio";
@@ -58,6 +59,8 @@ import DIconVideo from "./components/icons/DIconVideo";
 /** compositions **/
 import useInputId from "./compositions/inputId";
 import useWindowSize from "./compositions/windowSize";
+import useKeyboardListener from "./compositions/keyboardListener";
+import useBlockBodyScroll from "./compositions/blockBodyScroll";
 
 /** mixins **/
 import linkClickRouting from "./mixins/linkClickRouting";
@@ -100,6 +103,7 @@ export {
   DCheckboxGroup,
   DRadioGroup,
   /** organisms **/
+  DModal,
   /** containers **/
   DAspectRatio,
   DEqualWidth,
@@ -127,7 +131,9 @@ export {
 
 export const compositions = {
   useInputId,
-  useWindowSize
+  useWindowSize,
+  useKeyboardListener,
+  useBlockBodyScroll
 };
 
 export const mixins = {

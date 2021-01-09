@@ -20,9 +20,10 @@
     "src/assets/*",
     "src/components/*",
     "src/compositions/*",
+    "src/directives/*",
     "src/mixins/*",
-    "src/utils/*",
     "src/plugin/*",
+    "src/utils/*",
     "src/index.js",
     "*.json",
     "*.js"

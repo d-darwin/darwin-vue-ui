@@ -99,8 +99,8 @@ export default {
       await this.$emit("copied");
 
       // reset focus to copy-link
-      const copy = this.$refs["copy-link"].$el;
-      await this.$nextTick(() => copy.focus());
+      const copyLink = this.$refs["copy-link"].$el;
+      await this.$nextTick(() => copyLink.focus());
     }
   }
 };

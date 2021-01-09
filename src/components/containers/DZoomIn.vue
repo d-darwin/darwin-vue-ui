@@ -41,6 +41,9 @@
 </template>
 
 <script>
+/** compositions **/
+import useBlockBodyScroll from "../../compositions/blockBodyScroll";
+
 /** components **/
 import DIconClose from "../icons/DIconClose";
 import DButton from "../atoms/DButton";
@@ -50,7 +53,7 @@ import DLink from "../atoms/DLink";
  * The component allows zoom in slot content to cover all browser viewport.</br>
  * You can pass other content for zoomed contend via slot:zoomed.
  *
- * @version 1.0.4
+ * @version 1.0.5
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -78,6 +81,10 @@ export default {
     }
   },
 
+  setup() {
+    return useBlockBodyScroll();
+  },
+
   data() {
     return {
       isZoomed: false
@@ -88,8 +95,7 @@ export default {
     zoomInHandler() {
       this.isZoomed = true;
 
-      const body = document.getElementsByTagName("body")[0];
-      body.classList.add("__blocked-scroll");
+      this.blockScroll();
 
       const closeButton = this.$refs["close-button"].$el.children[0];
       this.$nextTick(() => closeButton.focus());
@@ -98,8 +104,7 @@ export default {
     zoomOutHandler() {
       this.isZoomed = false;
 
-      const body = document.getElementsByTagName("body")[0];
-      body.classList.remove("__blocked-scroll");
+      this.blockScroll(false);
 
       // move focus to zoom-in-link
       const zoomInLink = this.$refs["zoom-in-link"].$el;
