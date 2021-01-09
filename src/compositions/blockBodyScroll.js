@@ -1,7 +1,7 @@
 /**
  * Helps add/remove .__blocked-scroll class to the body element.
  *
- * @returns {{blockScroll: blockScroll}}
+ * @returns {function}
  */
 export default function useBlockBodyScroll() {
   const blockScroll = (block = true) => {

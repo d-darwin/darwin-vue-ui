@@ -1,24 +1,26 @@
 <template>
   <transition name="opacity">
-    <div v-if="isShown" :class="$attrs.class" class="d-modal">
+    <div v-if="show" :class="$attrs.class" class="d-modal">
       <div class="modal">
         <DButton
-          ref="close-button"
-          :icon-only="true"
-          type="inverse"
-          size="small"
-          roundness="boxed"
+          v-bind="{
+            id: closeButtonId,
+            iconOnly: true,
+            type: 'inverse',
+            size: 'small',
+            roundness: 'boxed',
+            ...closeButtonProps,
+            onClick: closeHandler
+          }"
           class="close-button"
-          @click="closeHandler"
         >
-          <DIconClose />
+          <DIconClose v-if="!$slots['icon-close']" />
+          <!-- @slot You can replace default close icon by passing your own here. -->
+          <slot v-else name="icon-close" />
         </DButton>
 
-        <!--Custom modal with cancel and accept buttons-->
-        <slot v-if="$slots.default" />
-
-        <template v-else>
-          <!--Standard modal with heading text, cancel and accept buttons-->
+        <!-- Standard modal content with heading, text, cancel and accept buttons -->
+        <template v-if="!$slots.default">
           <DTypography
             v-bind="{
               content: heading,
@@ -39,26 +41,49 @@
             class="content"
           />
 
-          <div class="buttons-container">
-            <DButton size="medium" type="secondary" @click="cancelHandler">
-              {{ cancelButtonContent }}
-              <!--TODO: allow slot-->
+          <div :style="buttonsContainerStyle" class="buttons-container">
+            <DButton
+              v-bind="{
+                type: 'secondary',
+                size: 'medium',
+                ...cancelButtonProps,
+                onClick: cancelHandler
+              }"
+            >
+              <slot name="cancel-icon-before" />
+              <DTypography :content="cancelButtonContent" />
+              <slot name="cancel-icon-after" />
             </DButton>
 
-            <DButton size="medium" @click="acceptHandler">
-              {{ acceptButtonContent }}
-              <!--TODO: allow slot-->
+            <DButton
+              v-bind="{
+                size: 'medium',
+                ...acceptButtonProps,
+                onClick: acceptHandler
+              }"
+            >
+              <slot name="accept-icon-before" />
+              <DTypography :content="acceptButtonContent" />
+              <slot name="accept-icon-after" />
             </DButton>
           </div>
         </template>
+
+        <!-- @slot Custom modal content -->
+        <slot v-else />
       </div>
     </div>
   </transition>
 </template>
 
 <script>
+import { ref, computed } from "vue";
+
 /** compositions **/
 import useBlockBodyScroll from "../../compositions/blockBodyScroll";
+
+/** utils **/
+import uuid from "../../utils/uuid";
 
 /** components **/
 import DIconClose from "../icons/DIconClose";
@@ -68,76 +93,178 @@ import DTypography from "../containers/DTypography";
 /**
  * TODO
  *
- * @version 1.0.1
+ * @version 1.0.4
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
+  // TODO: find out if is it accessible ???
   name: "DModal",
 
   inheritAttrs: false,
 
   components: { DTypography, DButton, DIconClose },
 
+  // TODO: too many props, try to reduce
   props: {
+    /**
+     * Use this prop instead of v-if or v-show to animate the component appearance.
+     */
+    isShown: {
+      type: Boolean,
+      default: true
+    },
+
+    /**
+     * Pass any <b>DButton</b> props if needed.
+     */
+    closeButtonProps: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Pass any style object to <i>.close-button</i> if needed.
+     */
+    closeButtonStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Heading of the modal. Passed as content of <b>DTypography</b> so may contain string or any HTML.
+     */
     heading: {
       type: String,
       default: ""
     },
 
+    /**
+     * Pass any <b>DTypography</b> props if needed.
+     */
     headingProps: {
       type: Object,
       default: () => {}
     },
 
+    /**
+     * Pass any style object to <i>.heading</i> if needed.
+     */
     headingStyle: {
       type: Object,
       default: () => {}
     },
 
+    /**
+     * Text of the modal. Passed as content of <b>DTypography</b> so may contain string or any HTML.
+     */
     content: {
       type: String,
       default: ""
     },
 
+    /**
+     * Pass any <b>DTypography</b> props if needed.
+     */
     contentProps: {
       type: Object,
       default: () => {}
     },
 
+    /**
+     * Pass any style object to <i>.content</i> if needed.
+     */
     contentStyle: {
       type: Object,
       default: () => {}
     },
 
+    /**
+     * Pass any style object to <i>.buttons-container</i> if needed.
+     */
+    buttonsContainerStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    // TODO
     cancelButtonContent: {
       type: String,
-      // TODO: make configurable interfaceCopyright
+      // TODO: make configurable interfaceCopyright ???
       default: "Cancel"
     },
 
+    /**
+     * Pass any <b>DButton</b> props if needed.
+     */
+    cancelButtonProps: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Pass any style object to cancel button if needed.
+     */
+    cancelButtonStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    // TODO
     acceptButtonContent: {
       type: String,
-      // TODO: make configurable interfaceCopyright
+      // TODO: make configurable interfaceCopyright ???
       default: "Accept"
+    },
+
+    /**
+     * Pass any <b>DButton</b> props if needed.
+     */
+    acceptButtonProps: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Pass any style object to accept button if needed.
+     */
+    acceptButtonStyle: {
+      type: Object,
+      default: () => {}
     }
   },
 
-  setup() {
-    return useBlockBodyScroll();
-  },
+  setup(props) {
+    const { blockScroll } = useBlockBodyScroll();
 
-  data() {
+    // TODO: try to simplify somehow, too many vars for a simple problem
+    const isClosed = ref(false);
+    const show = computed(() => props.isShown && !isClosed.value);
+    const closeButtonId = uuid();
+
     return {
-      isShown: true
+      blockScroll,
+      isClosed,
+      show,
+      closeButtonId
     };
   },
 
-  async mounted() {
-    this.blockScroll();
+  watch: {
+    isShown(value) {
+      if (value) {
+        // reset isClosed if modal is shown
+        this.isClosed = false;
 
-    // reset focus to copy-button
-    const copyButton = this.$refs["close-button"].$el.children[0];
-    await this.$nextTick(() => copyButton.focus());
+        // prevent body scrolling
+        this.blockScroll();
+
+        // reset focus to close button
+        this.$nextTick(() => {
+          const closeButton = document.getElementById(this.closeButtonId);
+          closeButton.focus();
+        });
+      }
+    }
   },
 
   beforeUnmount() {
@@ -148,7 +275,7 @@ export default {
     closeHandler() {
       this.$emit("close");
       this.blockScroll(false);
-      this.isShown = false;
+      this.isClosed = true;
     },
 
     cancelHandler() {

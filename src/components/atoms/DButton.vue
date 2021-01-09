@@ -12,7 +12,7 @@
       }"
       class="control-button"
     >
-      <!-- @slot May contains a string, an icon or an combination. -->
+      <!-- @slot May contains a string, an icon or some combination of both. -->
       <slot />
     </component>
 
@@ -29,7 +29,7 @@ import DError from "./DError";
  * they will be pass to the tag automatically.<br>
  * May be in various sizes and have different corner roundness.
  *
- * @version 1.0.8
+ * @version 1.0.9
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -141,7 +141,8 @@ export default {
   text-decoration: none;
   width: 100%;
 
-  > * + * {
+  > * + *,
+  > ::v-slotted(* + *){
     margin-left: 6px;
   }
 

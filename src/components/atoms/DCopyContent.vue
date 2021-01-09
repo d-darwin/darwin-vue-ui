@@ -83,7 +83,7 @@ export default {
     },
 
     /**
-     * Pass any style object to <i>.d-button</i> props if needed.
+     * Pass any style object to <i>.d-button</i> if needed.
      */
     buttonStyle: {
       type: Object,
