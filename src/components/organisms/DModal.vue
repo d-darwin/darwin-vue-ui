@@ -91,7 +91,9 @@ import DButton from "../atoms/DButton";
 import DTypography from "../containers/DTypography";
 
 /**
- * TODO
+ * This is widely customizable modal component.
+ * You can easily create standard modal with heading, text, cancel and accept buttons and customize these elements.
+ * Also you can construct your own modal content by using default slot.
  *
  * @version 1.0.4
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
@@ -186,10 +188,11 @@ export default {
       default: () => {}
     },
 
-    // TODO
+    /**
+     * Text of the cancel button. Passed as content of <b>DTypography</b> so may contain string or any HTML.
+     */
     cancelButtonContent: {
       type: String,
-      // TODO: make configurable interfaceCopyright ???
       default: "Cancel"
     },
 
@@ -209,10 +212,11 @@ export default {
       default: () => {}
     },
 
-    // TODO
+    /**
+     * Text of the accept button. Passed as content of <b>DTypography</b> so may contain string or any HTML.
+     */
     acceptButtonContent: {
       type: String,
-      // TODO: make configurable interfaceCopyright ???
       default: "Accept"
     },
 
@@ -255,14 +259,14 @@ export default {
         // reset isClosed if modal is shown
         this.isClosed = false;
 
-        // prevent body scrolling
-        this.blockScroll();
-
         // reset focus to close button
         this.$nextTick(() => {
           const closeButton = document.getElementById(this.closeButtonId);
           closeButton.focus();
         });
+      } else {
+        // ensure that body scrolling isn't blocked
+        this.blockScroll(false);
       }
     }
   },
@@ -359,6 +363,5 @@ body {
   top: var(--gap-2x);
   right: var(--gap-2x);
   cursor: pointer;
-  color: var(--text-alt);
 }
 </style>

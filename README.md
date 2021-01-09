@@ -132,6 +132,11 @@ For now a few basic components implemented:
 - **DRadioGroup**. Renders a group of radio buttons with title.  
   More details: '@dariwn-studio/ui-vue/src/components/molecules/DRadioGroup.vue'.
 
+##### Organisms
+
+- **DModal**. Renders widely customizable modal.  
+  More details: '@dariwn-studio/ui-vue/src/components/organisms/DModal.vue'.
+
 ##### Containers
 
 - **DAspectRatio**. Simulates aspect-ratio CSS prop to keep aspect ratio of the container content.  
