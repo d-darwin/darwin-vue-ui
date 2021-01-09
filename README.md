@@ -112,15 +112,20 @@ For now a few basic components implemented:
 - **DProgressBar**. Renders custom progress bar.  
   More details: '@dariwn-studio/ui-vue/src/components/atoms/DProgressBar.vue'.
 - **DRadio**. Renders a radio buttons of various appearance.  
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DRadio.vue'.
-- **DSelect**. Renders a select of various appearance.  
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DSelect.vue'.
+  Customisable focus-visible presented.  
+  More details: '@dariwn-studio/ui-vue/src/components/atoms/DRadio.vue'.
+- **DSelect**. Renders custom select of various appearance.  
+  Customisable focus-visible presented.  
+  More details: '@dariwn-studio/ui-vue/src/components/atoms/DSelect.vue'.
 - **DSlider**. Renders a slider of various appearance.  
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DSlider.vue'.
+  Customisable focus-visible presented.  
+  More details: '@dariwn-studio/ui-vue/src/components/atoms/DSlider.vue'.
 - **DSwitch**. Renders a switch or a toggle of various colors.  
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DSwitch.vue'.
+  Customisable focus-visible presented.  
+  More details: '@dariwn-studio/ui-vue/src/components/atoms/DSwitch.vue'.
 - **DTextarea**. Renders a textarea field of various appearance.  
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DTextarea.vue'.
+  Customisable focus-visible presented.  
+  More details: '@dariwn-studio/ui-vue/src/components/atoms/DTextarea.vue'.
 - **DVideo**. Renders a video of different formats and video hosting services.  
   Supports lazy loading, aspect-ratio prop, no image fallback and loading placeholder.  
   More details. More details: '@dariwn-studio/ui-vue/src/components/atoms/DVideo.vue'.
@@ -144,13 +149,16 @@ For now a few basic components implemented:
 - **DEqualWidth**. Forces default slot elements to be equal width.  
   More details: '@dariwn-studio/ui-vue/src/components/containers/DEqualWidth.vue'.
 - **DFullScreen**. Adds full screen mode to default slot content.  
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/containers/DFullScreen.vue'.
+  Customisable focus-visible presented.  
+  More details: '@dariwn-studio/ui-vue/src/components/containers/DFullScreen.vue'.
 - **DGrid**. Helps arrange child elements by grid.  
   More details: '@dariwn-studio/ui-vue/src/components/containers/DGrid.vue'.
 - **DTypography**. Renders an HTML strings according to defined design tokens.  
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/containers/DTypography.vue'.
+  Customisable focus-visible presented.  
+  More details: '@dariwn-studio/ui-vue/src/components/containers/DTypography.vue'.
 - **DZoomIn**. The component allows zoom in slot content to cover all browser viewport.  
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/containers/DZoomIn.vue'.
+  Customisable focus-visible presented.  
+  More details: '@dariwn-studio/ui-vue/src/components/containers/DZoomIn.vue'.
 
 ##### Development components
 

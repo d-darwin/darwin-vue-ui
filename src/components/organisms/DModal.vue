@@ -293,17 +293,32 @@ export default {
 
   methods: {
     closeHandler() {
+      /**
+       * Close button was clicked or click was outside the component.
+       *
+       * @event close
+       */
       this.$emit("close");
       this.blockScroll(false);
       this.isClosed = true;
     },
 
     cancelHandler() {
+      /**
+       * Cancel button was clicked.
+       *
+       * @event close
+       */
       this.$emit("cancel");
       this.closeHandler();
     },
 
     acceptHandler() {
+      /**
+       * Accept button was clicked.
+       *
+       * @event close
+       */
       this.$emit("accept");
       this.closeHandler();
     }
