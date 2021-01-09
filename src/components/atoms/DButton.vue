@@ -142,7 +142,7 @@ export default {
   width: 100%;
 
   > * + *,
-  > ::v-slotted(* + *){
+  > ::v-slotted(* + *) {
     margin-left: 6px;
   }
 

@@ -1,7 +1,12 @@
 <template>
   <transition name="opacity">
-    <div v-if="show" :class="$attrs.class" class="d-modal">
-      <div class="modal">
+    <div
+      v-if="show"
+      :class="$attrs.class"
+      class="d-modal"
+      @click="closeHandler"
+    >
+      <div class="modal" @click.stop="">
         <DButton
           v-bind="{
             id: closeButtonId,
@@ -95,7 +100,7 @@ import DTypography from "../containers/DTypography";
  * You can easily create standard modal with heading, text, cancel and accept buttons and customize these elements.
  * Also you can construct your own modal content by using default slot.
  *
- * @version 1.0.4
+ * @version 1.0.5
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -258,6 +263,9 @@ export default {
       if (value) {
         // reset isClosed if modal is shown
         this.isClosed = false;
+
+        // block body scrolling
+        this.blockScroll();
 
         // reset focus to close button
         this.$nextTick(() => {
