@@ -173,10 +173,11 @@ Here you can find default icons: '@dariwn-studio/ui-vue/src/components/icons'.
 
 #### Reusability and code splitting
 
-We use composition API, mixins and utils to reuse and split code.
+We use composition API, directives, mixins and utils to reuse and split code.
 More details you can find in appropriate directory.
 
 - Compositions: '@dariwn-studio/ui-vue/src/compositions/'.
+- Directives: '@dariwn-studio/ui-vue/src/directives/'.
 - Mixins: '@dariwn-studio/ui-vue/src/mixins/'.
 - Utils: '@dariwn-studio/ui-vue/src/utils/'.
 

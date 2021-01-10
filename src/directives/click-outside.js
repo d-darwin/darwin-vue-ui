@@ -1,3 +1,9 @@
+/**
+ * Simple directive to detect click outside of the component.
+ * See example usage in '@dariwn-studio/ui-vue/components/organisms/DModal.vue'.
+ *
+ */
+
 const HAS_WINDOWS = typeof window !== "undefined";
 
 // This variable will hold the reference to document's click handler to remove it on unmount

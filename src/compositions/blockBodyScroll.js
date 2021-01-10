@@ -1,5 +1,6 @@
 /**
  * Helps add/remove .__blocked-scroll class to the body element.
+ * See example usage in '@dariwn-studio/ui-vue/components/organisms/DModal.vue'.
  *
  * @returns {function}
  */
