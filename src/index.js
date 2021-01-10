@@ -62,6 +62,9 @@ import useWindowSize from "./compositions/windowSize";
 import useKeyboardListener from "./compositions/keyboardListener";
 import useBlockBodyScroll from "./compositions/blockBodyScroll";
 
+/** directives **/
+import clickOutside from "./directives/click-outside";
+
 /** mixins **/
 import linkClickRouting from "./mixins/linkClickRouting";
 
@@ -134,6 +137,10 @@ export const compositions = {
   useWindowSize,
   useKeyboardListener,
   useBlockBodyScroll
+};
+
+export const directives = {
+  clickOutside
 };
 
 export const mixins = {

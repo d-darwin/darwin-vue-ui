@@ -1,84 +1,85 @@
 <template>
-  <transition name="opacity">
-    <div
-      v-if="show"
-      :class="$attrs.class"
-      class="d-modal"
-      @click="closeHandler"
-    >
-      <div :style="modalStyle" class="modal" @click.stop="">
-        <DButton
-          v-bind="{
-            id: closeButtonId,
-            iconOnly: true,
-            type: 'inverse',
-            size: 'small',
-            roundness: 'boxed',
-            ...closeButtonProps,
-            onClick: closeHandler
-          }"
-          class="close-button"
+  <teleport to="body">
+    <transition name="opacity">
+      <div v-if="show" :class="$attrs.class" class="d-modal">
+        <div
+          :style="modalStyle"
+          class="modal"
+          v-click-outside:[true]="closeHandler"
         >
-          <DIconClose v-if="!$slots['icon-close']" />
-          <!-- @slot You can replace default close icon by passing your own here. -->
-          <slot v-else name="icon-close" />
-        </DButton>
-
-        <!-- Standard modal content with heading, text, cancel and accept buttons -->
-        <template v-if="!$slots.default">
-          <DTypography
+          <DButton
             v-bind="{
-              content: heading,
-              size: 'h4',
-              ...headingProps
-            }"
-            :style="headingStyle"
-            class="heading"
-          />
-
-          <DTypography
-            v-bind="{
-              content: content,
+              id: closeButtonId,
+              iconOnly: true,
+              type: 'inverse',
               size: 'small',
-              ...contentProps
+              roundness: 'boxed',
+              ...closeButtonProps,
+              onClick: closeHandler
             }"
-            :style="contentStyle"
-            class="content"
-          />
+            class="close-button"
+          >
+            <DIconClose v-if="!$slots['icon-close']" />
+            <!-- @slot You can replace default close icon by passing your own here. -->
+            <slot v-else name="icon-close" />
+          </DButton>
 
-          <div :style="buttonsContainerStyle" class="buttons-container">
-            <DButton
+          <!-- Standard modal content with heading, text, cancel and accept buttons -->
+          <template v-if="!$slots.default">
+            <DTypography
               v-bind="{
-                type: 'secondary',
-                size: 'medium',
-                ...cancelButtonProps,
-                onClick: cancelHandler
+                content: heading,
+                size: 'h4',
+                ...headingProps
               }"
-            >
-              <slot name="cancel-icon-before" />
-              <DTypography :content="cancelButtonContent" />
-              <slot name="cancel-icon-after" />
-            </DButton>
+              :style="headingStyle"
+              class="heading"
+            />
 
-            <DButton
+            <DTypography
               v-bind="{
-                size: 'medium',
-                ...acceptButtonProps,
-                onClick: acceptHandler
+                content: content,
+                size: 'small',
+                ...contentProps
               }"
-            >
-              <slot name="accept-icon-before" />
-              <DTypography :content="acceptButtonContent" />
-              <slot name="accept-icon-after" />
-            </DButton>
-          </div>
-        </template>
+              :style="contentStyle"
+              class="content"
+            />
 
-        <!-- @slot Custom modal content -->
-        <slot v-else />
+            <div :style="buttonsContainerStyle" class="buttons-container">
+              <DButton
+                v-bind="{
+                  type: 'secondary',
+                  size: 'medium',
+                  ...cancelButtonProps,
+                  onClick: cancelHandler
+                }"
+              >
+                <slot name="cancel-icon-before" />
+                <DTypography :content="cancelButtonContent" />
+                <slot name="cancel-icon-after" />
+              </DButton>
+
+              <DButton
+                v-bind="{
+                  size: 'medium',
+                  ...acceptButtonProps,
+                  onClick: acceptHandler
+                }"
+              >
+                <slot name="accept-icon-before" />
+                <DTypography :content="acceptButtonContent" />
+                <slot name="accept-icon-after" />
+              </DButton>
+            </div>
+          </template>
+
+          <!-- @slot Custom modal content -->
+          <slot v-else />
+        </div>
       </div>
-    </div>
-  </transition>
+    </transition>
+  </teleport>
 </template>
 
 <script>
@@ -86,6 +87,8 @@ import { ref, computed } from "vue";
 
 /** compositions **/
 import useBlockBodyScroll from "../../compositions/blockBodyScroll";
+
+import clickOutside from "../../directives/click-outside.js";
 
 /** utils **/
 import uuid from "../../utils/uuid";
@@ -100,7 +103,7 @@ import DTypography from "../containers/DTypography";
  * You can easily create standard modal with heading, text, cancel and accept buttons and customize these elements.
  * Also you can construct your own modal content by using default slot.
  *
- * @version 1.0.5
+ * @version 1.1.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -108,6 +111,10 @@ export default {
   name: "DModal",
 
   inheritAttrs: false,
+
+  directives: {
+    "click-outside": clickOutside
+  },
 
   components: { DTypography, DButton, DIconClose },
 
@@ -321,7 +328,7 @@ export default {
        */
       this.$emit("accept");
       this.closeHandler();
-    }
+    },
   }
 };
 </script>
