@@ -15,7 +15,6 @@
   "type": "module",
   "main": "src/index.js",
   "module": "src/index.js",
-  "sideEffects": false,
   "files": [
     "src/assets/*",
     "src/components/*",
