@@ -51,7 +51,9 @@ export default {
 
   data() {
     return {
-      htmlString: "<p>Content prop can contains <b>any HTML string.</b></p>"
+      htmlString:
+        '<p>Content prop may contains <b>any HTML string</b>.' +
+        'All <a href="/about">relative links</a> will be treated as routes if you have vue-router installed.</p>'
     };
   }
   //...
