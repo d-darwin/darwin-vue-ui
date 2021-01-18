@@ -14,10 +14,11 @@
               type: 'inverse',
               size: 'small',
               roundness: 'boxed',
+              class: 'close-button',
+              style: closeButtonStyle,
               ...closeButtonProps,
               onClick: closeHandler
             }"
-            class="close-button"
           >
             <DIconClose v-if="!$slots['icon-close']" />
             <!-- @slot You can replace default close icon by passing your own here. -->
@@ -88,6 +89,7 @@ import { ref, computed } from "vue";
 /** compositions **/
 import useBlockBodyScroll from "../../compositions/blockBodyScroll";
 
+/** directives **/
 import clickOutside from "../../directives/click-outside.js";
 
 /** utils **/
@@ -103,7 +105,7 @@ import DTypography from "../containers/DTypography";
  * You can easily create standard modal with heading, text, cancel and accept buttons and customize these elements.
  * Also you can construct your own modal content by using default slot.
  *
- * @version 1.1.1
+ * @version 1.1.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -300,6 +302,7 @@ export default {
 
   methods: {
     closeHandler() {
+      console.log("closeHandler DModal", this.show);
       /**
        * Close button was clicked or click was outside the component.
        *
@@ -328,7 +331,7 @@ export default {
        */
       this.$emit("accept");
       this.closeHandler();
-    },
+    }
   }
 };
 </script>

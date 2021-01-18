@@ -29,6 +29,7 @@ import DRadioGroup from "./components/molecules/DRadioGroup";
 
 /** components: organisms **/
 import DModal from "./components/organisms/DModal";
+import DDrawer from "./components/organisms/DDrawer";
 
 /** components: containers **/
 import DAspectRatio from "./components/containers/DAspectRatio";
@@ -107,6 +108,7 @@ export {
   DRadioGroup,
   /** organisms **/
   DModal,
+  DDrawer,
   /** containers **/
   DAspectRatio,
   DEqualWidth,

@@ -141,6 +141,8 @@ For now a few basic components implemented:
 
 ##### Organisms
 
+- **DDrawer**. Renders drawer.  
+  More details: '@dariwn-studio/ui-vue/src/components/organisms/DDrawer.vue'.
 - **DModal**. Renders widely customizable modal.  
   More details: '@dariwn-studio/ui-vue/src/components/organisms/DModal.vue'.
 
