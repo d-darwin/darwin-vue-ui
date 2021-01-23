@@ -41,8 +41,10 @@ export default function useClosable(props, emit) {
         // ensure that body scrolling isn't blocked
         blockScroll(false);
 
-        // reset focus to it's previous state
-        activeElement.focus();
+        if (activeElement) {
+          // reset focus to it's previous state
+          activeElement.focus();
+        }
       }
     }
   );

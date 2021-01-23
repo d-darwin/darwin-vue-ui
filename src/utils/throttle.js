@@ -1,7 +1,7 @@
 /**
  * Simple implementation of the throttle technique
  *  which doesn't allow to our function to execute more than once every X milliseconds.
- * See example usage in '@dariwn-studio/ui-vue/use/windowSize.js'.
+ * See example usage in '@dariwn-studio/ui-vue/compositions/windowSize.js'.
  *
  * @param func
  * @param ms

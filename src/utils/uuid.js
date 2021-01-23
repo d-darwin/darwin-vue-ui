@@ -1,6 +1,6 @@
 /**
  * Creates a random UUID string.
- * See example usage in '@dariwn-studio/ui-vue/use/inputId.js'.
+ * See example usage in '@dariwn-studio/ui-vue/compositions/inputId.js'.
  *
  * @returns {string}
  */

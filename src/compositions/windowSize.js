@@ -1,4 +1,4 @@
-import { onMounted, onUnmounted, ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 
 /** utils **/
 import throttle from "../utils/throttle";
@@ -17,7 +17,7 @@ export default function useWindowSize() {
   const windowWidth = ref(null);
   const deviceWidth = ref(null);
 
-  let throttledResize = null;
+  let throttledOnResize = null;
 
   const breakpointList = {
     sm: parseInt(breakpointTokens.sm),
@@ -27,7 +27,7 @@ export default function useWindowSize() {
     xxl: parseInt(breakpointTokens.xxl)
   };
 
-  function resize() {
+  function onResize() {
     if (process.browser) {
       windowHeight.value = window.innerHeight;
 
@@ -68,16 +68,17 @@ export default function useWindowSize() {
 
   onMounted(() => {
     if (process.browser) {
-      // execute resize when mounted firs tione
-      resize();
-      throttledResize = throttle(resize, 100);
-      window.addEventListener("resize", throttledResize);
+      // execute when mounted first time
+      onResize();
+
+      throttledOnResize = throttle(onResize, 100);
+      window.addEventListener("resize", throttledOnResize);
     }
   });
 
   onUnmounted(() => {
     if (process.browser) {
-      window.removeEventListener("resize", throttledResize);
+      window.removeEventListener("resize", throttledOnResize);
     }
   });
 
