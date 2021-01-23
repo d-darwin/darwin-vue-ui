@@ -55,6 +55,7 @@ import DIconMaximize from "./components/icons/DIconMaximize";
 import DIconPaperclip from "./components/icons/DIconPaperclip";
 import DIconRadioChecked from "./components/icons/DIconRadioChecked";
 import DIconRadioUnchecked from "./components/icons/DIconRadioUnchecked";
+import DIconSemantic from "./components/icons/DIconSemantic";
 import DIconUnchecked from "./components/icons/DIconUnchecked";
 import DIconVideo from "./components/icons/DIconVideo";
 
@@ -133,6 +134,7 @@ export {
   DIconPaperclip,
   DIconRadioChecked,
   DIconRadioUnchecked,
+  DIconSemantic,
   DIconUnchecked,
   DIconVideo
 };
