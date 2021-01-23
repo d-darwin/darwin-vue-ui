@@ -92,6 +92,8 @@ For now a few basic components implemented:
 
 - **DButton**. Renders a button of various appearance and behavior.  
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DButton.vue'.
+- **DButtonScrollTop**. Renders button which allows scroll page to the top.  
+  More details: '@dariwn-studio/ui-vue/src/components/atoms/DButtonScrollTop.vue'.
 - **DCheckbox**. Renders a checkbox of various appearance.  
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DCheckbox.vue'.
 - **DCopyContent**. Allows user to copy string passed to component in <i>content</i> prop.  

@@ -4,6 +4,7 @@ import focusVisiblePolyfill from "focus-visible/dist/focus-visible.min.js";
 
 /** components: atoms **/
 import DButton from "./components/atoms/DButton";
+import DButtonScrollTop from "./components/atoms/DButtonScrollTop";
 import DCheckbox from "./components/atoms/DCheckbox";
 import DCopyContent from "./components/atoms/DCopyContent";
 import DCopyLink from "./components/atoms/DCopyLink";
@@ -90,6 +91,7 @@ createApp({}).use(focusVisiblePolyfill);
 export {
   /** atoms **/
   DButton,
+  DButtonScrollTop,
   DCheckbox,
   DCopyContent,
   DCopyLink,
