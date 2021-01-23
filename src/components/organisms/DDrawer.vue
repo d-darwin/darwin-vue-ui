@@ -1,7 +1,11 @@
 <template>
   <teleport to="body">
     <div
-      :class="{ [`${$attrs.class}`]: $attrs.class, __shown: isShown }"
+      :class="{
+        __shown: isShown,
+        [`__${position}`]: position,
+        [`${$attrs.class}`]: $attrs.class
+      }"
       class="d-drawer"
       @click="closeHandler"
     >
@@ -43,7 +47,7 @@ import DButton from "../atoms/DButton";
 /**
  * Renders drawer. It's especially useful for navigation, but default slot may receive any content.
  *
- * @version 1.2.2
+ * @version 1.3.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -133,10 +137,21 @@ body {
   z-index: 1000;
   position: fixed;
   top: 0;
-  left: 100vw;
 
-  &.__shown {
-    left: 0;
+  &.__right {
+    right: -100vw;
+
+    &.__shown {
+      right: 0;
+    }
+  }
+
+  &.__left {
+    left: -100vw;
+
+    &.__shown {
+      left: 0;
+    }
   }
 
   &:before {
@@ -169,30 +184,32 @@ body {
 
 @include sm-device-max {
   .close-button {
-    // TODO: use gaps ???
     top: 12px;
     right: 12px;
   }
 }
 
 @include md-device-min {
-  // TODO: move to design tokens ???
-  $drawer-width: 400px;
-
-  .close-button {
-    // TODO: use gaps ???
-    top: 15px;
-    right: 15px;
-  }
-
   .d-drawer {
-    left: unset;
-    right: -100vw;
+    --drawer-width: 400px;
+
+    &.__right {
+      &.__shown {
+        right: calc(var(--drawer-width) - 100vw);
+      }
+    }
+
+    &.__left {
+      &.__shown {
+        left: calc(var(--drawer-width) - 100vw);
+      }
+
+      .drawer-wrap {
+        margin-left: auto;
+      }
+    }
 
     &.__shown {
-      left: unset;
-      right: calc(#{$drawer-width} - 100vw);
-
       &:before {
         opacity: 0.2;
         background: var(--color-primary);
@@ -202,8 +219,13 @@ body {
   }
 
   .drawer-wrap {
-    width: $drawer-width;
+    width: var(--drawer-width);
     padding: var(--gap-17x) var(--gap-6x);
+  }
+
+  .close-button {
+    top: 15px;
+    right: 15px;
   }
 }
 </style>

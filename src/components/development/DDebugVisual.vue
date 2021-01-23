@@ -1,30 +1,35 @@
 <template>
   <teleport to="body">
-    <div v-show="isPanelShown" class="d-debug-visual">
-      <DButton
-        :icon-only="true"
-        roundness="boxed"
-        @click="toggleBordersVisualization"
-      >
-        <DIconBorders />
-      </DButton>
+    <transition name="scale">
+      <div v-show="isPanelShown" class="d-debug-visual">
+        <DButton
+          :icon-only="true"
+          :type="isGridVisualizationShown ? 'alternative' : 'primary'"
+          roundness="boxed"
+          @click="toggleBordersVisualization"
+        >
+          <DIconBorders />
+        </DButton>
 
-      <DButton
-        :icon-only="true"
-        roundness="boxed"
-        @click="toggleGridVisualization"
-      >
-        <DIconColumns />
-      </DButton>
+        <DButton
+          :icon-only="true"
+          :type="isBordersVisualizationShown ? 'alternative' : 'primary'"
+          roundness="boxed"
+          @click="toggleGridVisualization"
+        >
+          <DIconColumns />
+        </DButton>
 
-      <DButton
-        :icon-only="true"
-        roundness="boxed"
-        @click="toggleSemanticVisualization"
-      >
-        <DIconSemantic />
-      </DButton>
-    </div>
+        <DButton
+          :icon-only="true"
+          :type="isSemanticVisualizationShown ? 'alternative' : 'primary'"
+          roundness="boxed"
+          @click="toggleSemanticVisualization"
+        >
+          <DIconSemantic />
+        </DButton>
+      </div>
+    </transition>
   </teleport>
 </template>
 
@@ -57,21 +62,29 @@ export default {
   components: { DIconSemantic, DIconBorders, DButton, DIconColumns },
 
   setup() {
+    const isGridVisualizationShown = ref(false);
+    const isBordersVisualizationShown = ref(false);
+    const isSemanticVisualizationShown = ref(false);
+
     const isPanelShown = ref(true);
 
+    // TODO: All these functions are almost the same - share logic
     const toggleGridVisualization = () => {
       const body = document.getElementsByTagName("body")[0];
       body.classList.toggle("__d-debug-grid");
+      isGridVisualizationShown.value = !isGridVisualizationShown.value;
     };
 
     const toggleBordersVisualization = () => {
       const body = document.getElementsByTagName("body")[0];
       body.classList.toggle("__d-debug-border");
+      isBordersVisualizationShown.value = !isBordersVisualizationShown.value;
     };
 
     const toggleSemanticVisualization = () => {
       const body = document.getElementsByTagName("body")[0];
       body.classList.toggle("__d-debug-semantic");
+      isSemanticVisualizationShown.value = !isSemanticVisualizationShown.value;
     };
 
     const togglePanel = () => {
@@ -110,6 +123,9 @@ export default {
       toggleBordersVisualization,
       toggleSemanticVisualization,
       togglePanel,
+      isGridVisualizationShown,
+      isBordersVisualizationShown,
+      isSemanticVisualizationShown,
       isPanelShown
     };
   }
@@ -199,6 +215,7 @@ body {
 @import "../../assets/styles/mixins/transitions";
 @import "../../assets/styles/tokens/gaps";
 @import "../../assets/styles/tokens/colors";
+@import "../../assets/styles/transitions/scale";
 
 .d-debug-visual {
   @include transition-short;
