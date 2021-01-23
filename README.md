@@ -2,7 +2,7 @@
 
 [![Known Vulnerabilities](https://snyk.io/test/npm/@darwin-studio/ui-vue/badge.svg)](https://snyk.io/test/npm/@darwin-studio/ui-vue)
 [![Minified Gzipped Size](https://badgen.net/bundlephobia/minzip/@darwin-studio/ui-vue)](https://bundlephobia.com/result?p=@darwin-studio/ui-vue)
-[![Licence](https://badgen.net/github/license/d-darwin/darwin-vue-ui)](https://badgen.net/github/license/d-darwin/darwin-vue-ui)
+[![Licence](https://badgen.net/npm/license/@darwin-studio/ui-vue)](https://badgen.net/github/license/d-darwin/darwin-vue-ui)
 [![Package Version](https://badgen.net/npm/v/@darwin-studio/ui-vue)](https://badgen.net/npm/v/@darwin-studio/ui-vue)
 
 ## What is it?
@@ -267,7 +267,7 @@ Then you can use specified font families in your scss/css files as usual.
 
 ```scss
 :root {
-  // Set --font-family CSS custom property to set default font.
+  // --font-family CSS custom property defines default font.
   --font-family: "Montserrat", sans-serif;
 }
 
@@ -282,5 +282,5 @@ Then you can use specified font families in your scss/css files as usual.
 
 ### Icons
 
-Despite the library exposes some internal icons we don't want to stick with one of icon sets, so decided allow you to choose one yourself.  
-To do so just use [@iconify/vue](https://docs.iconify.design/implementations/vue/) package or any you prefer.
+Despite the library exposes some internal icons we don't want to stick with one of icon sets, so decided allow you to choose one yourself.
+To do so just use [@iconify/vue](https://docs.iconify.design/implementations/vue/) package or any of your choice.
