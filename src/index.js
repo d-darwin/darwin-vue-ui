@@ -76,8 +76,10 @@ import linkClickRouting from "./mixins/linkClickRouting";
 import copyToClipboard from "./utils/copyToClipboard";
 import debounce from "./utils/debounce";
 import fontSizeProp from "./utils/fontSizeProp";
+import scrollToTop from "./utils/scrollToTop";
 import throttle from "./utils/throttle";
 import uuid from "./utils/uuid";
+import warn from "./utils/warn";
 
 /** plugin **/
 import darwinStudioUiPlugin from "./plugin/darwinStudioUi";
@@ -159,8 +161,10 @@ export const utils = {
   copyToClipboard,
   debounce,
   fontSizeProp,
+  scrollToTop,
   throttle,
-  uuid
+  uuid,
+  warn
 };
 
 export { darwinStudioUiPlugin };
