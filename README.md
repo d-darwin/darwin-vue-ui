@@ -276,25 +276,6 @@ Then you can use specified font families in your scss/css files as usual.
 }
 ```
 
-⚠️ Deprecated: Alternatively just add following line into your general scss file.
-
-```scss
-@import "@darwin-studio/ui-vue/src/assets/styles/fonts/[font-family-name]";
-```
-
-⚠️ Deprecated: List of supported [font-family-names]:
-
-- inter;
-- fira-sans;
-- manrope;
-- oswald;
-- spectral;
-- source-sans;
-- montserrat;
-- noto-sans;
-- anonymous-pro;
-- roboto.
-
 #### Icons
 
 We don't want to stick with one of icon sets, so decided allow you to choose one yourself.  
