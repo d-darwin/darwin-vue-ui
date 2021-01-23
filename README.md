@@ -52,7 +52,7 @@ export default {
   data() {
     return {
       htmlString:
-        '<p>Content prop may contains <b>any HTML string</b>.' +
+        "<p>Content prop may contains <b>any HTML string</b>." +
         'All <a href="/about">relative links</a> will be treated as routes if you have vue-router installed.</p>'
     };
   }
@@ -166,8 +166,8 @@ For now a few basic components implemented:
 
 ##### Development components
 
-- **DGridDebug**. Adds grid visualisation to help catch up arrangement errors.  
-  More details: '@dariwn-studio/ui-vue/src/components/development/DGridDebug.vue'.
+- **DDebugVisual**. Adds grid and borders visualisation to help catch up visual errors.  
+  More details: '@dariwn-studio/ui-vue/src/components/development/DDebugVisual.vue'.
 
 ##### Icon components
 

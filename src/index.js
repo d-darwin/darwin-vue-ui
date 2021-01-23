@@ -40,9 +40,10 @@ import DTypography from "./components/containers/DTypography";
 import DZoomIn from "./components/containers/DZoomIn";
 
 /** components: development **/
-import DGridDebug from "./components/development/DGridDebug";
+import DDebugVisual from "./components/development/DDebugVisual";
 
 /** components: icons **/
+import DIconBorders from "./components/icons/DIconBorders";
 import DIconChecked from "./components/icons/DIconChecked";
 import DIconClose from "./components/icons/DIconClose";
 import DIconCloseCircle from "./components/icons/DIconCloseCircle";
@@ -58,10 +59,11 @@ import DIconUnchecked from "./components/icons/DIconUnchecked";
 import DIconVideo from "./components/icons/DIconVideo";
 
 /** compositions **/
-import useInputId from "./compositions/inputId";
-import useWindowSize from "./compositions/windowSize";
-import useKeyboardListener from "./compositions/keyboardListener";
 import useBlockBodyScroll from "./compositions/blockBodyScroll";
+import useClosable from "./compositions/closable";
+import useInputId from "./compositions/inputId";
+import useKeyboardListener from "./compositions/keyboardListener";
+import useWindowSize from "./compositions/windowSize";
 
 /** directives **/
 import clickOutside from "./directives/click-outside";
@@ -117,8 +119,9 @@ export {
   DTypography,
   DZoomIn,
   /** development **/
-  DGridDebug,
+  DDebugVisual,
   /** icons **/
+  DIconBorders,
   DIconChecked,
   DIconClose,
   DIconCloseCircle,
@@ -135,10 +138,11 @@ export {
 };
 
 export const compositions = {
+  useBlockBodyScroll,
+  useClosable,
   useInputId,
-  useWindowSize,
   useKeyboardListener,
-  useBlockBodyScroll
+  useWindowSize
 };
 
 export const directives = {
