@@ -22,6 +22,7 @@
 
     <DError :text="error" />
 
+    <!--// TODO: how to customize transition ???-->
     <transition-group
       :style="listStyle"
       tag="ul"

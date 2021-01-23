@@ -2,7 +2,7 @@
   <div :class="$attrs.class" class="d-video">
     <component
       :is="containerTag"
-      :style="videoContainerStyle"
+      :style="containerStyle"
       v-bind="containerTagProps"
       class="video-container"
     >
@@ -21,6 +21,7 @@
         <slot v-else name="no-video" />
       </template>
 
+      <!--// TODO: how to customize transition ???-->
       <transition name="opacity">
         <template v-if="!isLoaded && source">
           <DLoader v-if="!$slots['loader']" />
@@ -90,7 +91,7 @@ export default {
     /**
      * Pass any style object <i>.video-container</i> if needed.
      */
-    videoContainerStyle: {
+    containerStyle: {
       type: Object,
       default: () => {}
     },

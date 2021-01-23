@@ -1,4 +1,5 @@
 <template>
+  <!--// TODO: how to customize transition ???-->
   <transition name="control-error">
     <DTypography
       v-if="text"

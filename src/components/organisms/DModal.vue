@@ -1,5 +1,6 @@
 <template>
   <teleport to="body">
+    <!--// TODO: how to customize transition ???-->
     <transition name="opacity">
       <div
         v-if="isShown"

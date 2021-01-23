@@ -10,6 +10,7 @@
       <slot />
     </DLink>
 
+    <!--// TODO: how to customize transition ???-->
     <transition name="opacity">
       <DButton
         ref="close-button"
@@ -27,6 +28,7 @@
       </DButton>
     </transition>
 
+    <!--// TODO: how to customize transition ???-->
     <transition name="opacity">
       <div
         v-if="isZoomed"

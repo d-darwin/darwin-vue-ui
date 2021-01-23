@@ -1,5 +1,6 @@
 <template>
   <teleport to="body">
+    <!--// TODO: how to customize transition ???-->
     <transition name="scale">
       <div v-show="isPanelShown" class="d-debug-visual">
         <DButton
