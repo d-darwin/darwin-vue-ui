@@ -3,7 +3,7 @@
     <!--// TODO: how to customize transition ???-->
     <transition name="scale">
       <DButton
-        v-if="isShown"
+        v-show="isShown"
         v-bind="{
           'icon-only': true,
           ...buttonProps,
