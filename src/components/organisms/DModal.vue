@@ -1,12 +1,13 @@
 <template>
   <teleport to="body">
     <transition name="opacity">
-      <div v-if="isShown" :class="$attrs.class" class="d-modal">
-        <div
-          :style="modalStyle"
-          class="modal"
-          v-click-outside:[true]="closeHandler"
-        >
+      <div
+        v-if="isShown"
+        :class="$attrs.class"
+        class="d-modal"
+        @click="closeHandler"
+      >
+        <div :style="modalStyle" class="modal" @click.stop="">
           <DButton
             v-bind="{
               id: closeButtonId,
@@ -84,16 +85,8 @@
 </template>
 
 <script>
-import { ref, computed } from "vue";
-
-/** utils **/
-import uuid from "../../utils/uuid";
-
-/** directives **/
-import clickOutside from "../../directives/click-outside.js";
-
 /** compositions **/
-import useBlockBodyScroll from "../../compositions/blockBodyScroll";
+import useClosable from "../../compositions/closable";
 
 /** components **/
 import DIconClose from "../icons/DIconClose";
@@ -105,7 +98,7 @@ import DTypography from "../containers/DTypography";
  * You can easily create standard modal with heading, text, cancel and accept buttons and customize these elements.
  * Also you can construct your own modal content by using default slot.
  *
- * @version 1.1.3
+ * @version 1.2.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -113,10 +106,6 @@ export default {
   name: "DModal",
 
   inheritAttrs: false,
-
-  directives: {
-    "click-outside": clickOutside
-  },
 
   components: { DTypography, DButton, DIconClose },
 
@@ -259,79 +248,35 @@ export default {
     }
   },
 
-  setup(props) {
-    const { blockScroll } = useBlockBodyScroll();
+  setup(props, { emit }) {
+    const { closeButtonId, closeHandler } = useClosable(props, emit);
 
-    // TODO: try to simplify somehow, too many vars for a simple problem
-    const isClosed = ref(false);
-    const show = computed(() => props.isShown && !isClosed.value);
-    const closeButtonId = uuid();
-
-    return {
-      blockScroll,
-      isClosed,
-      show,
-      closeButtonId
-    };
-  },
-
-  watch: {
-    isShown(value) {
-      if (value) {
-        // reset isClosed if modal is shown
-        this.isClosed = false;
-
-        // block body scrolling
-        this.blockScroll();
-
-        // reset focus to close button
-        this.$nextTick(() => {
-          const closeButton = document.getElementById(this.closeButtonId);
-          closeButton.focus();
-        });
-      } else {
-        // ensure that body scrolling isn't blocked
-        this.blockScroll(false);
-      }
-    }
-  },
-
-  beforeUnmount() {
-    this.blockScroll(false);
-  },
-
-  methods: {
-    closeHandler() {
-      console.log("closeHandler DModal", this.show);
-      /**
-       * Close button was clicked or click was outside the component.
-       *
-       * @event close
-       */
-      this.$emit("close");
-      this.blockScroll(false);
-      this.isClosed = true;
-    },
-
-    cancelHandler() {
+    const cancelHandler = () => {
       /**
        * Cancel button was clicked.
        *
-       * @event close
+       * @event cancel
        */
-      this.$emit("cancel");
-      this.closeHandler();
-    },
+      emit("cancel");
+      closeHandler();
+    };
 
-    acceptHandler() {
+    const acceptHandler = () => {
       /**
        * Accept button was clicked.
        *
-       * @event close
+       * @event accept
        */
-      this.$emit("accept");
-      this.closeHandler();
-    }
+      emit("accept");
+      closeHandler();
+    };
+
+    return {
+      closeHandler,
+      closeButtonId,
+      cancelHandler,
+      acceptHandler
+    };
   }
 };
 </script>
@@ -341,7 +286,6 @@ export default {
 @import "../../assets/styles/tokens/colors";
 @import "../../assets/styles/tokens/gaps";
 
-// TODO: move to common / reset styles ???
 body {
   &.__blocked-scroll {
     overflow-y: hidden;
@@ -405,4 +349,6 @@ body {
   right: var(--gap-2x);
   cursor: pointer;
 }
+
+// TODO: xs
 </style>

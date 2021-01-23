@@ -1,6 +1,5 @@
 /**
  * Simple directive to detect click outside of the component.
- * See example usage in '@dariwn-studio/ui-vue/components/organisms/DModal.vue'.
  *
  */
 
