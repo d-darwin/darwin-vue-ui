@@ -35,6 +35,7 @@
 </template>
 
 <script>
+/** core **/
 import getVideoId from "get-video-id";
 
 /** components **/

@@ -61,7 +61,7 @@
 </template>
 
 <script>
-/** use **/
+/** compositions **/
 import useInputId from "../../compositions/inputId";
 
 /** components **/

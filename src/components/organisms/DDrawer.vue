@@ -33,33 +33,29 @@
 </template>
 
 <script>
-/** compositions **/
-import useBlockBodyScroll from "../../compositions/blockBodyScroll";
-
-/** directives **/
-// import clickOutside from "../../directives/click-outside.js";
+/** core **/
+import { watch, nextTick, onBeforeUnmount } from "vue";
 
 /** utils **/
 import uuid from "../../utils/uuid";
+
+/** compositions **/
+import useBlockBodyScroll from "../../compositions/blockBodyScroll";
 
 /** components **/
 import DIconClose from "../icons/DIconClose";
 import DButton from "../atoms/DButton";
 
 /**
- * Renders drawer. It's especially useful for navigation, but default slot receives any content.
+ * Renders drawer. It's especially useful for navigation, but default slot may receive any content.
  *
- * @version 1.0.2
+ * @version 1.2.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
   name: "DrawerBase",
 
   inheritAttrs: false,
-
-  /* directives: {
-    "click-outside": clickOutside
-  }, */
 
   components: { DButton, DIconClose },
 
@@ -106,50 +102,58 @@ export default {
     }
   },
 
-  setup() {
+  setup(props, { emit }) {
     const { blockScroll } = useBlockBodyScroll();
     const closeButtonId = uuid();
+    let activeElement = null;
 
-    return {
-      blockScroll,
-      closeButtonId
-    };
-  },
+    watch(
+      () => props.isShown,
+      isShown => {
+        if (isShown) {
+          // block body scrolling
+          blockScroll();
 
-  watch: {
-    isShown(value) {
-      if (value) {
-        // block body scrolling
-        this.blockScroll();
+          // hold current active element to reset focus when the component will be closed
+          activeElement = document.activeElement;
 
-        // reset focus to close button
-        this.$nextTick(() => {
-          const closeButton = document.getElementById(this.closeButtonId);
-          closeButton.focus();
-        });
-      } else {
-        // ensure that body scrolling isn't blocked
-        this.blockScroll(false);
+          // set focus to close button if exists
+          nextTick(() => {
+            const closeButton = document.getElementById(closeButtonId);
 
-        // TODO: how to set focus back to it's previous state
+            if (closeButton) {
+              closeButton.focus();
+            }
+          });
+        } else {
+          // ensure that body scrolling isn't blocked
+          blockScroll(false);
+
+          // reset focus to it's previous state
+          activeElement.focus();
+        }
       }
-    }
-  },
+    );
 
-  beforeUnmount() {
-    this.blockScroll(false);
-  },
+    onBeforeUnmount(() => {
+      // ensure that body scrolling isn't blocked
+      blockScroll(false);
+    });
 
-  methods: {
-    closeHandler() {
+    const closeHandler = () => {
       /**
        * Close button was clicked or click was outside the component.
        *
        * @event close
        */
-      this.$emit("close");
-      this.blockScroll(false);
-    }
+      emit("close");
+      blockScroll(false);
+    };
+
+    return {
+      closeHandler,
+      closeButtonId
+    };
   }
 };
 </script>
@@ -159,7 +163,6 @@ export default {
 @import "../../assets/styles/tokens/colors";
 @import "../../assets/styles/tokens/gaps";
 
-// TODO: move to common / reset styles ???
 body {
   &.__blocked-scroll {
     overflow-y: hidden;

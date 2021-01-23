@@ -69,7 +69,7 @@
 </template>
 
 <script>
-/** use **/
+/** compositions **/
 import useInputId from "../../compositions/inputId";
 
 /** design tokens **/

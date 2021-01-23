@@ -1,7 +1,7 @@
 <template>
   <teleport to="body">
     <transition name="opacity">
-      <div v-if="show" :class="$attrs.class" class="d-modal">
+      <div v-if="isShown" :class="$attrs.class" class="d-modal">
         <div
           :style="modalStyle"
           class="modal"
@@ -86,14 +86,14 @@
 <script>
 import { ref, computed } from "vue";
 
-/** compositions **/
-import useBlockBodyScroll from "../../compositions/blockBodyScroll";
+/** utils **/
+import uuid from "../../utils/uuid";
 
 /** directives **/
 import clickOutside from "../../directives/click-outside.js";
 
-/** utils **/
-import uuid from "../../utils/uuid";
+/** compositions **/
+import useBlockBodyScroll from "../../compositions/blockBodyScroll";
 
 /** components **/
 import DIconClose from "../icons/DIconClose";
@@ -105,11 +105,11 @@ import DTypography from "../containers/DTypography";
  * You can easily create standard modal with heading, text, cancel and accept buttons and customize these elements.
  * Also you can construct your own modal content by using default slot.
  *
- * @version 1.1.2
+ * @version 1.1.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
-  // TODO: find out if is it accessible ???
+  // TODO: find out if it is accessible ???
   name: "DModal",
 
   inheritAttrs: false,
