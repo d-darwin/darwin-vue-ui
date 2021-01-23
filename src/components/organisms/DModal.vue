@@ -98,7 +98,7 @@ import DTypography from "../containers/DTypography";
  * You can easily create standard modal with heading, text, cancel and accept buttons and customize these elements.
  * Also you can construct your own modal content by using default slot.
  *
- * @version 1.2.1
+ * @version 1.2.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -285,6 +285,7 @@ export default {
 // always include tokens unscoped
 @import "../../assets/styles/tokens/colors";
 @import "../../assets/styles/tokens/gaps";
+@import "../../assets/styles/tokens/grid";
 
 body {
   &.__blocked-scroll {
@@ -296,6 +297,7 @@ body {
 <style scoped lang="scss">
 @import "../../assets/styles/transitions/opacity";
 @import "../../assets/styles/mixins/shadows";
+@import "../../assets/styles/mixins/breakpoints";
 
 .d-modal {
   position: fixed;
@@ -350,5 +352,22 @@ body {
   cursor: pointer;
 }
 
-// TODO: xs
+@include xs-device {
+  .d-modal {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    bottom: 0;
+    overflow-y: auto;
+    touch-action: pan-y;
+    height: 100%;
+    margin: var(--gap-42) var(--grid-offset) 0;
+  }
+
+  .modal {
+    width: 100%;
+    padding-bottom: var(--gap-26x);
+    margin-top: auto;
+  }
+}
 </style>
