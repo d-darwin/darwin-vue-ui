@@ -166,7 +166,7 @@ For now a few basic components implemented:
 
 ##### Development components
 
-- **DDebugVisual**. Adds grid and borders visualisation to help catch up visual errors.  
+- **DDebugVisual**. Adds grid, elements' borders and semantic tag visualisation to help catch up visual errors.  
   More details: '@dariwn-studio/ui-vue/src/components/development/DDebugVisual.vue'.
 
 ##### Icon components
