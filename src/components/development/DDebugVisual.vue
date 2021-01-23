@@ -5,7 +5,7 @@
       <div v-show="isPanelShown" class="d-debug-visual">
         <DButton
           :icon-only="true"
-          :type="isGridVisualizationShown ? 'alternative' : 'primary'"
+          :type="isBordersVisualizationShown ? 'alternative' : 'primary'"
           roundness="boxed"
           @click="toggleBordersVisualization"
         >
@@ -14,7 +14,7 @@
 
         <DButton
           :icon-only="true"
-          :type="isBordersVisualizationShown ? 'alternative' : 'primary'"
+          :type="isGridVisualizationShown ? 'alternative' : 'primary'"
           roundness="boxed"
           @click="toggleGridVisualization"
         >
