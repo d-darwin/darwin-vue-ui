@@ -1,5 +1,5 @@
 /**
- * Uses as possible font sizes props of components.
+ * Uses as possible font sizes props for the components.
  * See example usage in '@dariwn-studio/ui-vue/components/containers/DTypography.vue'.
  */
 export default {
