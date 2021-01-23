@@ -33,14 +33,8 @@
 </template>
 
 <script>
-/** core **/
-import { watch, nextTick, onBeforeUnmount } from "vue";
-
-/** utils **/
-import uuid from "../../utils/uuid";
-
 /** compositions **/
-import useBlockBodyScroll from "../../compositions/blockBodyScroll";
+import useClosable from "../../compositions/closable";
 
 /** components **/
 import DIconClose from "../icons/DIconClose";
@@ -103,52 +97,7 @@ export default {
   },
 
   setup(props, { emit }) {
-    const { blockScroll } = useBlockBodyScroll();
-    const closeButtonId = uuid();
-    let activeElement = null;
-
-    watch(
-      () => props.isShown,
-      isShown => {
-        if (isShown) {
-          // block body scrolling
-          blockScroll();
-
-          // hold current active element to reset focus when the component will be closed
-          activeElement = document.activeElement;
-
-          // set focus to close button if exists
-          nextTick(() => {
-            const closeButton = document.getElementById(closeButtonId);
-
-            if (closeButton) {
-              closeButton.focus();
-            }
-          });
-        } else {
-          // ensure that body scrolling isn't blocked
-          blockScroll(false);
-
-          // reset focus to it's previous state
-          activeElement.focus();
-        }
-      }
-    );
-
-    onBeforeUnmount(() => {
-      // ensure that body scrolling isn't blocked
-      blockScroll(false);
-    });
-
-    const closeHandler = () => {
-      /**
-       * Close button was clicked or click was outside the component.
-       *
-       * @event close
-       */
-      emit("close");
-      blockScroll(false);
-    };
+    const { closeButtonId, closeHandler } = useClosable(props, emit);
 
     return {
       closeHandler,
