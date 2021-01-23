@@ -1,1 +1,1 @@
-Components of this folder intended to be used only while development.
+The components of this folder are for development use only.

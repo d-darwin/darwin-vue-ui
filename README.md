@@ -1,33 +1,34 @@
-## DARWIN Studio UI Library
+# DARWIN Studio UI Library
 
 [![Known Vulnerabilities](https://snyk.io/test/npm/@darwin-studio/ui-vue/badge.svg)](https://snyk.io/test/npm/@darwin-studio/ui-vue)
 [![Minified Gzipped Size](https://badgen.net/bundlephobia/minzip/@darwin-studio/ui-vue)](https://bundlephobia.com/result?p=@darwin-studio/ui-vue)
+[![Licence](https://badgen.net/github/license/d-darwin/darwin-vue-ui)](https://badgen.net/github/license/d-darwin/darwin-vue-ui)
+[![Package Version](https://badgen.net/npm/v/@darwin-studio/ui-vue)](https://badgen.net/npm/v/@darwin-studio/ui-vue)
 
-### What is it?
+## What is it?
 
 It's lightweight and performant UI Library for Vue 3.
 
 🚧 DISCLAIMER: Under construction. Not even close to alpha. So please, don't use in production.
 
-### Key features
+## In short
 
-- Components created by [Brad Frost's Atomic Design](https://atomicdesign.bradfrost.com/) methodology, so you can go along with it creating and maintaining your Design System.
+- Components created by [Brad Frost's Atomic Design](https://atomicdesign.bradfrost.com/).
 - Design tokens represented to customize component appearance.
-- Build in optional reset style.
-- Build in optional fonts.
-- Icon set agnostic.
 - Uses focus-visible polyfill to emulate :focus-visible CSS prop.
+- Build in optional reset style and google fonts support.
+- Icon set agnostic.
 
 ⚠️ WARNING: Components of the library have to be compiled with sass-loader, so you need to have sass-loader package as a dev dependency.
 
-### Installation
+## Installation
 
 ```shell script
 npm i @darwin-studio/ui-vue
 npm i -D sass-loader sass
 ```
 
-### Basic Usage
+## Basic Usage
 
 ```vue
 <template>
@@ -38,15 +39,18 @@ npm i -D sass-loader sass
     <h1>Hi there!</h1>
   </DTypography>
   <!--...-->
+  <!--Try out our visual debug component. You'll love it!-->
+  <DDebugVisual />
 </template>
 
 <script>
-import { DTypography } from "@darwin-studio/ui-vue";
+import { DTypography, DDebugVisual } from "@darwin-studio/ui-vue";
 
 export default {
   //...
   components: {
-    DTypography
+    DTypography,
+    DDebugVisual
   },
 
   data() {
@@ -72,19 +76,19 @@ export default {
 </style>
 ```
 
-### Documentation
+## Documentation
 
 For now there isn't any fancy documentation site to check out,
 but we are planing to use Storybook for the documentation when it will be integrated with Vue 3.  
 You can find particular component documentation in its source code.
 
-### More details
+## More details
 
-#### Components
+### Components
 
 For now a few basic components implemented:
 
-##### Atoms
+#### Atoms
 
 - **DButton**. Renders a button of various appearance and behavior.  
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DButton.vue'.
@@ -132,21 +136,21 @@ For now a few basic components implemented:
   Supports lazy loading, aspect-ratio prop, no image fallback and loading placeholder.  
   More details. More details: '@dariwn-studio/ui-vue/src/components/atoms/DVideo.vue'.
 
-##### Molecules
+#### Molecules
 
 - **DCheckboxGroup**. Renders a group of checkboxes with title.  
   More details: '@dariwn-studio/ui-vue/src/components/molecules/DCheckboxGroup.vue'.
 - **DRadioGroup**. Renders a group of radio buttons with title.  
   More details: '@dariwn-studio/ui-vue/src/components/molecules/DRadioGroup.vue'.
 
-##### Organisms
+#### Organisms
 
 - **DDrawer**. Renders drawer.  
   More details: '@dariwn-studio/ui-vue/src/components/organisms/DDrawer.vue'.
 - **DModal**. Renders widely customizable modal.  
   More details: '@dariwn-studio/ui-vue/src/components/organisms/DModal.vue'.
 
-##### Containers
+#### Containers
 
 - **DAspectRatio**. Simulates aspect-ratio CSS prop to keep aspect ratio of the container content.  
   More details: '@dariwn-studio/ui-vue/src/components/containers/DAspectRatio.vue'.
@@ -164,18 +168,18 @@ For now a few basic components implemented:
   Customisable focus-visible presented.  
   More details: '@dariwn-studio/ui-vue/src/components/containers/DZoomIn.vue'.
 
-##### Development components
+#### Development components
 
 - **DDebugVisual**. Adds grid, elements' borders and semantic tag visualisation to help catch up visual errors.  
   More details: '@dariwn-studio/ui-vue/src/components/development/DDebugVisual.vue'.
 
-##### Icon components
+#### Icon components
 
 The library also exports default icons which used in components.
 You can easily replace them with your own by using appropriate component slots.
 Here you can find default icons: '@dariwn-studio/ui-vue/src/components/icons'.
 
-#### Reusability and code splitting
+### Reusability and code splitting
 
 We use composition API, directives, mixins and utils to reuse and split code.
 More details you can find in appropriate directory.
@@ -185,7 +189,7 @@ More details you can find in appropriate directory.
 - Mixins: '@dariwn-studio/ui-vue/src/mixins/'.
 - Utils: '@dariwn-studio/ui-vue/src/utils/'.
 
-#### Design Tokens
+### Design Tokens
 
 Feel free to customize default appearance of the components by
 redefining design tokens either in build time via SCSS variables or
@@ -193,17 +197,17 @@ in runtime via CSS custom properties.
 You can even import design token to your \*.js files.
 Check out what you can redefine in '@dariwn-studio/ui-vue/src/assets/styles/tokens'.
 
-#### Style mixins
+### Style mixins
 
 Some common component styles extracted into SCSS mixins and stored in separate directory. Feel free to reuse them in your own project.  
 More details you can find in '@dariwn-studio/ui-vue/src/assets/styles/mixins'.
 
-#### Vue transitions
+### Vue transitions
 
 Some common component transitions extracted into separate directory. Feel free to reuse them in your own project.  
 More details you can find in '@dariwn-studio/ui-vue/src/assets/styles/transitions'.
 
-#### Reset styles
+### Reset styles
 
 Use the library plugin options to reset styles as follows:
 
@@ -227,7 +231,7 @@ Alternatively just add following line into your general scss file to reset all b
 @import "@darwin-studio/ui-vue/src/assets/styles/reset";
 ```
 
-#### Fonts
+### Fonts
 
 You can easily add any google font to your project by using the library plugin.
 
@@ -276,7 +280,7 @@ Then you can use specified font families in your scss/css files as usual.
 }
 ```
 
-#### Icons
+### Icons
 
-We don't want to stick with one of icon sets, so decided allow you to choose one yourself.  
+Despite the library exposes some internal icons we don't want to stick with one of icon sets, so decided allow you to choose one yourself.  
 To do so just use [@iconify/vue](https://docs.iconify.design/implementations/vue/) package or any you prefer.
