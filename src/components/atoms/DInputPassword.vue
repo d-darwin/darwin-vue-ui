@@ -6,18 +6,17 @@
     class="d-input-password"
   >
     <template #after>
-      <transition
-        name="opacity"
-        :style="visibilityToggleStyle"
-        class="visibility-toggle"
-        @click="toggleVisibility"
-      >
-        <span v-if="isVisible">
+      <transition name="opacity" @click="toggleVisibility">
+        <span
+          v-if="isVisible"
+          :style="visibilityToggleStyle"
+          class="visibility-toggle"
+        >
           <DIconEyeOff v-if="!$slots['icon-visible']" />
           <!-- @slot You can replace default visible icon by passing your own here. -->
           <slot v-else name="icon-visible" />
         </span>
-        <span v-else>
+        <span v-else :style="visibilityToggleStyle" class="visibility-toggle">
           <DIconEye v-if="!$slots['icon-invisible']" />
           <!-- @slot You can replace default invisible icon by passing your own here. -->
           <slot v-else name="icon-invisible" />
@@ -37,7 +36,7 @@ import DIconEyeOff from "../icons/DIconEyeOff";
  * It uses <b>DInput</b> component so you can pass any compatible props.<br>
  *
  *
- * @version 1.0.1
+ * @version 1.0.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
