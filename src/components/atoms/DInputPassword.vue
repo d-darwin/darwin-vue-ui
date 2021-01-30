@@ -12,8 +12,16 @@
         class="visibility-toggle"
         @click="toggleVisibility"
       >
-        <DIconEyeOff v-if="isVisible" />
-        <DIconEye v-else />
+        <span v-if="isVisible">
+          <DIconEyeOff v-if="!$slots['icon-visible']" />
+          <!-- @slot You can replace default visible icon by passing your own here. -->
+          <slot v-else name="icon-visible" />
+        </span>
+        <span v-else>
+          <DIconEye v-if="!$slots['icon-invisible']" />
+          <!-- @slot You can replace default invisible icon by passing your own here. -->
+          <slot v-else name="icon-invisible" />
+        </span>
       </transition>
     </template>
   </DInput>
@@ -25,7 +33,9 @@ import DIconEye from "../icons/DIconEye";
 import DIconEyeOff from "../icons/DIconEyeOff";
 
 /**
- * TODO
+ * The component renders <b>input</b> tag with password <b>type</b> and visibility toggle.<br>
+ * It uses <b>DInput</b> component so you can pass any compatible props.<br>
+ *
  *
  * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
@@ -44,7 +54,7 @@ export default {
     visibilityToggleStyle: {
       type: Object,
       default: () => {}
-    },
+    }
   },
 
   data() {
@@ -68,5 +78,10 @@ export default {
   pointer-events: all;
   cursor: pointer;
   position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
