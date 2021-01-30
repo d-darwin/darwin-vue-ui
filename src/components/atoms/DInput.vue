@@ -72,7 +72,7 @@ import DError from "./DError";
  * May be in various sizes and have different corner roundness.<br>
  * Renders error string if any passed to a prop.
  *
- * @version 1.1.0
+ * @version 1.1.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -181,13 +181,17 @@ export default {
       });
     },
 
-    emitSubmit() {
+    emitSubmit(event) {
       /**
        * Enter clicked while focus on the <b>input</b>.
        *
        * @event submit
+       * @type {{String, String}}
        */
-      this.$emit("submit");
+      this.$emit("submit", {
+        value: event.target.value,
+        id: this.inputId
+      });
     }
   }
 };
