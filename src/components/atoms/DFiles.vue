@@ -159,7 +159,7 @@ export default {
   },
 
   setup(props) {
-    const inputId = useInputId(props);
+    const { inputId } = useInputId(props);
     return { inputId };
   },
 

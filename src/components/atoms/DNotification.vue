@@ -1,22 +1,24 @@
 <template>
-  <!--// TODO: how to customize transition ???-->
-  <transition name="opacity">
-    <div
-      v-if="shown && content"
-      :class="{
-        [`__${position}`]: position,
-        [`${$attrs.class}`]: $attrs.class
-      }"
-      class="d-notification"
-    >
-      <!--TODO: use DTypography slot as an alternative-->
-      <DTypography
-        :content="content"
-        v-bind="typographyProps"
-        :style="typographyStyle"
-      />
-    </div>
-  </transition>
+  <teleport to="body">
+    <!--// TODO: how to customize transition ???-->
+    <transition name="opacity">
+      <div
+        v-if="shown && content"
+        :class="{
+          [`__${position}`]: position,
+          [`${$attrs.class}`]: $attrs.class
+        }"
+        class="d-notification"
+      >
+        <!--TODO: use DTypography slot as an alternative-->
+        <DTypography
+          :content="content"
+          v-bind="typographyProps"
+          :style="typographyStyle"
+        />
+      </div>
+    </transition>
+  </teleport>
 </template>
 
 <script>
@@ -25,7 +27,7 @@ import DTypography from "../containers/DTypography";
 /**
  * The component renders text notification for a given duration.
  *
- * @version 1.0.1
+ * @version 1.1.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
