@@ -18,12 +18,18 @@
     />
 
     <div :style="controlGroupStyle" class="control-group">
+      <span v-if="$slots['before']" class="input-before">
+        <slot name="before" />
+      </span>
+
       <!--need roundness class here for uniformity with other controls-->
       <input
         :id="inputId"
         :class="{
           [`__${roundness}`]: roundness,
-          __borderless: borderless
+          __borderless: borderless,
+          '__slot-before': $slots['before'],
+          '__slot-after': $slots['after']
         }"
         v-bind="{
           ...$attrs,
@@ -33,6 +39,11 @@
         class="input"
         @keyup.enter.prevent="emitSubmit"
       />
+
+      <span v-if="$slots['after']" class="input-after">
+        <slot name="after" />
+      </span>
+
       <div class="outline" />
     </div>
 
@@ -55,7 +66,7 @@ import DError from "./DError";
  * May be in various sizes and have different corner roundness.<br>
  * Renders error string if any passed to a prop.
  *
- * @version 1.0.7
+ * @version 1.1.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -164,6 +175,7 @@ export default {
 // always include tokens unscoped
 @import "../../assets/styles/tokens/colors";
 @import "../../assets/styles/tokens/outline";
+@import "../../assets/styles/tokens/controls";
 </style>
 
 <style scoped lang="scss">
@@ -208,6 +220,19 @@ export default {
 
     height: calc(100% + 2 * var(--outline-width));
   }
+}
+
+.input-before,
+.input-after {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-after {
+  right: 0;
 }
 
 .__borderless {
@@ -260,12 +285,25 @@ export default {
     @include large-control;
 
     padding: 12px 0 12px 15px;
+
+    &.__slot-before {
+      padding-left: var(--large-control-height);
+    }
+
+    &.__slot-after {
+      padding-right: var(--large-control-height);
+    }
   }
 
   &.__smooth {
     .label {
       padding-left: 16px;
     }
+  }
+
+  .input-before,
+  .input-after {
+    width: var(--large-control-height);
   }
 }
 
@@ -274,12 +312,25 @@ export default {
     @include medium-control;
 
     padding: 7px 0 7px 11px;
+
+    &.__slot-before {
+      padding-left: var(--medium-control-height);
+    }
+
+    &.__slot-after {
+      padding-right: var(--medium-control-height);
+    }
   }
 
   &.__smooth {
     .label {
       padding-left: 12px;
     }
+  }
+
+  .input-before,
+  .input-after {
+    width: var(--medium-control-height);
   }
 }
 
