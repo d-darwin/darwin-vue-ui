@@ -108,7 +108,7 @@ For now a few basic components implemented:
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DFiles.vue'.
 - **DInput**. Renders an input field of various appearance.  
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DInput.vue'.
-- **DInputPassword**. Renders an input field with visibility toggle of various appearance.  
+- **DInputPassword**. Renders a password input field with visibility toggle of various appearance.  
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DInputPassword.vue'.
 - **DLink**. Renders a link of various appearance.  
   Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DLink.vue'.

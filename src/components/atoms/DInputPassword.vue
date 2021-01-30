@@ -35,11 +35,11 @@ import DIconEyeOff from "../icons/DIconEyeOff";
  * The component renders <b>input</b> tag with password <b>type</b> and visibility toggle.<br>
  * It uses <b>DInput</b> component so you can pass any compatible props.<br>
  *
- *
- * @version 1.0.3
+ * @version 1.0.4
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
+  // TODO: what about toggle a11y ???
   name: "DInputPassword",
 
   inheritAttrs: false,
@@ -65,6 +65,14 @@ export default {
   methods: {
     toggleVisibility() {
       this.isVisible = !this.isVisible;
+
+      /**
+       * Visibility of the password changed.
+       *
+       * @event visibility-change
+       * @type {Boolean}
+       */
+      this.$emit("visibility-change", this.isVisible);
     }
   }
 };
