@@ -51,6 +51,8 @@ import DIconCloseCircle from "./components/icons/DIconCloseCircle";
 import DIconColumns from "./components/icons/DIconColumns";
 import DIconDirection from "./components/icons/DIconDirection";
 import DIconExternalLink from "./components/icons/DIconExternalLink";
+import DIconEye from "./components/icons/DIconEye";
+import DIconEyeOff from "./components/icons/DIconEyeOff";
 import DIconImage from "./components/icons/DIconImage";
 import DIconMaximize from "./components/icons/DIconMaximize";
 import DIconPaperclip from "./components/icons/DIconPaperclip";
@@ -133,6 +135,8 @@ export {
   DIconColumns,
   DIconDirection,
   DIconExternalLink,
+  DIconEye,
+  DIconEyeOff,
   DIconImage,
   DIconMaximize,
   DIconPaperclip,
