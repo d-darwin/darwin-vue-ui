@@ -18,7 +18,12 @@
     />
 
     <div :style="controlGroupStyle" class="control-group">
-      <span v-if="$slots['before']" class="input-before">
+      <span
+        v-if="$slots['before']"
+        :style="inputBeforeStyle"
+        class="input-before"
+      >
+        <!-- @slot Used to prepend input with icon -->
         <slot name="before" />
       </span>
 
@@ -40,7 +45,8 @@
         @keyup.enter.prevent="emitSubmit"
       />
 
-      <span v-if="$slots['after']" class="input-after">
+      <span v-if="$slots['after']" :style="inputAfterStyle" class="input-after">
+        <!-- @slot Used to append icon to input -->
         <slot name="after" />
       </span>
 
@@ -123,9 +129,25 @@ export default {
     },
 
     /**
-     * Pass any style object to <i>.controlGroupStyle</i> if needed.
+     * Pass any style object to <i>.control-group</i> if needed.
      */
     controlGroupStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Pass any style object to <i>.input-before</i> if needed.
+     */
+    inputBeforeStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Pass any style object to <i>.input-after</i> if needed.
+     */
+    inputAfterStyle: {
       type: Object,
       default: () => {}
     },
@@ -229,6 +251,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: none;
 }
 
 .input-after {
