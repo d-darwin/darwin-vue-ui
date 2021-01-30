@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.d-icon-eye {
+.d-icon-eye-off {
   path {
     stroke: currentColor;
   }

@@ -185,9 +185,9 @@ export default {
       /**
        * Enter clicked while focus on the <b>input</b>.
        *
-       * @event submitted
+       * @event submit
        */
-      this.$emit("submitted");
+      this.$emit("submit");
     }
   }
 };
