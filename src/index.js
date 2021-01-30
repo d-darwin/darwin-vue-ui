@@ -12,6 +12,7 @@ import DCopyright from "./components/atoms/DCopyright";
 import DError from "./components/atoms/DError";
 import DFiles from "./components/atoms/DFiles";
 import DInput from "./components/atoms/DInput";
+import DInputPassword from "./components/atoms/DInputPassword";
 import DLink from "./components/atoms/DLink";
 import DLoader from "./components/atoms/DLoader";
 import DNotification from "./components/atoms/DNotification";
@@ -101,6 +102,7 @@ export {
   DError,
   DFiles,
   DInput,
+  DInputPassword,
   DLink,
   DLoader,
   DNotification,

@@ -8,6 +8,7 @@
     <template #after>
       <transition
         name="opacity"
+        :style="visibilityToggleStyle"
         class="visibility-toggle"
         @click="toggleVisibility"
       >
@@ -26,7 +27,7 @@ import DIconEyeOff from "../icons/DIconEyeOff";
 /**
  * TODO
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -35,6 +36,16 @@ export default {
   inheritAttrs: false,
 
   components: { DIconEyeOff, DIconEye, DInput },
+
+  props: {
+    /**
+     * Pass any style object to <i>.visibility-toggle-style</i> if needed.
+     */
+    visibilityToggleStyle: {
+      type: Object,
+      default: () => {}
+    },
+  },
 
   data() {
     return {
