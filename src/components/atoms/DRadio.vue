@@ -75,7 +75,7 @@ import DError from "./DError";
  * Feel free to use any attrs you expect with <b>input</b> tag with <i>type="radio"</i>,
  * they will be pass to the tag automatically.
  *
- * @version 1.0.4
+ * @version 1.0.5
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -171,7 +171,8 @@ export default {
   },
 
   setup(props) {
-    return { ...useInputId(props) };
+    const inputId = useInputId(props);
+    return { inputId };
   },
 
   methods: {

@@ -17,7 +17,7 @@
       class="label"
     />
 
-    <div :class="{}" class="control-group">
+    <div :style="controlGroupStyle" class="control-group">
       <!--need roundness class here for uniformity with other controls-->
       <input
         :id="inputId"
@@ -55,7 +55,7 @@ import DError from "./DError";
  * May be in various sizes and have different corner roundness.<br>
  * Renders error string if any passed to a prop.
  *
- * @version 1.0.6
+ * @version 1.0.7
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -112,6 +112,14 @@ export default {
     },
 
     /**
+     * Pass any style object to <i>.controlGroupStyle</i> if needed.
+     */
+    controlGroupStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
      * If not empty renders as an error string below the <b>input</b> tag.
      */
     error: {
@@ -121,7 +129,8 @@ export default {
   },
 
   setup(props) {
-    return { ...useInputId(props) };
+    const { inputId } = useInputId(props);
+    return { inputId };
   },
 
   methods: {

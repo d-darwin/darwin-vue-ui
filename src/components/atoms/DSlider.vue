@@ -45,7 +45,7 @@ import DError from "./DError";
  * Feel free to use any attrs you expect with <b>input</b> tag with <i>type="range"</i>,
  * they will be pass to the tag automatically.
  *
- * @version 1.0.2
+ * @version 1.0.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -93,7 +93,8 @@ export default {
   },
 
   setup(props) {
-    return { ...useInputId(props) };
+    const inputId = useInputId(props);
+    return { inputId };
   },
 
   methods: {

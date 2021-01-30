@@ -64,7 +64,7 @@ import DError from "./DError";
  * they will be pass to the tag automatically.<br>
  * If values prop defined the component will be rendered as toggle (slightly different appearance).
  *
- * @version 1.0.4
+ * @version 1.0.5
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -121,7 +121,8 @@ export default {
   },
 
   setup(props) {
-    return { ...useInputId(props) };
+    const inputId = useInputId(props);
+    return { inputId };
   },
 
   data() {

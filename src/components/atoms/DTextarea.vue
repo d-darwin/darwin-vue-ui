@@ -55,7 +55,7 @@ import DError from "./DError";
  * May be in various sizes and have different corner roundness.<br>
  * Renders error string if any passed to a prop.
  *
- * @version 1.0.1
+ * @version 1.0.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -121,7 +121,8 @@ export default {
   },
 
   setup(props) {
-    return { ...useInputId(props) };
+    const inputId = useInputId(props);
+    return { inputId };
   },
 
   methods: {

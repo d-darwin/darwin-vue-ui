@@ -90,7 +90,7 @@ import DError from "./DError";
  * they will be pass to the tag automatically.<br>
  * While submitted uploadedFiles array need to be processed with FormData().
  *
- * @version 1.0.2
+ * @version 1.0.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 
@@ -159,7 +159,8 @@ export default {
   },
 
   setup(props) {
-    return { ...useInputId(props) };
+    const inputId = useInputId(props);
+    return { inputId };
   },
 
   data() {
