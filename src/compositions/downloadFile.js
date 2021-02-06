@@ -5,6 +5,8 @@ import { nextTick } from "vue";
 import consoleWarn from "../utils/consoleWarn";
 
 /**
+ * Helps download any files, either just uploaded to browser or from a link.
+ * See example usage in '@dariwn-studio/ui-vue/components/atoms/DFiles.vue'.
  *
  * @returns {{downloadFile: (function(*=): Promise<void>)}}
  */
