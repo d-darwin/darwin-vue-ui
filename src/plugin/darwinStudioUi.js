@@ -1,4 +1,4 @@
-import warn from "../utils/warn";
+import consoleWarn from "../utils/consoleWarn";
 
 const defaultOptions = {
   resetStyles: true,
@@ -30,7 +30,7 @@ export default {
           }
         });
       } catch (e) {
-        warn(`Can't load google fonts "${options.googleFonts}".`, e);
+        consoleWarn(`Can't load google fonts "${options.googleFonts}".`, e);
       }
     }
   }

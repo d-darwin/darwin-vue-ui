@@ -83,7 +83,7 @@ import fontSizeProp from "./utils/fontSizeProp";
 import scrollToTop from "./utils/scrollToTop";
 import throttle from "./utils/throttle";
 import uuid from "./utils/uuid";
-import warn from "./utils/warn";
+import warn from "./utils/consoleWarn";
 
 /** plugin **/
 import darwinStudioUiPlugin from "./plugin/darwinStudioUi";
