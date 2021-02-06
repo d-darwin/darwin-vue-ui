@@ -9,6 +9,7 @@ import DCheckbox from "./components/atoms/DCheckbox";
 import DCopyContent from "./components/atoms/DCopyContent";
 import DCopyLink from "./components/atoms/DCopyLink";
 import DCopyright from "./components/atoms/DCopyright";
+import DDetails from "./components/atoms/DDetails";
 import DError from "./components/atoms/DError";
 import DFiles from "./components/atoms/DFiles";
 import DInput from "./components/atoms/DInput";
@@ -99,6 +100,7 @@ export {
   DCopyContent,
   DCopyLink,
   DCopyright,
+  DDetails,
   DError,
   DFiles,
   DInput,

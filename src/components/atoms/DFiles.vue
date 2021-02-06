@@ -39,6 +39,7 @@
         }"
         class="list-item"
       >
+        <!--TODO: use DLink instead ???-->
         <DTypography
           :content="file.name"
           tag="span"
