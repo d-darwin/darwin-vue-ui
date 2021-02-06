@@ -5,7 +5,11 @@
       class="summary"
       @click.prevent="summaryClickHandler"
     >
-      <DTypography v-if="!$slots.summary" :content="summary" />
+      <template v-if="!$slots.summary">
+        <DTypography :content="summary" />
+
+        <DIconDirection :type="isExpended ? 'up' : 'down'" />
+      </template>
       <!-- @slot You can use custom summary content, not just a string -->
       <slot v-else name="summary" />
     </summary>
@@ -29,6 +33,7 @@ import transitionTokens from "../../assets/styles/tokens/_transitions.scss";
 
 /** components **/
 import DTypography from "../containers/DTypography";
+import DIconDirection from "../icons/DIconDirection";
 
 /**
  * // TODO
@@ -39,7 +44,7 @@ import DTypography from "../containers/DTypography";
 export default {
   name: "DDetails",
 
-  components: { DTypography },
+  components: { DIconDirection, DTypography },
 
   inheritAttrs: false,
 
@@ -93,11 +98,15 @@ export default {
       } else {
         this.isOpened = true;
 
-        setTimeout(() => {
-          // use timeout to hack event loop
-          this.isExpended = true;
-        }, 0);
+        setTimeout(async () => {
+          await this.$nextTick(() => {
+            // use timeout and nextTick to hack event loop
+            this.isExpended = true;
+          });
+        }, 24); // experimental value
       }
+
+      // TODO: emit open change
     }
   }
 };
@@ -116,7 +125,15 @@ export default {
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
 
+  // hide default icon
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  // custom focus visible
   outline: none;
 
   &.focus-visible {
@@ -124,6 +141,10 @@ export default {
       @include outline;
     }
   }
+}
+
+.d-icon-direction {
+  @include transition-medium;
 }
 
 .details-content {
