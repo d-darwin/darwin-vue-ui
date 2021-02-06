@@ -1,12 +1,20 @@
+/** core **/
+import { nextTick } from "vue";
+
+/** compositions **/
 import consoleWarn from "../utils/consoleWarn";
 
+/**
+ *
+ * @returns {{downloadFile: (function(*=): Promise<void>)}}
+ */
 export default function useDownloadFile() {
   const downloadFile = async fileData => {
     if (fileData.name) {
       let fileBlob = null;
 
       if (fileData.link) {
-        // download file from the network
+        // it's specially constructed object with file link: download file from the network first
         try {
           const response = await fetch(fileData.link);
           if (!response.ok) {
@@ -20,9 +28,9 @@ export default function useDownloadFile() {
         } catch (e) {
           consoleWarn(`Can't download fie from link "${fileData.link}".`, e);
         }
-      } else if (fileData.file) {
-        // just uploaded to browser file
-        fileBlob = new Blob([fileData.file]);
+      } else {
+        // it's just uploaded to browser file
+        fileBlob = new Blob([fileData]);
       }
 
       if (fileBlob) {
@@ -35,7 +43,9 @@ export default function useDownloadFile() {
 
         fileLink.click();
 
-        // TODO: destroy link element after file download finishes
+        await nextTick(() => {
+          document.body.removeChild(fileLink);
+        });
       }
     }
   };

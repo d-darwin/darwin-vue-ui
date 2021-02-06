@@ -8,6 +8,7 @@
  * @returns {function(): undefined}
  */
 export default function throttle(func, ms) {
+  // TODO: move to compositions ???
   let isThrottled = false,
     savedArgs,
     savedThis;

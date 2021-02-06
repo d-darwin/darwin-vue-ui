@@ -7,6 +7,7 @@
  * @returns {function(): undefined}
  */
 export default function debounce(func, ms) {
+  // TODO: move to compositions ???
   let isCooldown = false;
 
   return function() {

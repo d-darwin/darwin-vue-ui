@@ -39,7 +39,11 @@
         }"
         class="list-item"
       >
-        <DTypography :content="file.name" tag="span" />
+        <DTypography
+          :content="file.name"
+          tag="span"
+          @click="downloadFile(file)"
+        />
 
         <DLink
           :href="$attrs.disabled !== undefined ? null : '#'"
@@ -72,6 +76,7 @@
 <script>
 /** compositions **/
 import useInputId from "../../compositions/inputId";
+import useDownloadFile from "../../compositions/downloadFile";
 
 /** design tokens **/
 import transitionsTokens from "../../assets/styles/tokens/_transitions.scss";
@@ -160,7 +165,9 @@ export default {
 
   setup(props) {
     const { inputId } = useInputId(props);
-    return { inputId };
+    const { downloadFile } = useDownloadFile();
+
+    return { inputId, downloadFile };
   },
 
   data() {
@@ -202,6 +209,7 @@ export default {
     },
 
     itemDelay(index) {
+      // Used to delay item animation
       const delay = parseInt(transitionsTokens["transition-delay-short"]);
       return index * delay + "ms";
     }
@@ -259,6 +267,7 @@ export default {
 .list-item {
   position: relative;
   overflow-wrap: break-word;
+  cursor: pointer;
 
   & + & {
     margin-top: var(--gap-base);

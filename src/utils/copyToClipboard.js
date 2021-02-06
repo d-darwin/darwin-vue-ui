@@ -5,6 +5,7 @@
  * @param text
  */
 export default text => {
+  // TODO: move to compositions ???
   const dummyElement = document.createElement("input");
 
   document.body.appendChild(dummyElement);

@@ -2,6 +2,7 @@
  * Smoothly scroll to the top of the page
  */
 const scrollToTop = () => {
+  // TODO: move to compositions ???
   // TODO: add element to scroll to
   const c = document.documentElement.scrollTop || document.body.scrollTop;
   if (c > 0) {
