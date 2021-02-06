@@ -10,7 +10,12 @@
       <slot v-else name="summary" />
     </summary>
 
-    <div :style="detailsContentStyle" class="details-content">
+    <div
+      ref="details-content"
+      :style="detailsContentStyle"
+      :class="{ __expanded: isExpended }"
+      class="details-content"
+    >
       <DTypography v-if="!$slots.default" :content="content" />
       <!-- @slot You can use custom details content, not just a string -->
       <slot v-else name="default" />
@@ -19,6 +24,10 @@
 </template>
 
 <script>
+/** design tokens **/
+import transitionTokens from "../../assets/styles/tokens/_transitions.scss";
+
+/** components **/
 import DTypography from "../containers/DTypography";
 
 /**
@@ -31,6 +40,8 @@ export default {
   name: "DDetails",
 
   components: { DTypography },
+
+  inheritAttrs: false,
 
   props: {
     // TODO
@@ -64,24 +75,66 @@ export default {
 
   data() {
     return {
-      isOpened: false
+      isOpened: false,
+      isExpended: false,
+      transitionTime: parseInt(transitionTokens["transition-time-medium"])
     };
   },
 
   methods: {
-    summaryClickHandler() {
-      console.log("summaryClickHandler: TODO animation");
-      this.isOpened = !this.isOpened;
+    async summaryClickHandler() {
+      if (this.isOpened) {
+        this.isExpended = false;
+
+        // browser will completely hide .details-content only after transition finishes
+        setTimeout(() => {
+          this.isOpened = false;
+        }, this.transitionTime);
+      } else {
+        this.isOpened = true;
+
+        setTimeout(() => {
+          // use timeout to hack event loop
+          this.isExpended = true;
+        }, 0);
+      }
     }
   }
 };
 </script>
 
+<style lang="scss">
+// always include tokens unscoped
+@import "../../assets/styles/tokens/outline";
+</style>
+
 <style scoped lang="scss">
-// @import './assets/styles/colors';
+@import "../../assets/styles/mixins/transitions";
+@import "../../assets/styles/mixins/outline";
 
 .summary {
+  position: relative;
   display: flex;
   align-items: center;
+
+  outline: none;
+
+  &.focus-visible {
+    &:before {
+      @include outline;
+    }
+  }
+}
+
+.details-content {
+  @include transition-medium;
+
+  height: 0;
+  overflow: hidden;
+  background: red;
+
+  &.__expanded {
+    height: 64px;
+  }
 }
 </style>

@@ -20,6 +20,8 @@ export default {
 
   components: { DTypography },
 
+  inheritAttrs: false,
+
   props: {
     /**
      * Company foundation year.
