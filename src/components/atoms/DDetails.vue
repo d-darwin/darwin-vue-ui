@@ -16,7 +16,9 @@
       <template v-if="!$slots.summary">
         <DTypography :content="summary" />
 
-        <DIconDirection :type="isExpended ? 'up' : 'down'" />
+        <DIconDirection v-if="!$slots['icon']" :type="isExpended ? 'up' : 'down'" />
+        <!-- @slot You can use custom icon -->
+        <slot v-else name="icon" />
       </template>
       <!-- @slot You can use custom summary content, not just a string -->
       <slot v-else name="summary" />
@@ -60,7 +62,9 @@ export default {
   inheritAttrs: false,
 
   props: {
-    // TODO
+    /**
+     * Content of the <b><summary></b> tag. It uses <b>DTypography</b> so any HTML string may be passed.
+     */
     summary: {
       type: [String, Number],
       default: ""
