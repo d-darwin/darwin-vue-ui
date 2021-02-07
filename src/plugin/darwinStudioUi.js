@@ -1,12 +1,26 @@
 import consoleWarn from "../utils/consoleWarn";
 
-// TODO: add descr
+// The plugin allows to customize the library in a really simple way
 const defaultOptions = {
   resetStyles: true,
-  googleFonts: null, // TODO: add example
-  googleFontsText: null, // TODO: add example
-  googleFontsApi: "", // e.g. "https://fonts.googleapis.com/css",
-  designTokens: {} // e.g. "color-primary": "navy"
+  googleFonts: null,
+  /* Example of googleFonts prop:
+    [
+        {
+          family: "Montserrat",
+          props: "wght@100&display=swap"
+        },
+      {
+        family: "Inter"
+      }
+    ]
+  */
+  googleFontsText: null,
+  // Example of googleFontsText prop: 'abcdefg012345'
+  googleFontsApi: "",
+  // Example of googleFontsApi prop: "https://fonts.googleapis.com/css",
+  designTokens: {}
+  // Example of designTokens prop: "color-primary": "navy"
 };
 
 export default {

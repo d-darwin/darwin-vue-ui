@@ -1,5 +1,13 @@
 <template>
-  <details :open="isOpened" class="d-details">
+  <details
+    :open="isOpened"
+    :class="{
+      [`${$attrs.class}`]: $attrs.class,
+      [`__${size}`]: size,
+      [`__${roundness}`]: roundness
+    }"
+    class="d-details"
+  >
     <summary
       :style="summaryStyle"
       class="summary"
@@ -16,7 +24,10 @@
 
     <div
       ref="details-content"
-      :style="detailsContentStyle"
+      :style="{
+        ...detailsContentStyle,
+        height: isExpended ? contentHeight + 'px' : '0px'
+      }"
       :class="{ __expanded: isExpended }"
       class="details-content"
     >
@@ -62,6 +73,26 @@ export default {
     },
 
     /**
+     * Defines vertical size of the component summary.<br>
+     * Takes values: 'large', 'medium', 'small'.
+     */
+    size: {
+      type: String,
+      default: "large",
+      validator: val => ["large", "medium", "small"].includes(val)
+    },
+
+    /**
+     * Defines corner's roundness of the component.<br>
+     * Takes values: 'smooth', 'rounded', 'boxed'.
+     */
+    roundness: {
+      type: String,
+      default: "rounded",
+      validator: val => ["smooth", "rounded", "boxed"].includes(val)
+    },
+
+    /**
      * Pass any style object to <i>.summary</i> if needed.
      */
     summaryStyle: {
@@ -75,15 +106,37 @@ export default {
     detailsContentStyle: {
       type: Object,
       default: () => {}
+    },
+
+    /**
+     * Used to correct expanded <i>.details-content</i> height.
+     */
+    detailsContentHeightCorrection: {
+      type: Number,
+      default: 22
     }
   },
 
   data() {
     return {
-      isOpened: false,
-      isExpended: false,
-      transitionTime: parseInt(transitionTokens["transition-time-medium"])
+      isOpened: true, // to be able to measure height
+      isExpended: true,
+      transitionTime: parseInt(transitionTokens["transition-time-medium"]),
+      contentHeight: 0
     };
+  },
+
+  mounted() {
+    this.contentHeight =
+      this.$refs["details-content"].offsetHeight +
+      this.detailsContentHeightCorrection;
+
+    console.log(this.contentHeight);
+
+    this.$nextTick(() => {
+      this.isOpened = false;
+      this.isExpended = false;
+    });
   },
 
   methods: {
@@ -115,18 +168,104 @@ export default {
 <style lang="scss">
 // always include tokens unscoped
 @import "../../assets/styles/tokens/outline";
+@import "../../assets/styles/tokens/gaps";
+@import "../../assets/styles/tokens/controls";
 </style>
 
 <style scoped lang="scss">
 @import "../../assets/styles/mixins/transitions";
 @import "../../assets/styles/mixins/outline";
 
+.d-details {
+  background: var(--color-background);
+  height: fit-content;
+
+  &.__large {
+    &.__smooth {
+      border-radius: calc(var(--large-control-height) / 2);
+
+      .summary:before {
+        border-radius: calc(
+          (var(--large-control-height) + 2 * var(--outline-width)) / 2
+        );
+      }
+    }
+
+    &.__rounded {
+      border-radius: var(--border-radius);
+
+      .summary:before {
+        border-radius: calc(var(--border-radius) + 2 * var(--outline-width));
+      }
+    }
+
+    .summary {
+      min-height: var(--large-control-height);
+    }
+  }
+
+  &.__medium {
+    &.__smooth {
+      border-radius: calc(var(--medium-control-height) / 2);
+
+      .summary:before {
+        border-radius: calc(
+          (var(--medium-control-height) + 2 * var(--outline-width)) / 2
+        );
+      }
+    }
+
+    &.__rounded {
+      border-radius: var(--border-radius);
+
+      .summary:before {
+        border-radius: calc(var(--border-radius) + 2 * var(--outline-width));
+      }
+    }
+    .summary {
+      min-height: var(--medium-control-height);
+    }
+  }
+
+  &.__small {
+    &.__smooth {
+      border-radius: calc(var(--small-control-height) / 2);
+
+      .summary:before {
+        border-radius: calc(
+          (var(--small-control-height) + 2 * var(--outline-width)) / 2
+        );
+      }
+    }
+
+    &.__rounded {
+      border-radius: var(--border-radius);
+
+      .summary:before {
+        border-radius: calc(var(--border-radius) + 2 * var(--outline-width));
+      }
+    }
+
+    .summary {
+      min-height: var(--small-control-height);
+    }
+  }
+}
+
 .summary {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 100%;
+  padding: var(--gap-base) var(--gap-3x); // to be as high as other controls
   cursor: pointer;
+
+  .d-typography {
+    max-width: calc(100% - var(--gap-5x));
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
   // hide default icon
   &::-webkit-details-marker {
@@ -150,12 +289,11 @@ export default {
 .details-content {
   @include transition-medium;
 
-  height: 0;
   overflow: hidden;
-  background: red;
+  padding: 0 var(--gap-3x);
 
   &.__expanded {
-    height: 64px;
+    padding: var(--gap-2x) var(--gap-3x) var(--gap-3x);
   }
 }
 </style>

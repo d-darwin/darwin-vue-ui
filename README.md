@@ -211,8 +211,8 @@ createApp(App)
     // Plugin options
     designTokens: {
       // use CSS custom propertie name without leading --.
-      "color-primary": "navy",
-      "outline-color": "#333"
+      "color-primary": "#333",
+      "transition-time-short": "200ms"
     }
   })
   .mount("#app");

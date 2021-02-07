@@ -7,7 +7,7 @@
   &.__smooth {
     border-radius: calc(var(--large-control-height) / 2);
 
-    & + .outline,
+    & ~ .outline,
     &:before {
       border-radius: calc(
         (var(--large-control-height) + 2 * var(--outline-width)) / 2
@@ -18,7 +18,7 @@
   &.__rounded {
     border-radius: var(--border-radius);
 
-    & + .outline,
+    & ~ .outline,
     &:before {
       border-radius: calc(var(--border-radius) + 2 * var(--outline-width));
     }
@@ -31,7 +31,7 @@
   &.__smooth {
     border-radius: calc(var(--medium-control-height) / 2);
 
-    & + .outline,
+    & ~ .outline,
     &:before {
       border-radius: calc(
         (var(--medium-control-height) + 2 * var(--outline-width)) / 2
@@ -42,7 +42,7 @@
   &.__rounded {
     border-radius: var(--border-radius);
 
-    & + .outline,
+    & ~ .outline,
     &:before {
       border-radius: calc(var(--border-radius) + 2 * var(--outline-width));
     }
@@ -55,7 +55,7 @@
   &.__smooth {
     border-radius: calc(var(--small-control-height) / 2);
 
-    & + .outline,
+    & ~ .outline,
     &:before {
       border-radius: calc(
         (var(--small-control-height) + 2 * var(--outline-width)) / 2
@@ -66,7 +66,7 @@
   &.__rounded {
     border-radius: var(--border-radius);
 
-    & + .outline,
+    & ~ .outline,
     &:before {
       border-radius: calc(var(--border-radius) + 2 * var(--outline-width));
     }
