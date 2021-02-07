@@ -197,9 +197,28 @@ More details you can find in appropriate directory.
 
 Feel free to customize default appearance of the components by
 redefining design tokens either in build time via SCSS variables or
-in runtime via CSS custom properties.
-You can even import design token to your \*.js files.
-Check out what you can redefine in '@dariwn-studio/ui-vue/src/assets/styles/tokens'.
+in runtime via CSS custom properties. You can even import design token to your \*.js files.
+Maybe the best part is you can redefine them all in only place using our plugin.
+
+```javascript
+import { createApp } from "vue";
+// ...
+// Import plugin
+import { darwinStudioUiPlugin } from "@darwin-studio/ui-vue";
+
+createApp(App)
+  .use(darwinStudioUiPlugin, {
+    // Plugin options
+    designTokens: {
+      // use CSS custom propertie name without leading --.
+      "color-primary": "navy",
+      "outline-color": "#333"
+    }
+  })
+  .mount("#app");
+```
+
+You can find whole list of design tokens in '@dariwn-studio/ui-vue/src/assets/styles/tokens'.
 
 ### Style mixins
 

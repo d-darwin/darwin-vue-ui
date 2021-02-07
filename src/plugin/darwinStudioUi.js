@@ -1,10 +1,12 @@
 import consoleWarn from "../utils/consoleWarn";
 
+// TODO: add descr
 const defaultOptions = {
   resetStyles: true,
-  googleFonts: null,
-  googleFontsText: null,
-  googleFontsApi: "https://fonts.googleapis.com/css"
+  googleFonts: null, // TODO: add example
+  googleFontsText: null, // TODO: add example
+  googleFontsApi: "", // e.g. "https://fonts.googleapis.com/css",
+  designTokens: {} // e.g. "color-primary": "navy"
 };
 
 export default {
@@ -31,6 +33,16 @@ export default {
         });
       } catch (e) {
         consoleWarn(`Can't load google fonts "${options.googleFonts}".`, e);
+      }
+    }
+
+    if (options.designTokens && Object.keys(options.designTokens).length) {
+      if (process.browser) {
+        let root = document.documentElement;
+        // root.style.setProperty('--mouse-x', e.clientX + "px");
+        Object.keys(options.designTokens).forEach(token => {
+          root.style.setProperty(`--${token}`, options.designTokens[token]);
+        });
       }
     }
   }
