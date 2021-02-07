@@ -15,8 +15,8 @@ It's lightweight and performant UI Library for Vue 3.
 
 - Components created by [Brad Frost's Atomic Design](https://atomicdesign.bradfrost.com/).
 - Design tokens represented to customize component appearance.
-- Uses focus-visible polyfill to emulate :focus-visible CSS prop.
 - Build in optional reset style and google fonts support.
+- Uses focus-visible polyfill to emulate :faocus-visible CSS prop.
 - Icon set agnostic.
 
 ⚠️ WARNING: Components of the library have to be compiled with sass-loader, so you need to have sass-loader package as a dev dependency.
@@ -102,6 +102,8 @@ For now a few basic components implemented:
   More details: '@dariwn-studio/ui-vue/src/components/atoms/DCopyLink.vue'.
 - **DCopyright**. Renders standard copyright string with company name and years.  
   More details: '@dariwn-studio/ui-vue/src/components/atoms/DCopyright.vue'.
+- **DDetails**. Renders expandable details block.  
+  More details: '@dariwn-studio/ui-vue/src/components/atoms/DDetails.vue'.
 - **DError**. Helps unify control components error output.  
   More details: '@dariwn-studio/ui-vue/src/components/atoms/DError.vue'.
 - **DFiles**. Renders custom files input.  
@@ -142,6 +144,8 @@ For now a few basic components implemented:
 
 #### Molecules
 
+- **DAccordion**. Renders an accordion of various appearance and behavior.  
+  More details: '@dariwn-studio/ui-vue/src/components/molecules/DAccordion.vue'.
 - **DCheckboxGroup**. Renders a group of checkboxes with title.  
   More details: '@dariwn-studio/ui-vue/src/components/molecules/DCheckboxGroup.vue'.
 - **DRadioGroup**. Renders a group of radio buttons with title.  
@@ -149,7 +153,7 @@ For now a few basic components implemented:
 
 #### Organisms
 
-- **DDrawer**. Renders drawer.  
+- **DDrawer**. Renders left- or right-sided closable panel.  
   More details: '@dariwn-studio/ui-vue/src/components/organisms/DDrawer.vue'.
 - **DModal**. Renders widely customizable modal.  
   More details: '@dariwn-studio/ui-vue/src/components/organisms/DModal.vue'.
