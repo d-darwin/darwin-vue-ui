@@ -47,11 +47,13 @@ import DZoomIn from "./components/containers/DZoomIn";
 import DDebugVisual from "./components/development/DDebugVisual";
 
 /** components: icons **/
+import DIconArrow from "./components/icons/DIconArrow";
 import DIconBorders from "./components/icons/DIconBorders";
 import DIconChecked from "./components/icons/DIconChecked";
 import DIconClose from "./components/icons/DIconClose";
 import DIconCloseCircle from "./components/icons/DIconCloseCircle";
 import DIconColumns from "./components/icons/DIconColumns";
+import DIconCopy from "./components/icons/DIconCopy";
 import DIconDirection from "./components/icons/DIconDirection";
 import DIconExternalLink from "./components/icons/DIconExternalLink";
 import DIconEye from "./components/icons/DIconEye";
@@ -136,11 +138,13 @@ export {
   /** development **/
   DDebugVisual,
   /** icons **/
+  DIconArrow,
   DIconBorders,
   DIconChecked,
   DIconClose,
   DIconCloseCircle,
   DIconColumns,
+  DIconCopy,
   DIconDirection,
   DIconExternalLink,
   DIconEye,
