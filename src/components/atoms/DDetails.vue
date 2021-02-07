@@ -61,7 +61,8 @@ import DTypography from "../containers/DTypography";
 import DIconDirection from "../icons/DIconDirection";
 
 /**
- * // TODO
+ * Renders <b>details</b> tag with summary, custom focus-visible and icon.<br>
+ * May be in various sizes and have different corner roundness.
  *
  * @version 1.0.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
@@ -75,14 +76,16 @@ export default {
 
   props: {
     /**
-     * Content of the <b><summary></b> tag. It uses <b>DTypography</b> so any HTML string may be passed.
+     * Content of the <b>summary</b> tag. It uses <b>DTypography</b> so any HTML string may be passed.
      */
     summary: {
       type: [String, Number],
       default: ""
     },
 
-    // TODO
+    /**
+     * Content of the <b>details</b> tag. It uses <b>DTypography</b> so any HTML string may be passed.
+     */
     content: {
       type: [String, Number],
       default: ""
