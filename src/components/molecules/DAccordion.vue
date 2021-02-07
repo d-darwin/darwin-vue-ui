@@ -46,7 +46,7 @@ export default {
     return {
       itemListProps: this.itemList.map(item => ({
         id: item.id ? item.id : uuid(),
-        open: item.open
+        open: item.open || false
       }))
     };
   },
@@ -56,7 +56,14 @@ export default {
       console.log("updateOpenHandler", e);
 
       if (this.isSingleOpened && e.open) {
-        // close all others
+        // close all other items
+        console.log(e.id);
+        this.itemListProps = this.itemListProps.map(item => ({
+          id: item.id,
+          open: item.id === e.id
+        }));
+
+        console.log(this.itemListProps);
       }
 
       // TODO: emit change like checkboxes
@@ -84,15 +91,10 @@ export default {
 
   & {
     margin: var(--gap-base) 0;
-
-    &[open] {
-      margin: var(--gap-2x) 0;
-    }
   }
 
   &:first-child {
-    &,
-    &[open] {
+    & {
       margin-top: 0;
     }
   }
