@@ -27,6 +27,7 @@ import DTextarea from "./components/atoms/DTextarea";
 import DVideo from "./components/atoms/DVideo";
 
 /** components: molecules **/
+import DAccordion from "./components/molecules/DAccordion";
 import DCheckboxGroup from "./components/molecules/DCheckboxGroup";
 import DRadioGroup from "./components/molecules/DRadioGroup";
 
@@ -67,8 +68,10 @@ import DIconVideo from "./components/icons/DIconVideo";
 /** compositions **/
 import useBlockBodyScroll from "./compositions/blockBodyScroll";
 import useClosable from "./compositions/closable";
+import useDownloadFile from "./compositions/downloadFile";
 import useInputId from "./compositions/inputId";
 import useKeyboardListener from "./compositions/keyboardListener";
+import useScrollOffset from "./compositions/scrollOffset";
 import useWindowSize from "./compositions/windowSize";
 
 /** directives **/
@@ -117,6 +120,7 @@ export {
   DTextarea,
   DVideo,
   /** molecules **/
+  DAccordion,
   DCheckboxGroup,
   DRadioGroup,
   /** organisms **/
@@ -153,9 +157,11 @@ export {
 
 export const compositions = {
   useBlockBodyScroll,
+  useDownloadFile,
   useClosable,
   useInputId,
   useKeyboardListener,
+  useScrollOffset,
   useWindowSize
 };
 
