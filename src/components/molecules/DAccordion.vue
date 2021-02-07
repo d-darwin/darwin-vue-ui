@@ -1,6 +1,6 @@
 <template>
   <div class="d-accordion">
-    <!--    TODO: add animation-->
+    <!--TODO: add transition-->
     <DDetails
       v-for="(item, index) in itemList"
       :key="itemListProps[index].id"
@@ -69,6 +69,11 @@ export default {
 @import "../../assets/styles/mixins/shadows";
 @import "../../assets/styles/mixins/transitions";
 
+.d-accordion {
+  display: flex;
+  flex-direction: column;
+}
+
 .d-details {
   @include shadow-medium;
   @include transition-short;
@@ -77,7 +82,7 @@ export default {
     @include shadow-large;
   }
 
-  & + & {
+  & {
     margin: var(--gap-base) 0;
 
     &[open] {
@@ -86,8 +91,9 @@ export default {
   }
 
   &:first-child {
+    &,
     &[open] {
-      margin-bottom: var(--gap-2x);
+      margin-top: 0;
     }
   }
 }
