@@ -3,8 +3,9 @@
     <!--    TODO: add animation-->
     <DDetails
       v-for="(item, index) in itemList"
-      :key="itemListKeys[index]"
-      v-bind="{ ...item, id: itemListKeys[index] }"
+      :key="itemListProps[index].id"
+      v-bind="{ ...item, ...itemListProps[index] }"
+      @update:open="updateOpenHandler"
     />
   </div>
 </template>
@@ -32,13 +33,34 @@ export default {
     itemList: {
       type: Array,
       default: () => []
+    },
+
+    // TODO
+    isSingleOpened: {
+      type: Boolean,
+      default: false
     }
   },
 
   data() {
     return {
-      itemListKeys: this.itemList.map(item => (item.id ? item.id : uuid()))
+      itemListProps: this.itemList.map(item => ({
+        id: item.id ? item.id : uuid(),
+        open: item.open
+      }))
     };
+  },
+
+  methods: {
+    updateOpenHandler(e) {
+      console.log("updateOpenHandler", e);
+
+      if (this.isSingleOpened && e.open) {
+        // close all others
+      }
+
+      // TODO: emit change like checkboxes
+    }
   }
 };
 </script>

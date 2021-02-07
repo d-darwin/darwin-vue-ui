@@ -323,7 +323,7 @@ body {
 }
 
 .modal {
-  @include shadow;
+  @include shadow-medium;
 
   position: relative;
   background-color: var(--white);

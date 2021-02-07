@@ -1,28 +1,46 @@
-$shadow-horizontal-offset: 0;
-$shadow-vertical-offset: 8px;
-$shadow-blur-radius: 8px;
-$shadow-spread-radius: -4px;
-$shadow-color: rgba(0, 0, 0, 0.1);
+$shadow-medium-horizontal-offset: 0;
+$shadow-medium-vertical-offset: 8px;
+$shadow-medium-blur-radius: 8px;
+$shadow-medium-spread-radius: -4px;
+$shadow-medium-color: rgba(0, 0, 0, 0.1);
+
+$shadow-large-horizontal-offset: 0;
+$shadow-large-vertical-offset: 12px;
+$shadow-large-blur-radius: 16px;
+$shadow-large-spread-radius: 0;
+$shadow-large-color: rgba(0, 0, 0, 0.08);
 
 /**
  * Map to CSS custom properties
  */
 
 :root {
-  --shadow-horizontal-offset: #{$shadow-horizontal-offset};
-  --shadow-vertical-offset: #{$shadow-vertical-offset};
-  --shadow-blur-radius: #{$shadow-blur-radius};
-  --shadow-spread-radius: #{$shadow-spread-radius};
-  --shadow-color: #{$shadow-color};
+  --shadow-medium-horizontal-offset: #{$shadow-medium-horizontal-offset};
+  --shadow-medium-vertical-offset: #{$shadow-medium-vertical-offset};
+  --shadow-medium-blur-radius: #{$shadow-medium-blur-radius};
+  --shadow-medium-spread-radius: #{$shadow-medium-spread-radius};
+  --shadow-medium-color: #{$shadow-medium-color};
+
+  --shadow-large-horizontal-offset: #{$shadow-large-horizontal-offset};
+  --shadow-large-vertical-offset: #{$shadow-large-vertical-offset};
+  --shadow-large-blur-radius: #{$shadow-large-blur-radius};
+  --shadow-large-spread-radius: #{$shadow-large-spread-radius};
+  --shadow-large-color: #{$shadow-large-color};
 }
 
 // the :export directive is the magic sauce for webpack.
 // this variables will be available to js on build time.
 // noinspection CssUnknownProperty
 :export {
-  shadow-horizontal-offset: $shadow-horizontal-offset;
-  shadow-vertical-offset: $shadow-vertical-offset;
-  shadow-blur-radius: $shadow-blur-radius;
-  shadow-spread-radius: $shadow-spread-radius;
-  shadow-color: $shadow-color;
+  shadow-medium-horizontal-offset: $shadow-medium-horizontal-offset;
+  shadow-medium-vertical-offset: $shadow-medium-vertical-offset;
+  shadow-medium-blur-radius: $shadow-medium-blur-radius;
+  shadow-medium-spread-radius: $shadow-medium-spread-radius;
+  shadow-medium-color: $shadow-medium-color;
+
+  shadow-large-horizontal-offset: $shadow-large-horizontal-offset;
+  shadow-large-vertical-offset: $shadow-large-vertical-offset;
+  shadow-large-blur-radius: $shadow-large-blur-radius;
+  shadow-large-spread-radius: $shadow-large-spread-radius;
+  shadow-large-color: $shadow-large-color;
 }

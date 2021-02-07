@@ -190,7 +190,7 @@ export default {
 }
 
 .d-typography {
-  @include shadow;
+  @include shadow-medium;
 
   height: fit-content;
   background: var(--color-text);

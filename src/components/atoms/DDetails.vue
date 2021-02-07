@@ -41,7 +41,7 @@
       ref="details-content"
       :style="{
         ...detailsContentStyle,
-        height: resetHeight ? 'auto' : isExpended ? contentHeight + 'px' : '0'
+        height: isLoaded ? (isExpended ? contentHeight + 'px' : '0') : 'auto'
       }"
       :class="{ __expanded: isExpended }"
       class="details-content"
@@ -183,19 +183,24 @@ export default {
     return {
       isOpened: true, // to be able to measure height onMounted
       isExpended: true,
-      resetHeight: true,
+      isLoaded: false,
       contentHeight: 0,
       transitionTime: parseInt(transitionTokens["transition-time-medium"])
     };
   },
 
-  mounted() {
-    this.contentHeight = this.$refs["details-content"].offsetHeight;
+  async mounted() {
+    await this.$nextTick(() => {
+      this.contentHeight = this.$refs["details-content"].offsetHeight;
+    });
 
-    this.$nextTick(() => {
+    await this.$nextTick(() => {
       this.isOpened = false;
       this.isExpended = false;
-      this.resetHeight = false;
+    });
+
+    await this.$nextTick(() => {
+      this.isLoaded = true;
 
       if (this.open !== this.isOpened) {
         this.summaryClickHandler();

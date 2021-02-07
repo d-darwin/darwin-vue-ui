@@ -1,6 +1,11 @@
 @import "../tokens/shadows";
 
-@mixin shadow {
+@mixin shadow-medium {
   box-shadow: var(--shadow-horizontal-offset) var(--shadow-vertical-offset)
     var(--shadow-blur-radius) var(--shadow-spread-radius) var(--shadow-color);
+}
+
+@mixin shadow-large {
+  box-shadow: var(--shadow-horizontal-offset) var(--shadow-vertical-offset)
+  var(--shadow-blur-radius) var(--shadow-spread-radius) var(--shadow-color);
 }
