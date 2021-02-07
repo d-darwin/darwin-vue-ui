@@ -66,5 +66,29 @@ export default {
 </script>
 
 <style scoped lang="scss">
-// @import '../../assets/styles/mixins/';
+@import "../../assets/styles/mixins/shadows";
+@import "../../assets/styles/mixins/transitions";
+
+.d-details {
+  @include shadow-medium;
+  @include transition-short;
+
+  &:hover {
+    @include shadow-large;
+  }
+
+  & + & {
+    margin: var(--gap-base) 0;
+
+    &[open] {
+      margin: var(--gap-2x) 0;
+    }
+  }
+
+  &:first-child {
+    &[open] {
+      margin-bottom: var(--gap-2x);
+    }
+  }
+}
 </style>
