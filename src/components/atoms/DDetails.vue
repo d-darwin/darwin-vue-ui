@@ -58,17 +58,18 @@
 import transitionTokens from "../../assets/styles/tokens/_transitions.scss";
 
 /** compositions **/
-import useInputId from "../../compositions/componentId";
+import useComponentId from "../../compositions/componentId";
 
 /** components **/
 import DTypography from "../containers/DTypography";
 import DIconDirection from "../icons/DIconDirection";
 
 /**
- * Renders <b>details</b> tag with summary, custom focus-visible and icon.<br>
+ * Renders <b>details</b> tag with <b>summary</b>.<br>
+ * Custom focus-visible, icon and slots for summary and details content are presented.<br>
  * May be in various sizes and have different corner roundness.
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -174,8 +175,7 @@ export default {
   },
 
   setup(props) {
-    // TODO: rename to componentId ???
-    const { componentId } = useInputId(props);
+    const { componentId } = useComponentId(props);
     return { componentId };
   },
 
@@ -192,11 +192,11 @@ export default {
   mounted() {
     this.contentHeight = this.$refs["details-content"].offsetHeight;
 
-    this.isOpened = false;
-    this.isExpended = false;
-    this.resetHeight = false;
-
     this.$nextTick(() => {
+      this.isOpened = false;
+      this.isExpended = false;
+      this.resetHeight = false;
+
       if (this.open !== this.isOpened) {
         this.summaryClickHandler();
       }

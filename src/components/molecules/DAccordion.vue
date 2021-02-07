@@ -1,7 +1,11 @@
 <template>
   <div class="d-accordion">
     <!--    TODO: add animation-->
-    <DDetails v-for="item in itemList" :key="item.id ? item.id " v-bind="item" />
+    <DDetails
+      v-for="(item, index) in itemList"
+      :key="itemListKeys[index]"
+      v-bind="{ ...item, id: itemListKeys[index] }"
+    />
   </div>
 </template>
 
@@ -29,6 +33,12 @@ export default {
       type: Array,
       default: () => []
     }
+  },
+
+  data() {
+    return {
+      itemListKeys: this.itemList.map(item => (item.id ? item.id : uuid()))
+    };
   }
 };
 </script>

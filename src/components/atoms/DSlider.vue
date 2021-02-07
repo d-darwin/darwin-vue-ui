@@ -106,7 +106,10 @@ export default {
        * @event update:value
        * @type {{String, String}}
        */
-      this.$emit("update:value", { value: e.target.value, id: this.componentId });
+      this.$emit("update:value", {
+        value: e.target.value,
+        id: this.componentId
+      });
     }
   }
 };
