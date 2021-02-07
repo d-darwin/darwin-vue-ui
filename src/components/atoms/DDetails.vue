@@ -1,5 +1,6 @@
 <template>
   <details
+    :id="inputId"
     :open="isOpened"
     :class="{
       [`${$attrs.class}`]: $attrs.class,
@@ -56,6 +57,9 @@
 /** design tokens **/
 import transitionTokens from "../../assets/styles/tokens/_transitions.scss";
 
+/** compositions **/
+import useInputId from "../../compositions/inputId";
+
 /** components **/
 import DTypography from "../containers/DTypography";
 import DIconDirection from "../icons/DIconDirection";
@@ -75,6 +79,23 @@ export default {
   inheritAttrs: false,
 
   props: {
+    /**
+     * Defines <i>id</i> attr of the <b>input</b> tag.<br>
+     * If you don't want to specify it, it will be generated automatically.
+     */
+    id: {
+      type: [String, Number],
+      default: ""
+    },
+
+    /** Defines component's initial state.
+     *
+     */
+    open: {
+      type: Boolean,
+      default: false
+    },
+
     /**
      * Content of the <b>summary</b> tag. It uses <b>DTypography</b> so any HTML string may be passed.
      */
@@ -144,6 +165,19 @@ export default {
     }
   },
 
+  watch: {
+    open(value) {
+      if (value !== this.isOpened) {
+        this.summaryClickHandler();
+      }
+    }
+  },
+
+  setup(props) {
+    const { inputId } = useInputId(props);
+    return { inputId };
+  },
+
   data() {
     return {
       isOpened: true, // to be able to measure height onMounted
@@ -157,10 +191,14 @@ export default {
   mounted() {
     this.contentHeight = this.$refs["details-content"].offsetHeight;
 
+    this.isOpened = false;
+    this.isExpended = false;
+    this.resetHeight = false;
+
     this.$nextTick(() => {
-      this.isOpened = false;
-      this.isExpended = false;
-      this.resetHeight = false;
+      if (this.open !== this.isOpened) {
+        this.summaryClickHandler();
+      }
     });
   },
 
@@ -172,10 +210,11 @@ export default {
         // browser will completely hide .details-content only after transition finishes
         setTimeout(() => {
           this.isOpened = false;
+          this.emitChange();
         }, this.transitionTime);
       } else {
         this.isOpened = true;
-        this.resetHeight = false;
+        this.emitChange();
 
         setTimeout(async () => {
           await this.$nextTick(() => {
@@ -184,8 +223,21 @@ export default {
           });
         }, 24); // experimental value
       }
+    },
 
-      // TODO: emit open change
+    emitChange() {
+      /**
+       * Open attr of the <b>details</b> tag updated.
+       * Contains new value of <i>open</i> attr and component id.<br>
+       * Use @update:open="fn" to catch this event.
+       *
+       * @event update:open
+       * @type {{Boolean, String}}
+       */
+      this.$emit("update:open", {
+        open: this.isOpened,
+        id: this.inputId
+      });
     }
   }
 };

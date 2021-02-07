@@ -76,7 +76,7 @@ export default {
 
   props: {
     /**
-     * Defines <i>id</i> attr of th <b>input</b> tag.<br>
+     * Defines <i>id</i> attr of the <b>input</b> tag.<br>
      * If you don't want to specify it, it will be generated automatically.
      */
     id: {

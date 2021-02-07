@@ -67,7 +67,7 @@ export default {
 
   props: {
     /**
-     * Defines <i>id</i> attr of th <b>textarea</b> tag.<br>
+     * Defines <i>id</i> attr of the <b>textarea</b> tag.<br>
      * If you don't want to specify it, it will be generated automatically.
      */
     id: {
