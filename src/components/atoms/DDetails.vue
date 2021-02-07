@@ -14,11 +14,23 @@
       @click.prevent="summaryClickHandler"
     >
       <template v-if="!$slots.summary">
-        <DTypography :content="summary" />
+        <!-- @slot You can use custom icon before summary -->
+        <slot v-if="$slots['icon-before']" name="icon-before" />
 
-        <DIconDirection v-if="!$slots['icon']" :type="isExpended ? 'up' : 'down'" />
-        <!-- @slot You can use custom icon -->
-        <slot v-else name="icon" />
+        <DTypography
+          v-bind="{
+            content: summary,
+            ...summaryTypographyProps
+          }"
+          :style="summaryTypographyStyle"
+        />
+
+        <DIconDirection
+          v-if="!$slots['icon-after']"
+          :type="isExpended ? 'up' : 'down'"
+        />
+        <!-- @slot You can use custom icon after summary -->
+        <slot v-else name="icon-after" />
       </template>
       <!-- @slot You can use custom summary content, not just a string -->
       <slot v-else name="summary" />
@@ -28,7 +40,7 @@
       ref="details-content"
       :style="{
         ...detailsContentStyle,
-        height: isExpended ? contentHeight + 'px' : '0px'
+        height: resetHeight ? 'auto' : isExpended ? contentHeight + 'px' : '0'
       }"
       :class="{ __expanded: isExpended }"
       class="details-content"
@@ -105,41 +117,47 @@ export default {
     },
 
     /**
-     * Pass any style object to <i>.details-content</i> if needed.
+     * Pass any <b>DTypography</b> props if needed.
      */
-    detailsContentStyle: {
+    summaryTypographyProps: {
       type: Object,
       default: () => {}
     },
 
     /**
-     * Used to correct expanded <i>.details-content</i> height.
+     * Pass any style object to <i>.summary</i> if needed.
      */
-    detailsContentHeightCorrection: {
-      type: Number,
-      default: 22
+    summaryTypographyStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Pass any style object to <i>.details-content</i> if needed.
+     */
+    detailsContentStyle: {
+      type: Object,
+      default: () => {}
     }
   },
 
   data() {
     return {
-      isOpened: true, // to be able to measure height
+      isOpened: true, // to be able to measure height onMounted
       isExpended: true,
-      transitionTime: parseInt(transitionTokens["transition-time-medium"]),
-      contentHeight: 0
+      resetHeight: true,
+      contentHeight: 0,
+      transitionTime: parseInt(transitionTokens["transition-time-medium"])
     };
   },
 
   mounted() {
-    this.contentHeight =
-      this.$refs["details-content"].offsetHeight +
-      this.detailsContentHeightCorrection;
-
-    console.log(this.contentHeight);
+    this.contentHeight = this.$refs["details-content"].offsetHeight;
 
     this.$nextTick(() => {
       this.isOpened = false;
       this.isExpended = false;
+      this.resetHeight = false;
     });
   },
 
@@ -154,6 +172,7 @@ export default {
         }, this.transitionTime);
       } else {
         this.isOpened = true;
+        this.resetHeight = false;
 
         setTimeout(async () => {
           await this.$nextTick(() => {
@@ -183,6 +202,7 @@ export default {
 .d-details {
   background: var(--color-background);
   height: fit-content;
+  position: relative;
 
   &.__large {
     &.__smooth {
