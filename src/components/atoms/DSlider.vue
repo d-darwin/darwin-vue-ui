@@ -104,7 +104,7 @@ export default {
        * Events contain <i>value</i> of the selected <i>option</i> and component id.
        *
        * @event update:value
-       * @type {{String, String}}
+       * @type {{value: String, id: String}}
        */
       this.$emit("update:value", {
         value: e.target.value,

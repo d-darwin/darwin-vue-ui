@@ -238,7 +238,7 @@ export default {
        * Use @update:open="fn" to catch this event.
        *
        * @event update:open
-       * @type {{Boolean, String}}
+       * @type {{open: Boolean, id: String}}
        */
       this.$emit("update:open", {
         open: this.isOpened,

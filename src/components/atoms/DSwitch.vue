@@ -140,7 +140,7 @@ export default {
        * Use @update:value="fn" to catch this event.
        *
        * @event update:value
-       * @type {{Boolean | String | Number, String}}
+       * @type {{value: (Boolean | String | Number), id: String}}
        */
       const value = event.target.checked
         ? (this.values && this.values.truthy) || true

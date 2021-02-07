@@ -143,7 +143,7 @@ export default {
        * Use @update:value="fn" to catch this event.
        *
        * @event update:value
-       * @type {{Boolean, String, String}}
+       * @type {{checked: Boolean, value: String, id: String}}
        */
       this.$emit("update:value", {
         checked: event.target.checked,

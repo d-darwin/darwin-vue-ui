@@ -173,7 +173,7 @@ export default {
        * Use @update:value="fn" to catch this event.
        *
        * @event update:value
-       * @type {{String, String}}
+       * @type {{value: String, id: String}}
        */
       this.$emit("update:value", {
         value: event.target.value,
@@ -186,7 +186,7 @@ export default {
        * Enter clicked while focus on the <b>input</b>.
        *
        * @event submit
-       * @type {{String, String}}
+       * @type {{value: String, id: String}}
        */
       this.$emit("submit", {
         value: event.target.value,
