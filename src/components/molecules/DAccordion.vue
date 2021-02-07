@@ -3,8 +3,8 @@
     <!--TODO: add transition-->
     <DDetails
       v-for="(item, index) in itemList"
-      :key="itemListProps[index].id"
-      v-bind="{ ...item, ...itemListProps[index] }"
+      :key="itemListState[index].id"
+      v-bind="{ ...item, ...itemListState[index] }"
       @update:open="updateOpenHandler"
     />
   </div>
@@ -44,7 +44,7 @@ export default {
 
   data() {
     return {
-      itemListProps: this.itemList.map(item => ({
+      itemListState: this.itemList.map(item => ({
         id: item.id ? item.id : uuid(),
         open: item.open || false
       }))
@@ -53,20 +53,32 @@ export default {
 
   methods: {
     updateOpenHandler(e) {
-      console.log("updateOpenHandler", e);
-
       if (this.isSingleOpened && e.open) {
         // close all other items
-        console.log(e.id);
-        this.itemListProps = this.itemListProps.map(item => ({
+        this.itemListState = this.itemListState.map(item => ({
           id: item.id,
           open: item.id === e.id
         }));
-
-        console.log(this.itemListProps);
+      } else {
+        this.itemListState = this.itemListState.map(item => ({
+          id: item.id,
+          open: item.id === e.id ? e.open : item.open
+        }));
       }
 
-      // TODO: emit change like checkboxes
+      this.emitChange();
+    },
+
+    emitChange() {
+      /**
+       * Open attr of some of the containing <b>DDetails</b> updated.
+       * Contains current state of the <b>DDetails</b> components.<br>
+       * Use @update:open="fn" to catch this event.
+       *
+       * @event update:open
+       * @type {{Boolean, String, String}}
+       */
+      this.$emit("update:open", this.itemListState);
     }
   }
 };
