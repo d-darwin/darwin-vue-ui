@@ -1,6 +1,6 @@
 <template>
   <details
-    :id="inputId"
+    :id="componentId"
     :open="isOpened"
     :class="{
       [`${$attrs.class}`]: $attrs.class,
@@ -58,7 +58,7 @@
 import transitionTokens from "../../assets/styles/tokens/_transitions.scss";
 
 /** compositions **/
-import useInputId from "../../compositions/inputId";
+import useInputId from "../../compositions/componentId";
 
 /** components **/
 import DTypography from "../containers/DTypography";
@@ -174,8 +174,9 @@ export default {
   },
 
   setup(props) {
-    const { inputId } = useInputId(props);
-    return { inputId };
+    // TODO: rename to componentId ???
+    const { componentId } = useInputId(props);
+    return { componentId };
   },
 
   data() {
@@ -236,7 +237,7 @@ export default {
        */
       this.$emit("update:open", {
         open: this.isOpened,
-        id: this.inputId
+        id: this.componentId
       });
     }
   }

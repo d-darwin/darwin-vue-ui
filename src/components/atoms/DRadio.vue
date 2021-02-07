@@ -4,12 +4,12 @@
     class="d-radio"
   >
     <label
-      :for="inputId"
+      :for="componentId"
       :class="{ __disabled: $attrs.disabled !== undefined }"
       class="control-group"
     >
       <input
-        :id="inputId"
+        :id="componentId"
         v-bind="{
           ...$attrs,
           onChange: emitChange
@@ -62,7 +62,7 @@
 
 <script>
 /** compositions **/
-import useInputId from "../../compositions/inputId";
+import useInputId from "../../compositions/componentId";
 
 /** components **/
 import DIconRadioUnchecked from "../icons/DIconRadioUnchecked";
@@ -171,8 +171,8 @@ export default {
   },
 
   setup(props) {
-    const { inputId } = useInputId(props);
-    return { inputId };
+    const { componentId } = useInputId(props);
+    return { componentId };
   },
 
   methods: {
@@ -188,7 +188,7 @@ export default {
       this.$emit("update:value", {
         checked: event.target.checked,
         value: event.target.value,
-        id: this.inputId
+        id: this.componentId
       });
     }
   }

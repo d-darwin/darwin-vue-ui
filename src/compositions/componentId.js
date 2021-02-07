@@ -6,14 +6,14 @@ import uuid from "../utils/uuid";
  * See example usage in '@dariwn-studio/ui-vue/components/atoms/DInput.vue'.
  *
  * @param props
- * @returns {{inputId: string}}
+ * @returns {{componentId: string}}
  */
-export default function useInputId(props) {
-  const inputId = ref((props && props.id) || uuid());
+export default function useComponentId(props) {
+  const componentId = ref((props && props.id) || uuid());
 
   watchEffect(() => {
-    inputId.value = (props && props.id) || uuid();
+    componentId.value = (props && props.id) || uuid();
   });
 
-  return { inputId };
+  return { componentId };
 }

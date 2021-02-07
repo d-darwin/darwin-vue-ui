@@ -70,8 +70,8 @@ import DIconVideo from "./components/icons/DIconVideo";
 /** compositions **/
 import useBlockBodyScroll from "./compositions/blockBodyScroll";
 import useClosable from "./compositions/closable";
+import useComponentId from "./compositions/componentId";
 import useDownloadFile from "./compositions/downloadFile";
-import useInputId from "./compositions/inputId";
 import useKeyboardListener from "./compositions/keyboardListener";
 import useScrollOffset from "./compositions/scrollOffset";
 import useWindowSize from "./compositions/windowSize";
@@ -161,9 +161,9 @@ export {
 
 export const compositions = {
   useBlockBodyScroll,
-  useDownloadFile,
   useClosable,
-  useInputId,
+  useComponentId,
+  useDownloadFile,
   useKeyboardListener,
   useScrollOffset,
   useWindowSize

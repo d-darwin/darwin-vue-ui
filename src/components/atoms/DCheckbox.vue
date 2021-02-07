@@ -1,8 +1,8 @@
 <template>
   <div :class="$attrs.class" class="d-checkbox">
-    <label :for="inputId" class="control-group">
+    <label :for="componentId" class="control-group">
       <input
-        :id="inputId"
+        :id="componentId"
         v-bind="{
           ...$attrs,
           onChange: emitChange
@@ -44,7 +44,7 @@
 
 <script>
 /** compositions **/
-import useInputId from "../../compositions/inputId";
+import useInputId from "../../compositions/componentId";
 
 /** components **/
 import DIconUnchecked from "../icons/DIconUnchecked";
@@ -131,8 +131,8 @@ export default {
   },
 
   setup(props) {
-    const { inputId } = useInputId(props);
-    return { inputId };
+    const { componentId } = useInputId(props);
+    return { componentId };
   },
 
   methods: {
@@ -148,7 +148,7 @@ export default {
       this.$emit("update:value", {
         checked: event.target.checked,
         value: event.target.value,
-        id: this.inputId
+        id: this.componentId
       });
     }
   }

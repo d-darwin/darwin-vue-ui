@@ -10,14 +10,14 @@
       <DTypography
         v-if="labels && labels.falsy"
         :tag="isChecked ? 'label' : 'div'"
-        :for="inputId"
+        :for="componentId"
         :content="labels.falsy"
         class="value-label"
       />
 
-      <label :for="inputId" class="label">
+      <label :for="componentId" class="label">
         <input
-          :id="inputId"
+          :id="componentId"
           v-bind="{
             ...$attrs,
             onChange: emitChange
@@ -40,7 +40,7 @@
       <DTypography
         v-if="labels && labels.truthy"
         :tag="isChecked ? 'div' : 'label'"
-        :for="inputId"
+        :for="componentId"
         :content="labels.truthy"
         class="value-label"
       />
@@ -52,7 +52,7 @@
 
 <script>
 /** compositions **/
-import useInputId from "../../compositions/inputId";
+import useInputId from "../../compositions/componentId";
 
 /** components **/
 import DTypography from "../containers/DTypography";
@@ -121,8 +121,8 @@ export default {
   },
 
   setup(props) {
-    const { inputId } = useInputId(props);
-    return { inputId };
+    const { componentId } = useInputId(props);
+    return { componentId };
   },
 
   data() {
@@ -146,7 +146,7 @@ export default {
         ? (this.values && this.values.truthy) || true
         : (this.values && this.values.falsy) || false;
 
-      this.$emit("update:value", { value, id: this.inputId });
+      this.$emit("update:value", { value, id: this.componentId });
     }
   }
 };

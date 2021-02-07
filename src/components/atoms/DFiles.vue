@@ -11,7 +11,7 @@
       type="secondary"
       @click.prevent="$refs.input.click()"
     >
-      <label :for="inputId" :style="labelStyle" class="label">
+      <label :for="componentId" :style="labelStyle" class="label">
         <DIconPaperclip v-if="!$slots['icon-attach']" />
         <!-- @slot You can replace default attach icon by passing your own here. -->
         <slot v-else name="icon-attach" />
@@ -61,7 +61,7 @@
     <!--Form is used just to reset input-->
     <form ref="form" class="control-form">
       <input
-        :id="inputId"
+        :id="componentId"
         ref="input"
         v-bind="{
           ...$attrs,
@@ -76,7 +76,7 @@
 
 <script>
 /** compositions **/
-import useInputId from "../../compositions/inputId";
+import useInputId from "../../compositions/componentId";
 import useDownloadFile from "../../compositions/downloadFile";
 
 /** design tokens **/
@@ -165,10 +165,10 @@ export default {
   },
 
   setup(props) {
-    const { inputId } = useInputId(props);
+    const { componentId } = useInputId(props);
     const { downloadFile } = useDownloadFile();
 
-    return { inputId, downloadFile };
+    return { componentId, downloadFile };
   },
 
   data() {
@@ -185,7 +185,7 @@ export default {
        * @event changed
        * @type {Array, String}
        */
-      this.$emit("changed", this.uploadedFiles, this.inputId);
+      this.$emit("changed", this.uploadedFiles, this.componentId);
     }
   },
 

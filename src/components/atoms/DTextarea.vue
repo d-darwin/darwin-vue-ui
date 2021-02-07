@@ -11,7 +11,7 @@
     <DTypography
       v-if="label"
       :content="label"
-      :for="inputId"
+      :for="componentId"
       tag="label"
       size="small"
       class="label"
@@ -20,7 +20,7 @@
     <div class="control-group">
       <!--need roundness class here for uniformity with other controls-->
       <textarea
-        :id="inputId"
+        :id="componentId"
         :class="{
           [`__${roundness}`]: roundness,
           __borderless: borderless
@@ -42,7 +42,7 @@
 
 <script>
 /** utils **/
-import useInputId from "../../compositions/inputId";
+import useInputId from "../../compositions/componentId";
 
 /** components **/
 import DTypography from "../containers/DTypography";
@@ -121,8 +121,8 @@ export default {
   },
 
   setup(props) {
-    const { inputId } = useInputId(props);
-    return { inputId };
+    const { componentId } = useInputId(props);
+    return { componentId };
   },
 
   methods: {
@@ -136,7 +136,7 @@ export default {
        */
       this.$emit("update:value", {
         value: event.target.value,
-        id: this.inputId
+        id: this.componentId
       });
     }
   }

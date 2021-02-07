@@ -4,7 +4,7 @@
       <DTypography
         v-if="label"
         :content="label"
-        :for="inputId"
+        :for="componentId"
         :class="{ __disabled: $attrs.disabled !== undefined }"
         tag="label"
         size="small"
@@ -12,7 +12,7 @@
       />
 
       <input
-        :id="inputId"
+        :id="componentId"
         v-bind="{
           ...$props,
           ...$attrs,
@@ -34,7 +34,7 @@
 
 <script>
 /** compositions **/
-import useInputId from "../../compositions/inputId";
+import useInputId from "../../compositions/componentId";
 
 /** components **/
 import DTypography from "../containers/DTypography";
@@ -93,8 +93,8 @@ export default {
   },
 
   setup(props) {
-    const { inputId } = useInputId(props);
-    return { inputId };
+    const { componentId } = useInputId(props);
+    return { componentId };
   },
 
   methods: {
@@ -106,7 +106,7 @@ export default {
        * @event update:value
        * @type {{String, String}}
        */
-      this.$emit("update:value", { value: e.target.value, id: this.inputId });
+      this.$emit("update:value", { value: e.target.value, id: this.componentId });
     }
   }
 };
