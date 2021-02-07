@@ -18,7 +18,7 @@ import uuid from "../../utils/uuid";
 import DDetails from "../atoms/DDetails";
 
 /**
- * TODO
+ * Render an accordion using <b>DDetails</b> components.
  *
  * @version 1.0.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
@@ -29,16 +29,40 @@ export default {
   components: { DDetails },
 
   props: {
-    // TODO
+    /**
+     * List of props objects to pass to <b>DDetails</b> components.
+     */
     itemList: {
       type: Array,
       default: () => []
     },
 
-    // TODO
+    /**
+     * Set to true if only one <b>DDetails</b> component may be opened.
+     */
     isSingleOpened: {
       type: Boolean,
       default: false
+    },
+
+    /**
+     * Defines vertical size of <b>DDetails</b> components summary.<br>
+     * Takes values: 'large', 'medium', 'small'.
+     */
+    size: {
+      type: String,
+      default: "large",
+      validator: val => ["large", "medium", "small"].includes(val)
+    },
+
+    /**
+     * Defines corner's roundness of <b>DDetails</b> components.<br>
+     * Takes values: 'smooth', 'rounded', 'boxed'.
+     */
+    roundness: {
+      type: String,
+      default: "rounded",
+      validator: val => ["smooth", "rounded", "boxed"].includes(val)
     }
   },
 
@@ -46,7 +70,9 @@ export default {
     return {
       itemListState: this.itemList.map(item => ({
         id: item.id ? item.id : uuid(),
-        open: item.open || false
+        open: item.open || false,
+        size: item.size || this.size,
+        roundness: item.roundness || this.roundness
       }))
     };
   },
@@ -56,12 +82,12 @@ export default {
       if (this.isSingleOpened && e.open) {
         // close all other items
         this.itemListState = this.itemListState.map(item => ({
-          id: item.id,
+          ...item,
           open: item.id === e.id
         }));
       } else {
         this.itemListState = this.itemListState.map(item => ({
-          id: item.id,
+          ...item,
           open: item.id === e.id ? e.open : item.open
         }));
       }
@@ -78,7 +104,10 @@ export default {
        * @event update:open
        * @type {{open: Boolean, id: String}}
        */
-      this.$emit("update:open", this.itemListState);
+      this.$emit(
+        "update:open",
+        this.itemListState.map(item => ({ open: item.open, id: item.id }))
+      );
     }
   }
 };
@@ -108,6 +137,12 @@ export default {
   &:first-child {
     & {
       margin-top: 0;
+    }
+  }
+
+  &:last-child {
+    & {
+      margin-bottom: 0;
     }
   }
 }

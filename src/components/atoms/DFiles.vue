@@ -75,12 +75,12 @@
 </template>
 
 <script>
+/** design tokens **/
+import transitionsTokens from "../../assets/styles/tokens/_transitions.scss";
+
 /** compositions **/
 import useInputId from "../../compositions/componentId";
 import useDownloadFile from "../../compositions/downloadFile";
-
-/** design tokens **/
-import transitionsTokens from "../../assets/styles/tokens/_transitions.scss";
 
 /** components **/
 import DIconPaperclip from "../icons/DIconPaperclip";

@@ -286,6 +286,7 @@ export default {
 
     .summary {
       min-height: var(--large-control-height);
+      height: fit-content;
     }
   }
 
@@ -309,6 +310,7 @@ export default {
     }
     .summary {
       min-height: var(--medium-control-height);
+      height: fit-content;
     }
   }
 
@@ -333,6 +335,7 @@ export default {
 
     .summary {
       min-height: var(--small-control-height);
+      height: fit-content;
     }
   }
 }
