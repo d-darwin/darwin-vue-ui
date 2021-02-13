@@ -1,6 +1,6 @@
 <template>
   <teleport to="body">
-    <!--// TODO: how to customize transition ???-->
+    <!--TODO: custom transition, just by using transitionName prop???-->
     <transition name="scale">
       <DButton
         v-show="isShown"

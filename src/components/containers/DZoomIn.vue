@@ -10,7 +10,7 @@
       <slot />
     </DLink>
 
-    <!--// TODO: how to customize transition ???-->
+    <!--TODO: custom transition, just by using transitionName prop???-->
     <transition name="opacity">
       <DButton
         ref="close-button"
@@ -28,7 +28,7 @@
       </DButton>
     </transition>
 
-    <!--// TODO: how to customize transition ???-->
+    <!--TODO: custom transition, just by using transitionName prop???-->
     <transition name="opacity">
       <div
         v-if="isZoomed"

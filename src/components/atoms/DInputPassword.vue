@@ -6,6 +6,7 @@
     class="d-input-password"
   >
     <template #after>
+      <!--TODO: custom transition, just by using transitionName prop???-->
       <transition name="opacity" @click="toggleVisibility">
         <span
           v-if="isVisible"

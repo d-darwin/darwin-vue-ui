@@ -22,7 +22,7 @@
 
     <DError :text="error" />
 
-    <!--// TODO: how to customize transition ???-->
+    <!--TODO: custom transition, just by using transitionName prop???-->
     <transition-group
       :style="listStyle"
       tag="ul"

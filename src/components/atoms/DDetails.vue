@@ -69,7 +69,7 @@ import DIconDirection from "../icons/DIconDirection";
  * Custom focus-visible, icon and slots for summary and details content are presented.<br>
  * May be in various sizes and have different corner roundness.
  *
- * @version 1.0.1
+ * @version 1.0.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -81,7 +81,7 @@ export default {
 
   props: {
     /**
-     * Defines <i>id</i> attr of the <b>input</b> tag.<br>
+     * Defines <i>id</i> attr of the component.<br>
      * If you don't want to specify it, it will be generated automatically.
      */
     id: {

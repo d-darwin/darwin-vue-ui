@@ -1,5 +1,6 @@
 <template>
   <div
+    :id="componentId"
     :class="{ [`${$attrs.class}`]: $attrs.class, __vertical: isVertical }"
     class="d-tabs"
   >
@@ -13,14 +14,14 @@
         v-for="(tab, index) in itemList"
         :key="tab.label"
         :id="`tab-${index}`"
-        :aria-selected="index === activeTabIndex"
+        :aria-selected="index === selectedTabIndex"
         :aria-controls="`panel-${index}`"
         :disabled="tab.disabled"
         :class="{
-          __active: index === activeTabIndex,
+          __active: index === selectedTabIndex,
           __disabled: tab.disabled
         }"
-        :tabindex="index === activeTabIndex ? -1 : 0"
+        :tabindex="index === selectedTabIndex ? -1 : 0"
         :style="tabStyle"
         role="tab"
         class="tab"
@@ -37,10 +38,11 @@
       </button>
     </div>
 
+    <!--TODO: custom transition, just by using transitionName prop???-->
     <transition-group name="opacity">
       <template v-for="(tab, index) in itemList">
         <div
-          v-if="index === activeTabIndex"
+          v-if="index === selectedTabIndex"
           :key="tab.label"
           :id="`panel-${index}`"
           :aria-labelledby="`tab-${index}`"
@@ -63,6 +65,9 @@
 </template>
 
 <script>
+/** compositions **/
+import useComponentId from "../../compositions/componentId";
+
 /** components **/
 import DTypography from "../containers/DTypography";
 
@@ -158,9 +163,14 @@ export default {
     }
   },
 
+  setup(props) {
+    const { componentId } = useComponentId(props);
+    return { componentId };
+  },
+
   data() {
     return {
-      activeTabIndex:
+      selectedTabIndex:
         (this.itemList &&
           this.itemList.length &&
           this.itemList.findIndex(item => item.active && !item.disabled)) ||
@@ -168,18 +178,26 @@ export default {
     };
   },
 
-  computed: {
-    slotTabCount() {
-      return this.$slots["tab-list"]().length;
-    }
-  },
-
   methods: {
     changeTabHandler(tabIndex) {
-      this.activeTabIndex = tabIndex;
-    }
+      this.selectedTabIndex = tabIndex;
+      this.emitChange();
+    },
 
-    // TODO: emit change
+    emitChange() {
+      /**
+       * Selected tab was changed.
+       * Contains index of the selected tab and component id.<br>
+       * Use @update:selected="fn" to catch this event.
+       *
+       * @event update:selected
+       * @type {{selected: Boolean, id: String}}
+       */
+      this.$emit("update:selected", {
+        selected: this.selectedTabIndex,
+        id: this.componentId
+      });
+    }
   }
 };
 </script>

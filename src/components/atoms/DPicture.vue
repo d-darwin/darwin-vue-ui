@@ -31,7 +31,7 @@
         <slot v-else name="no-image" />
       </template>
 
-      <!--// TODO: how to customize transition ???-->
+      <!--TODO: custom transition, just by using transitionName prop???-->
       <transition name="opacity">
         <template v-if="!isLoaded && hasSource">
           <DLoader v-if="!$slots['loader']" />

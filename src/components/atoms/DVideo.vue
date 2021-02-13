@@ -21,7 +21,7 @@
         <slot v-else name="no-video" />
       </template>
 
-      <!--// TODO: how to customize transition ???-->
+      <!--TODO: custom transition, just by using transitionName prop???-->
       <transition name="opacity">
         <template v-if="!isLoaded && source">
           <DLoader v-if="!$slots['loader']" />
