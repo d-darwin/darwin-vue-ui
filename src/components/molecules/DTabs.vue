@@ -4,8 +4,12 @@
     class="d-tabs"
   >
     <!--TODO: styles-->
-    <!--TODO: aria-label="Sample Tabs"-->
-    <div :aria-label="ariaLabel" role="tablist" class="tab-list">
+    <div
+      :aria-label="ariaLabel"
+      :style="tabListStyle"
+      role="tablist"
+      class="tab-list"
+    >
       <!--TODO: styles-->
       <button
         v-for="(tab, index) in itemList"
@@ -19,11 +23,15 @@
           __disabled: tab.disabled
         }"
         :tabindex="index === activeTabIndex ? -1 : 0"
+        :style="tabStyle"
         role="tab"
         class="tab"
         @click="changeTabHandler(index)"
       >
-        <DTypography :content="tab.label" />
+        <DTypography
+          v-bind="{ ...tabTypographyProps, content: tab.label }"
+          :style="tabTypographyStyle"
+        />
         <!--TODO: optional slot usage-->
       </button>
     </div>
@@ -37,10 +45,14 @@
         :id="`panel-${index}`"
         :aria-labelledby="`tab-${index}`"
         :hidden="index !== activeTabIndex"
+        :style="tabPanelStyle"
         role="tabpanel"
         class="tab-panel"
       >
-        <DTypography :content="tab.content" />
+        <DTypography
+          v-bind="{ ...tabPanelTypographyProps, content: tab.content }"
+          :style="tabPanelTypographyStyle"
+        />
         <!--TODO: optional slot usage-->
       </div>
     </transition-group>
@@ -72,11 +84,69 @@ export default {
       default: () => []
     },
 
+    // TODO
     isVertical: {
       type: Boolean,
       default: false
     },
 
+    /**
+     * Pass any style object to <i>.summary</i> if needed.
+     */
+    tabListStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Pass any style object to <i>.summary</i> if needed.
+     */
+    tabStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Pass any <b>DTypography</b> props if needed.
+     */
+    tabTypographyProps: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Pass any style object to <i>.summary</i> if needed.
+     */
+    tabTypographyStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Pass any style object to <i>.summary</i> if needed.
+     */
+    tabPanelStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Pass any <b>DTypography</b> props if needed.
+     */
+    tabPanelTypographyProps: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Pass any style object to <i>.summary</i> if needed.
+     */
+    tabPanelTypographyStyle: {
+      type: Object,
+      default: () => {}
+    },
+
+    // TODO
     ariaLabel: {
       type: String,
       default: ""
@@ -97,6 +167,8 @@ export default {
     changeTabHandler(tabIndex) {
       this.activeTabIndex = tabIndex;
     }
+
+    // TODO: emit change
   }
 };
 </script>
