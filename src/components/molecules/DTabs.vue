@@ -27,11 +27,13 @@
         @click="changeTabHandler(index)"
       >
         <DTypography
+          v-if="!$slots[`tab-${index}`]"
           v-bind="{ ...tabTypographyProps, content: tab.label }"
           :style="tabTypographyStyle"
           class="tab-content"
         />
-        <!--TODO: optional slot usage-->
+        <!-- @slot You can replace tab content with any you want using appropriate named slot-->
+        <slot v-else :name="`tab-${index}`" />
       </button>
     </div>
 
@@ -47,11 +49,13 @@
           class="tab-panel"
         >
           <DTypography
+            v-if="!$slots[`tabpanel-${index}`]"
             v-bind="{ ...tabPanelTypographyProps, content: tab.content }"
             :style="tabPanelTypographyStyle"
             class="tab-panel-content"
           />
-          <!--TODO: optional slot usage-->
+          <!-- @slot You can replace tabpanel content with any you want using appropriate named slot-->
+          <slot v-else :name="`tabpanel-${index}`" />
         </div>
       </template>
     </transition-group>
@@ -164,6 +168,12 @@ export default {
     };
   },
 
+  computed: {
+    slotTabCount() {
+      return this.$slots["tab-list"]().length;
+    }
+  },
+
   methods: {
     changeTabHandler(tabIndex) {
       this.activeTabIndex = tabIndex;
@@ -214,7 +224,7 @@ export default {
   background: none;
   padding: var(--gap-3x) var(--gap-6x);
   min-height: var(--large-control-height);
-  height: fit-content;
+  height: auto;
   position: relative;
   cursor: pointer;
 
