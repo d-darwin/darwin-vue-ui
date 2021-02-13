@@ -1,8 +1,11 @@
 <template>
-  <div :class="{ __vertical: isVertical }" class="d-tabs">
+  <div
+    :class="{ [`${$attrs.class}`]: $attrs.class, __vertical: isVertical }"
+    class="d-tabs"
+  >
     <!--TODO: styles-->
-    <!--TODO:  aria-label="Sample Tabs"-->
-    <div role="tablist" class="tab-list">
+    <!--TODO: aria-label="Sample Tabs"-->
+    <div :aria-label="ariaLabel" role="tablist" class="tab-list">
       <!--TODO: styles-->
       <button
         v-for="(tab, index) in itemList"
@@ -26,7 +29,6 @@
     </div>
 
     <!--TODO: styles-->
-    <!--TODO: animation-->
     <transition-group name="opacity">
       <div
         v-show="index === activeTabIndex"
@@ -60,6 +62,8 @@ export default {
 
   components: { DTypography },
 
+  inheritAttrs: false,
+
   props: {
     // TODO
     itemList: {
@@ -71,6 +75,11 @@ export default {
     isVertical: {
       type: Boolean,
       default: false
+    },
+
+    ariaLabel: {
+      type: String,
+      default: ""
     }
   },
 
