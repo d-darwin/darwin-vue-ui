@@ -5,7 +5,7 @@
   position: absolute;
   content: " ";
   border: var(--outline-width) solid var(--outline-color);
-  // z-index: -1;
+  z-index: 1;
   width: calc(100% + 2 * var(--outline-width));
   top: calc(var(--outline-width) * -1);
   left: calc(var(--outline-width) * -1);
