@@ -150,6 +150,8 @@ For now a few basic components implemented:
   More details: '@dariwn-studio/ui-vue/src/components/molecules/DCheckboxGroup.vue'.
 - **DRadioGroup**. Renders a group of radio buttons with title.  
   More details: '@dariwn-studio/ui-vue/src/components/molecules/DRadioGroup.vue'.
+- **DTabs**. Renders customizable tabs.
+  More details: '@dariwn-studio/ui-vue/src/components/molecules/DTabs.vue'.
 
 #### Organisms
 
