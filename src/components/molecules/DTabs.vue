@@ -3,14 +3,12 @@
     :class="{ [`${$attrs.class}`]: $attrs.class, __vertical: isVertical }"
     class="d-tabs"
   >
-    <!--TODO: styles-->
     <div
       :aria-label="ariaLabel"
       :style="tabListStyle"
       role="tablist"
       class="tab-list"
     >
-      <!--TODO: styles-->
       <button
         v-for="(tab, index) in itemList"
         :key="tab.label"
@@ -31,30 +29,31 @@
         <DTypography
           v-bind="{ ...tabTypographyProps, content: tab.label }"
           :style="tabTypographyStyle"
+          class="tab-content"
         />
         <!--TODO: optional slot usage-->
       </button>
     </div>
 
-    <!--TODO: styles-->
     <transition-group name="opacity">
-      <div
-        v-show="index === activeTabIndex"
-        v-for="(tab, index) in itemList"
-        :key="tab.label"
-        :id="`panel-${index}`"
-        :aria-labelledby="`tab-${index}`"
-        :hidden="index !== activeTabIndex"
-        :style="tabPanelStyle"
-        role="tabpanel"
-        class="tab-panel"
-      >
-        <DTypography
-          v-bind="{ ...tabPanelTypographyProps, content: tab.content }"
-          :style="tabPanelTypographyStyle"
-        />
-        <!--TODO: optional slot usage-->
-      </div>
+      <template v-for="(tab, index) in itemList">
+        <div
+          v-if="index === activeTabIndex"
+          :key="tab.label"
+          :id="`panel-${index}`"
+          :aria-labelledby="`tab-${index}`"
+          :style="tabPanelStyle"
+          role="tabpanel"
+          class="tab-panel"
+        >
+          <DTypography
+            v-bind="{ ...tabPanelTypographyProps, content: tab.content }"
+            :style="tabPanelTypographyStyle"
+            class="tab-panel-content"
+          />
+          <!--TODO: optional slot usage-->
+        </div>
+      </template>
     </transition-group>
   </div>
 </template>
@@ -91,7 +90,7 @@ export default {
     },
 
     /**
-     * Pass any style object to <i>.summary</i> if needed.
+     * Pass any style object to <i>.tab-list</i> if needed.
      */
     tabListStyle: {
       type: Object,
@@ -99,7 +98,7 @@ export default {
     },
 
     /**
-     * Pass any style object to <i>.summary</i> if needed.
+     * Pass any style object to <i>.tab</i> if needed.
      */
     tabStyle: {
       type: Object,
@@ -107,7 +106,7 @@ export default {
     },
 
     /**
-     * Pass any <b>DTypography</b> props if needed.
+     * Pass any <b>DTypography</b> props to tab content if needed.
      */
     tabTypographyProps: {
       type: Object,
@@ -115,7 +114,7 @@ export default {
     },
 
     /**
-     * Pass any style object to <i>.summary</i> if needed.
+     * Pass any style object to <i>.tab-content</i> if needed.
      */
     tabTypographyStyle: {
       type: Object,
@@ -123,7 +122,7 @@ export default {
     },
 
     /**
-     * Pass any style object to <i>.summary</i> if needed.
+     * Pass any style object to <i>.tab-panel</i> if needed.
      */
     tabPanelStyle: {
       type: Object,
@@ -131,7 +130,7 @@ export default {
     },
 
     /**
-     * Pass any <b>DTypography</b> props if needed.
+     * Pass any <b>DTypography</b>  props to tab panel content if needed.
      */
     tabPanelTypographyProps: {
       type: Object,
@@ -139,14 +138,16 @@ export default {
     },
 
     /**
-     * Pass any style object to <i>.summary</i> if needed.
+     * Pass any style object to <i>.tab-panel-content</i> if needed.
      */
     tabPanelTypographyStyle: {
       type: Object,
       default: () => {}
     },
 
-    // TODO
+    /**
+     * Pass aria-label attr to <i>.tab-list</i> if needed.
+     */
     ariaLabel: {
       type: String,
       default: ""
@@ -185,6 +186,10 @@ export default {
 @import "../../assets/styles/mixins/transitions";
 @import "../../assets/styles/mixins/outline";
 @import "../../assets/styles/transitions/opacity";
+
+.d-tabs {
+  position: relative;
+}
 
 .tab-list {
   display: flex;
@@ -231,14 +236,15 @@ export default {
   &:after {
     position: absolute;
     content: "";
-    bottom: 0;
+    bottom: -1px;
     left: 0;
     width: 100%;
     height: 2px;
     background: var(--color-primary);
     transform: scaleX(0);
     transform-origin: right;
-    transition: transform var(--transition-time-short) ease-out;
+    transition: transform var(--transition-time-short)
+      var(--transition-function);
   }
 
   &.__disabled {
@@ -256,5 +262,7 @@ export default {
 
 .tab-panel {
   padding: var(--gap-3x) var(--gap-6x);
+  border: 1px solid var(--color-separator);
+  width: 100%;
 }
 </style>

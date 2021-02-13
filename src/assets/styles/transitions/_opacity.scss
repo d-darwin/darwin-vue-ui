@@ -3,6 +3,7 @@
 .opacity-enter-from,
 .opacity-leave-to {
   opacity: 0;
+  position: absolute;
 }
 
 .opacity-enter-to,
