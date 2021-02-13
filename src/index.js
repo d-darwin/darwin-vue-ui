@@ -30,6 +30,7 @@ import DVideo from "./components/atoms/DVideo";
 import DAccordion from "./components/molecules/DAccordion";
 import DCheckboxGroup from "./components/molecules/DCheckboxGroup";
 import DRadioGroup from "./components/molecules/DRadioGroup";
+import DTabs from "./components/molecules/DTabs";
 
 /** components: organisms **/
 import DModal from "./components/organisms/DModal";
@@ -125,6 +126,7 @@ export {
   DAccordion,
   DCheckboxGroup,
   DRadioGroup,
+  DTabs,
   /** organisms **/
   DModal,
   DDrawer,
