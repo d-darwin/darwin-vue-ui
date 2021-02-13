@@ -72,7 +72,8 @@ import useComponentId from "../../compositions/componentId";
 import DTypography from "../containers/DTypography";
 
 /**
- * TODO
+ * The component renders tabs which may be customized by slots.<br>
+ * Custom focus-visible presented.
  *
  * @version 1.0.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
@@ -85,14 +86,20 @@ export default {
   inheritAttrs: false,
 
   props: {
-    // TODO
+    /**
+     * List of items to render. Should be presented (but may contains empty elements)
+     *  even if you use slots for tab-content and tab-panel-content<br>
+     * Expected format: <i>[{ label: "Tab label", content: "Tab panel content", active: true, disabled: false }].</i>
+     */
     itemList: {
       // TODO: specify more accurate type ???
       type: Array,
       default: () => []
     },
 
-    // TODO
+    /**
+     * If set to true, tabs will be arranged in column.
+     */
     isVertical: {
       type: Boolean,
       default: false

@@ -30,6 +30,7 @@ export default {
      * If no column count presented for any device width, nodes will take all width of the container.
      */
     columnCount: {
+      // TODO: specify more accurate type ???
       type: Object,
       default: () => {}
     },

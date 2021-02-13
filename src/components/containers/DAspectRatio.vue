@@ -28,6 +28,7 @@ export default {
      * Expected format: 'height:width'.
      */
     aspectRatio: {
+      // TODO: specify more accurate type ???
       type: String,
       default: "1:1"
     }

@@ -126,6 +126,7 @@ export default {
      * Expected format: { value: '', text: '' }
      */
     options: {
+      // TODO: specify more accurate type ???
       type: Array,
       default: () => []
     },

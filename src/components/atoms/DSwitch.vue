@@ -98,6 +98,7 @@ export default {
      * Expected format: <i>{ truthy: "On", falsy: "Off" }.</i>
      */
     values: {
+      // TODO: specify more accurate type ???
       type: Object,
       default: () => {}
     },
@@ -107,6 +108,7 @@ export default {
      * Expected format: <i>{ truthy: "On", falsy: "Off" }.</i>
      */
     labels: {
+      // TODO: specify more accurate type ???
       type: Object,
       default: () => {}
     },
