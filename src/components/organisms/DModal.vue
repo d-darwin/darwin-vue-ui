@@ -1,7 +1,6 @@
 <template>
   <teleport to="body">
-    <!--TODO: custom transition, just by using transitionName prop???-->
-    <transition name="opacity">
+    <transition :name="transitionName">
       <div
         v-if="isShown"
         :class="$attrs.class"
@@ -99,7 +98,7 @@ import DTypography from "../containers/DTypography";
  * You can easily create standard modal with heading, text, cancel and accept buttons and customize these elements.
  * Also you can construct your own modal content by using default slot.
  *
- * @version 1.2.3
+ * @version 1.2.4
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -246,6 +245,14 @@ export default {
     acceptButtonStyle: {
       type: Object,
       default: () => {}
+    },
+
+    /**
+     * Name of the component transition (animation).
+     */
+    transitionName: {
+      type: String,
+      default: 'opacity'
     }
   },
 

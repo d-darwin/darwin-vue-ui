@@ -1,6 +1,5 @@
 <template>
-  <!--TODO: custom transition, just by using transitionName prop???-->
-  <transition name="control-error">
+  <transition :name="transitionName">
     <DTypography
       v-if="text"
       :class="$attrs.class"
@@ -18,7 +17,7 @@ import DTypography from "../containers/DTypography";
 /**
  * Helper component to unify error output of the control components.
  *
- * @version 1.0.1
+ * @version 1.0.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -37,6 +36,14 @@ export default {
     text: {
       type: String,
       default: ""
+    },
+
+    /**
+     * Name of the component transition (animation).
+     */
+    transitionName: {
+      type: String,
+      default: "error"
     }
   }
 };
@@ -46,37 +53,15 @@ export default {
 // always include tokens unscoped
 @import "../../assets/styles/tokens/colors";
 @import "../../assets/styles/tokens/gaps";
-@import "../../assets/styles/tokens/typography";
 </style>
 
 <style scoped lang="scss">
-@import "../../assets/styles/mixins/transitions";
+@import "../../assets/styles/transitions/error";
 
 .d-error {
   margin-top: var(--gap-base);
   color: var(--color-danger);
   text-overflow: ellipsis;
   overflow: hidden;
-}
-
-.control-error-enter-from,
-.control-error-leave-to {
-  opacity: 0;
-  transform: translateY(-25%);
-  max-height: 0;
-  overflow: hidden;
-}
-
-.control-error-enter-to,
-.control-error-leave-from {
-  opacity: 1;
-  transform: translateY(0);
-  // error message shouldn't be too long
-  max-height: calc(var(--small-line-height) * 3);
-}
-
-.control-error-enter-active,
-.control-error-leave-active {
-  @include transition-short;
 }
 </style>

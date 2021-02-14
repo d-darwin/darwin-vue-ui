@@ -1,7 +1,6 @@
 <template>
   <teleport to="body">
-    <!--TODO: custom transition, just by using transitionName prop???-->
-    <transition name="scale">
+    <transition :name="transitionName">
       <DButton
         v-show="isShown"
         v-bind="{
@@ -38,7 +37,7 @@ import DButton from "./DButton";
  * The component implements scroll to the top of the page button.<br>
  * It appears when user scroll page to the <i>scrollOffset</i>.
  *
- * @version 1.0.2
+ * @version 1.0.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -71,6 +70,14 @@ export default {
     buttonStyle: {
       type: Object,
       default: () => {}
+    },
+
+    /**
+     * Name of the component transition (animation).
+     */
+    transitionName: {
+      type: String,
+      default: 'scale'
     }
   },
 

@@ -178,6 +178,7 @@ body {
     z-index: 9999;
     pointer-events: none;
 
+    // TODO: think about colors
     --grid-column-color: rgba(0, 0, 0, 0.05);
     --grid-gutter-color: transparent;
     --grid-column-width: calc(

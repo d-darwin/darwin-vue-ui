@@ -14,12 +14,14 @@ It's lightweight and performant UI Library for Vue 3.
 ## In short
 
 - Components created by [Brad Frost's Atomic Design](https://atomicdesign.bradfrost.com/).
-- Design tokens represented to customize component appearance.
-- Build in optional reset style and google fonts support.
-- Uses focus-visible polyfill to emulate :faocus-visible CSS prop.
+- Design tokens allows to widely customize component appearance.
+- Reusable logic is extracted into compositions, directives, mixins and utilities. 
+- Focus-visible polyfill is used to emulate :focus-visible CSS prop.
+- Build in reset style and google fonts support.
+- Customizable components' Vue transitions.
 - Icon set agnostic.
 
-⚠️ WARNING: Components of the library have to be compiled with sass-loader, so you need to have sass-loader package as a dev dependency.
+⚠️ WARNING: Components of the library have to be compiled with sass-loader, so you need sass-loader package as a dev dependency.
 
 ## Installation
 
@@ -86,7 +88,7 @@ You can find particular component documentation in its source code.
 
 ### Components
 
-For now a few basic components implemented:
+Components are separated  
 
 #### Atoms
 

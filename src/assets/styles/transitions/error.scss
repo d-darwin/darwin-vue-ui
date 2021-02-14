@@ -1,0 +1,23 @@
+@import "../tokens/typography";
+@import "../mixins/transitions";
+
+.error-enter-from,
+.error-leave-to {
+  opacity: 0;
+  transform: translateY(-25%);
+  max-height: 0;
+  overflow: hidden;
+}
+
+.error-enter-to,
+.error-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+  // error message shouldn't be too long
+  max-height: calc(var(--small-line-height) * 3);
+}
+
+.error-enter-active,
+.error-leave-active {
+  @include transition-short;
+}
