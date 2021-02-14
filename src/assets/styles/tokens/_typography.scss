@@ -1,38 +1,38 @@
-$small-font-size: 13px;
-$small-line-height: 20px;
-$small-font-weight: normal;
+$small-font-size: 13px !default;
+$small-line-height: 20px !default;
+$small-font-weight: normal !default;
 
-$general-font-size: 15px;
-$general-line-height: 22px;
-$general-font-weight: normal;
+$general-font-size: 15px !default;
+$general-line-height: 22px !default;
+$general-font-weight: normal !default;
 
-$longread-font-size: 16px;
-$longread-line-height: 24px;
-$longread-font-weight: normal;
+$longread-font-size: 16px !default;
+$longread-line-height: 24px !default;
+$longread-font-weight: normal !default;
 
-$augmented-font-size: 18px;
-$augmented-line-height: 26px;
-$augmented-font-weight: normal;
+$augmented-font-size: 18px !default;
+$augmented-line-height: 26px !default;
+$augmented-font-weight: normal !default;
 
-$h5-font-size: 15px;
-$h5-line-height: 22px;
-$h5-font-weight: bold;
+$h5-font-size: 15px !default;
+$h5-line-height: 22px !default;
+$h5-font-weight: bold !default;
 
-$h4-font-size: 19px;
-$h4-line-height: 26px;
-$h4-font-weight: bold;
+$h4-font-size: 19px !default;
+$h4-line-height: 26px !default;
+$h4-font-weight: bold !default;
 
-$h3-font-size: 25px;
-$h3-line-height: 34px;
-$h3-font-weight: bold;
+$h3-font-size: 25px !default;
+$h3-line-height: 34px !default;
+$h3-font-weight: bold !default;
 
-$h2-font-size: 36px;
-$h2-line-height: 46px;
-$h2-font-weight: bold;
+$h2-font-size: 36px !default;
+$h2-line-height: 46px !default;
+$h2-font-weight: bold !default;
 
-$h1-font-size: 48px;
-$h1-line-height: 60px;
-$h1-font-weight: bold;
+$h1-font-size: 48px !default;
+$h1-line-height: 60px !default;
+$h1-font-weight: bold !default;
 
 /**
  * Map to CSS custom properties

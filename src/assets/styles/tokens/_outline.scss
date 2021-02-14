@@ -1,7 +1,7 @@
 @import "./colors";
 
-$outline-color: $blue;
-$outline-width: 2px;
+$outline-color: $blue !default;
+$outline-width: 2px !default;
 
 /**
  * Map to CSS custom properties

@@ -3,35 +3,35 @@
 // It's not very convenient but we have to use scss variables
 // to use them in @for loop in DGrid component.
 // TODO: Unfortunately we can't redefine columns-count on runtime.
-$xs-grid-columns-count: 2;
-$xs-grid-offset: 18px;
-$xs-grid-gutter: 18px;
-$xs-grid-width: 100%;
+$xs-grid-columns-count: 2 !default;
+$xs-grid-offset: 18px !default;
+$xs-grid-gutter: 18px !default;
+$xs-grid-width: 100% !default;
 
-$sm-grid-columns-count: 6;
-$sm-grid-offset: 18px;
-$sm-grid-gutter: 18px;
-$sm-grid-width: 100%;
+$sm-grid-columns-count: 6 !default;
+$sm-grid-offset: 18px !default;
+$sm-grid-gutter: 18px !default;
+$sm-grid-width: 100% !default;
 
-$md-grid-columns-count: 12;
-$md-grid-offset: 24px;
-$md-grid-gutter: 24px;
-$md-grid-width: 100%;
+$md-grid-columns-count: 12 !default;
+$md-grid-offset: 24px !default;
+$md-grid-gutter: 24px !default;
+$md-grid-width: 100% !default;
 
-$lg-grid-columns-count: 12;
-$lg-grid-offset: 0px;
-$lg-grid-gutter: 24px;
-$lg-grid-width: 960px;
+$lg-grid-columns-count: 12 !default;
+$lg-grid-offset: 0px !default;
+$lg-grid-gutter: 24px !default;
+$lg-grid-width: 960px !default;
 
-$xl-grid-columns-count: 12;
-$xl-grid-offset: 0px;
-$xl-grid-gutter: 24px;
-$xl-grid-width: 1140px;
+$xl-grid-columns-count: 12 !default;
+$xl-grid-offset: 0px !default;
+$xl-grid-gutter: 24px !default;
+$xl-grid-width: 1140px !default;
 
-$xxl-grid-columns-count: 12;
-$xxl-grid-offset: 0px;
-$xxl-grid-gutter: 24px;
-$xxl-grid-width: 1320px;
+$xxl-grid-columns-count: 12 !default;
+$xxl-grid-offset: 0px !default;
+$xxl-grid-gutter: 24px !default;
+$xxl-grid-width: 1320px !default;
 
 :root {
   @include xs-device {

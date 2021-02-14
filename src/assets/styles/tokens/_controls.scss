@@ -1,14 +1,14 @@
 @import "./colors";
 
-$large-control-height: 48px;
-$medium-control-height: 38px;
-$small-control-height: 28px;
+$large-control-height: 48px !default;
+$medium-control-height: 38px !default;
+$small-control-height: 28px !default;
 
-$control-min-width: 240px;
+$control-min-width: 240px !default;
 
-$border-radius: 4px;
+$border-radius: 4px !default;
 
-$button-font-weight: 500;
+$button-font-weight: 500 !default;
 
 /**
  * Map to CSS custom properties

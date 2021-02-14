@@ -1,49 +1,49 @@
 @import "./colors";
 
-$link-primary-color: var(--color-link);
-$link-primary-text-decoration: none;
-$link-primary-visited-color: var(--color-link);
-$link-primary-visited-text-decoration: none;
-$link-primary-hover-color: var(--color-link);
-$link-primary-hover-text-decoration: underline;
-$link-primary-active-color: var(--color-link);
-$link-primary-active-text-decoration: underline;
+$link-primary-color: var(--color-link) !default;
+$link-primary-text-decoration: none !default;
+$link-primary-visited-color: var(--color-link) !default;
+$link-primary-visited-text-decoration: none !default;
+$link-primary-hover-color: var(--color-link) !default;
+$link-primary-hover-text-decoration: underline !default;
+$link-primary-active-color: var(--color-link) !default;
+$link-primary-active-text-decoration: underline !default;
 
-$link-secondary-color: var(--color-text);
-$link-secondary-text-decoration: none;
-$link-secondary-visited-color: var(--color-text);
-$link-secondary-visited-text-decoration: none;
-$link-secondary-hover-color: var(--color-primary-active);
-$link-secondary-hover-text-decoration: none;
-$link-secondary-active-color: var(--color-primary-active);
-$link-secondary-active-text-decoration: none;
+$link-secondary-color: var(--color-text) !default;
+$link-secondary-text-decoration: none !default;
+$link-secondary-visited-color: var(--color-text) !default;
+$link-secondary-visited-text-decoration: none !default;
+$link-secondary-hover-color: var(--color-primary-active) !default;
+$link-secondary-hover-text-decoration: none !default;
+$link-secondary-active-color: var(--color-primary-active) !default;
+$link-secondary-active-text-decoration: none !default;
 
-$link-tertiary-color: var(--color-text-aux);
-$link-tertiary-text-decoration: none;
-$link-tertiary-visited-color: var(--color-text-aux);
-$link-tertiary-visited-text-decoration: none;
-$link-tertiary-hover-color: var(--color-text-aux);
-$link-tertiary-hover-text-decoration: underline;
-$link-tertiary-active-color: var(--color-text-aux);
-$link-tertiary-active-text-decoration: underline;
+$link-tertiary-color: var(--color-text-aux) !default;
+$link-tertiary-text-decoration: none !default;
+$link-tertiary-visited-color: var(--color-text-aux) !default;
+$link-tertiary-visited-text-decoration: none !default;
+$link-tertiary-hover-color: var(--color-text-aux) !default;
+$link-tertiary-hover-text-decoration: underline !default;
+$link-tertiary-active-color: var(--color-text-aux) !default;
+$link-tertiary-active-text-decoration: underline !default;
 
-$link-inverse-color: var(--white);
-$link-inverse-text-decoration: none;
-$link-inverse-visited-color: var(--white);
-$link-inverse-visited-text-decoration: none;
-$link-inverse-hover-color: var(--color-primary-disabled);
-$link-inverse-hover-text-decoration: none;
-$link-inverse-active-color: var(--color-primary-disabled);
-$link-inverse-active-text-decoration: none;
+$link-inverse-color: var(--white) !default;
+$link-inverse-text-decoration: none !default;
+$link-inverse-visited-color: var(--white) !default;
+$link-inverse-visited-text-decoration: none !default;
+$link-inverse-hover-color: var(--color-primary-disabled) !default;
+$link-inverse-hover-text-decoration: none !default;
+$link-inverse-active-color: var(--color-primary-disabled) !default;
+$link-inverse-active-text-decoration: none !default;
 
-$link-danger-color: var(--color-danger);
-$link-danger-text-decoration: none;
-$link-danger-visited-color: var(--color-danger);
-$link-danger-visited-text-decoration: none;
-$link-danger-hover-color: var(--color-danger);
-$link-danger-hover-text-decoration: underline;
-$link-danger-active-color: var(--color-danger);
-$link-danger-active-text-decoration: underline;
+$link-danger-color: var(--color-danger) !default;
+$link-danger-text-decoration: none !default;
+$link-danger-visited-color: var(--color-danger) !default;
+$link-danger-visited-text-decoration: none !default;
+$link-danger-hover-color: var(--color-danger) !default;
+$link-danger-hover-text-decoration: underline !default;
+$link-danger-active-color: var(--color-danger) !default;
+$link-danger-active-text-decoration: underline !default;
 
 /**
  * Map to CSS custom properties

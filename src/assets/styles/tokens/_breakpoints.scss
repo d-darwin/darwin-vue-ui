@@ -1,8 +1,8 @@
-$sm-breakpoint: 480px;
-$md-breakpoint: 768px;
-$lg-breakpoint: 1024px;
-$xl-breakpoint: 1280px;
-$xxl-breakpoint: 1480px;
+$sm-breakpoint: 480px !default;
+$md-breakpoint: 768px !default;
+$lg-breakpoint: 1024px !default;
+$xl-breakpoint: 1280px !default;
+$xxl-breakpoint: 1480px !default;
 
 /**
  * Map to CSS custom properties

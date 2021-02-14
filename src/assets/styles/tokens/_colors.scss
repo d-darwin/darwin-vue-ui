@@ -2,26 +2,26 @@
  * basic colors
  */
 
-$black: #000000;
-$white: #ffffff;
-$blue: #325efa;
-$red: #ca2b2b;
+$black: #000000 !default;
+$white: #ffffff !default;
+$blue: #325efa !default;
+$red: #ca2b2b !default;
 
 /**
  * special colors
  */
 
-$color-facebook: #3b5998;
-$color-twitter: #00acee;
-$color-vkontakte: #4a76a8;
+$color-facebook: #3b5998 !default;
+$color-twitter: #00acee !default;
+$color-vkontakte: #4a76a8 !default;
 
 /**
  * main colors
  */
 
-$purple-500: #321f54;
-$tangerine-500: #ff843f;
-$gray-900: #282828;
+$purple-500: #321f54 !default;
+$tangerine-500: #ff843f !default;
+$gray-900: #282828 !default;
 
 // Slightly lighter a color
 // @param {Color} $color - color to shade
@@ -35,66 +35,64 @@ $gray-900: #282828;
  * main colors shades
  */
 
-$purple-shade-step: 10;
-$purple-450: shade($purple-500, 1 * $purple-shade-step);
-$purple-400: shade($purple-500, 2 * $purple-shade-step);
-$purple-350: shade($purple-500, 3 * $purple-shade-step);
-$purple-300: shade($purple-500, 4 * $purple-shade-step);
-$purple-250: shade($purple-500, 5 * $purple-shade-step);
-$purple-200: shade($purple-500, 6 * $purple-shade-step);
-$purple-150: shade($purple-500, 7 * $purple-shade-step);
-$purple-100: shade($purple-500, 8 * $purple-shade-step);
-$purple-050: shade($purple-500, 9 * $purple-shade-step);
+$purple-shade-step: 10 !default;
+$purple-450: shade($purple-500, 1 * $purple-shade-step) !default;
+$purple-400: shade($purple-500, 2 * $purple-shade-step) !default;
+$purple-350: shade($purple-500, 3 * $purple-shade-step) !default;
+$purple-300: shade($purple-500, 4 * $purple-shade-step) !default;
+$purple-250: shade($purple-500, 5 * $purple-shade-step) !default;
+$purple-200: shade($purple-500, 6 * $purple-shade-step) !default;
+$purple-150: shade($purple-500, 7 * $purple-shade-step) !default;
+$purple-100: shade($purple-500, 8 * $purple-shade-step) !default;
+$purple-050: shade($purple-500, 9 * $purple-shade-step) !default;
 
-$tangerine-shade-step: 10;
-$tangerine-450: shade($tangerine-500, 1 * $tangerine-shade-step);
-$tangerine-400: shade($tangerine-500, 2 * $tangerine-shade-step);
-$tangerine-350: shade($tangerine-500, 3 * $tangerine-shade-step);
-$tangerine-300: shade($tangerine-500, 4 * $tangerine-shade-step);
-$tangerine-250: shade($tangerine-500, 5 * $tangerine-shade-step);
-$tangerine-200: shade($tangerine-500, 6 * $tangerine-shade-step);
-$tangerine-150: shade($tangerine-500, 7 * $tangerine-shade-step);
-$tangerine-100: shade($tangerine-500, 8 * $tangerine-shade-step);
-$tangerine-050: shade($tangerine-500, 9 * $tangerine-shade-step);
+$tangerine-shade-step: 10 !default;
+$tangerine-450: shade($tangerine-500, 1 * $tangerine-shade-step) !default;
+$tangerine-400: shade($tangerine-500, 2 * $tangerine-shade-step) !default;
+$tangerine-350: shade($tangerine-500, 3 * $tangerine-shade-step) !default;
+$tangerine-300: shade($tangerine-500, 4 * $tangerine-shade-step) !default;
+$tangerine-250: shade($tangerine-500, 5 * $tangerine-shade-step) !default;
+$tangerine-200: shade($tangerine-500, 6 * $tangerine-shade-step) !default;
+$tangerine-150: shade($tangerine-500, 7 * $tangerine-shade-step) !default;
+$tangerine-100: shade($tangerine-500, 8 * $tangerine-shade-step) !default;
+$tangerine-050: shade($tangerine-500, 9 * $tangerine-shade-step) !default;
 
-$gray-shade-step: 12;
-$gray-800: shade($gray-900, 1 * $gray-shade-step);
-$gray-700: shade($gray-900, 2 * $gray-shade-step);
-$gray-650: shade($gray-900, 2.5 * $gray-shade-step);
-$gray-600: shade($gray-900, 3 * $gray-shade-step);
-$gray-500: shade($gray-900, 4 * $gray-shade-step);
-$gray-400: shade($gray-900, 5 * $gray-shade-step);
-$gray-300: shade($gray-900, 6 * $gray-shade-step);
-$gray-200: shade($gray-900, 7 * $gray-shade-step);
-$gray-100: shade($gray-900, 8 * $gray-shade-step);
+$gray-shade-step: 12 !default;
+$gray-800: shade($gray-900, 1 * $gray-shade-step) !default;
+$gray-700: shade($gray-900, 2 * $gray-shade-step) !default;
+$gray-650: shade($gray-900, 2.5 * $gray-shade-step) !default;
+$gray-600: shade($gray-900, 3 * $gray-shade-step) !default;
+$gray-500: shade($gray-900, 4 * $gray-shade-step) !default;
+$gray-400: shade($gray-900, 5 * $gray-shade-step) !default;
+$gray-300: shade($gray-900, 6 * $gray-shade-step) !default;
+$gray-200: shade($gray-900, 7 * $gray-shade-step) !default;
+$gray-100: shade($gray-900, 8 * $gray-shade-step) !default;
 
 /**
  * semantic colors
  */
 
-$color-primary: $purple-500;
-$color-primary-active: $purple-400;
-$color-primary-disabled: $purple-200;
+$color-primary: $purple-500 !default;
+$color-primary-active: $purple-400 !default;
+$color-primary-disabled: $purple-200 !default;
 
-$color-accent: $tangerine-500;
-$color-accent-active: $tangerine-400;
-$color-accent-disabled: $tangerine-200;
+$color-accent: $tangerine-500 !default;
+$color-accent-active: $tangerine-400 !default;
+$color-accent-disabled: $tangerine-200 !default;
 
-$color-text: $gray-900;
-$color-text-aux: $gray-650;
-$color-text-alt: $gray-400;
+$color-text: $gray-900 !default;
+$color-text-aux: $gray-650 !default;
+$color-text-alt: $gray-400 !default;
 
-$color-background: $gray-100;
-$color-separator: $gray-200;
+$color-background: $gray-100 !default;
+$color-separator: $gray-200 !default;
 
-$color-danger: $red;
-$danger-shade-step: 10;
-// $color-danger-active: #d94e4e;
-$color-danger-active: shade($color-danger, 2 * $danger-shade-step);
-// $color-danger-disabled: #eba2a2;
-$color-danger-disabled: shade($color-danger, 6 * $danger-shade-step);
+$danger-shade-step: 10 !default;
+$color-danger: $red !default;
+$color-danger-active: shade($color-danger, 2 * $danger-shade-step) !default;
+$color-danger-disabled: shade($color-danger, 6 * $danger-shade-step) !default;
 
-$color-link: $blue;
+$color-link: $blue !default;
 
 /**
  * Map to CSS custom properties

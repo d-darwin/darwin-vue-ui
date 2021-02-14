@@ -1,13 +1,13 @@
-$transition-time-short: 150ms;
-$transition-time-medium: 300ms;
-$transition-time-long: 600ms;
+$transition-time-short: 150ms !default;
+$transition-time-medium: 300ms !default;
+$transition-time-long: 600ms !default;
 
-$transition-delay-short: 30ms;
-$transition-delay-medium: 60ms;
-$transition-delay-long: 120ms;
+$transition-delay-short: 30ms !default;
+$transition-delay-medium: 60ms !default;
+$transition-delay-long: 120ms !default;
 
-$transition-property: all;
-$transition-function: ease;
+$transition-property: all !default;
+$transition-function: ease !default;
 
 /**
  * Map to CSS custom properties

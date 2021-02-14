@@ -1,14 +1,14 @@
-$shadow-medium-horizontal-offset: 0;
-$shadow-medium-vertical-offset: 8px;
-$shadow-medium-blur-radius: 8px;
-$shadow-medium-spread-radius: -4px;
-$shadow-medium-color: rgba(0, 0, 0, 0.1);
+$shadow-medium-horizontal-offset: 0 !default;
+$shadow-medium-vertical-offset: 8px !default;
+$shadow-medium-blur-radius: 8px !default;
+$shadow-medium-spread-radius: -4px !default;
+$shadow-medium-color: rgba(0, 0, 0, 0.1) !default;
 
-$shadow-large-horizontal-offset: 0;
-$shadow-large-vertical-offset: 12px;
-$shadow-large-blur-radius: 16px;
-$shadow-large-spread-radius: 0;
-$shadow-large-color: rgba(0, 0, 0, 0.08);
+$shadow-large-horizontal-offset: 0 !default;
+$shadow-large-vertical-offset: 12px !default;
+$shadow-large-blur-radius: 16px !default;
+$shadow-large-spread-radius: 0 !default;
+$shadow-large-color: rgba(0, 0, 0, 0.08) !default;
 
 /**
  * Map to CSS custom properties

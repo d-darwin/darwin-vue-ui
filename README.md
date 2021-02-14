@@ -14,9 +14,9 @@ It's lightweight and performant UI Library for Vue 3.
 ## In short
 
 - Components created by [Brad Frost's Atomic Design](https://atomicdesign.bradfrost.com/).
-- Design tokens allows to widely customize component appearance.
+- Design tokens allow widely customize component appearance.
 - Reusable logic is extracted into compositions, directives, mixins and utilities.
-- Focus-visible polyfill is used to emulate :focus-visible CSS prop.
+- Focus-visible polyfill is used to emulate :focus-visible CSS prop for a11y purpose.
 - Build in reset style and google fonts support.
 - Customizable components' transitions (animations).
 - Icon set agnostic.
@@ -225,13 +225,13 @@ You can find whole list of design tokens in '@dariwn-studio/ui-vue/src/assets/st
 
 ### Style mixins
 
-Some common component styles extracted into SCSS mixins and stored in separate directory. 
+Some common component styles extracted into SCSS mixins and stored in separate directory.
 Feel free to reuse them in your own project.  
 More details you can find in '@dariwn-studio/ui-vue/src/assets/styles/mixins'.
 
 ### Vue transitions
 
-Some common component transitions extracted into separate directory. 
+Some common component transitions extracted into separate directory.
 Feel free to reuse them in your own project.  
 More details you can find in '@dariwn-studio/ui-vue/src/assets/styles/transitions'.
 
