@@ -252,7 +252,7 @@ export default {
      */
     transitionName: {
       type: String,
-      default: 'opacity'
+      default: "opacity"
     }
   },
 

@@ -201,7 +201,9 @@ More details you can find in appropriate directory.
 Feel free to customize default appearance of the components by
 redefining design tokens either in build time via SCSS variables or
 in runtime via CSS custom properties. You can even import design token to your _.js or _.vue files.
-Maybe the best part is you can redefine them all in only place using our plugin.
+To redefine customize look and feel of the components
+just create css/scss file containing design tokens with you own values and import it into your application.
+Alternatively you can redefine design tokens all in only place using our plugin.
 
 ```javascript
 import { createApp } from "vue";

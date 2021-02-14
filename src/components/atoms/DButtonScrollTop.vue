@@ -77,7 +77,7 @@ export default {
      */
     transitionName: {
       type: String,
-      default: 'scale'
+      default: "scale"
     }
   },
 
