@@ -22,11 +22,10 @@
 
     <DError :text="error" />
 
-    <!--TODO: custom transition, just by using transitionName prop???-->
     <transition-group
       :style="listStyle"
       tag="ul"
-      name="list"
+      :name="transitionName"
       class="list"
       mode="out-in"
     >
@@ -96,7 +95,7 @@ import DError from "./DError";
  * they will be pass to the tag automatically.<br>
  * While submitted uploadedFiles array need to be processed with FormData().
  *
- * @version 1.0.3
+ * @version 1.0.4
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 
@@ -161,6 +160,14 @@ export default {
     error: {
       type: String,
       default: ""
+    },
+
+    /**
+     * Name of the component transition (animation).
+     */
+    transitionName: {
+      type: String,
+      default: "list"
     }
   },
 

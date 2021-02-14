@@ -10,8 +10,7 @@
       <slot />
     </DLink>
 
-    <!--TODO: custom transition, just by using transitionName prop???-->
-    <transition name="opacity">
+    <transition :name="buttonTransitionName">
       <DButton
         ref="close-button"
         v-show="isZoomed"
@@ -28,8 +27,7 @@
       </DButton>
     </transition>
 
-    <!--TODO: custom transition, just by using transitionName prop???-->
-    <transition name="opacity">
+    <transition :name="contentTransitionName">
       <div
         v-if="isZoomed"
         :style="contentZoomWrapStyle"
@@ -55,7 +53,7 @@ import DLink from "../atoms/DLink";
  * The component allows zoom in slot content to cover all browser viewport.</br>
  * You can pass other content for zoomed contend via slot:zoomed.
  *
- * @version 1.0.5
+ * @version 1.0.6
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -80,6 +78,22 @@ export default {
     contentZoomWrapStyle: {
       type: Object,
       default: () => {}
+    },
+
+    /**
+     * Name of the component's button transition (animation).
+     */
+    buttonTransitionName: {
+      type: String,
+      default: "opacity"
+    },
+
+    /**
+     * Name of the component's content transition (animation).
+     */
+    contentTransitionName: {
+      type: String,
+      default: "opacity"
     }
   },
 

@@ -31,8 +31,7 @@
         <slot v-else name="no-image" />
       </template>
 
-      <!--TODO: custom transition, just by using transitionName prop???-->
-      <transition name="opacity">
+      <transition :name="transitionName">
         <template v-if="!isLoaded && hasSource">
           <DLoader v-if="!$slots['loader']" />
           <!-- @slot You can replace default loader by passing your own here. -->
@@ -56,7 +55,7 @@ import DAspectRatio from "../containers/DAspectRatio";
  *  Supports plain string image asset or an array of image assets for different screen width and pixel density.<br>
  *  Also supports lazy loading with <b>DLoader</b> placeholder, aspect-ration and renders <b>DIconImage</b> icon if <i>source</i> prop is empty.
  *
- * @version 1.3.3
+ * @version 1.3.4
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -82,6 +81,7 @@ export default {
      *  ].
      */
     source: {
+      // TODO: specify more accurate type ???
       type: [Array, String],
       default: () => []
     },
@@ -118,6 +118,14 @@ export default {
     imgStyle: {
       type: Object,
       default: () => {}
+    },
+
+    /**
+     * Name of the component transition (animation).
+     */
+    transitionName: {
+      type: String,
+      default: "opacity"
     }
   },
 

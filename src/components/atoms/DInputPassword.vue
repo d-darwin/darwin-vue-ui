@@ -6,8 +6,7 @@
     class="d-input-password"
   >
     <template #after>
-      <!--TODO: custom transition, just by using transitionName prop???-->
-      <transition name="opacity" @click="toggleVisibility">
+      <transition :name="transitionName" @click="toggleVisibility">
         <span
           v-if="isVisible"
           :style="visibilityToggleStyle"
@@ -36,7 +35,7 @@ import DIconEyeOff from "../icons/DIconEyeOff";
  * The component renders <b>input</b> tag with password <b>type</b> and visibility toggle.<br>
  * It uses <b>DInput</b> component so you can pass any compatible props.<br>
  *
- * @version 1.0.4
+ * @version 1.0.5
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -54,6 +53,14 @@ export default {
     visibilityToggleStyle: {
       type: Object,
       default: () => {}
+    },
+
+    /**
+     * Name of the component transition (animation).
+     */
+    transitionName: {
+      type: String,
+      default: "opacity"
     }
   },
 

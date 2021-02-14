@@ -18,7 +18,7 @@ It's lightweight and performant UI Library for Vue 3.
 - Reusable logic is extracted into compositions, directives, mixins and utilities. 
 - Focus-visible polyfill is used to emulate :focus-visible CSS prop.
 - Build in reset style and google fonts support.
-- Customizable components' Vue transitions.
+- Customizable components' transitions (animations).
 - Icon set agnostic.
 
 ⚠️ WARNING: Components of the library have to be compiled with sass-loader, so you need sass-loader package as a dev dependency.

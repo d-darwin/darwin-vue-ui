@@ -38,8 +38,7 @@
       </button>
     </div>
 
-    <!--TODO: custom transition, just by using transitionName prop???-->
-    <transition-group name="opacity">
+    <transition-group :name="transitionName">
       <template v-for="(tab, index) in itemList">
         <div
           v-if="index === selectedTabIndex"
@@ -167,6 +166,14 @@ export default {
     ariaLabel: {
       type: String,
       default: ""
+    },
+
+    /**
+     * Name of the component transition (animation).
+     */
+    transitionName: {
+      type: String,
+      default: "opacity"
     }
   },
 

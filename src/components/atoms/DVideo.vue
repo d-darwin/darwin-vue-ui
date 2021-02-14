@@ -21,8 +21,7 @@
         <slot v-else name="no-video" />
       </template>
 
-      <!--TODO: custom transition, just by using transitionName prop???-->
-      <transition name="opacity">
+      <transition :name="transitionName">
         <template v-if="!isLoaded && source">
           <DLoader v-if="!$slots['loader']" />
           <!-- @slot You can replace default loader by passing your own here. -->
@@ -50,7 +49,7 @@ import DAspectRatio from "../containers/DAspectRatio";
  * It renders <b>iframe</b> or <b>video</b> or any iframe depending on your source value.<br>
  * Supports lazy loading with <b>DLoader</b> placeholder, aspect-ration and renders <b>DIconVideo</b> icon if <i>source</i> prop is empty.
  *
- * @version 1.3.0
+ * @version 1.3.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -120,6 +119,14 @@ export default {
       // TODO: specify more accurate type ???
       type: String,
       default: ""
+    },
+
+    /**
+     * Name of the component transition (animation).
+     */
+    transitionName: {
+      type: String,
+      default: "opacity"
     }
   },
 

@@ -1,7 +1,6 @@
 <template>
   <teleport to="body">
-    <!--TODO: custom transition, just by using transitionName prop???-->
-    <transition name="opacity">
+    <transition :name="transitionName">
       <div
         v-if="shown && content"
         :class="{
@@ -27,7 +26,7 @@ import DTypography from "../containers/DTypography";
 /**
  * The component renders text notification for a given duration.
  *
- * @version 1.1.0
+ * @version 1.1.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -88,6 +87,14 @@ export default {
     typographyStyle: {
       type: Object,
       default: () => {}
+    },
+
+    /**
+     * Name of the component transition (animation).
+     */
+    transitionName: {
+      type: String,
+      default: "opacity"
     }
   },
 

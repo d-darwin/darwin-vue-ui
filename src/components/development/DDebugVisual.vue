@@ -1,7 +1,6 @@
 <template>
   <teleport to="body">
-    <!--TODO: custom transition, just by using transitionName prop???-->
-    <transition name="scale">
+    <transition :name="transitionName">
       <div v-show="isPanelShown" class="d-debug-visual">
         <DButton
           :icon-only="true"
@@ -44,8 +43,8 @@ import useKeyboardListener from "../../compositions/keyboardListener";
 /** components **/
 import DIconColumns from "../icons/DIconColumns";
 import DIconBorders from "../icons/DIconBorders";
-import DButton from "../atoms/DButton";
 import DIconSemantic from "../icons/DIconSemantic";
+import DButton from "../atoms/DButton";
 
 /**
  * This development component intents to help visualize grid columns, elements' borders and semantic tags.</br>
@@ -54,13 +53,23 @@ import DIconSemantic from "../icons/DIconSemantic";
  * It highlights all semantic DOM elements with green background on <i>Ctrl + Alt + s</i>.<br>
  * Also you can toggle the component buttons panel on <i>Ctrl + Alt + d</i>.
  *
- * @version 1.3.0
+ * @version 1.3.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
   name: "DDebugVisual",
 
-  components: { DIconSemantic, DIconBorders, DButton, DIconColumns },
+  components: { DIconSemantic, DIconBorders, DIconColumns, DButton },
+
+  props: {
+    /**
+     * Name of the component transition (animation).
+     */
+    transitionName: {
+      type: String,
+      default: "scale"
+    }
+  },
 
   setup() {
     const isGridVisualizationShown = ref(false);
