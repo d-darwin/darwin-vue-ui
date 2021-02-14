@@ -15,7 +15,7 @@ It's lightweight and performant UI Library for Vue 3.
 
 - Components created by [Brad Frost's Atomic Design](https://atomicdesign.bradfrost.com/).
 - Design tokens allows to widely customize component appearance.
-- Reusable logic is extracted into compositions, directives, mixins and utilities. 
+- Reusable logic is extracted into compositions, directives, mixins and utilities.
 - Focus-visible polyfill is used to emulate :focus-visible CSS prop.
 - Build in reset style and google fonts support.
 - Customizable components' transitions (animations).
@@ -88,17 +88,19 @@ You can find particular component documentation in its source code.
 
 ### Components
 
-Components are separated  
+Components are separated into atoms, molecules and organisms according to the [Brad Frost's Atomic Design](https://atomicdesign.bradfrost.com/).<br>
+Additionally, containers component type introduced. Such components define appearance and functionality of their children.<br>
+And finally, development components simplify development process.
 
 #### Atoms
 
 - **DButton**. Renders a button of various appearance and behavior.  
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DButton.vue'.
+  More details: '@dariwn-studio/ui-vue/src/components/atoms/DButton.vue'.
 - **DButtonScrollTop**. Renders button which allows scroll page to the top.  
   More details: '@dariwn-studio/ui-vue/src/components/atoms/DButtonScrollTop.vue'.
 - **DCheckbox**. Renders a checkbox of various appearance.  
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DCheckbox.vue'.
-- **DCopyContent**. Allows user to copy string passed to component in <i>content</i> prop.  
+  More details: '@dariwn-studio/ui-vue/src/components/atoms/DCheckbox.vue'.
+- **DCopyContent**. Allows user to copy string passed to the component in <i>content</i> prop.  
   More details: '@dariwn-studio/ui-vue/src/components/atoms/DCopyContent.vue'.
 - **DCopyLink**. Allows user to copy current page URL.  
   More details: '@dariwn-studio/ui-vue/src/components/atoms/DCopyLink.vue'.
@@ -109,13 +111,13 @@ Components are separated
 - **DError**. Helps unify control components error output.  
   More details: '@dariwn-studio/ui-vue/src/components/atoms/DError.vue'.
 - **DFiles**. Renders custom files input.  
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DFiles.vue'.
+  More details: '@dariwn-studio/ui-vue/src/components/atoms/DFiles.vue'.
 - **DInput**. Renders an input field of various appearance.  
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DInput.vue'.
-- **DInputPassword**. Renders a password input field with visibility toggle of various appearance.  
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DInputPassword.vue'.
+  More details: '@dariwn-studio/ui-vue/src/components/atoms/DInput.vue'.
+- **DInputPassword**. Renders a password input field with visibility toggle.  
+  More details: '@dariwn-studio/ui-vue/src/components/atoms/DInputPassword.vue'.
 - **DLink**. Renders a link of various appearance.  
-  Customisable focus-visible presented. More details: '@dariwn-studio/ui-vue/src/components/atoms/DLink.vue'.
+  More details: '@dariwn-studio/ui-vue/src/components/atoms/DLink.vue'.
 - **DLoader**. Renders an animated svg which used in other components such as DPicture.  
   More details: '@dariwn-studio/ui-vue/src/components/atoms/DLoader.vue'.
 - **DNotification**. Renders text notification for a given duration.  
@@ -126,19 +128,14 @@ Components are separated
 - **DProgressBar**. Renders custom progress bar.  
   More details: '@dariwn-studio/ui-vue/src/components/atoms/DProgressBar.vue'.
 - **DRadio**. Renders a radio buttons of various appearance.  
-  Customisable focus-visible presented.  
   More details: '@dariwn-studio/ui-vue/src/components/atoms/DRadio.vue'.
 - **DSelect**. Renders custom select of various appearance.  
-  Customisable focus-visible presented.  
   More details: '@dariwn-studio/ui-vue/src/components/atoms/DSelect.vue'.
 - **DSlider**. Renders a slider of various appearance.  
-  Customisable focus-visible presented.  
   More details: '@dariwn-studio/ui-vue/src/components/atoms/DSlider.vue'.
 - **DSwitch**. Renders a switch or a toggle of various colors.  
-  Customisable focus-visible presented.  
   More details: '@dariwn-studio/ui-vue/src/components/atoms/DSwitch.vue'.
 - **DTextarea**. Renders a textarea field of various appearance.  
-  Customisable focus-visible presented.  
   More details: '@dariwn-studio/ui-vue/src/components/atoms/DTextarea.vue'.
 - **DVideo**. Renders a video of different formats and video hosting services.  
   Supports lazy loading, aspect-ratio prop, no image fallback and loading placeholder.  
@@ -169,25 +166,23 @@ Components are separated
 - **DEqualWidth**. Forces default slot elements to be equal width.  
   More details: '@dariwn-studio/ui-vue/src/components/containers/DEqualWidth.vue'.
 - **DFullScreen**. Adds full screen mode to default slot content.  
-  Customisable focus-visible presented.  
   More details: '@dariwn-studio/ui-vue/src/components/containers/DFullScreen.vue'.
 - **DGrid**. Helps arrange child elements by grid.  
   More details: '@dariwn-studio/ui-vue/src/components/containers/DGrid.vue'.
 - **DTypography**. Renders an HTML strings according to defined design tokens.  
-  Customisable focus-visible presented.  
   More details: '@dariwn-studio/ui-vue/src/components/containers/DTypography.vue'.
-- **DZoomIn**. The component allows zoom in slot content to cover all browser viewport.  
-  Customisable focus-visible presented.  
+- **DZoomIn**. The component allows zoom in slot content to cover all browser viewport.
   More details: '@dariwn-studio/ui-vue/src/components/containers/DZoomIn.vue'.
 
 #### Development components
 
-- **DDebugVisual**. Adds grid, elements' borders and semantic tag visualisation to help catch up visual errors.  
+- **DDebugVisual**. Adds grid, elements' borders and semantic tag visualisation
+  to help catch up visual and semantic errors.  
   More details: '@dariwn-studio/ui-vue/src/components/development/DDebugVisual.vue'.
 
 #### Icon components
 
-The library also exports default icons which used in components.
+The library also exports default icons which used by default in some components.
 You can easily replace them with your own by using appropriate component slots.
 Here you can find default icons: '@dariwn-studio/ui-vue/src/components/icons'.
 
@@ -205,7 +200,7 @@ More details you can find in appropriate directory.
 
 Feel free to customize default appearance of the components by
 redefining design tokens either in build time via SCSS variables or
-in runtime via CSS custom properties. You can even import design token to your \*.js files.
+in runtime via CSS custom properties. You can even import design token to your _.js or _.vue files.
 Maybe the best part is you can redefine them all in only place using our plugin.
 
 ```javascript
@@ -230,12 +225,14 @@ You can find whole list of design tokens in '@dariwn-studio/ui-vue/src/assets/st
 
 ### Style mixins
 
-Some common component styles extracted into SCSS mixins and stored in separate directory. Feel free to reuse them in your own project.  
+Some common component styles extracted into SCSS mixins and stored in separate directory. 
+Feel free to reuse them in your own project.  
 More details you can find in '@dariwn-studio/ui-vue/src/assets/styles/mixins'.
 
 ### Vue transitions
 
-Some common component transitions extracted into separate directory. Feel free to reuse them in your own project.  
+Some common component transitions extracted into separate directory. 
+Feel free to reuse them in your own project.  
 More details you can find in '@dariwn-studio/ui-vue/src/assets/styles/transitions'.
 
 ### Reset styles
@@ -313,5 +310,5 @@ Then you can use specified font families in your scss/css files as usual.
 
 ### Icons
 
-Despite the library exposes some internal icons we don't want to stick with one of icon sets, so decided allow you to choose one yourself.
+Despite the library exposes some internal icons we don't stick with one of icon sets, you can choose one yourself.
 To do so just use [@iconify/vue](https://docs.iconify.design/implementations/vue/) package or any of your choice.
