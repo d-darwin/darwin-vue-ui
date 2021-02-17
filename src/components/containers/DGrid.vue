@@ -110,6 +110,7 @@ export default {
 @include xs-device {
   .d-grid {
     @for $i from 1 through $xs-grid-columns-count {
+      &.grid-xs-#{$i} > *,
       &.grid-xs-#{$i} > ::v-slotted(*) {
         grid-column-end: span #{$i};
       }
@@ -120,6 +121,7 @@ export default {
 @include sm-device {
   .d-grid {
     @for $i from 1 through $sm-grid-columns-count {
+      &.grid-sm-#{$i} > *,
       &.grid-sm-#{$i} > ::v-slotted(*) {
         grid-column-end: span #{$i};
       }
@@ -130,6 +132,7 @@ export default {
 @include md-device {
   .d-grid {
     @for $i from 1 through $md-grid-columns-count {
+      &.grid-md-#{$i} > *,
       &.grid-md-#{$i} > ::v-slotted(*) {
         grid-column-end: span #{$i};
       }
@@ -140,6 +143,7 @@ export default {
 @include lg-device {
   .d-grid {
     @for $i from 1 through $lg-grid-columns-count {
+      &.grid-lg-#{$i} > *,
       &.grid-lg-#{$i} > ::v-slotted(*) {
         grid-column-end: span #{$i};
       }
@@ -150,6 +154,7 @@ export default {
 @include xl-device {
   .d-grid {
     @for $i from 1 through $xl-grid-columns-count {
+      &.grid-xl-#{$i} > *,
       &.grid-xl-#{$i} > ::v-slotted(*) {
         grid-column-end: span #{$i};
       }
@@ -160,6 +165,7 @@ export default {
 @include xxl-device {
   .d-grid {
     @for $i from 1 through $xxl-grid-columns-count {
+      &.grid-xxl-#{$i} > *,
       &.grid-xxl-#{$i} > ::v-slotted(*) {
         grid-column-end: span #{$i};
       }
