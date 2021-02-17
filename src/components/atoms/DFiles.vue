@@ -1,13 +1,13 @@
 <template>
   <div
     :class="{
-      __disabled: $attrs.disabled !== undefined,
+      __disabled: !!$attrs.disabled,
       [`${$attrs.class}`]: $attrs.class
     }"
     class="d-files"
   >
     <DLink
-      :href="$attrs.disabled !== undefined ? null : '#'"
+      :href="!!$attrs.disabled ? null : '#'"
       type="secondary"
       @click.prevent="$refs.input.click()"
     >
@@ -46,7 +46,7 @@
         />
 
         <DLink
-          :href="$attrs.disabled !== undefined ? null : '#'"
+          :href="!!$attrs.disabled ? null : '#'"
           type="secondary"
           @click.prevent="removeFromList(index)"
         >

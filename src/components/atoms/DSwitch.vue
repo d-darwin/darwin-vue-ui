@@ -1,7 +1,7 @@
 <template>
   <div
     :class="{
-      __disabled: $attrs.disabled !== undefined,
+      __disabled: !!$attrs.disabled,
       [`${$attrs.class}`]: $attrs.class
     }"
     class="d-switch"

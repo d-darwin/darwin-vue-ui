@@ -5,7 +5,7 @@
         v-if="label"
         :content="label"
         :for="componentId"
-        :class="{ __disabled: $attrs.disabled !== undefined }"
+        :class="{ __disabled: !!$attrs.disabled }"
         tag="label"
         size="small"
         class="label"

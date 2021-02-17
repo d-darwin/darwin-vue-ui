@@ -4,7 +4,7 @@
       [`${$attrs.class}`]: $attrs.class,
       [`__${size}`]: size,
       [`__${roundness}`]: roundness,
-      __disabled: $attrs.disabled !== undefined
+      __disabled: !!$attrs.disabled
     }"
     class="d-input"
   >

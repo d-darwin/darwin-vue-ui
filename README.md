@@ -215,7 +215,7 @@ createApp(App)
   .use(darwinStudioUiPlugin, {
     // Plugin options
     designTokens: {
-      // use CSS custom propertie name without leading --.
+      // use CSS custom property name without leading --.
       "color-primary": "#333",
       "transition-time-short": "200ms"
     }

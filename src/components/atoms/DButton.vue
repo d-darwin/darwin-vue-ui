@@ -8,7 +8,7 @@
         [`__${size}`]: size,
         [`__${roundness}`]: roundness,
         ['__icon-only']: iconOnly,
-        __disabled: $attrs.disabled !== undefined
+        __disabled: !!$attrs.disabled
       }"
       class="control-button"
     >

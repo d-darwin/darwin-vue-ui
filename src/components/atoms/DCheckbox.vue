@@ -14,7 +14,7 @@
       <span
         :class="{
           [`__${color}`]: color,
-          __disabled: $attrs.disabled !== undefined
+          __disabled: !!$attrs.disabled
         }"
         :style="markStyle"
         class="mark"

@@ -5,7 +5,7 @@
   >
     <label
       :for="componentId"
-      :class="{ __disabled: $attrs.disabled !== undefined }"
+      :class="{ __disabled: !!$attrs.disabled }"
       class="control-group"
     >
       <input
@@ -22,7 +22,7 @@
         <span
           :class="{
             [`__${color}`]: color,
-            __disabled: $attrs.disabled !== undefined
+            __disabled: !!$attrs.disabled
           }"
           :style="markStyle"
           class="mark"
