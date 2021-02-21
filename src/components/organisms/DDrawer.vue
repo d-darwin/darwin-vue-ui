@@ -280,7 +280,6 @@ body {
   }
 
   .drawer-wrap {
-    // width: var(--drawer-width);
     padding: var(--gap-17x) var(--gap-6x);
   }
 

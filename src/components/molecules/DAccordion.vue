@@ -3,8 +3,8 @@
     <!--TODO: add transition-->
     <DDetails
       v-for="(item, index) in itemList"
-      :key="itemListState[index].id"
-      v-bind="{ ...item, ...itemListState[index] }"
+      :key="itemListProps[index].id"
+      v-bind="{ ...item, ...itemListProps[index] }"
       @update:open="updateOpenHandler"
     />
   </div>
@@ -20,7 +20,7 @@ import DDetails from "../atoms/DDetails";
 /**
  * Render an accordion using <b>DDetails</b> components.
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -68,7 +68,7 @@ export default {
 
   data() {
     return {
-      itemListState: this.itemList.map(item => ({
+      itemListProps: this.itemList.map(item => ({
         id: item.id ? item.id : uuid(),
         open: item.open || false,
         size: item.size || this.size,
@@ -81,12 +81,12 @@ export default {
     updateOpenHandler(e) {
       if (this.isSingleOpened && e.open) {
         // close all other items
-        this.itemListState = this.itemListState.map(item => ({
+        this.itemListProps = this.itemListProps.map(item => ({
           ...item,
           open: item.id === e.id
         }));
       } else {
-        this.itemListState = this.itemListState.map(item => ({
+        this.itemListProps = this.itemListProps.map(item => ({
           ...item,
           open: item.id === e.id ? e.open : item.open
         }));
@@ -106,7 +106,7 @@ export default {
        */
       this.$emit(
         "update:open",
-        this.itemListState.map(item => ({ open: item.open, id: item.id }))
+        this.itemListProps.map(item => ({ open: item.open, id: item.id }))
       );
     }
   }
