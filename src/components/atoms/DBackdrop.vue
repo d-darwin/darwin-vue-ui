@@ -1,7 +1,5 @@
 <template>
-  <transition :name="transitionName">
-    <div v-if="isShown" class="d-backdrop" />
-  </transition>
+  <div class="d-backdrop" />
 </template>
 
 <script>
@@ -12,34 +10,13 @@
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
-  name: "DBackdrop",
-
-  props: {
-    /**
-     * Name of the component transition (animation).
-     */
-    transitionName: {
-      type: String,
-      default: "opacity"
-    }
-  },
-
-  data() {
-    return {
-      isShown: false // used for transition
-    };
-  },
-
-  mounted() {
-    this.isShown = true;
-  }
+  name: "DBackdrop"
 };
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/transitions/opacity";
-
 .d-backdrop {
+  // TODO: move backdrop opacity to tokens ???
   opacity: 0.2;
   background: var(--color-primary);
   position: fixed;
@@ -47,6 +24,5 @@ export default {
   width: 100vw;
   top: 0;
   left: 0;
-  // z-index: 1000;
 }
 </style>

@@ -1,6 +1,8 @@
 <template>
   <teleport to="body">
-    <DBackdrop />
+    <transition :name="backdropTransitionName">
+      <DBackdrop v-if="isShown" />
+    </transition>
 
     <div
       :class="{
@@ -79,6 +81,14 @@ export default {
     },
 
     /**
+     * Name of the <b>DBackdrop</b> transition (animation).
+     */
+    backdropTransitionName: {
+      type: String,
+      default: "opacity-backdrop"
+    },
+
+    /**
      * Pass any <b>DButton</b> props if needed.
      */
     closeButtonProps: {
@@ -129,6 +139,7 @@ body {
 <style scoped lang="scss">
 @import "../../assets/styles/mixins/transitions";
 @import "../../assets/styles/mixins/breakpoints";
+@import "../../assets/styles/transitions/opacity-backdrop";
 
 .d-drawer {
   @include transition-medium;
@@ -191,19 +202,6 @@ body {
       left: 0;
     }
   }
-
-  /* &:before {
-    @include transition-medium;
-
-    opacity: 0;
-    position: fixed;
-    content: "";
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  } */
 }
 
 .drawer-wrap {
