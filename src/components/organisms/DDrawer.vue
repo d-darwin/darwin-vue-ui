@@ -47,7 +47,7 @@ import DButton from "../atoms/DButton";
 /**
  * Renders drawer. It's especially useful for navigation, but default slot may receive any content.
  *
- * @version 1.3.0
+ * @version 1.4.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -72,7 +72,7 @@ export default {
     position: {
       type: String,
       default: "right",
-      validate: val => ["left", "right"].includes(val)
+      validate: val => ["top", "right", "bottom", "left"].includes(val)
     },
 
     /**
@@ -136,18 +136,53 @@ body {
   width: 100vw;
   z-index: 1000;
   position: fixed;
-  top: 0;
+
+  &.__top {
+    top: -100vh;
+    left: 0;
+
+    .drawer-wrap {
+      min-width: 100vw;
+    }
+
+    &.__shown {
+      top: 0;
+    }
+  }
 
   &.__right {
     right: -100vw;
+    top: 0;
+
+    .drawer-wrap {
+      min-height: 100vh;
+    }
 
     &.__shown {
       right: 0;
     }
   }
 
+  &.__bottom {
+    bottom: -100vh;
+    left: 0;
+
+    .drawer-wrap {
+      min-width: 100vw;
+    }
+
+    &.__shown {
+      bottom: 0;
+    }
+  }
+
   &.__left {
     left: -100vw;
+    top: 0;
+
+    .drawer-wrap {
+      min-height: 100vh;
+    }
 
     &.__shown {
       left: 0;
@@ -173,7 +208,6 @@ body {
   background: var(--white);
   height: 100%;
   width: 100%;
-  min-height: 100vh;
   overflow-y: auto;
   z-index: 10;
 }
@@ -192,10 +226,36 @@ body {
 @include md-device-min {
   .d-drawer {
     --drawer-width: 400px;
+    --drawer-height: 400px;
+
+    &.__top {
+      &.__shown {
+        top: 0; // calc(var(--drawer-height) - 100vh);
+      }
+
+      .drawer-wrap {
+        height: var(--drawer-height);
+      }
+    }
 
     &.__right {
       &.__shown {
         right: calc(var(--drawer-width) - 100vw);
+      }
+
+      .drawer-wrap {
+        width: var(--drawer-width);
+      }
+    }
+
+    &.__bottom {
+      &.__shown {
+        bottom: 0; // calc(var(--drawer-height) - 100vh);
+      }
+
+      .drawer-wrap {
+        height: var(--drawer-height);
+        margin-top: auto;
       }
     }
 
@@ -205,6 +265,7 @@ body {
       }
 
       .drawer-wrap {
+        width: var(--drawer-width);
         margin-left: auto;
       }
     }
@@ -219,7 +280,7 @@ body {
   }
 
   .drawer-wrap {
-    width: var(--drawer-width);
+    // width: var(--drawer-width);
     padding: var(--gap-17x) var(--gap-6x);
   }
 
