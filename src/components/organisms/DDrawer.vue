@@ -1,5 +1,7 @@
 <template>
   <teleport to="body">
+    <DBackdrop />
+
     <div
       :class="{
         __shown: isShown,
@@ -43,6 +45,7 @@ import useClosable from "../../compositions/closable";
 /** components **/
 import DIconClose from "../icons/DIconClose";
 import DButton from "../atoms/DButton";
+import DBackdrop from "../atoms/DBackdrop";
 
 /**
  * Renders drawer. It's especially useful for navigation, but default slot may receive any content.
@@ -55,7 +58,7 @@ export default {
 
   inheritAttrs: false,
 
-  components: { DButton, DIconClose },
+  components: { DBackdrop, DButton, DIconClose },
 
   props: {
     /**
