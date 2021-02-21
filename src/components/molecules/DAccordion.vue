@@ -6,7 +6,15 @@
       :key="itemListProps[index].id"
       v-bind="{ ...item, ...itemListProps[index] }"
       @update:open="updateOpenHandler"
-    />
+    >
+      <template v-if="$slots[`summary-${index}`]" #summary>
+        <slot :name="`summary-${index}`" />
+      </template>
+
+      <template v-if="$slots[`content-${index}`]" #default>
+        <slot :name="`content-${index}`" />
+      </template>
+    </DDetails>
   </div>
 </template>
 
@@ -20,7 +28,7 @@ import DDetails from "../atoms/DDetails";
 /**
  * Render an accordion using <b>DDetails</b> components.
  *
- * @version 1.0.1
+ * @version 1.1.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
