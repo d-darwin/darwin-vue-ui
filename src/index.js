@@ -3,6 +3,7 @@ import { createApp } from "vue";
 import focusVisiblePolyfill from "focus-visible/dist/focus-visible.min.js";
 
 /** components: atoms **/
+import DBackdrop from "./components/atoms/DBackdrop";
 import DButton from "./components/atoms/DButton";
 import DButtonScrollTop from "./components/atoms/DButtonScrollTop";
 import DCheckbox from "./components/atoms/DCheckbox";
@@ -100,6 +101,7 @@ createApp({}).use(focusVisiblePolyfill);
 /** components **/
 export {
   /** atoms **/
+  DBackdrop,
   DButton,
   DButtonScrollTop,
   DCheckbox,

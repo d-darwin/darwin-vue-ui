@@ -7,6 +7,7 @@
         class="d-modal"
         @click="closeHandler"
       >
+        <DBackdrop />
         <div :style="modalStyle" class="modal" @click.stop="">
           <DButton
             v-bind="{
@@ -92,6 +93,7 @@ import useClosable from "../../compositions/closable";
 import DIconClose from "../icons/DIconClose";
 import DButton from "../atoms/DButton";
 import DTypography from "../containers/DTypography";
+import DBackdrop from "../atoms/DBackdrop";
 
 /**
  * This is widely customizable modal component.
@@ -107,12 +109,13 @@ export default {
 
   inheritAttrs: false,
 
-  components: { DTypography, DButton, DIconClose },
+  components: { DBackdrop, DTypography, DButton, DIconClose },
 
   // TODO: too many props, try to reduce
   props: {
     /**
      * Use this prop instead of v-if or v-show to animate the component appearance.
+     * TODO: use backdrop technique
      */
     isShown: {
       type: Boolean,
@@ -319,14 +322,14 @@ body {
   z-index: 9999;
   pointer-events: all;
 
-  &:before {
+  /* &:before {
     position: absolute;
     content: "";
     height: 100%;
     width: 100%;
     background-color: var(--color-primary);
     opacity: 0.2;
-  }
+  } */
 }
 
 .modal {
