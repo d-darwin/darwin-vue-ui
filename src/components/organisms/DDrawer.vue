@@ -52,7 +52,7 @@ import DBackdrop from "../atoms/DBackdrop";
 /**
  * Renders drawer. It's especially useful for navigation, but default slot may receive any content.
  *
- * @version 1.4.0
+ * @version 1.5.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -81,14 +81,6 @@ export default {
     },
 
     /**
-     * Name of the <b>DBackdrop</b> transition (animation).
-     */
-    backdropTransitionName: {
-      type: String,
-      default: "opacity-backdrop"
-    },
-
-    /**
      * Pass any <b>DButton</b> props if needed.
      */
     closeButtonProps: {
@@ -110,6 +102,14 @@ export default {
     drawerContentStyle: {
       type: Object,
       default: () => {}
+    },
+
+    /**
+     * Name of the <b>DBackdrop</b> transition (animation).
+     */
+    backdropTransitionName: {
+      type: String,
+      default: "opacity-backdrop"
     }
   },
 

@@ -1,5 +1,9 @@
 <template>
   <teleport to="body">
+    <transition :name="backdropTransitionName">
+      <DBackdrop v-if="isShown" />
+    </transition>
+
     <transition :name="transitionName">
       <div
         v-if="isShown"
@@ -7,7 +11,6 @@
         class="d-modal"
         @click="closeHandler"
       >
-        <DBackdrop />
         <div :style="modalStyle" class="modal" @click.stop="">
           <DButton
             v-bind="{
@@ -100,7 +103,7 @@ import DBackdrop from "../atoms/DBackdrop";
  * You can easily create standard modal with heading, text, cancel and accept buttons and customize these elements.
  * Also you can construct your own modal content by using default slot.
  *
- * @version 1.2.4
+ * @version 1.3.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -256,6 +259,14 @@ export default {
     transitionName: {
       type: String,
       default: "opacity"
+    },
+
+    /**
+     * Name of the <b>DBackdrop</b> transition (animation).
+     */
+    backdropTransitionName: {
+      type: String,
+      default: "opacity-backdrop"
     }
   },
 
@@ -307,6 +318,7 @@ body {
 
 <style scoped lang="scss">
 @import "../../assets/styles/transitions/opacity";
+@import "../../assets/styles/transitions/opacity-backdrop";
 @import "../../assets/styles/mixins/shadows";
 @import "../../assets/styles/mixins/breakpoints";
 
@@ -321,15 +333,6 @@ body {
   left: 0;
   z-index: 9999;
   pointer-events: all;
-
-  /* &:before {
-    position: absolute;
-    content: "";
-    height: 100%;
-    width: 100%;
-    background-color: var(--color-primary);
-    opacity: 0.2;
-  } */
 }
 
 .modal {
