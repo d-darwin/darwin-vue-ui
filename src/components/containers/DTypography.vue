@@ -32,7 +32,7 @@ import linkClickRouting from "../../mixins/linkClickRouting";
  * Renders typography text according to design tokens from './src/assets/styles/tokens/_typography.scss'.<br>
  * Handles content relative links clicks as routes.
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -68,6 +68,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../assets/styles/tokens/typography";
 @import "../../assets/styles/mixins/links";
 @import "../../assets/styles/mixins/outline";
 

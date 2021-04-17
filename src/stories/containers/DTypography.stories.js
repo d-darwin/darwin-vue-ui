@@ -1,5 +1,5 @@
 import DTypography from "@/components/containers/DTypography";
-import "@/assets/styles/tokens/_typography.scss";
+// import "@/assets/styles/tokens/_typography.scss";
 
 export default {
   title: "Atoms/Typography",
