@@ -1,5 +1,6 @@
 <template>
-  <component :is="tag" :style="{ paddingBottom }" class="d-aspect-ratio-box">
+  <component :is="tag" :style="{ paddingBottom }" class="d-aspect-ratio">
+    <!-- @slot Contains any HTML -->
     <slot />
   </component>
 </template>
@@ -8,7 +9,7 @@
 /**
  * The component uses padding-bottom / zero-height hack to simulate aspect-ratio CSS property.
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -68,7 +69,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.d-aspect-ratio-box {
+.d-aspect-ratio {
   position: relative;
   display: block;
   width: 100%;

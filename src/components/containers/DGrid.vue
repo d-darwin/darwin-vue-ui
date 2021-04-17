@@ -5,7 +5,7 @@
     :class="[...columnCountClass, { __condensed: isCondensed }]"
     class="d-grid"
   >
-    <!-- @slot contains grid items -->
+    <!-- @slot Contains grid items -->
     <slot />
   </component>
 </template>
@@ -15,9 +15,9 @@
 import gridTokens from "../../assets/styles/tokens/_grid.scss";
 
 /**
- * The container allows you an easy way to arrange child nodes in a grid template.
+ * The container provides you with an easy way to arrange child nodes in a grid template.
  *
- * @version 1.0.1
+ * @version 1.0.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -30,7 +30,7 @@ export default {
      * If no column count presented for any device width, nodes will take all width of the container.
      */
     columnCount: {
-      // TODO: specify more accurate type ???
+      // TODO: specify more specific type
       type: Object,
       default: () => {}
     },

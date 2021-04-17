@@ -1,8 +1,7 @@
-import DTypography from "@/components/containers/DTypography";
-// import "@/assets/styles/tokens/_typography.scss";
+import { DTypography } from "@";
 
 export default {
-  title: "Atoms/Typography",
+  title: "Containers/Typography",
   component: DTypography,
   argTypes: {
     content: { control: { type: "text" }, defaultValue: "Some text string" },
