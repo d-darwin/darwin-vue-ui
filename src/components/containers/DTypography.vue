@@ -42,7 +42,7 @@ export default {
 
   props: {
     /**
-     * May contain any HTML string. Alternatively you can use default slot to place any HTML or components.
+     * May contain any HTML string. Alternatively you can use default slot to place any HTML or other components.
      */
     content: {
       type: [String, Number],
