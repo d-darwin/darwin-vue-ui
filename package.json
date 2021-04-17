@@ -1,16 +1,16 @@
 {
   "name": "@darwin-studio/ui-vue",
-  "description": "Vue 3 based lightweight ui-library",
   "version": "0.37.9",
+  "description": "Vue 3 based lightweight ui-library",
   "author": "Dmitrii Bykov <d@darwin.st> (https://darwin.st/)",
-  "license": "MIT",
-  "homepage": "https://github.com/d-darwin/darwin-vue-ui#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/d-darwin/darwin-vue-ui.git"
-  },
-  "bugs": {
-    "url": "https://github.com/d-darwin/darwin-vue-ui/issues"
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "build-lib": "vue-cli-service build --target lib --name ui-vue ./src/index.js",
+    "build-storybook": "build-storybook",
+    "storybook": "start-storybook -p 6006",
+    "test": "vue-cli-service test:unit --config ./jest.config.json"
   },
   "main": "src/index.js",
   "module": "src/index.js",
@@ -26,31 +26,25 @@
     "*.json",
     "*.js"
   ],
-  "keywords": [
-    "Vue 3",
-    "UI library",
-    "Visual components",
-    "CSS custom properties"
-  ],
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "test": "vue-cli-service test:unit --config ./jest.config.json",
-    "build": "vue-cli-service build",
-    "build-lib": "vue-cli-service build --target lib --name ui-vue ./src/index.js",
-    "lint": "vue-cli-service lint",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+  "dependencies": {
+    "focus-visible": "^5.2.0",
+    "get-video-id": "^3.2.0",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.2.8",
     "@storybook/addon-essentials": "^6.2.8",
     "@storybook/addon-links": "^6.2.8",
     "@storybook/vue3": "^6.2.8",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-babel": "^4.5.12",
     "@vue/cli-plugin-eslint": "^4.5.12",
+    "@vue/cli-plugin-typescript": "^4.5.12",
     "@vue/cli-service": "^4.5.12",
     "@vue/compiler-sfc": "^3.0.11",
     "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
     "autoprefixer": "^10.2.5",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
@@ -63,16 +57,27 @@
     "prettier": "^1.19.1",
     "sass": "^1.32.10",
     "sass-loader": "^10.1.1",
+    "typescript": "~4.1.5",
     "vue": "^3.0.11",
     "vue-loader": "^16.2.0",
     "webpack-cli": "^4.6.0"
   },
   "peerDependencies": {
-    "vue": "^3.0.5"
+    "vue": "^3.0.11"
   },
-  "dependencies": {
-    "focus-visible": "^5.2.0",
-    "get-video-id": "^3.2.0",
-    "webfontloader": "^1.6.28"
+  "bugs": {
+    "url": "https://github.com/d-darwin/darwin-vue-ui/issues"
+  },
+  "homepage": "https://github.com/d-darwin/darwin-vue-ui#readme",
+  "keywords": [
+    "Vue 3",
+    "UI library",
+    "Visual components",
+    "CSS custom properties"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d-darwin/darwin-vue-ui.git"
   }
 }

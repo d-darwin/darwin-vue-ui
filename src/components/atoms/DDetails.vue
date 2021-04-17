@@ -69,7 +69,7 @@ import DIconDirection from "../icons/DIconDirection";
  * Custom focus-visible, icon and slots for summary and details content are presented.<br>
  * May be in various sizes and have different corner roundness.
  *
- * @version 1.0.2
+ * @version 1.0.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -356,7 +356,7 @@ export default {
   }
 
   // hide default icon
-  &::-webkit-details-marker {
+  &::marker {
     display: none;
   }
 

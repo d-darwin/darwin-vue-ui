@@ -21,7 +21,9 @@
   </component>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from "vue";
+
 /** utils **/
 import fontSizeProp from "../../utils/fontSizeProp";
 
@@ -35,7 +37,7 @@ import linkClickRouting from "../../mixins/linkClickRouting";
  * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
-export default {
+export default defineComponent({
   name: "DTypography",
 
   mixins: [linkClickRouting],
@@ -64,7 +66,7 @@ export default {
      */
     size: fontSizeProp
   }
-};
+});
 </script>
 
 <style lang="scss">
