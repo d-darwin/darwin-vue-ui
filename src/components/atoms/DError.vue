@@ -1,9 +1,9 @@
 <template>
   <transition :name="transitionName">
     <DTypography
-      v-if="content"
+      v-if="text"
       :class="$attrs.class"
-      :content="content"
+      :content="text"
       size="small"
       class="d-error"
     />
@@ -17,7 +17,7 @@ import DTypography from "../containers/DTypography";
 /**
  * Helper component to unify error output of the control components.
  *
- * @version 1.0.3
+ * @version 1.0.4
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -33,7 +33,7 @@ export default {
     /**
      * If not empty renders as an error HTML string.
      */
-    content: {
+    text: {
       type: [String, Number],
       default: ""
     },
