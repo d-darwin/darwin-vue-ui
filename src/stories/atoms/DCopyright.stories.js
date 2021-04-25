@@ -6,7 +6,7 @@ export default {
   argTypes: {
     company: { control: { type: "text" }, defaultValue: "Acme Inc." },
     startYear: { control: { type: "number" }, defaultValue: 1998 },
-    fontSize: {
+    size: {
       control: {
         type: "select",
         options: [

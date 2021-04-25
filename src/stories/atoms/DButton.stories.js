@@ -70,6 +70,9 @@ export const Inverse = Template.bind({});
 Inverse.args = {
   type: "inverse"
 };
+Inverse.parameters = {
+  backgrounds: { default: "dark" }
+};
 
 export const Danger = Template.bind({});
 Danger.args = {

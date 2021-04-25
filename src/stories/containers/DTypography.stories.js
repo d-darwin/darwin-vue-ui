@@ -9,7 +9,8 @@ export default {
       defaultValue: "<p>Some <strong>HTML</strong> string</p>"
     },
     tag: { control: { type: "text" }, defaultValue: "div" },
-    fontSize: {
+    // TODO: move to helper/util function
+    size: {
       control: {
         type: "select",
         options: [
@@ -38,45 +39,45 @@ const Template = args => ({
 
 export const General = Template.bind({});
 General.args = {
-  fontSize: "general"
+  size: "general"
 };
 
 export const Small = Template.bind({});
 Small.args = {
-  fontSize: "small"
+  size: "small"
 };
 
 export const Longread = Template.bind({});
 Longread.args = {
-  fontSize: "longread"
+  size: "longread"
 };
 
 export const Augmented = Template.bind({});
 Augmented.args = {
-  fontSize: "augmented"
+  size: "augmented"
 };
 
 export const Heading_5 = Template.bind({});
 Heading_5.args = {
-  fontSize: "h5"
+  size: "h5"
 };
 
 export const Heading_4 = Template.bind({});
 Heading_4.args = {
-  fontSize: "h4"
+  size: "h4"
 };
 
 export const Heading_3 = Template.bind({});
 Heading_3.args = {
-  fontSize: "h3"
+  size: "h3"
 };
 
 export const Heading_2 = Template.bind({});
 Heading_2.args = {
-  fontSize: "h2"
+  size: "h2"
 };
 
 export const Heading_1 = Template.bind({});
 Heading_1.args = {
-  fontSize: "h1"
+  size: "h1"
 };
