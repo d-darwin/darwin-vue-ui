@@ -5,6 +5,7 @@ export default {
   component: DCheckbox,
   argTypes: {
     id: { control: { type: "text" } },
+    // TODO: share with slider/radio
     color: {
       control: { type: "select", options: ["primary", "accent", "text"] },
       defaultValue: "primary"
