@@ -1,14 +1,10 @@
 <template>
-  <DTypography
-    :content="copyrightText"
-    :fontSize="fontSize"
-    class="d-copyright"
-  />
+  <DTypography :content="copyrightText" :size="size" class="d-copyright" />
 </template>
 
 <script>
 /** mixins **/
-import fontSizeProp from "../../mixins/fontSizeProp";
+import typographySizeProp from "../../mixins/typographySizeProp";
 
 /** components **/
 import DTypography from "../containers/DTypography";
@@ -24,7 +20,7 @@ export default {
 
   inheritAttrs: false,
 
-  mixins: [fontSizeProp],
+  mixins: [typographySizeProp],
 
   components: { DTypography },
 

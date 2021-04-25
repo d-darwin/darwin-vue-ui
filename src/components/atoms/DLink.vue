@@ -2,7 +2,7 @@
   <component
     :is="el"
     :class="{
-      [`__${fontSize}`]: fontSize,
+      [`__${size}`]: size,
       [`__${type}`]: type,
       [`${$attrs.class}`]: $attrs.class
     }"
@@ -22,7 +22,7 @@
 
 <script>
 /** mixins **/
-import fontSizeProp from "../../mixins/fontSizeProp";
+import typographySizeProp from "../../mixins/typographySizeProp";
 
 /** components **/
 import DIconExternalLink from "../../components/icons/DIconExternalLink";
@@ -41,7 +41,7 @@ export default {
 
   inheritAttrs: false,
 
-  mixins: [fontSizeProp],
+  mixins: [typographySizeProp],
 
   components: {
     DIconExternalLink
