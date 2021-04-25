@@ -37,15 +37,9 @@
     "test": "vue-cli-service test:unit --config ./jest.config.json",
     "build": "vue-cli-service build",
     "build-lib": "vue-cli-service build --target lib --name ui-vue ./src/index.js",
-    "lint": "vue-cli-service lint",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "lint": "vue-cli-service lint"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.2.9",
-    "@storybook/addon-essentials": "^6.2.9",
-    "@storybook/addon-links": "^6.2.9",
-    "@storybook/vue3": "^6.2.9",
     "@vue/cli-plugin-babel": "^4.5.12",
     "@vue/cli-plugin-eslint": "^4.5.12",
     "@vue/cli-service": "^4.5.12",
