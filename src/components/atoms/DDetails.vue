@@ -75,9 +75,9 @@ import DIconDirection from "../icons/DIconDirection";
 export default {
   name: "DDetails",
 
-  components: { DIconDirection, DTypography },
-
   inheritAttrs: false,
+
+  components: { DIconDirection, DTypography },
 
   props: {
     /**

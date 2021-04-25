@@ -33,6 +33,7 @@ import DError from "./DError";
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
+  // TODO: add possibility to pass text as a prop
   name: "DButton",
 
   inheritAttrs: false,
