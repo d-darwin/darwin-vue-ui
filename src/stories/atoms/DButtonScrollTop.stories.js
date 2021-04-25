@@ -16,7 +16,7 @@ const Template = args => ({
     return { args };
   },
   template: `
-    <DTypography content="Scroll down to see the button" />
+    <DTypography content="Scroll down to see the button" style="height: 1200px;" />
     <DButtonScrollTop v-bind='args' />
   `
 });

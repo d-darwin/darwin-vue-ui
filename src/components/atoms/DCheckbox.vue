@@ -32,7 +32,7 @@
 
       <DTypography
         :content="label"
-        :size="labelSize"
+        :fontSize="labelSize"
         :style="labelStyle"
         class="label"
       />
