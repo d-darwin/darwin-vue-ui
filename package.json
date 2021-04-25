@@ -63,6 +63,7 @@
     "webpack-cli": "^4.6.0"
   },
   "peerDependencies": {
+    "core-js": "^3.10.1",
     "vue": "^3.0.11"
   },
   "bugs": {

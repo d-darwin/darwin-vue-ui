@@ -3,7 +3,7 @@
     v-if="content"
     :is="tag"
     :class="{
-      [`__${size}`]: size
+      [`__${fontSize}`]: fontSize
     }"
     v-html="content"
     class="d-typography"
@@ -12,7 +12,7 @@
     v-else
     :is="tag"
     :class="{
-      [`__${size}`]: size
+      [`__${fontSize}`]: fontSize
     }"
     class="d-typography"
   >
@@ -22,32 +22,30 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-
-/** utils **/
-import fontSizeProp from "../../utils/fontSizeProp";
+import { defineComponent, PropType } from "vue";
 
 /** mixins **/
+import fontSizeProp from "../../mixins/fontSizeProp";
 import linkClickRouting from "../../mixins/linkClickRouting";
 
 /**
  * Renders typography text according to design tokens from './src/assets/styles/tokens/_typography.scss'.<br>
  * Handles content relative links clicks as routes.
  *
- * @version 1.0.1
+ * @version 1.1.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default defineComponent({
   name: "DTypography",
 
-  mixins: [linkClickRouting],
+  mixins: [fontSizeProp, linkClickRouting],
 
   props: {
     /**
      * May contain any HTML string. Alternatively you can use default slot to place any HTML or other components.
      */
     content: {
-      type: [String, Number],
+      type: [String, Number] as PropType<string | number>,
       default: ""
     },
 
@@ -55,22 +53,17 @@ export default defineComponent({
      * Which tag should wrap component content.
      */
     tag: {
+      // TODO: add special tag type ???
       type: String,
       default: "div"
-    },
-
-    /**
-     * Defines main font props of the component content.<br>
-     * Expected values: "small", "general", "longread", "augmented", "h5", "h4", "h3", "h2", "h1".<br>
-     * See './src/assets/styles/tokens/_typography.scss' for more details.
-     */
-    size: fontSizeProp
+    }
   }
 });
 </script>
 
 <style lang="scss">
 @import "../../assets/styles/tokens/typography";
+// TODO: why unscoped???
 @import "../../assets/styles/mixins/links";
 @import "../../assets/styles/mixins/outline";
 

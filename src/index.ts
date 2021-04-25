@@ -76,8 +76,7 @@ import DEqualWidth from "./components/containers/DEqualWidth";
 import DFullScreen from "./components/containers/DFullScreen";
 // @ts-ignore
 import DGrid from "./components/containers/DGrid";
-// @ts-ignore
-import DTypography from "./components/containers/DTypography";
+import DTypography from "./components/containers/DTypography.vue";
 // @ts-ignore
 import DZoomIn from "./components/containers/DZoomIn";
 
