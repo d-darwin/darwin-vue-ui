@@ -1,12 +1,12 @@
 <template>
   <div :id="id" :class="$attrs.class" class="d-full-screen">
+    <!-- @slot The component content -->
     <slot />
 
     <DLink
       ref="request-full-screen-link"
       v-show="!isFullScreen"
       v-bind="{ ...linkProps, onClick: requestFullScreen }"
-      href="#"
       :style="linkStyle"
     >
       <DIconMaximize v-if="!$slots['icon-maximize']" />
@@ -34,7 +34,7 @@ import DTypography from "../containers/DTypography";
 /**
  * The component adds full screen mode to default slot content.
  *
- * @version 1.0.4
+ * @version 1.0.5
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -163,6 +163,8 @@ export default {
 }
 
 .d-link {
+  margin-top: var(--gap-base);
+
   > * + * {
     margin-left: var(--gap-base);
   }
