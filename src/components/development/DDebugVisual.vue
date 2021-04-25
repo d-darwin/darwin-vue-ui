@@ -47,13 +47,13 @@ import DIconSemantic from "../icons/DIconSemantic";
 import DButton from "../atoms/DButton";
 
 /**
- * This development component intents to help visualize grid columns, elements' borders and semantic tags.</br>
+ * This development component intents to help visualize grid columns, elements' borders and semantic tags.<br>
  * It renders independent grid visualization on <i>Ctrl + Alt + g</i>.<br>
  * It highlights all DOM elements with red borders on <i>Ctrl + Alt + b</i>.<br>
  * It highlights all semantic DOM elements with green background on <i>Ctrl + Alt + s</i>.<br>
  * Also you can toggle the component buttons panel on <i>Ctrl + Alt + d</i>.
  *
- * @version 1.3.1
+ * @version 1.3.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
