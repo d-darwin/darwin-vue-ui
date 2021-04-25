@@ -1,10 +1,14 @@
 <template>
-  <DTypography :content="copyrightText" :size="size" class="d-copyright" />
+  <DTypography
+    :content="copyrightText"
+    :fontSize="fontSize"
+    class="d-copyright"
+  />
 </template>
 
 <script>
-/** utils **/
-import fontSizeProp from "../../utils/fontSizeProp";
+/** mixins **/
+import fontSizeProp from "../../mixins/fontSizeProp";
 
 /** components **/
 import DTypography from "../containers/DTypography";
@@ -12,15 +16,17 @@ import DTypography from "../containers/DTypography";
 /**
  * The component renders standard copyright string. Current year always displays as "to" year.
  *
- * @version 1.0.0
+ * @version 1.1.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
   name: "DCopyright",
 
-  components: { DTypography },
-
   inheritAttrs: false,
+
+  mixins: [fontSizeProp],
+
+  components: { DTypography },
 
   props: {
     /**
@@ -37,14 +43,7 @@ export default {
     company: {
       type: String,
       required: true
-    },
-
-    /**
-     * Defines main font props of the component content.<br>
-     * Expected values: "small", "general", "longread", "augmented", "h5", "h4", "h3", "h2", "h1".<br>
-     * See './src/assets/styles/tokens/_typography.scss' for more details.
-     */
-    size: fontSizeProp
+    }
   },
 
   computed: {

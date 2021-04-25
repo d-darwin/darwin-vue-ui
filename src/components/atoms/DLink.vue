@@ -2,7 +2,7 @@
   <component
     :is="el"
     :class="{
-      [`__${size}`]: size,
+      [`__${fontSize}`]: fontSize,
       [`__${type}`]: type,
       [`${$attrs.class}`]: $attrs.class
     }"
@@ -21,8 +21,8 @@
 </template>
 
 <script>
-/** utils **/
-import fontSizeProp from "../../utils/fontSizeProp";
+/** mixins **/
+import fontSizeProp from "../../mixins/fontSizeProp";
 
 /** components **/
 import DIconExternalLink from "../../components/icons/DIconExternalLink";
@@ -33,13 +33,15 @@ import DIconExternalLink from "../../components/icons/DIconExternalLink";
  * they will be pass to the tag automatically.<br>
  * If <i>href</i> is a link to external resource, optional icon added to the left side of the default slot. You can turn off this behavior or pass your own icon.<br>
  *
- * @version 1.0.5
+ * @version 1.1.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
   name: "DLink",
 
   inheritAttrs: false,
+
+  mixins: [fontSizeProp],
 
   components: {
     DIconExternalLink
@@ -56,13 +58,6 @@ export default {
       validator: val =>
         ["primary", "secondary", "tertiary", "inverse", "danger"].includes(val)
     },
-
-    /**
-     * Defines main font props of the component content.<br>
-     * Expected values: "small", "general", "longread", "augmented", "h5", "h4", "h3", "h2", "h1".<br>
-     * See './src/assets/styles/tokens/_typography.scss' for more details.
-     */
-    size: fontSizeProp,
 
     /**
      * Set to true if you don't want to add icon to external links.

@@ -6,7 +6,7 @@ export default {
   argTypes: {
     content: { control: { type: "text" }, defaultValue: "Some text string" },
     tag: { control: { type: "text" }, defaultValue: "div" },
-    size: {
+    fontSize: {
       control: {
         type: "select",
         options: [
@@ -35,45 +35,45 @@ const Template = args => ({
 
 export const General = Template.bind({});
 General.args = {
-  size: "general"
+  fontSize: "general"
 };
 
 export const Small = Template.bind({});
 Small.args = {
-  size: "small"
+  fontSize: "small"
 };
 
 export const Longread = Template.bind({});
 Longread.args = {
-  size: "longread"
+  fontSize: "longread"
 };
 
 export const Augmented = Template.bind({});
 Augmented.args = {
-  size: "augmented"
+  fontSize: "augmented"
 };
 
 export const Heading_5 = Template.bind({});
 Heading_5.args = {
-  size: "h5"
+  fontSize: "h5"
 };
 
 export const Heading_4 = Template.bind({});
 Heading_4.args = {
-  size: "h4"
+  fontSize: "h4"
 };
 
 export const Heading_3 = Template.bind({});
 Heading_3.args = {
-  size: "h3"
+  fontSize: "h3"
 };
 
 export const Heading_2 = Template.bind({});
 Heading_2.args = {
-  size: "h2"
+  fontSize: "h2"
 };
 
 export const Heading_1 = Template.bind({});
 Heading_1.args = {
-  size: "h1"
+  fontSize: "h1"
 };

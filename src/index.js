@@ -82,12 +82,12 @@ import useWindowSize from "./compositions/windowSize";
 import clickOutside from "./directives/click-outside";
 
 /** mixins **/
+import fontSizeProp from "./mixins/fontSizeProp";
 import linkClickRouting from "./mixins/linkClickRouting";
 
 /** utils **/
 import copyToClipboard from "./utils/copyToClipboard";
 import debounce from "./utils/debounce";
-import fontSizeProp from "./utils/fontSizeProp";
 import scrollToTop from "./utils/scrollToTop";
 import throttle from "./utils/throttle";
 import uuid from "./utils/uuid";
@@ -178,13 +178,13 @@ export const directives = {
 };
 
 export const mixins = {
+  fontSizeProp,
   linkClickRouting
 };
 
 export const utils = {
   copyToClipboard,
   debounce,
-  fontSizeProp,
   scrollToTop,
   throttle,
   uuid,

@@ -3,7 +3,7 @@
     v-if="content"
     :is="tag"
     :class="{
-      [`__${size}`]: size
+      [`__${fontSize}`]: fontSize
     }"
     v-html="content"
     class="d-typography"
@@ -12,7 +12,7 @@
     v-else
     :is="tag"
     :class="{
-      [`__${size}`]: size
+      [`__${fontSize}`]: fontSize
     }"
     class="d-typography"
   >
@@ -22,23 +22,22 @@
 </template>
 
 <script>
-/** utils **/
-import fontSizeProp from "../../utils/fontSizeProp";
-
 /** mixins **/
+import fontSizeProp from "../../mixins/fontSizeProp";
 import linkClickRouting from "../../mixins/linkClickRouting";
 
 /**
- * Renders typography text according to design tokens from './src/assets/styles/tokens/_typography.scss'.<br>
+ * Renders typography text according to design tokens from
+ * './src/assets/styles/tokens/_typography.scss'.<br>
  * Handles content relative links clicks as routes.
  *
- * @version 1.0.1
+ * @version 1.0.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
   name: "DTypography",
 
-  mixins: [linkClickRouting],
+  mixins: [fontSizeProp, linkClickRouting],
 
   props: {
     /**
@@ -53,16 +52,10 @@ export default {
      * Which tag should wrap component content.
      */
     tag: {
+      // TODO: should I enumerate all possible tags???
       type: String,
       default: "div"
-    },
-
-    /**
-     * Defines main font props of the component content.<br>
-     * Expected values: "small", "general", "longread", "augmented", "h5", "h4", "h3", "h2", "h1".<br>
-     * See './src/assets/styles/tokens/_typography.scss' for more details.
-     */
-    size: fontSizeProp
+    }
   }
 };
 </script>
