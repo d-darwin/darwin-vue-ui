@@ -4,7 +4,10 @@ export default {
   title: "Containers/Typography",
   component: DTypography,
   argTypes: {
-    content: { control: { type: "text" }, defaultValue: "Some text string" },
+    content: {
+      control: { type: "text" },
+      defaultValue: "<p>Some <strong>HTML</strong> string</p>"
+    },
     tag: { control: { type: "text" }, defaultValue: "div" },
     fontSize: {
       control: {
