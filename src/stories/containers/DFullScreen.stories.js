@@ -1,5 +1,5 @@
 import { DFullScreen, DPicture } from "@";
-import image from "../assets/images/programmer.jpg";
+import image from "../assets/programmer.jpg";
 
 export default {
   title: "Containers/FullScreen",
