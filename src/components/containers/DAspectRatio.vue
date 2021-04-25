@@ -20,6 +20,7 @@ export default {
      * A tag of the container component.
      */
     tag: {
+      // TODO: should I enumerate all possible tags???
       type: String,
       default: "div"
     },
@@ -29,7 +30,7 @@ export default {
      * Expected format: 'height:width'.
      */
     aspectRatio: {
-      // TODO: specify more accurate type ???
+      // TODO: specify more accurate type, add validation ???
       type: String,
       default: "1:1"
     }

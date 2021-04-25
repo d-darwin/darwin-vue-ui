@@ -1,5 +1,4 @@
 import { DEqualWidth, DButton } from "@";
-// import "../assets/styles/containers/d-equal-width.scss";
 
 export default {
   title: "Containers/EqualWidth",
@@ -9,10 +8,6 @@ export default {
     secondButtonText: {
       control: { type: "text" },
       defaultValue: "Super long button text"
-    },
-    thirdButtonText: {
-      control: { type: "text" },
-      defaultValue: "Long text"
     }
   }
 };
@@ -26,7 +21,7 @@ const Template = args => ({
     <DEqualWidth>
       <DButton type="primary">{{ args.firstButtonText }}</DButton>
       <DButton type="secondary">{{ args.secondButtonText }}</DButton>
-      <DButton v-if="args.third" type="alternative">{{ args.thirdButtonText }}</DButton>
+      <DButton v-if="args.thirdButtonText" type="alternative">{{ args.thirdButtonText }}</DButton>
     </DEqualWidth>
   `
 });
@@ -35,5 +30,5 @@ export const TwoItems = Template.bind({});
 
 export const ThreeItems = Template.bind({});
 ThreeItems.args = {
-  third: true
+  thirdButtonText: "Long text"
 };

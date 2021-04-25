@@ -2,6 +2,7 @@
   <div :class="$attrs.class" class="d-equal-width">
     <div class="table">
       <div ref="row" class="table-row">
+        <!-- @slot Contains the component items -->
         <slot />
       </div>
     </div>
@@ -12,7 +13,7 @@
 /**
  * The component forces default slot elements to be equal width, equal to the biggest one.
  *
- * @version 1.0.1
+ * @version 1.0.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
