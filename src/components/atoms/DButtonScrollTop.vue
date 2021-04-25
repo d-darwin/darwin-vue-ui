@@ -56,6 +56,8 @@ export default {
       default: 400
     },
 
+    // TODO: add position
+
     /**
      * Pass any <b>DButton</b> props if needed.
      */
@@ -82,7 +84,7 @@ export default {
   },
 
   setup(props) {
-    const isShown = ref(false);
+    const isShown = ref(!props.scrollOffset);
 
     const { scrollOffset } = useScrollOffset();
 
