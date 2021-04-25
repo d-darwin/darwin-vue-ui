@@ -3,7 +3,6 @@
     <DLink
       v-show="!isZoomed"
       ref="zoom-in-link"
-      href="#"
       class="zoom-in-link"
       @click="zoomInHandler"
     >
