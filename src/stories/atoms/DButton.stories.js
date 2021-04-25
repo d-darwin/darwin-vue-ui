@@ -19,10 +19,12 @@ export default {
       },
       defaultValue: "primary"
     },
+    // TODO: move to some helpers or utils
     size: {
       control: { type: "select", options: ["large", "medium", "small"] },
       defaultValue: "large"
     },
+    // TODO: move to some helpers or utils
     roundness: {
       control: { type: "select", options: ["smooth", "rounded", "boxed"] },
       defaultValue: "smooth"
