@@ -9,7 +9,7 @@
     class="d-typography"
   />
   <component
-    v-else
+    v-if="$slots.default"
     :is="tag"
     :class="{
       [`__${size}`]: size
@@ -17,7 +17,7 @@
     class="d-typography"
   >
     <!-- @slot May contain any HTML or another components -->
-    <slot v-if="$slots.default" />
+    <slot />
   </component>
 </template>
 
@@ -29,9 +29,10 @@ import linkClickRouting from "../../mixins/linkClickRouting";
 /**
  * Renders typography text according to design tokens from
  * './src/assets/styles/tokens/_typography.scss'.<br>
+ * You can use <i>content</i> prop or default slot to pass HTML string or other components.<br>
  * Handles content relative links clicks as routes.
  *
- * @version 1.0.2
+ * @version 1.0.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
