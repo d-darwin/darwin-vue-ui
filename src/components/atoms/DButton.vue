@@ -12,6 +12,7 @@
       }"
       class="control-button"
     >
+      <DTypography v-if="!$slots.default" :content="content" />
       <!-- @slot May contains a string, an icon or some combination of both. -->
       <slot />
     </component>
@@ -21,6 +22,7 @@
 </template>
 
 <script>
+import DTypography from "../containers/DTypography";
 import DError from "./DError";
 
 /**
@@ -29,17 +31,26 @@ import DError from "./DError";
  * they will be pass to the tag automatically.<br>
  * May be in various sizes and have different corner roundness.
  *
- * @version 1.0.9
+ * @version 1.1.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
+  // TODO: add possibility to pass text as a prop
   name: "DButton",
 
   inheritAttrs: false,
 
-  components: { DError },
+  components: { DTypography, DError },
 
   props: {
+    /**
+     * May contain any HTML string. Alternatively you can use default slot to place any HTML or components.
+     */
+    content: {
+      type: [String, Number],
+      default: ""
+    },
+
     /**
      * Defines background and border colors of the component as well as :hover and :active behavior.<br>
      * Takes values: 'primary', 'secondary', 'alternative', 'inverse', 'danger', 'backgroundless'.

@@ -1,6 +1,5 @@
 <template>
   <teleport to="body">
-    <client-only></client-only>
     <transition :name="transitionName">
       <div v-show="isPanelShown" class="d-debug-visual">
         <DButton
@@ -80,12 +79,13 @@ export default {
     const isPanelShown = ref(true);
 
     // If SSR we haven't document object
-    const body = document?.getElementsByTagName("body")[0];
-
+    const body = document?.body;
     // just a helper
     const toggleVisualization = (className, flagName) => {
       body?.classList.toggle(className);
-      [flagName]?.value = ![flagName]?.value;
+      if (typeof [flagName] === "object") {
+        [flagName].value = ![flagName].value;
+      }
     };
 
     const toggleGridVisualization = () =>
@@ -103,19 +103,19 @@ export default {
       {
         ctrlKey: true,
         altKey: true,
-        key: "g",
+        key: "g", // [g]rid
         func: toggleGridVisualization
       },
       {
         ctrlKey: true,
         altKey: true,
-        key: "b",
+        key: "b", // [b]orders
         func: toggleBordersVisualization
       },
       {
         ctrlKey: true,
         altKey: true,
-        key: "s",
+        key: "s", // [s]emantic
         func: toggleSemanticVisualization
       },
       {

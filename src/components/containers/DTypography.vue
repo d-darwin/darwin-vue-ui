@@ -3,7 +3,7 @@
     v-if="content"
     :is="tag"
     :class="{
-      [`__${fontSize}`]: fontSize
+      [`__${size}`]: size
     }"
     v-html="content"
     class="d-typography"
@@ -12,7 +12,7 @@
     v-else
     :is="tag"
     :class="{
-      [`__${fontSize}`]: fontSize
+      [`__${size}`]: size
     }"
     class="d-typography"
   >
@@ -23,7 +23,7 @@
 
 <script>
 /** mixins **/
-import fontSizeProp from "../../mixins/fontSizeProp";
+import typographySizeProp from "../../mixins/typographySizeProp";
 import linkClickRouting from "../../mixins/linkClickRouting";
 
 /**
@@ -37,7 +37,7 @@ import linkClickRouting from "../../mixins/linkClickRouting";
 export default {
   name: "DTypography",
 
-  mixins: [fontSizeProp, linkClickRouting],
+  mixins: [typographySizeProp, linkClickRouting],
 
   props: {
     /**

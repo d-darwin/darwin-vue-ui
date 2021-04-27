@@ -85,7 +85,7 @@ import useDownloadFile from "../../compositions/downloadFile";
 import DIconPaperclip from "../icons/DIconPaperclip";
 import DIconCloseCircle from "../icons/DIconCloseCircle";
 import DTypography from "../containers/DTypography";
-import DLink from "../atoms/DLink";
+import DLink from "./DLink";
 import DError from "./DError";
 
 /**

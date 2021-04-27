@@ -80,9 +80,9 @@ import DTypography from "../containers/DTypography";
 export default {
   name: "DTabs",
 
-  components: { DTypography },
-
   inheritAttrs: false,
+
+  components: { DTypography },
 
   props: {
     /**

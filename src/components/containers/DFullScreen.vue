@@ -1,12 +1,12 @@
 <template>
-  <div :id="id" :class="$attrs.class" class="d-full-screen">
+  <div :id="componentId" :class="$attrs.class" class="d-full-screen">
+    <!-- @slot The component content -->
     <slot />
 
     <DLink
       ref="request-full-screen-link"
       v-show="!isFullScreen"
       v-bind="{ ...linkProps, onClick: requestFullScreen }"
-      href="#"
       :style="linkStyle"
     >
       <DIconMaximize v-if="!$slots['icon-maximize']" />
@@ -23,18 +23,19 @@
 </template>
 
 <script>
-/** utils **/
-import uuid from "../../utils/uuid";
+/** compositions **/
+import useComponentId from "../../compositions/componentId";
 
 /** components **/
 import DIconMaximize from "../icons/DIconMaximize";
 import DLink from "../atoms/DLink";
 import DTypography from "../containers/DTypography";
+import useInputId from "@/compositions/componentId";
 
 /**
  * The component adds full screen mode to default slot content.
  *
- * @version 1.0.4
+ * @version 1.0.6
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -49,8 +50,8 @@ export default {
      * Defines component id.
      */
     id: {
-      type: String,
-      default: `d_full_screen_${uuid()}`
+      type: [String, Number],
+      default: ""
     },
 
     /**
@@ -92,6 +93,11 @@ export default {
       type: Object,
       default: () => {}
     }
+  },
+
+  setup(props) {
+    const { componentId } = useComponentId(props);
+    return { componentId };
   },
 
   data() {
@@ -149,7 +155,7 @@ export default {
 
   methods: {
     requestFullScreen() {
-      document.getElementById(this && this.id).requestFullscreen();
+      document.getElementById(this?.componentId).requestFullscreen();
     }
   }
 };
@@ -163,6 +169,8 @@ export default {
 }
 
 .d-link {
+  margin-top: var(--gap-base);
+
   > * + * {
     margin-left: var(--gap-base);
   }

@@ -17,7 +17,7 @@ import DTypography from "../containers/DTypography";
 /**
  * Helper component to unify error output of the control components.
  *
- * @version 1.0.2
+ * @version 1.0.4
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -31,10 +31,10 @@ export default {
 
   props: {
     /**
-     * If not empty renders as an error string.
+     * If not empty renders as an error HTML string.
      */
     text: {
-      type: String,
+      type: [String, Number],
       default: ""
     },
 
@@ -45,6 +45,8 @@ export default {
       type: String,
       default: "error"
     }
+
+    // TODO: allow to pass other DTypography props
   }
 };
 </script>

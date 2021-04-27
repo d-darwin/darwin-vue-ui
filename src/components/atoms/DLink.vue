@@ -2,15 +2,16 @@
   <component
     :is="el"
     :class="{
-      [`__${fontSize}`]: fontSize,
+      [`__${size}`]: size,
       [`__${type}`]: type,
       [`${$attrs.class}`]: $attrs.class
     }"
     v-bind="{ ...$props, ...$attrs, rel, target }"
     class="d-link"
   >
+    <DTypography v-if="!$slots.default" :content="content" :size="size" />
     <!-- @slot May contains a string or any content you want. -->
-    <slot name="default" />
+    <slot v-else />
 
     <template v-if="isExternalLink && !hideExternalLinkIcon">
       <DIconExternalLink v-if="!$slots['icon-external-link']" />
@@ -22,9 +23,10 @@
 
 <script>
 /** mixins **/
-import fontSizeProp from "../../mixins/fontSizeProp";
+import typographySizeProp from "../../mixins/typographySizeProp";
 
 /** components **/
+import DTypography from "../../components/containers/DTypography";
 import DIconExternalLink from "../../components/icons/DIconExternalLink";
 
 /**
@@ -33,7 +35,7 @@ import DIconExternalLink from "../../components/icons/DIconExternalLink";
  * they will be pass to the tag automatically.<br>
  * If <i>href</i> is a link to external resource, optional icon added to the left side of the default slot. You can turn off this behavior or pass your own icon.<br>
  *
- * @version 1.1.0
+ * @version 1.2.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -41,9 +43,10 @@ export default {
 
   inheritAttrs: false,
 
-  mixins: [fontSizeProp],
+  mixins: [typographySizeProp],
 
   components: {
+    DTypography,
     DIconExternalLink
   },
 
@@ -57,6 +60,14 @@ export default {
       default: "primary",
       validator: val =>
         ["primary", "secondary", "tertiary", "inverse", "danger"].includes(val)
+    },
+
+    /**
+     * If not empty renders as an error HTML string.
+     */
+    content: {
+      type: [String, Number],
+      default: ""
     },
 
     /**

@@ -43,6 +43,8 @@ export default {
       default: "div"
     },
 
+    // TODO: add configurable rows gap
+
     /**
      * Condensed grid hasn't gaps between columns.
      */

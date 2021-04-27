@@ -82,7 +82,7 @@ import useWindowSize from "./compositions/windowSize";
 import clickOutside from "./directives/click-outside";
 
 /** mixins **/
-import fontSizeProp from "./mixins/fontSizeProp";
+import fontSizeProp from "./mixins/typographySizeProp";
 import linkClickRouting from "./mixins/linkClickRouting";
 
 /** utils **/
