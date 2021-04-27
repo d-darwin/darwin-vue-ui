@@ -141,37 +141,31 @@ export default {
     },
 
     tagProps() {
-      if (this.aspectRatio) {
-        return {
-          "aspect-ratio": this.aspectRatio,
-          tag: "picture"
-        };
-      } else {
-        return null;
-      }
+      return this.aspectRatio
+        ? {
+            "aspect-ratio": this.aspectRatio,
+            tag: "picture"
+          }
+        : null;
     },
 
     alt() {
-      return this.$attrs.alt ? this.$attrs.alt : this.caption;
+      return this?.$attrs?.alt || this.caption;
     },
 
     hasSource() {
-      return (
-        this.sortedItems[0] &&
-        (this.sortedItems[0].src || this.sortedItems[0].srcset)
-      );
+      return this.sortedItems[0]?.src || this.sortedItems[0]?.srcset;
     },
 
     sortedItems() {
-      // Array.sort function mutates array itself
-      // so we need to clone it to avoid prop mutates
+      // Array.sort mutates array itself, so we need to clone source to avoid prop mutation
       const outPicture = JSON.parse(JSON.stringify(this.source));
       if (Array.isArray(outPicture)) {
         // Resort Array by min_width (higher is above)
         outPicture.sort(function(a, b) {
           return b.min_width - a.min_width;
         });
-        // if srcset is array of images prepare srcset string
+        // If srcset is array of images prepare srcset string
         outPicture.forEach(function(item, k) {
           if (Array.isArray(item.srcset)) {
             let srcset = "";
@@ -187,6 +181,7 @@ export default {
       } else if (typeof outPicture === "string") {
         return [{ min_width: 0, src: outPicture }];
       } else {
+        // fallback
         return this.source;
       }
       return outPicture;
