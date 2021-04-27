@@ -1,5 +1,6 @@
 <template>
   <teleport to="body">
+    <client-only></client-only>
     <transition :name="transitionName">
       <div v-show="isPanelShown" class="d-debug-visual">
         <DButton
@@ -47,11 +48,11 @@ import DIconSemantic from "../icons/DIconSemantic";
 import DButton from "../atoms/DButton";
 
 /**
- * This development component intents to help visualize grid columns, elements' borders and semantic tags.<br>
+ * This development component intents to help visualize grid columns, elements' borders and semantic tags.</br>
  * It renders independent grid visualization on <i>Ctrl + Alt + g</i>.<br>
  * It highlights all DOM elements with red borders on <i>Ctrl + Alt + b</i>.<br>
  * It highlights all semantic DOM elements with green background on <i>Ctrl + Alt + s</i>.<br>
- * Also you can toggle the component buttons panel on <i>Ctrl + Alt + d</i>.
+ * Also you can toggle the component buttons panel visibility on <i>Ctrl + Alt + d</i>.
  *
  * @version 1.3.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
@@ -78,28 +79,25 @@ export default {
 
     const isPanelShown = ref(true);
 
-    // TODO: All these functions are almost the same - share logic
-    const toggleGridVisualization = () => {
-      const body = document.getElementsByTagName("body")[0];
-      body.classList.toggle("__d-debug-grid");
-      isGridVisualizationShown.value = !isGridVisualizationShown.value;
+    // If SSR we haven't document object
+    const body = document?.getElementsByTagName("body")[0];
+
+    // just a helper
+    const toggleVisualization = (className, flagName) => {
+      body?.classList.toggle(className);
+      [flagName].value = ![flagName].value;
     };
 
-    const toggleBordersVisualization = () => {
-      const body = document.getElementsByTagName("body")[0];
-      body.classList.toggle("__d-debug-border");
-      isBordersVisualizationShown.value = !isBordersVisualizationShown.value;
-    };
+    const toggleGridVisualization = () =>
+      toggleVisualization("__d-debug-grid", "isGridVisualizationShown");
 
-    const toggleSemanticVisualization = () => {
-      const body = document.getElementsByTagName("body")[0];
-      body.classList.toggle("__d-debug-semantic");
-      isSemanticVisualizationShown.value = !isSemanticVisualizationShown.value;
-    };
+    const toggleBordersVisualization = () =>
+      toggleVisualization("__d-debug-border", "isBordersVisualizationShown");
 
-    const togglePanel = () => {
-      isPanelShown.value = !isPanelShown.value;
-    };
+    const toggleSemanticVisualization = () =>
+      toggleVisualization("__d-debug-semantic", "isSemanticVisualizationShown");
+
+    const togglePanel = () => (isPanelShown.value = !isPanelShown.value);
 
     useKeyboardListener([
       {
@@ -129,14 +127,14 @@ export default {
     ]);
 
     return {
-      toggleGridVisualization,
-      toggleBordersVisualization,
-      toggleSemanticVisualization,
-      togglePanel,
       isGridVisualizationShown,
       isBordersVisualizationShown,
       isSemanticVisualizationShown,
-      isPanelShown
+      isPanelShown,
+      toggleGridVisualization,
+      toggleBordersVisualization,
+      toggleSemanticVisualization,
+      togglePanel
     };
   }
 };
@@ -144,6 +142,8 @@ export default {
 
 <style lang="scss">
 @import "../../assets/styles/tokens/grid";
+@import "../../assets/styles/tokens/gaps";
+@import "../../assets/styles/tokens/colors";
 
 body {
   &.__d-debug-semantic {
@@ -198,6 +198,7 @@ body {
     width: calc(
       var(--grid-width) - var(--grid-offset) * 2 + var(--grid-gutter)
     );
+
     margin: 0
       calc(
         50% - var(--grid-width) / 2 + var(--grid-offset) - var(--grid-gutter) /
@@ -224,16 +225,14 @@ body {
 
 <style scoped lang="scss">
 @import "../../assets/styles/mixins/transitions";
-@import "../../assets/styles/tokens/gaps";
-@import "../../assets/styles/tokens/colors";
 @import "../../assets/styles/transitions/scale";
 
 .d-debug-visual {
   @include transition-short;
 
   color: var(--white);
-  bottom: $gap-3x;
-  left: $gap-3x;
+  bottom: var(--gap-3x);
+  left: var(--gap-3x);
   position: fixed;
   opacity: 0.2;
   z-index: 9999;
