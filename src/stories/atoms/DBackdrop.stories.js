@@ -2,7 +2,10 @@ import { DBackdrop } from "@";
 
 export default {
   title: "Atoms/Backdrop",
-  component: DBackdrop
+  component: DBackdrop,
+  argTypes: {
+    onClick: { action: "click" }
+  }
 };
 
 const Template = args => ({
@@ -10,7 +13,7 @@ const Template = args => ({
   setup() {
     return { args };
   },
-  template: "<DBackdrop />"
+  template: "<DBackdrop v-bind='args' />"
 });
 
 export const Default = Template.bind({});
