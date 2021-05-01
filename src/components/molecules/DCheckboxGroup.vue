@@ -64,6 +64,8 @@ export default {
       default: () => {}
     },
 
+    // TODO: add titleProps
+
     /**
      * Pass any style object to <i>.list</i> if needed.
      */
