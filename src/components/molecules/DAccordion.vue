@@ -41,6 +41,7 @@ export default {
      * List of props objects to pass to <b>DDetails</b> components.
      */
     itemList: {
+      // TODO: define type more accurate
       type: Array,
       default: () => []
     },
@@ -48,7 +49,7 @@ export default {
     /**
      * Set to true if only one <b>DDetails</b> component may be opened.
      */
-    isSingleOpened: {
+    isSolo: {
       type: Boolean,
       default: false
     },
@@ -87,7 +88,7 @@ export default {
 
   methods: {
     updateOpenHandler(e) {
-      if (this.isSingleOpened && e.open) {
+      if (this.isSolo && e.open) {
         // close all other items
         this.itemListProps = this.itemListProps.map(item => ({
           ...item,
