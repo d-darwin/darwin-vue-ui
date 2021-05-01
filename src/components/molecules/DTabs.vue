@@ -75,7 +75,7 @@ import DTypography from "../containers/DTypography";
  * The component renders tabs which may be customized by slots.<br>
  * Custom focus-visible presented.
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -184,9 +184,11 @@ export default {
   },
 
   data() {
+    const activeTabIndex = this?.itemList?.findIndex(
+      item => item.active && !item.disabled
+    );
     return {
-      selectedTabIndex:
-        this?.itemList?.findIndex(item => item.active && !item.disabled) || 0
+      selectedTabIndex: activeTabIndex !== -1 ? activeTabIndex : 0
     };
   },
 
