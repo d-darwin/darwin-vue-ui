@@ -83,7 +83,7 @@ export default {
   data() {
     return {
       itemListProps: this.itemList.map(item => ({
-        id: item?.id || this.componentId,
+        id: this.componentId,
         open: item.open || false,
         size: item.size || this.size,
         roundness: item.roundness || this.roundness

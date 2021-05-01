@@ -38,6 +38,7 @@
       </button>
     </div>
 
+    <!--TODO: add keep-alive-->
     <transition-group :name="transitionName">
       <template v-for="(tab, index) in itemList">
         <div
@@ -185,10 +186,7 @@ export default {
   data() {
     return {
       selectedTabIndex:
-        (this.itemList &&
-          this.itemList.length &&
-          this.itemList.findIndex(item => item.active && !item.disabled)) ||
-        0
+        this?.itemList?.findIndex(item => item.active && !item.disabled) || 0
     };
   },
 
