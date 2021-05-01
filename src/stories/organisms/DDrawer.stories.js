@@ -5,7 +5,8 @@ export default {
   component: DDrawer,
   argTypes: {
     isShown: {
-      control: { type: "boolean" }
+      control: { type: "boolean" },
+      defaultValue: true
     },
     position: {
       control: { type: "select", options: ["top", "right", "bottom", "left"] },
@@ -19,6 +20,8 @@ const Template = args => ({
   setup() {
     return { args };
   },
+  // TODO: add some demo content
+  // TODO: close on event
   template: '<DDrawer v-bind="args" />'
 });
 
