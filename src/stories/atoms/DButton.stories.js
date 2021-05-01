@@ -1,5 +1,8 @@
 import { DButton } from "@";
 
+import controlSize from "@/stories/helpers/controlSize";
+import controlRoundness from "@/stories/helpers/controlRoundness";
+
 export default {
   title: "Atoms/Button",
   component: DButton,
@@ -19,17 +22,12 @@ export default {
       },
       defaultValue: "primary"
     },
-    // TODO: move to some helpers or utils
-    size: {
-      control: { type: "select", options: ["large", "medium", "small"] },
-      defaultValue: "large"
-    },
-    // TODO: move to some helpers or utils
-    roundness: {
-      control: { type: "select", options: ["smooth", "rounded", "boxed"] },
-      defaultValue: "smooth"
-    },
+    size: controlSize,
+    roundness: controlRoundness,
     iconOnly: {
+      control: { type: "boolean" }
+    },
+    fullWidth: {
       control: { type: "boolean" }
     },
     error: {
@@ -38,8 +36,8 @@ export default {
     // Not declared as props
     disabled: {
       control: { type: "boolean" }
-    }
-    // onClick: {} // TODO
+    },
+    onClick: { action: "click" }
   }
 };
 

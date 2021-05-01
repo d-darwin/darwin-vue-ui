@@ -1,5 +1,8 @@
 <template>
-  <div :class="$attrs.class" class="d-button">
+  <div
+    :class="{ [$attrs.class]: $attrs.class, ['__full-width']: fullWidth }"
+    class="d-button"
+  >
     <component
       :is="el"
       v-bind="{ ...$props, ...$attrs }"
@@ -11,6 +14,7 @@
         __disabled: !!$attrs.disabled
       }"
       class="control-button"
+      @click="clickHandler"
     >
       <DTypography v-if="!$slots.default" :content="content" />
       <!-- @slot May contains a string, an icon or some combination of both. -->
@@ -22,6 +26,12 @@
 </template>
 
 <script>
+/** mixins **/
+import typographyContentProp from "../../mixins/typographyContentProp";
+import controlSizeProp from "../../mixins/controlSizeProp";
+import controlRoundnessProp from "../../mixins/controlRoundnessProp";
+
+/** components **/
 import DTypography from "../containers/DTypography";
 import DError from "./DError";
 
@@ -31,26 +41,21 @@ import DError from "./DError";
  * they will be pass to the tag automatically.<br>
  * May be in various sizes and have different corner roundness.
  *
- * @version 1.1.0
+ * @version 1.4.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
-  // TODO: add possibility to pass text as a prop
   name: "DButton",
 
   inheritAttrs: false,
 
+  mixins: [typographyContentProp, controlSizeProp, controlRoundnessProp],
+
   components: { DTypography, DError },
 
-  props: {
-    /**
-     * May contain any HTML string. Alternatively you can use default slot to place any HTML or components.
-     */
-    content: {
-      type: [String, Number],
-      default: ""
-    },
+  emits: ["click"],
 
+  props: {
     /**
      * Defines background and border colors of the component as well as :hover and :active behavior.<br>
      * Takes values: 'primary', 'secondary', 'alternative', 'inverse', 'danger', 'backgroundless'.
@@ -65,34 +70,22 @@ export default {
           "alternative",
           "inverse",
           "danger",
-          "backgroundless"
+          "backgroundless" // TODO: what about border ???
         ].includes(val)
     },
 
     /**
-     * Defines vertical size of the component.<br>
-     * Takes values: 'large', 'medium', 'small'.
-     */
-    size: {
-      type: String,
-      default: "large",
-      validator: val => ["large", "medium", "small"].includes(val)
-    },
-
-    /**
-     * Defines corner's roundness of the component.<br>
-     * Takes values: 'smooth', 'rounded', 'boxed'.
-     */
-    roundness: {
-      type: String,
-      default: "smooth",
-      validator: val => ["smooth", "rounded", "boxed"].includes(val)
-    },
-
-    /**
-     * Reduces horizontal padding of the components.
+     * Makes component equal height and width, removes padding and centers slot content.
      */
     iconOnly: {
+      type: Boolean,
+      default: false
+    },
+
+    /**
+     * Makes component take all the container's width.
+     */
+    fullWidth: {
       type: Boolean,
       default: false
     },
@@ -108,11 +101,23 @@ export default {
 
   computed: {
     el() {
-      return this.$attrs.to && this.$router
+      return this.$router && this.$attrs.to
         ? "router-link"
         : this.$attrs.href
         ? "a"
         : "button";
+    }
+  },
+
+  methods: {
+    clickHandler() {
+      /**
+       * Just emits click event without any payload.
+       *
+       * @event click
+       * @type {undefined}
+       */
+      this.$emit("click");
     }
   }
 };
@@ -130,6 +135,16 @@ export default {
 @import "../../assets/styles/mixins/typography";
 @import "../../assets/styles/mixins/transitions";
 @import "../../assets/styles/mixins/outline";
+
+.d-button {
+  &.__full-width {
+    width: 100%;
+  }
+
+  &:not(.__full-width) {
+    width: fit-content;
+  }
+}
 
 .control-group {
   position: relative;

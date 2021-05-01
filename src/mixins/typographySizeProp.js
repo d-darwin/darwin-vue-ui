@@ -1,3 +1,5 @@
+import typographySizeList from "../utils/typographySizeList";
+
 export default {
   props: {
     /**
@@ -8,18 +10,7 @@ export default {
     size: {
       type: String,
       default: "general",
-      validator: val =>
-        [
-          "small",
-          "general",
-          "longread",
-          "augmented",
-          "h5",
-          "h4",
-          "h3",
-          "h2",
-          "h1"
-        ].includes(val)
+      validator: val => typographySizeList.includes(val)
     }
   }
 };
