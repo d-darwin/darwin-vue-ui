@@ -10,7 +10,7 @@
     class="d-typography"
   />
   <component
-    v-if="$slots.default"
+    else
     :is="tag"
     :class="{
       [`${$attrs.class}`]: $attrs.class,
@@ -34,7 +34,7 @@ import linkClickRouting from "../../mixins/linkClickRouting";
  * You can use <i>content</i> prop or default slot to pass HTML string or other components.<br>
  * Handles content relative links clicks as routes.
  *
- * @version 1.0.4
+ * @version 1.0.5
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
