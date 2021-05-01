@@ -27,7 +27,7 @@ export default {
     iconOnly: {
       control: { type: "boolean" }
     },
-    fullWidth: {
+    isFullWidth: {
       control: { type: "boolean" }
     },
     error: {

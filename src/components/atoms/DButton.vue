@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="{ [$attrs.class]: $attrs.class, ['__full-width']: fullWidth }"
+    :class="{ [$attrs.class]: $attrs.class, ['__full-width']: isFullWidth }"
     class="d-button"
   >
     <component
@@ -85,7 +85,7 @@ export default {
     /**
      * Makes component take all the container's width.
      */
-    fullWidth: {
+    isFullWidth: {
       type: Boolean,
       default: false
     },
@@ -320,7 +320,7 @@ export default {
 
 .__backgroundless {
   transition: none;
-  color: var(--text-aux);
+  color: var(--color-text-aux);
   background: transparent;
   border-color: transparent;
 
@@ -330,7 +330,7 @@ export default {
   }
 
   &.__disabled {
-    color: var(--text-alt);
+    color: var(--color-text-alt);
   }
 }
 </style>
