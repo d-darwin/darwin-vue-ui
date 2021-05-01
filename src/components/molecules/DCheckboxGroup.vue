@@ -16,7 +16,7 @@
       />
     </div>
 
-    <DError :text="error" />
+    <DError :content="error" />
   </div>
 </template>
 
@@ -63,6 +63,8 @@ export default {
       type: Object,
       default: () => {}
     },
+
+    // TODO: add titleProps
 
     /**
      * Pass any style object to <i>.list</i> if needed.

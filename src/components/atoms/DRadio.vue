@@ -56,13 +56,13 @@
       <span class="outline" />
     </label>
 
-    <DError :text="error" />
+    <DError :content="error" />
   </div>
 </template>
 
 <script>
 /** compositions **/
-import useInputId from "../../compositions/componentId";
+import useComponentId from "../../compositions/componentId";
 
 /** components **/
 import DIconRadioUnchecked from "../icons/DIconRadioUnchecked";
@@ -171,7 +171,7 @@ export default {
   },
 
   setup(props) {
-    const { componentId } = useInputId(props);
+    const { componentId } = useComponentId(props);
     return { componentId };
   },
 

@@ -45,13 +45,13 @@
       <slot v-else name="icon-dropdown" />
     </div>
 
-    <DError :text="error" />
+    <DError :content="error" />
   </div>
 </template>
 
 <script>
 /** compositions **/
-import useInputId from "../../compositions/componentId";
+import useComponentId from "../../compositions/componentId";
 
 /** components **/
 import DIconDirection from "../icons/DIconDirection";
@@ -150,7 +150,7 @@ export default {
   },
 
   setup(props) {
-    const { componentId } = useInputId(props);
+    const { componentId } = useComponentId(props);
     return { componentId };
   },
 

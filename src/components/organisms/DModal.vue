@@ -5,6 +5,7 @@
     </transition>
 
     <transition :name="transitionName">
+      <!--TODO: use native dialog tag if the browser supports one-->
       <div
         v-if="isShown"
         :class="$attrs.class"
@@ -118,11 +119,43 @@ export default {
   props: {
     /**
      * Use this prop instead of v-if or v-show to animate the component appearance.
-     * TODO: use backdrop technique
+     * TODO: use DDrawer backdrop technique
      */
     isShown: {
       type: Boolean,
       default: true
+    },
+
+    /**
+     * Heading of the modal. Passed as content of <b>DTypography</b> so may contain string or any HTML.
+     */
+    heading: {
+      type: String,
+      default: ""
+    },
+
+    /**
+     * Text of the modal. Passed as content of <b>DTypography</b> so may contain string or any HTML.
+     */
+    content: {
+      type: String,
+      default: ""
+    },
+
+    /**
+     * Text of the cancel button. Passed as content of <b>DTypography</b> so may contain string or any HTML.
+     */
+    cancelButtonContent: {
+      type: String,
+      default: "Cancel"
+    },
+
+    /**
+     * Text of the accept button. Passed as content of <b>DTypography</b> so may contain string or any HTML.
+     */
+    acceptButtonContent: {
+      type: String,
+      default: "Accept"
     },
 
     /**
@@ -150,14 +183,6 @@ export default {
     },
 
     /**
-     * Heading of the modal. Passed as content of <b>DTypography</b> so may contain string or any HTML.
-     */
-    heading: {
-      type: String,
-      default: ""
-    },
-
-    /**
      * Pass any <b>DTypography</b> props if needed.
      */
     headingProps: {
@@ -174,16 +199,9 @@ export default {
     },
 
     /**
-     * Text of the modal. Passed as content of <b>DTypography</b> so may contain string or any HTML.
-     */
-    content: {
-      type: String,
-      default: ""
-    },
-
-    /**
      * Pass any <b>DTypography</b> props if needed.
      */
+    // TODO: pack all props/styles of such kind into one object ???
     contentProps: {
       type: Object,
       default: () => {}
@@ -206,14 +224,6 @@ export default {
     },
 
     /**
-     * Text of the cancel button. Passed as content of <b>DTypography</b> so may contain string or any HTML.
-     */
-    cancelButtonContent: {
-      type: String,
-      default: "Cancel"
-    },
-
-    /**
      * Pass any <b>DButton</b> props if needed.
      */
     cancelButtonProps: {
@@ -227,14 +237,6 @@ export default {
     cancelButtonStyle: {
       type: Object,
       default: () => {}
-    },
-
-    /**
-     * Text of the accept button. Passed as content of <b>DTypography</b> so may contain string or any HTML.
-     */
-    acceptButtonContent: {
-      type: String,
-      default: "Accept"
     },
 
     /**

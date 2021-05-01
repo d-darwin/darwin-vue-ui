@@ -30,7 +30,6 @@ import useComponentId from "../../compositions/componentId";
 import DIconMaximize from "../icons/DIconMaximize";
 import DLink from "../atoms/DLink";
 import DTypography from "../containers/DTypography";
-import useInputId from "@/compositions/componentId";
 
 /**
  * The component adds full screen mode to default slot content.

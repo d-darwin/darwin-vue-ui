@@ -7,7 +7,7 @@
 
 ## What is it?
 
-It's lightweight and performant UI Library for Vue 3.
+It's lightweight and flexible UI Library for Vue 3.
 
 🚧 DISCLAIMER: Under construction. Not even close to alpha. So please, don't use in production.
 
@@ -94,7 +94,7 @@ And finally, development components simplify development process.
 
 #### Atoms
 
-- **DBackdrop**. Renders a simple backdrop. Used in pair with closable components.    
+- **DBackdrop**. Renders a simple backdrop. Used in pair with closable components.  
   More details: '@dariwn-studio/ui-vue/src/components/atoms/DButton.vue'.
 - **DButton**. Renders a button of various appearance and behavior.  
   More details: '@dariwn-studio/ui-vue/src/components/atoms/DButton.vue'.

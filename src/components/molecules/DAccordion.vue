@@ -19,8 +19,8 @@
 </template>
 
 <script>
-/** utils **/
-import uuid from "../../utils/uuid";
+/** compositions **/
+import useComponentId from "../../compositions/componentId";
 
 /** components **/
 import DDetails from "../atoms/DDetails";
@@ -28,7 +28,7 @@ import DDetails from "../atoms/DDetails";
 /**
  * Render an accordion using <b>DDetails</b> components.
  *
- * @version 1.1.0
+ * @version 1.1.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -41,6 +41,7 @@ export default {
      * List of props objects to pass to <b>DDetails</b> components.
      */
     itemList: {
+      // TODO: define type more accurate
       type: Array,
       default: () => []
     },
@@ -48,7 +49,7 @@ export default {
     /**
      * Set to true if only one <b>DDetails</b> component may be opened.
      */
-    isSingleOpened: {
+    isSolo: {
       type: Boolean,
       default: false
     },
@@ -74,10 +75,15 @@ export default {
     }
   },
 
+  setup(props) {
+    const { componentId } = useComponentId(props);
+    return { componentId };
+  },
+
   data() {
     return {
       itemListProps: this.itemList.map(item => ({
-        id: item.id ? item.id : uuid(),
+        id: this.componentId,
         open: item.open || false,
         size: item.size || this.size,
         roundness: item.roundness || this.roundness
@@ -87,7 +93,7 @@ export default {
 
   methods: {
     updateOpenHandler(e) {
-      if (this.isSingleOpened && e.open) {
+      if (this.isSolo && e.open) {
         // close all other items
         this.itemListProps = this.itemListProps.map(item => ({
           ...item,

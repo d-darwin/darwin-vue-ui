@@ -141,7 +141,7 @@ export default {
 @import "../../assets/styles/tokens/colors";
 @import "../../assets/styles/tokens/gaps";
 @import "../../assets/styles/tokens/controls";
-// TODO: how to not use it here
+// TODO: how not to use it here
 @import "../../assets/styles/tokens/shadows";
 </style>
 

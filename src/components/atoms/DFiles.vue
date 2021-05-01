@@ -20,7 +20,7 @@
       </label>
     </DLink>
 
-    <DError :text="error" />
+    <DError :content="error" />
 
     <transition-group
       :style="listStyle"
@@ -78,7 +78,7 @@
 import transitionsTokens from "../../assets/styles/tokens/_transitions.scss";
 
 /** compositions **/
-import useInputId from "../../compositions/componentId";
+import useComponentId from "../../compositions/componentId";
 import useDownloadFile from "../../compositions/downloadFile";
 
 /** components **/
@@ -172,7 +172,7 @@ export default {
   },
 
   setup(props) {
-    const { componentId } = useInputId(props);
+    const { componentId } = useComponentId(props);
     const { downloadFile } = useDownloadFile();
 
     return { componentId, downloadFile };

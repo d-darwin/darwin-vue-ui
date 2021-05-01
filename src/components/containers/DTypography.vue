@@ -3,15 +3,17 @@
     v-if="content"
     :is="tag"
     :class="{
+      [`${$attrs.class}`]: $attrs.class,
       [`__${size}`]: size
     }"
     v-html="content"
     class="d-typography"
   />
   <component
-    v-if="$slots.default"
+    else
     :is="tag"
     :class="{
+      [`${$attrs.class}`]: $attrs.class,
       [`__${size}`]: size
     }"
     class="d-typography"
@@ -32,11 +34,13 @@ import linkClickRouting from "../../mixins/linkClickRouting";
  * You can use <i>content</i> prop or default slot to pass HTML string or other components.<br>
  * Handles content relative links clicks as routes.
  *
- * @version 1.0.3
+ * @version 1.0.5
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
   name: "DTypography",
+
+  inheritAttrs: false,
 
   mixins: [typographySizeProp, linkClickRouting],
 
@@ -86,7 +90,7 @@ export default {
 @include typography-sizes;
 
 .d-typography {
-  color: currentColor;
+  // color: currentColor; // TODO: do we really need this?
 }
 
 .d-typography > *,
