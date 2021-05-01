@@ -11,7 +11,7 @@
       <DRadio
         v-for="(item, index) in itemList"
         :key="index"
-        v-bind="{ ...item, name, type }"
+        v-bind="{ ...item, name: name || componentId, type }"
         @update:value="emitChange(index, $event)"
       />
     </div>
@@ -21,8 +21,8 @@
 </template>
 
 <script>
-/** utils **/
-import uuid from "../../utils/uuid";
+/** compositions **/
+import useComponentId from "../../compositions/componentId";
 
 /** components **/
 import DTypography from "../containers/DTypography";
@@ -76,7 +76,7 @@ export default {
      */
     name: {
       type: String,
-      default: `radio_group_${uuid()}`
+      default: ""
     },
 
     /**
@@ -100,6 +100,11 @@ export default {
       type: String,
       default: ""
     }
+  },
+
+  setup(props) {
+    const { componentId } = useComponentId(props);
+    return { componentId };
   },
 
   methods: {

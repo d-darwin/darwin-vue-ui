@@ -19,8 +19,8 @@
 </template>
 
 <script>
-/** utils **/
-import uuid from "../../utils/uuid";
+/** compositions **/
+import useComponentId from "../../compositions/componentId";
 
 /** components **/
 import DDetails from "../atoms/DDetails";
@@ -28,7 +28,7 @@ import DDetails from "../atoms/DDetails";
 /**
  * Render an accordion using <b>DDetails</b> components.
  *
- * @version 1.1.0
+ * @version 1.1.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -75,10 +75,15 @@ export default {
     }
   },
 
+  setup(props) {
+    const { componentId } = useComponentId(props);
+    return { componentId };
+  },
+
   data() {
     return {
       itemListProps: this.itemList.map(item => ({
-        id: item.id ? item.id : uuid(),
+        id: item?.id || this.componentId,
         open: item.open || false,
         size: item.size || this.size,
         roundness: item.roundness || this.roundness
