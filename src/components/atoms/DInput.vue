@@ -53,7 +53,7 @@
       <div class="outline" />
     </div>
 
-    <DError :text="error" />
+    <DError :content="error" />
   </div>
 </template>
 

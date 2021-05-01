@@ -20,7 +20,7 @@
       </label>
     </DLink>
 
-    <DError :text="error" />
+    <DError :content="error" />
 
     <transition-group
       :style="listStyle"

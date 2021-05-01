@@ -56,7 +56,7 @@
       <span class="outline" />
     </label>
 
-    <DError :text="error" />
+    <DError :content="error" />
   </div>
 </template>
 

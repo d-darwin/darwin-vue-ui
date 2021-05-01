@@ -6,7 +6,7 @@ export default {
   component: DError,
   argTypes: {
     // TODO: rename to content ???
-    text: {
+    content: {
       control: { type: "text" },
       defaultValue: "Some error <strong>HTML</strong> string"
     }

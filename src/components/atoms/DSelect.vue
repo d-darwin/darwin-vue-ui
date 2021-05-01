@@ -45,7 +45,7 @@
       <slot v-else name="icon-dropdown" />
     </div>
 
-    <DError :text="error" />
+    <DError :content="error" />
   </div>
 </template>
 
