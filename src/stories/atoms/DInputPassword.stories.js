@@ -34,7 +34,7 @@ export default {
     },
     onUpdateValue: { action: "update:value" },
     onSubmit: { action: "submit" },
-    onVisibilityChange: { acton: "visibility-change" }
+    onUpdateVisibility: { acton: "update:visibility" }
   }
 };
 
@@ -43,8 +43,13 @@ const Template = args => ({
   setup() {
     return { args };
   },
-  template:
-    '<DInputPassword v-bind="args" @update:value="args.onUpdateValue" />'
+  template: `
+    <DInputPassword
+      v-bind="args"
+      @update:value="args.onUpdateValue"
+      @update:visibility="args.onUpdateVisibility"
+    />
+  `
 });
 
 export const Large = Template.bind({});
