@@ -8,7 +8,9 @@
   >
     <DLink
       :href="!!$attrs.disabled ? null : '#'"
+      :disabled="!!$attrs.disabled"
       type="secondary"
+      class="d-link"
       @click.prevent="$refs.input.click()"
     >
       <label :for="componentId" :style="labelStyle" class="label">
@@ -240,6 +242,10 @@ export default {
     .d-link {
       cursor: not-allowed;
       color: var(--color-primary-disabled);
+    }
+
+    .label {
+      cursor: not-allowed;
     }
   }
 }

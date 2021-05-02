@@ -3,8 +3,7 @@
     :is="el"
     :class="{
       [`__${size}`]: size,
-      [`__${type}`]: type,
-      [`${$attrs.class}`]: $attrs.class
+      [`__${type}`]: type
     }"
     v-bind="{ ...$attrs, rel, target }"
     class="d-link"
@@ -132,8 +131,15 @@ export default {
   width: auto;
   display: inline-flex;
   align-items: center;
-  cursor: pointer;
   position: relative;
+
+  &:not([disabled]) {
+    cursor: pointer;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
 
   outline: none;
 
