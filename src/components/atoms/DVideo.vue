@@ -201,8 +201,8 @@ export default {
       /**
        * Video src was loaded.
        *
-       * @event copied
-       * @type {string}
+       * @event loaded
+       * @type {boolean}
        */
       this.$emit("loaded", value);
     }
