@@ -1,25 +1,28 @@
 import { DDetails } from "@";
 
+import controlSizeList from "@/utils/controlSizeList";
+import controlRoundnessList from "@/utils/controlRoundnessList";
+
 export default {
   title: "Atoms/Details",
   component: DDetails,
   argTypes: {
     open: { control: { type: "boolean" } },
+    // TODO: storybook cannot understand the difference between slots and props with the same names
     summary: { control: { type: "text" }, defaultValue: "Summary" },
     content: {
       control: { type: "text" },
-      defaultValue: "Details * Details * Details *"
+      defaultValue: "TODO: Details * Details * Details *"
     },
-    // TODO: move to some helpers or utils
     size: {
-      control: { type: "select", options: ["large", "medium", "small"] },
-      defaultValue: "large"
+      control: { type: "select", options: controlSizeList },
+      defaultValue: "medium"
     },
-    // TODO: move to some helpers or utils
     roundness: {
-      control: { type: "select", options: ["smooth", "rounded", "boxed"] },
-      defaultValue: "smooth"
-    }
+      control: { type: "select", options: controlRoundnessList },
+      defaultValue: "rounded"
+    },
+    onUpdateOpen: { action: "update:open" }
   }
 };
 
@@ -28,7 +31,7 @@ const Template = args => ({
   setup() {
     return { args };
   },
-  template: '<DDetails v-bind="args" />'
+  template: '<DDetails v-bind="args" @update:open="args.onUpdateOpen" />'
 });
 
 export const Large = Template.bind({});

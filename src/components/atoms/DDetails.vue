@@ -33,7 +33,7 @@
         <!-- @slot You can use custom icon after summary -->
         <slot v-else name="icon-after" />
       </template>
-      <!-- @slot You can use custom summary content, not just a string -->
+      <!-- @slot You can use custom summary content instead of summary prop -->
       <slot v-else name="summary" />
     </summary>
 
@@ -57,6 +57,11 @@
 /** design tokens **/
 import transitionTokens from "../../assets/styles/tokens/_transitions.scss";
 
+/** mixins **/
+import typographyContentProp from "../../mixins/typographyContentProp";
+import controlSizeProp from "../../mixins/controlSizeProp";
+import controlRoundnessProp from "../../mixins/controlRoundnessProp";
+
 /** compositions **/
 import useComponentId from "../../compositions/componentId";
 
@@ -69,13 +74,15 @@ import DIconDirection from "../icons/DIconDirection";
  * Custom focus-visible, icon and slots for summary and details content are presented.<br>
  * May be in various sizes and have different corner roundness.
  *
- * @version 1.0.3
+ * @version 1.1.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
   name: "DDetails",
 
   inheritAttrs: false,
+
+  mixins: [typographyContentProp, controlSizeProp, controlRoundnessProp],
 
   components: { DIconDirection, DTypography },
 
@@ -85,6 +92,7 @@ export default {
      * If you don't want to specify it, it will be generated automatically.
      */
     id: {
+      // TODO: make shared /mixins/componentsIdProp ???
       type: [String, Number],
       default: ""
     },
@@ -101,36 +109,9 @@ export default {
      * Content of the <b>summary</b> tag. It uses <b>DTypography</b> so any HTML string may be passed.
      */
     summary: {
+      // TODO: how to reuse typographyContentProp without mixins factory usage ???
       type: [String, Number],
       default: ""
-    },
-
-    /**
-     * Content of the <b>details</b> tag. It uses <b>DTypography</b> so any HTML string may be passed.
-     */
-    content: {
-      type: [String, Number],
-      default: ""
-    },
-
-    /**
-     * Defines vertical size of the component summary.<br>
-     * Takes values: 'large', 'medium', 'small'.
-     */
-    size: {
-      type: String,
-      default: "large",
-      validator: val => ["large", "medium", "small"].includes(val)
-    },
-
-    /**
-     * Defines corner's roundness of the component.<br>
-     * Takes values: 'smooth', 'rounded', 'boxed'.
-     */
-    roundness: {
-      type: String,
-      default: "rounded",
-      validator: val => ["smooth", "rounded", "boxed"].includes(val)
     },
 
     /**
