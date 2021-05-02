@@ -164,6 +164,7 @@ export {
 };
 
 export const compositions = {
+  // TODO: add all compositions
   useBlockBodyScroll,
   useClosable,
   useComponentId,
@@ -175,10 +176,12 @@ export const compositions = {
 };
 
 export const directives = {
+  // TODO: add all directives
   clickOutside
 };
 
 export const mixins = {
+  // TODO: add all mixins
   fontSizeProp,
   linkClickRouting
 };

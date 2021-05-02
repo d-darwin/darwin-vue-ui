@@ -5,8 +5,8 @@ export default {
   title: "Atoms/ButtonScrollTop",
   component: DButtonScrollTop,
   argTypes: {
-    scrollOffset: { control: { type: "number" }, defaultValue: 400 }
-    // TODO: add click emit
+    scrollOffset: { control: { type: "number" }, defaultValue: 400 },
+    onClick: { action: "click" }
   }
 };
 
