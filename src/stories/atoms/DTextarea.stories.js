@@ -1,22 +1,24 @@
 import { DTextarea } from "@";
 
+import controlSizeList from "@/utils/controlSizeList";
+import controlRoundnessList from "@/utils/controlRoundnessList";
+
 export default {
-  title: "Atoms/TextArea",
+  title: "Atoms/Textarea",
   component: DTextarea,
   argTypes: {
-    // TODO: share with other components
     size: {
-      control: { type: "select", options: ["large", "medium"] },
+      control: { type: "select", options: controlSizeList },
       defaultValue: "large"
     },
-    // TODO: move to some helpers or utils
     roundness: {
-      control: { type: "select", options: ["smooth", "rounded", "boxed"] },
+      control: { type: "select", options: controlRoundnessList },
       defaultValue: "smooth"
     },
     label: { control: { type: "text" }, defaultValue: "Textarea" },
     borderless: { control: { type: "boolean" } },
-    error: { control: { type: "text" } }
+    error: { control: { type: "text" } },
+    onUpdateValue: { actions: "update:value" }
   }
 };
 
@@ -25,7 +27,14 @@ const Template = args => ({
   setup() {
     return { args };
   },
-  template: '<DTextarea v-bind="args" />'
+  template: '<DTextarea v-bind="args" @update:value="args.onUpdateValue" />'
 });
 
-export const Default = Template.bind({});
+export const Large = Template.bind({});
+Large.args = { size: "large" };
+
+export const Medium = Template.bind({});
+Medium.args = { size: "medium" };
+
+export const Small = Template.bind({});
+Small.args = { size: "small" };

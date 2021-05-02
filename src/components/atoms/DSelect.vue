@@ -298,7 +298,7 @@ export default {
 
   &.__smooth {
     .label {
-      padding-left: 12px;
+      padding-left: 10px;
     }
   }
 }
