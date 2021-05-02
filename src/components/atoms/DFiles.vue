@@ -97,7 +97,7 @@ import DError from "./DError";
  * they will be pass to the tag automatically.<br>
  * While submitted uploadedFiles array need to be processed with FormData().
  *
- * @version 1.0.4
+ * @version 1.1.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 
@@ -114,12 +114,15 @@ export default {
     DIconCloseCircle
   },
 
+  emits: ["changed"],
+
   props: {
     /**
      * Defines <i>id</i> attr of the <b>input</b> tag.<br>
      * If you don't want to specify it, it will be generated automatically.
      */
     id: {
+      // TODO: move to mixins/componentId ???
       type: [String, Number],
       default: ""
     },
@@ -128,6 +131,7 @@ export default {
      * Defines content of the <b>label</b> tag.
      */
     label: {
+      // TODO: how to reuse typographyContentProp ???
       type: String,
       default: ""
     },
@@ -186,27 +190,22 @@ export default {
     };
   },
 
-  watch: {
-    uploadedFiles() {
-      /**
-       * File list was changed. Payload contains files array to be uploaded and component id.
-       *
-       * @event changed
-       * @type {Array, String}
-       */
-      this.$emit("changed", this.uploadedFiles, this.componentId);
-    }
-  },
-
   methods: {
     addToList(event) {
+      let isChanged = false;
       for (let i = 0; i < event.target.files.length; i++) {
         const newFile = event.target.files[i];
         if (!this.uploadedFiles.find(f => f.name === newFile.name)) {
+          isChanged = true;
           // the old one file with the same name stays at uploadedFiles
           this.uploadedFiles.push(event.target.files[i]);
         }
       }
+
+      if (isChanged) {
+        this.emitChanged();
+      }
+
       // Input is used only to collect uploadedFiles array
       // This array is needed to be processed via FormData() while uploading
       this.$refs.form.reset();
@@ -215,6 +214,7 @@ export default {
     removeFromList(index) {
       if (!this.disabled) {
         this.uploadedFiles.splice(index, 1);
+        this.emitChanged();
       }
     },
 
@@ -222,6 +222,19 @@ export default {
       // Used to delay item animation
       const delay = parseInt(transitionsTokens["transition-delay-short"]);
       return index * delay + "ms";
+    },
+
+    emitChanged() {
+      /**
+       * File list was changed. Payload contains files array to be uploaded and component id.
+       *
+       * @event changed
+       * @type {{Array, String}}
+       */
+      this.$emit("changed", {
+        files: this.uploadedFiles,
+        id: this.componentId
+      });
     }
   }
 };

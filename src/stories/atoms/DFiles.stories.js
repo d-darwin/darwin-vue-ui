@@ -7,7 +7,8 @@ export default {
     multiple: { control: { type: "boolean" } },
     disabled: { control: { type: "boolean" } },
     label: { control: { type: "text" }, defaultValue: "Upload file(s)" },
-    error: { control: { type: "text" } }
+    error: { control: { type: "text" } },
+    onChanged: { action: "changed" }
   }
 };
 
