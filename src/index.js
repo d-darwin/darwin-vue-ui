@@ -184,9 +184,9 @@ export const mixins = {
 };
 
 export const utils = {
+  // TODO: add all utils
   copyToClipboard,
   debounce,
-  scrollToTop,
   throttle,
   uuid,
   warn

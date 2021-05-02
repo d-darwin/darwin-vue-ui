@@ -24,6 +24,7 @@
 <script>
 /** mixins **/
 import typographySizeProp from "../../mixins/typographySizeProp";
+import hasRouter from "../../mixins/hasRouter";
 
 /** components **/
 import DTypography from "../../components/containers/DTypography";
@@ -35,7 +36,7 @@ import DIconExternalLink from "../../components/icons/DIconExternalLink";
  * they will be pass to the tag automatically.<br>
  * If <i>href</i> is a link to external resource, optional icon added to the left side of the default slot. You can turn off this behavior or pass your own icon.<br>
  *
- * @version 1.2.2
+ * @version 1.3.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -43,7 +44,7 @@ export default {
 
   inheritAttrs: false,
 
-  mixins: [typographySizeProp],
+  mixins: [typographySizeProp, hasRouter],
 
   components: {
     DTypography,
@@ -81,14 +82,13 @@ export default {
 
   computed: {
     el() {
-      return this.$router && this.$attrs.to ? "router-link" : "a";
+      return this.hasRouter && this.$attrs.to ? "router-link" : "a";
     },
 
     isExternalLink() {
       return (
-        this.$attrs.href &&
-        (this.$attrs.href.substring(0, 4) === "http" ||
-          this.$attrs.href.substring(0, 2) === "//")
+        this.$attrs?.href?.substring(0, 4) === "http" ||
+        this.$attrs?.href?.substring(0, 2) === "//"
       );
     },
 

@@ -30,6 +30,7 @@
 import typographyContentProp from "../../mixins/typographyContentProp";
 import controlSizeProp from "../../mixins/controlSizeProp";
 import controlRoundnessProp from "../../mixins/controlRoundnessProp";
+import hasRouter from "../../mixins/hasRouter";
 
 /** components **/
 import DTypography from "../containers/DTypography";
@@ -41,7 +42,7 @@ import DError from "./DError";
  * they will be pass to the tag automatically.<br>
  * May be in various sizes and have different corner roundness.
  *
- * @version 1.4.2
+ * @version 1.5.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -49,7 +50,12 @@ export default {
 
   inheritAttrs: false,
 
-  mixins: [typographyContentProp, controlSizeProp, controlRoundnessProp],
+  mixins: [
+    typographyContentProp,
+    controlSizeProp,
+    controlRoundnessProp,
+    hasRouter
+  ],
 
   components: { DTypography, DError },
 
@@ -107,10 +113,6 @@ export default {
         ? "a"
         : "button";
     }
-  },
-
-  created() {
-    this.hasRouter = !!this.$router;
   },
 
   methods: {
