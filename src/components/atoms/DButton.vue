@@ -1,11 +1,11 @@
 <template>
   <div
-    :class="{ [$attrs.class]: $attrs.class, ['__full-width']: fullWidth }"
+    :class="{ [$attrs.class]: $attrs.class, ['__full-width']: isFullWidth }"
     class="d-button"
   >
     <component
       :is="el"
-      v-bind="{ ...$props, ...$attrs }"
+      v-bind="$attrs"
       :class="{
         [`__${type}`]: type,
         [`__${size}`]: size,
@@ -28,8 +28,10 @@
 <script>
 /** mixins **/
 import typographyContentProp from "../../mixins/typographyContentProp";
+import controlTypeProp from "../../mixins/controlTypeProp";
 import controlSizeProp from "../../mixins/controlSizeProp";
 import controlRoundnessProp from "../../mixins/controlRoundnessProp";
+import hasRouter from "../../mixins/hasRouter";
 
 /** components **/
 import DTypography from "../containers/DTypography";
@@ -41,7 +43,7 @@ import DError from "./DError";
  * they will be pass to the tag automatically.<br>
  * May be in various sizes and have different corner roundness.
  *
- * @version 1.4.2
+ * @version 1.6.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -49,31 +51,19 @@ export default {
 
   inheritAttrs: false,
 
-  mixins: [typographyContentProp, controlSizeProp, controlRoundnessProp],
+  mixins: [
+    typographyContentProp,
+    controlTypeProp,
+    controlSizeProp,
+    controlRoundnessProp,
+    hasRouter
+  ],
 
   components: { DTypography, DError },
 
   emits: ["click"],
 
   props: {
-    /**
-     * Defines background and border colors of the component as well as :hover and :active behavior.<br>
-     * Takes values: 'primary', 'secondary', 'alternative', 'inverse', 'danger', 'backgroundless'.
-     */
-    type: {
-      type: String,
-      default: "primary",
-      validator: val =>
-        [
-          "primary",
-          "secondary",
-          "alternative",
-          "inverse",
-          "danger",
-          "backgroundless" // TODO: what about border ???
-        ].includes(val)
-    },
-
     /**
      * Makes component equal height and width, removes padding and centers slot content.
      */
@@ -85,7 +75,7 @@ export default {
     /**
      * Makes component take all the container's width.
      */
-    fullWidth: {
+    isFullWidth: {
       type: Boolean,
       default: false
     },
@@ -101,7 +91,7 @@ export default {
 
   computed: {
     el() {
-      return this.$router && this.$attrs.to
+      return this.hasRouter && this.$attrs.to
         ? "router-link"
         : this.$attrs.href
         ? "a"
@@ -315,22 +305,6 @@ export default {
   &.__disabled {
     background: var(--color-danger-disabled);
     border-color: var(--color-danger-disabled);
-  }
-}
-
-.__backgroundless {
-  transition: none;
-  color: var(--text-aux);
-  background: transparent;
-  border-color: transparent;
-
-  &:not(.__disabled):hover,
-  &:not(.__disabled):active {
-    opacity: 0.8;
-  }
-
-  &.__disabled {
-    color: var(--text-alt);
   }
 }
 </style>

@@ -45,17 +45,21 @@
 </template>
 
 <script>
+/** mixins **/
+import aspectRatioProp from "../../mixins/aspectRatioProp";
+
+/** components **/
 import DLoader from "./DLoader";
 import DIconImage from "../icons/DIconImage";
 import DTypography from "../containers/DTypography";
 import DAspectRatio from "../containers/DAspectRatio";
 
 /**
- * The component renders <b>picture</> tag according to Responsive Image principle.<br>
+ * The component renders <b>picture</b> tag according to the Responsive Image Principle.<br>
  *  Supports plain string image asset or an array of image assets for different screen width and pixel density.<br>
  *  Also supports lazy loading with <b>DLoader</b> placeholder, aspect-ration and renders <b>DIconImage</b> icon if <i>source</i> prop is empty.
  *
- * @version 1.3.4
+ * @version 1.5.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -63,7 +67,11 @@ export default {
 
   inheritAttrs: false,
 
+  mixins: [aspectRatioProp],
+
   components: { DTypography, DLoader, DIconImage, DAspectRatio },
+
+  emits: ["loaded"],
 
   props: {
     /**
@@ -90,16 +98,6 @@ export default {
      * The picture caption. Also used as <i>alt</i> and <i>title</> attrs if they aren't presented.
      */
     caption: {
-      type: String,
-      default: ""
-    },
-
-    /**
-     * Aspect ratio of the picture.
-     * Expected format: 'height:width'.
-     */
-    aspectRatio: {
-      // TODO: specify more accurate type ???
       type: String,
       default: ""
     },
@@ -185,6 +183,18 @@ export default {
         return this.source;
       }
       return outPicture;
+    }
+  },
+
+  watch: {
+    isLoaded(value) {
+      /**
+       * Image src was loaded.
+       *
+       * @event loaded
+       * @type {boolean}
+       */
+      this.$emit("loaded", value);
     }
   },
 

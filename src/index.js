@@ -76,6 +76,7 @@ import useComponentId from "./compositions/componentId";
 import useDownloadFile from "./compositions/downloadFile";
 import useKeyboardListener from "./compositions/keyboardListener";
 import useScrollOffset from "./compositions/scrollOffset";
+import useScrollToTop from "./compositions/scrollToTop";
 import useWindowSize from "./compositions/windowSize";
 
 /** directives **/
@@ -88,7 +89,6 @@ import linkClickRouting from "./mixins/linkClickRouting";
 /** utils **/
 import copyToClipboard from "./utils/copyToClipboard";
 import debounce from "./utils/debounce";
-import scrollToTop from "./utils/scrollToTop";
 import throttle from "./utils/throttle";
 import uuid from "./utils/uuid";
 import warn from "./utils/consoleWarn";
@@ -164,28 +164,32 @@ export {
 };
 
 export const compositions = {
+  // TODO: add all compositions
   useBlockBodyScroll,
   useClosable,
   useComponentId,
   useDownloadFile,
   useKeyboardListener,
   useScrollOffset,
+  useScrollToTop,
   useWindowSize
 };
 
 export const directives = {
+  // TODO: add all directives
   clickOutside
 };
 
 export const mixins = {
+  // TODO: add all mixins
   fontSizeProp,
   linkClickRouting
 };
 
 export const utils = {
+  // TODO: add all utils
   copyToClipboard,
   debounce,
-  scrollToTop,
   throttle,
   uuid,
   warn

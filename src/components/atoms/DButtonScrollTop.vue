@@ -6,7 +6,7 @@
         v-bind="{
           'icon-only': true,
           ...buttonProps,
-          onClick: scrollToTop
+          onClick: clickHandler
         }"
         :style="buttonStyle"
         class="d-button-scroll-top"
@@ -23,10 +23,8 @@
 /** core **/
 import { ref, watch } from "vue";
 
-/** utils **/
-import scrollToTop from "../../utils/scrollToTop";
-
 /** compositions **/
+import useScrollToTop from "../../compositions/scrollToTop";
 import useScrollOffset from "../../compositions/scrollOffset";
 
 /** components **/
@@ -37,7 +35,7 @@ import DButton from "./DButton";
  * The component implements scroll to the top of the page button.<br>
  * It appears when user scroll page to the <i>scrollOffset</i>.
  *
- * @version 1.0.3
+ * @version 1.1.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -46,6 +44,8 @@ export default {
   inheritAttrs: false,
 
   components: { DIconArrow, DButton },
+
+  emits: ["click"],
 
   props: {
     /**
@@ -86,20 +86,31 @@ export default {
   setup(props) {
     const isShown = ref(!props.scrollOffset);
 
+    const { scrollToTop } = useScrollToTop();
     const { scrollOffset } = useScrollOffset();
 
     watch(scrollOffset, value => {
-      // show the component if page is scrolled enough
+      // show the component if page is scrolled down enough
       isShown.value = value > props.scrollOffset;
     });
 
     return {
+      scrollToTop,
       isShown
     };
   },
 
   methods: {
-    scrollToTop
+    clickHandler() {
+      this.scrollToTop();
+      /**
+       * Just emits click event without any payload.
+       *
+       * @event click
+       * @type {undefined}
+       */
+      this.$emit("click");
+    }
   }
 };
 </script>

@@ -25,7 +25,7 @@ import DTypography from "../containers/DTypography";
 /**
  * Renders custom progress bar.
  *
- * @version 1.0.1
+ * @version 1.0.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -110,7 +110,7 @@ export default {
 }
 
 .bar {
-  height: 4px;
+  height: 5px;
   border-radius: 2px;
   margin-left: 3px;
   background: var(--color-primary-active);

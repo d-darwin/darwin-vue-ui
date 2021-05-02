@@ -24,8 +24,8 @@
 </template>
 
 <script>
-/** utils **/
-import copyToClipboard from "../../utils/copyToClipboard";
+/** compositions **/
+import useCopyToClipboard from "../../compositions/copyToClipboard";
 
 /** components **/
 import DLink from "../atoms/DLink";
@@ -35,7 +35,7 @@ import DTypography from "../containers/DTypography";
 /**
  * The component allows user to copy current page URL.
  *
- * @version 1.0.3
+ * @version 1.1.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -44,6 +44,8 @@ export default {
   inheritAttrs: false,
 
   components: { DTypography, DLink, DIconCopy },
+
+  emits: ["copied"],
 
   props: {
     /**
@@ -87,32 +89,48 @@ export default {
     }
   },
 
+  setup() {
+    const { copyToClipboard } = useCopyToClipboard();
+    return { copyToClipboard };
+  },
+
   methods: {
     async copyLink(e) {
       e.preventDefault();
+      const link = window?.location?.href;
 
-      copyToClipboard(window.location.href);
+      this.copyToClipboard(link);
       /**
        * Page link was copied.
        *
        * @event copied
-       * @type {undefined}
+       * @type {string}
        */
-      await this.$emit("copied");
+      await this.$emit("copied", link);
 
       // reset focus to copy-link
-      const copyLink = this.$refs["copy-link"].$el;
-      await this.$nextTick(() => copyLink.focus());
+      const copyLink = this.$refs["copy-link"]?.$el;
+      if (copyLink) {
+        await this.$nextTick(() => copyLink.focus());
+      }
     }
   }
 };
 </script>
 
+<style lang="scss">
+// always include tokens unscoped
+@import "../../assets/styles/tokens/gaps";
+</style>
+
 <style scoped lang="scss">
 .d-link {
+  display: flex;
+  align-items: center;
+
   > * + *,
   > * + ::v-slotted(*) {
-    margin-left: 6px;
+    margin-left: var(--gap-2x);
   }
 }
 </style>

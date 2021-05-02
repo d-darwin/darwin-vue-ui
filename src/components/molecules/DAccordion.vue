@@ -118,6 +118,7 @@ export default {
        * @event update:open
        * @type {{open: Boolean, id: String}}
        */
+      // TODO: review emits naming.
       this.$emit(
         "update:open",
         this.itemListProps.map(item => ({ open: item.open, id: item.id }))

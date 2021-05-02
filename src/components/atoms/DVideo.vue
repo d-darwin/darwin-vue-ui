@@ -38,6 +38,9 @@
 /** core **/
 import getVideoId from "get-video-id";
 
+/** mixins **/
+import aspectRatioProp from "../../mixins/aspectRatioProp";
+
 /** components **/
 import DLoader from "./DLoader";
 import DIconVideo from "../icons/DIconVideo";
@@ -49,7 +52,7 @@ import DAspectRatio from "../containers/DAspectRatio";
  * It renders <b>iframe</b> or <b>video</b> or any iframe depending on your source value.<br>
  * Supports lazy loading with <b>DLoader</b> placeholder, aspect-ration and renders <b>DIconVideo</b> icon if <i>source</i> prop is empty.
  *
- * @version 1.3.1
+ * @version 1.4.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -57,13 +60,18 @@ export default {
 
   inheritAttrs: false,
 
+  mixins: [aspectRatioProp],
+
   components: { DTypography, DIconVideo, DLoader, DAspectRatio },
+
+  emits: ["loaded"],
 
   props: {
     /**
      * Pass youtube, vimeo, vine, videopress link, local video path or any iframe code.
      */
     source: {
+      // TODO: add validator.
       type: String,
       default: ""
     },
@@ -107,16 +115,6 @@ export default {
      * The picture caption. Also used as <i>alt</i> and <i>title</> attrs if they aren't presented.
      */
     caption: {
-      type: String,
-      default: ""
-    },
-
-    /**
-     * Aspect ratio of the picture.
-     * Expected format: 'height:width'.
-     */
-    aspectRatio: {
-      // TODO: specify more accurate type ???
       type: String,
       default: ""
     },
@@ -194,6 +192,19 @@ export default {
         return `<source src="${this.source}" type="${this.format}" />`;
       }
       return null;
+    }
+  },
+
+  watch: {
+    isLoaded(value) {
+      // TODO: doesn't work with embedded video (youtube...)
+      /**
+       * Video src was loaded.
+       *
+       * @event loaded
+       * @type {boolean}
+       */
+      this.$emit("loaded", value);
     }
   }
 };

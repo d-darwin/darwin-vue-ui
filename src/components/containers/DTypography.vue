@@ -2,20 +2,16 @@
   <component
     v-if="content"
     :is="tag"
-    :class="{
-      [`${$attrs.class}`]: $attrs.class,
-      [`__${size}`]: size
-    }"
+    :class="{ [`__${size}`]: size }"
+    v-bind="$attrs"
     v-html="content"
     class="d-typography"
   />
   <component
-    else
+    v-else
     :is="tag"
-    :class="{
-      [`${$attrs.class}`]: $attrs.class,
-      [`__${size}`]: size
-    }"
+    :class="{ [`__${size}`]: size }"
+    v-bind="$attrs"
     class="d-typography"
   >
     <!-- @slot May contain any HTML or another components -->
@@ -34,7 +30,7 @@ import linkClickRouting from "../../mixins/linkClickRouting";
  * You can use <i>content</i> prop or default slot to pass HTML string or other components.<br>
  * Handles content relative links clicks as routes.
  *
- * @version 1.0.5
+ * @version 1.1.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {

@@ -71,9 +71,9 @@
 
 <script>
 /**
- * The component contains animated svg.
+ * The component contains animated svg and used with other components.
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {

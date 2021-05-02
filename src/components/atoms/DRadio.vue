@@ -12,7 +12,7 @@
         :id="componentId"
         v-bind="{
           ...$attrs,
-          onChange: emitChange
+          onChange: changeHandler
         }"
         type="radio"
         class="input"
@@ -44,7 +44,7 @@
         />
       </template>
 
-      <!--TODO: use DButtons-->
+      <!--TODO: use DButtons instead ???-->
       <span
         v-if="type === 'button'"
         :class="{ [`__${color}`]: color }"
@@ -61,6 +61,9 @@
 </template>
 
 <script>
+/** mixins **/
+import controlColorProp from "../../mixins/controlColorProp";
+
 /** compositions **/
 import useComponentId from "../../compositions/componentId";
 
@@ -75,7 +78,7 @@ import DError from "./DError";
  * Feel free to use any attrs you expect with <b>input</b> tag with <i>type="radio"</i>,
  * they will be pass to the tag automatically.
  *
- * @version 1.0.5
+ * @version 1.1.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -83,12 +86,16 @@ export default {
 
   inheritAttrs: false,
 
+  mixins: [controlColorProp],
+
   components: {
     DError,
     DTypography,
     DIconRadioUnchecked,
     DIconRadioChecked
   },
+
+  emits: ["update:value"],
 
   props: {
     /**
@@ -101,22 +108,20 @@ export default {
     },
 
     /**
+     * Defines content of the <b>label</b> tag.
+     */
+    label: {
+      type: String,
+      default: "Label"
+    },
+
+    /**
      * Defines appearance of the components.
      */
     type: {
       type: String,
       default: "base",
       validator: val => ["base", "button"].includes(val)
-    },
-
-    /**
-     * Defines color of the component's default icons.<br>
-     * Takes values: "primary", "accent", "text".
-     */
-    color: {
-      type: String,
-      default: "primary",
-      validator: val => ["primary", "accent", "text"].includes(val)
     },
 
     /**
@@ -136,18 +141,11 @@ export default {
     },
 
     /**
-     * Defines content of the <b>label</b> tag.
-     */
-    label: {
-      type: String,
-      default: "Label"
-    },
-
-    /**
      * Defines <b>DTypography</b> size.<br>
      * Takes values: 'large', 'medium'.
      */
     labelSize: {
+      // TODO: do we really need this ???
       type: String,
       default: "general",
       validator: val => ["general", "small"].includes(val)
@@ -160,6 +158,8 @@ export default {
       type: Object,
       default: () => {}
     },
+
+    // TODO: labelProps ???
 
     /**
      * If not empty renders as an error string below the <b>input</b> tag.
@@ -176,7 +176,7 @@ export default {
   },
 
   methods: {
-    emitChange(event) {
+    changeHandler(event) {
       /**
        * Checked attr of the <b>input</b> tag updated.
        * Contains new value of <i>checked</i>, <i>value</i> attrs and component id.<br>

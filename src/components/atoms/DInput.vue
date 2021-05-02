@@ -1,11 +1,11 @@
 <template>
   <div
     :class="{
-      [`${$attrs.class}`]: $attrs.class,
       [`__${size}`]: size,
       [`__${roundness}`]: roundness,
       __disabled: !!$attrs.disabled
     }"
+    v-bind="$attrs"
     class="d-input"
   >
     <DTypography
@@ -58,6 +58,10 @@
 </template>
 
 <script>
+/** mixins **/
+import controlSizeProp from "../../mixins/controlSizeProp";
+import controlRoundnessProp from "../../mixins/controlRoundnessProp";
+
 /** compositions **/
 import useComponentId from "../../compositions/componentId";
 
@@ -72,7 +76,7 @@ import DError from "./DError";
  * May be in various sizes and have different corner roundness.<br>
  * Renders error string if any passed to a prop.
  *
- * @version 1.1.1
+ * @version 1.3.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -80,7 +84,11 @@ export default {
 
   inheritAttrs: false,
 
+  mixins: [controlSizeProp, controlRoundnessProp],
+
   components: { DError, DTypography },
+
+  emits: ["update:value", "submit"],
 
   props: {
     /**
@@ -90,26 +98,6 @@ export default {
     id: {
       type: [String, Number],
       default: ""
-    },
-
-    /**
-     * Defines vertical size of the <b>input</b> tag.<br>
-     * Takes values: 'large', 'medium'.
-     */
-    size: {
-      type: String,
-      default: "large",
-      validator: val => ["large", "medium"].includes(val)
-    },
-
-    /**
-     * Defines corner's roundness of the <b>input</b> tag.<br>
-     * Takes values: 'smooth', 'rounded', 'boxed'.
-     */
-    roundness: {
-      type: String,
-      default: "smooth",
-      validator: val => ["smooth", "rounded", "boxed"].includes(val)
     },
 
     /**
@@ -361,5 +349,31 @@ export default {
   }
 }
 
-// TODO: __small ???
+.__small {
+  .input {
+    @include small-control;
+    @include small-text;
+
+    padding: 3px 0 3px 9px;
+
+    &.__slot-before {
+      padding-left: var(--small-control-height);
+    }
+
+    &.__slot-after {
+      padding-right: var(--small-control-height);
+    }
+  }
+
+  &.__smooth {
+    .label {
+      padding-left: 10px;
+    }
+  }
+
+  .input-before,
+  .input-after {
+    width: var(--small-control-height);
+  }
+}
 </style>

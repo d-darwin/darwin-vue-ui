@@ -18,14 +18,14 @@ $link-secondary-hover-text-decoration: none !default;
 $link-secondary-active-color: var(--color-primary-active) !default;
 $link-secondary-active-text-decoration: none !default;
 
-$link-tertiary-color: var(--color-text-aux) !default;
-$link-tertiary-text-decoration: none !default;
-$link-tertiary-visited-color: var(--color-text-aux) !default;
-$link-tertiary-visited-text-decoration: none !default;
-$link-tertiary-hover-color: var(--color-text-aux) !default;
-$link-tertiary-hover-text-decoration: underline !default;
-$link-tertiary-active-color: var(--color-text-aux) !default;
-$link-tertiary-active-text-decoration: underline !default;
+$link-alternative-color: var(--color-text-aux) !default;
+$link-alternative-text-decoration: none !default;
+$link-alternative-visited-color: var(--color-text-aux) !default;
+$link-alternative-visited-text-decoration: none !default;
+$link-alternative-hover-color: var(--color-text-aux) !default;
+$link-alternative-hover-text-decoration: underline !default;
+$link-alternative-active-color: var(--color-text-aux) !default;
+$link-alternative-active-text-decoration: underline !default;
 
 $link-inverse-color: var(--white) !default;
 $link-inverse-text-decoration: none !default;
@@ -68,14 +68,14 @@ $link-danger-active-text-decoration: underline !default;
   --link-secondary-visited-color: #{$link-secondary-visited-color};
   --link-secondary-visited-text-decoration: #{$link-secondary-visited-text-decoration};
 
-  --link-tertiary-color: #{$link-tertiary-color};
-  --link-tertiary-text-decoration: #{$link-tertiary-text-decoration};
-  --link-tertiary-hover-color: #{$link-tertiary-hover-color};
-  --link-tertiary-hover-text-decoration: #{$link-tertiary-hover-text-decoration};
-  --link-tertiary-active-color: #{$link-tertiary-active-color};
-  --link-tertiary-active-text-decoration: #{$link-tertiary-active-text-decoration};
-  --link-tertiary-visited-color: #{$link-tertiary-visited-color};
-  --link-tertiary-visited-text-decoration: #{$link-tertiary-visited-text-decoration};
+  --link-alternative-color: #{$link-alternative-color};
+  --link-alternative-text-decoration: #{$link-alternative-text-decoration};
+  --link-alternative-hover-color: #{$link-alternative-hover-color};
+  --link-alternative-hover-text-decoration: #{$link-alternative-hover-text-decoration};
+  --link-alternative-active-color: #{$link-alternative-active-color};
+  --link-alternative-active-text-decoration: #{$link-alternative-active-text-decoration};
+  --link-alternative-visited-color: #{$link-alternative-visited-color};
+  --link-alternative-visited-text-decoration: #{$link-alternative-visited-text-decoration};
 
   --link-inverse-color: #{$link-inverse-color};
   --link-inverse-text-decoration: #{$link-inverse-text-decoration};
@@ -118,14 +118,14 @@ $link-danger-active-text-decoration: underline !default;
   link-secondary-visited-color: $link-secondary-visited-color;
   link-secondary-visited-text-decoration: $link-secondary-visited-text-decoration;
 
-  link-tertiary-color: $link-tertiary-color;
-  link-tertiary-text-decoration: $link-tertiary-text-decoration;
-  link-tertiary-hover-color: $link-tertiary-hover-color;
-  link-tertiary-hover-text-decoration: $link-tertiary-hover-text-decoration;
-  link-tertiary-active-color: $link-tertiary-active-color;
-  link-tertiary-active-text-decoration: $link-tertiary-active-text-decoration;
-  link-tertiary-visited-color: $link-tertiary-visited-color;
-  link-tertiary-visited-text-decoration: $link-tertiary-visited-text-decoration;
+  link-alternative-color: $link-alternative-color;
+  link-alternative-text-decoration: $link-alternative-text-decoration;
+  link-alternative-hover-color: $link-alternative-hover-color;
+  link-alternative-hover-text-decoration: $link-alternative-hover-text-decoration;
+  link-alternative-active-color: $link-alternative-active-color;
+  link-alternative-active-text-decoration: $link-alternative-active-text-decoration;
+  link-alternative-visited-color: $link-alternative-visited-color;
+  link-alternative-visited-text-decoration: $link-alternative-visited-text-decoration;
 
   link-inverse-color: $link-inverse-color;
   link-inverse-text-decoration: $link-inverse-text-decoration;

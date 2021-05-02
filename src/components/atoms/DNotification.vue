@@ -21,12 +21,16 @@
 </template>
 
 <script>
+/** mixins **/
+import typographyContentProp from "../../mixins/typographyContentProp";
+
+/** components **/
 import DTypography from "../containers/DTypography";
 
 /**
  * The component renders text notification for a given duration.
  *
- * @version 1.1.1
+ * @version 1.2.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -34,16 +38,14 @@ export default {
 
   inheritAttrs: false,
 
+  mixins: [typographyContentProp],
+
   components: { DTypography },
 
+  emits: ["update:visibility"],
+
   props: {
-    /**
-     * Simple string or any HTML.
-     */
-    content: {
-      type: String,
-      default: ""
-    },
+    // TODO: add notification type, may be 'primary', 'secondary'... or 'notification', 'warning'...
 
     /**
      * Defines how long the notification will be displayed.
@@ -109,8 +111,18 @@ export default {
     // TODO: move to setup() ???
     content(value) {
       if (value) {
+        this.$emit;
         this.showNotification();
       }
+    },
+    shown(value) {
+      /**
+       * Visibility of the component changed.
+       *
+       * @event update:visibility
+       * @type {Boolean}
+       */
+      this.$emit("update:visibility", value);
     }
   },
 
@@ -150,6 +162,7 @@ export default {
 @import "../../assets/styles/transitions/opacity";
 
 .d-notification {
+  box-sizing: border-box; // TODO: or turn it on by default for all components???
   position: fixed;
   width: 100%;
   height: 100%;
