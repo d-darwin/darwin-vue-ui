@@ -29,10 +29,15 @@ export default {
       },
       defaultValue: "general"
     },
+    preventDefault: {
+      control: { type: "boolean" },
+      defaultValue: true
+    },
     hideExternalLinkIcon: {
       control: { type: "boolean" },
       defaultValue: true
-    }
+    },
+    onClick: { action: "click" }
   }
 };
 

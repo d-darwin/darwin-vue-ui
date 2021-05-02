@@ -7,6 +7,7 @@
     }"
     v-bind="{ ...$attrs, rel, target }"
     class="d-link"
+    @click="clickHandler"
   >
     <DTypography v-if="!$slots.default" :content="content" :size="size" />
     <!-- @slot May contains a string or any content you want. -->
@@ -57,7 +58,17 @@ export default {
     DIconExternalLink
   },
 
+  emits: ["click"],
+
   props: {
+    /**
+     * Prevent default <b>router-link</b> or <b>a</b> behavior
+     */
+    preventDefault: {
+      type: Boolean,
+      default: false
+    },
+
     /**
      * Set to true if you don't want to add icon to external links.
      */
@@ -93,6 +104,21 @@ export default {
         : this.isExternalLink
         ? "_blank"
         : "";
+    }
+  },
+
+  methods: {
+    clickHandler(e) {
+      if (this.preventDefault) {
+        e.preventDefault();
+      }
+      /**
+       * Just emits click event without any payload.
+       *
+       * @event click
+       * @type {undefined}
+       */
+      this.$emit("click");
     }
   }
 };
