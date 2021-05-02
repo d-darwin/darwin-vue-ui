@@ -32,6 +32,9 @@
 </template>
 
 <script>
+/** mixins **/
+import controlColorProp from "../../mixins/controlColorProp";
+
 /** compositions **/
 import useComponentId from "../../compositions/componentId";
 
@@ -44,7 +47,7 @@ import DError from "./DError";
  * Feel free to use any attrs you expect with <b>input</b> tag with <i>type="range"</i>,
  * they will be pass to the tag automatically.
  *
- * @version 1.0.4
+ * @version 1.1.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -52,7 +55,11 @@ export default {
 
   inheritAttrs: false,
 
+  mixins: [controlColorProp],
+
   components: { DError, DTypography },
+
+  emits: ["update:value"],
 
   props: {
     /**
@@ -70,16 +77,6 @@ export default {
     label: {
       type: String,
       default: ""
-    },
-
-    /**
-     * Defines color of the component's default icons.<br>
-     * Takes values: "primary", "accent", "text".
-     */
-    color: {
-      type: String,
-      default: "primary",
-      validator: val => ["primary", "accent", "text"].includes(val)
     },
 
     /**
@@ -106,7 +103,7 @@ export default {
        * @type {{value: String, id: String}}
        */
       this.$emit("update:value", {
-        value: e.target.value,
+        value: e?.target?.value,
         id: this.componentId
       });
     }

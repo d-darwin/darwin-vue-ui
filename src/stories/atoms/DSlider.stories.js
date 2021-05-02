@@ -1,5 +1,7 @@
 import { DSlider } from "@";
 
+import controlColorList from "@/utils/controlColorList";
+
 export default {
   title: "Atoms/Slider",
   component: DSlider,
@@ -20,14 +22,14 @@ export default {
       control: { type: "number" },
       defaultValue: 10
     },
-    // TODO: share with slider/radio
     color: {
-      control: { type: "select", options: ["primary", "accent", "text"] },
+      control: { type: "select", options: controlColorList },
       defaultValue: "primary"
     },
     error: {
       control: { type: "text" }
-    }
+    },
+    onUpdateValue: { actions: "update:value" }
   }
 };
 
@@ -36,7 +38,7 @@ const Template = args => ({
   setup() {
     return { args };
   },
-  template: '<DSlider v-bind="args" />'
+  template: '<DSlider v-bind="args" @update:value="args.onUpdateValue" />'
 });
 
 export const Primary = Template.bind({});
