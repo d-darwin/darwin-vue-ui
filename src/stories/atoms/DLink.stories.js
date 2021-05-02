@@ -1,5 +1,8 @@
 import { DLink } from "@";
 
+import controlTypeList from "@/utils/controlTypeList";
+import typographySizeList from "@/utils/typographySizeList";
+
 export default {
   title: "Atoms/Link",
   component: DLink,
@@ -7,8 +10,7 @@ export default {
     type: {
       control: {
         type: "select",
-        // TODO: make it more consistent with DButton types ???
-        options: ["primary", "secondary", "alternative", "inverse", "danger"]
+        options: controlTypeList
       },
       defaultValue: "primary"
     },
@@ -20,21 +22,10 @@ export default {
       control: { type: "text" },
       defaultValue: "https://example.com"
     },
-    // TODO: move to helper/util function
     size: {
       control: {
         type: "select",
-        options: [
-          "small",
-          "general",
-          "longread",
-          "augmented",
-          "h5",
-          "h4",
-          "h3",
-          "h2",
-          "h1"
-        ]
+        options: typographySizeList
       },
       defaultValue: "general"
     },

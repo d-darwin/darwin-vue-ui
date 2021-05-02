@@ -24,6 +24,7 @@
 /** mixins **/
 import typographySizeProp from "../../mixins/typographySizeProp";
 import typographyContentProp from "../../mixins/typographyContentProp";
+import controlTypeProp from "../../mixins/controlTypeProp";
 import hasRouter from "../../mixins/hasRouter";
 
 /** components **/
@@ -36,7 +37,7 @@ import DIconExternalLink from "../../components/icons/DIconExternalLink";
  * they will be pass to the tag automatically.<br>
  * If <i>href</i> is a link to external resource, optional icon added to the left side of the default slot. You can turn off this behavior or pass your own icon.<br>
  *
- * @version 1.3.2
+ * @version 1.4.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -44,7 +45,12 @@ export default {
 
   inheritAttrs: false,
 
-  mixins: [typographySizeProp, typographyContentProp, hasRouter],
+  mixins: [
+    typographySizeProp,
+    typographyContentProp,
+    controlTypeProp,
+    hasRouter
+  ],
 
   components: {
     DTypography,
@@ -52,18 +58,6 @@ export default {
   },
 
   props: {
-    /**
-     * Defines color of the component.<br>
-     * Takes values: 'primary', 'secondary', 'alternative', 'inverse', 'danger'.
-     */
-    type: {
-      type: String,
-      default: "primary",
-      // TODO: unify with DButton ???
-      validator: val =>
-        ["primary", "secondary", "alternative", "inverse", "danger"].includes(val)
-    },
-
     /**
      * Set to true if you don't want to add icon to external links.
      */

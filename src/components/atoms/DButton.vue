@@ -28,6 +28,7 @@
 <script>
 /** mixins **/
 import typographyContentProp from "../../mixins/typographyContentProp";
+import controlTypeProp from "../../mixins/controlTypeProp";
 import controlSizeProp from "../../mixins/controlSizeProp";
 import controlRoundnessProp from "../../mixins/controlRoundnessProp";
 import hasRouter from "../../mixins/hasRouter";
@@ -42,7 +43,7 @@ import DError from "./DError";
  * they will be pass to the tag automatically.<br>
  * May be in various sizes and have different corner roundness.
  *
- * @version 1.5.1
+ * @version 1.6.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -52,6 +53,7 @@ export default {
 
   mixins: [
     typographyContentProp,
+    controlTypeProp,
     controlSizeProp,
     controlRoundnessProp,
     hasRouter
@@ -62,24 +64,6 @@ export default {
   emits: ["click"],
 
   props: {
-    /**
-     * Defines background and border colors of the component as well as :hover and :active behavior.<br>
-     * Takes values: 'primary', 'secondary', 'alternative', 'inverse', 'danger', 'backgroundless'.
-     */
-    type: {
-      type: String,
-      default: "primary",
-      validator: val =>
-        [
-          "primary",
-          "secondary",
-          "alternative", // TODO: tertiary or alternative ???
-          "inverse",
-          "danger",
-          "backgroundless" // TODO: what about border ???
-        ].includes(val)
-    },
-
     /**
      * Makes component equal height and width, removes padding and centers slot content.
      */
@@ -321,22 +305,6 @@ export default {
   &.__disabled {
     background: var(--color-danger-disabled);
     border-color: var(--color-danger-disabled);
-  }
-}
-
-.__backgroundless {
-  transition: none;
-  color: var(--color-text-aux);
-  background: transparent;
-  border-color: transparent;
-
-  &:not(.__disabled):hover,
-  &:not(.__disabled):active {
-    opacity: 0.8;
-  }
-
-  &.__disabled {
-    color: var(--color-text-alt);
   }
 }
 </style>
