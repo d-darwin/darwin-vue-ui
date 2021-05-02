@@ -43,6 +43,9 @@
 </template>
 
 <script>
+/** mixins **/
+import controlColorProp from "../../mixins/controlColorProp";
+
 /** compositions **/
 import useComponentId from "../../compositions/componentId";
 
@@ -57,13 +60,15 @@ import DError from "./DError";
  * Feel free to use any attrs you expect with <b>input</b> tag with <i>type="checkbox"</i>,
  * they will be pass to the tag automatically.
  *
- * @version 1.0.5
+ * @version 1.1.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
   name: "DCheckbox",
 
   inheritAttrs: false,
+
+  mixins: [controlColorProp],
 
   components: { DError, DTypography, DIconChecked, DIconUnchecked },
 
@@ -78,13 +83,11 @@ export default {
     },
 
     /**
-     * Defines color of the component's default icons.<br>
-     * Takes values: "primary", "accent", "text".
+     * Defines content of the <b>label</b> tag.
      */
-    color: {
+    label: {
       type: String,
-      default: "primary",
-      validator: val => ["primary", "accent", "text"].includes(val)
+      default: "Label"
     },
 
     /**
@@ -96,18 +99,11 @@ export default {
     },
 
     /**
-     * Defines content of the <b>label</b> tag.
-     */
-    label: {
-      type: String,
-      default: "Label"
-    },
-
-    /**
      * Defines <b>DTypography</b> size.<br>
      * Takes values: 'large', 'medium'.
      */
     labelSize: {
+      // TODO: is it really need
       type: String,
       default: "general",
       validator: val => ["general", "small"].includes(val)
