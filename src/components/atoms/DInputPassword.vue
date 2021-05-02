@@ -46,6 +46,8 @@ export default {
   components: { DIconEyeOff, DIconEye, DInput },
 
   props: {
+    // TODO: write all DInput props in plain style to document it on Storybook???
+
     /**
      * Pass any style object to <i>.visibility-toggle-style</i> if needed.
      */
