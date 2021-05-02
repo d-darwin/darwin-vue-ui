@@ -4,7 +4,11 @@ export default {
   title: "Atoms/CopyLink",
   component: DCopyLink,
   argTypes: {
-    linkText: { control: { type: "text" }, defaultValue: "Copy link" }
+    linkText: {
+      control: { type: "text" },
+      defaultValue: "Copy link"
+    },
+    onCopied: { action: "copied" }
   }
 };
 

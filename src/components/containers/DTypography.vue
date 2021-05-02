@@ -11,7 +11,7 @@
     class="d-typography"
   />
   <component
-    else
+    v-else
     :is="tag"
     :class="{
       [`${$attrs.class}`]: $attrs.class,
