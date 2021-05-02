@@ -1,5 +1,7 @@
 import { DRadio } from "@";
 
+import controlColorList from "@/utils/controlColorList";
+
 export default {
   title: "Atoms/Radio",
   component: DRadio,
@@ -9,7 +11,7 @@ export default {
       defaultValue: "base"
     },
     color: {
-      control: { type: "select", options: ["primary", "accent", "text"] },
+      control: { type: "select", options: controlColorList },
       defaultValue: "primary"
     },
     label: {
@@ -17,6 +19,7 @@ export default {
       default: "Radio"
     },
     labelSize: {
+      // TODO: do we really need this ???
       control: { type: "select", options: ["general", "small"] },
       defaultValue: "general"
     },
@@ -27,7 +30,8 @@ export default {
     checked: {
       control: { type: "boolean" },
       defaultValue: true
-    }
+    },
+    onUpdateValue: { action: "update:value" }
   }
 };
 
@@ -36,7 +40,7 @@ const Template = args => ({
   setup() {
     return { args };
   },
-  template: '<DRadio v-bind="args" />'
+  template: '<DRadio v-bind="args" @update:value="args.onUpdateValue" />'
 });
 
 export const Base = Template.bind({});
