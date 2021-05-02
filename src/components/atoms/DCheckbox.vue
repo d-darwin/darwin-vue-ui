@@ -88,6 +88,7 @@ export default {
      * Defines content of the <b>label</b> tag.
      */
     label: {
+      // TODO: reuse /mixins/typographyProp ???
       type: String,
       default: "Label"
     },

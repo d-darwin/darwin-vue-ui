@@ -35,7 +35,7 @@ import DTypography from "../containers/DTypography";
 /**
  * The component allows user to copy current page URL.
  *
- * @version 1.1.0
+ * @version 1.1.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -117,6 +117,7 @@ export default {
   }
 };
 </script>
+
 <style lang="scss">
 // always include tokens unscoped
 @import "../../assets/styles/tokens/gaps";

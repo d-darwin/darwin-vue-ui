@@ -10,6 +10,7 @@ export default {
   },
 
   mounted() {
+    // TODO: use hasRouter mixin ???
     if (this.$router) {
       this.addListeners();
     }

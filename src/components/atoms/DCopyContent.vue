@@ -28,6 +28,9 @@
 </template>
 
 <script>
+/** mixins **/
+import typographyContentProp from "../../mixins/typographyContentProp";
+
 /** compositions **/
 import useCopyToClipboard from "../../compositions/copyToClipboard";
 
@@ -39,7 +42,7 @@ import DTypography from "../containers/DTypography";
 /**
  * The component allows user to copy string passed to component in <i>content</i> prop.
  *
- * @version 1.1.1
+ * @version 1.1.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -47,19 +50,13 @@ export default {
 
   inheritAttrs: false,
 
+  mixins: [typographyContentProp],
+
   components: { DIconCopy, DButton, DTypography },
 
   emits: ["copied"],
 
   props: {
-    /**
-     * Simple string or any HTML.
-     */
-    content: {
-      type: String,
-      default: ""
-    },
-
     /**
      * Pass any <b>DTypography</b> props if needed.
      */
