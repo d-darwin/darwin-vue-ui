@@ -101,12 +101,16 @@ export default {
 
   computed: {
     el() {
-      return this.$router !== undefined && this.$attrs.to
+      return this.hasRouter && this.$attrs.to
         ? "router-link"
         : this.$attrs.href
         ? "a"
         : "button";
     }
+  },
+
+  created() {
+    this.hasRouter = !!this.$router;
   },
 
   methods: {

@@ -23,9 +23,6 @@
 /** core **/
 import { ref, watch } from "vue";
 
-/** utils **/
-// import scrollToTop from "../../utils/scrollToTop";
-
 /** compositions **/
 import useScrollToTop from "../../compositions/scrollToTop";
 import useScrollOffset from "../../compositions/scrollOffset";
@@ -93,7 +90,7 @@ export default {
     const { scrollOffset } = useScrollOffset();
 
     watch(scrollOffset, value => {
-      // show the component if page is scrolled enough
+      // show the component if page is scrolled down enough
       isShown.value = value > props.scrollOffset;
     });
 
