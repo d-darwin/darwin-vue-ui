@@ -103,7 +103,7 @@ export default {
      * Takes values: 'large', 'medium'.
      */
     labelSize: {
-      // TODO: is it really need
+      // TODO: do we really need this ???
       type: String,
       default: "general",
       validator: val => ["general", "small"].includes(val)
