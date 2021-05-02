@@ -27,7 +27,8 @@ export default {
           "top-left"
         ]
       }
-    }
+    },
+    onUpdateVisibility: { action: "update:visibility" }
   }
 };
 
@@ -36,7 +37,7 @@ const Template = args => ({
   setup() {
     return { args };
   },
-  template: `<DNotification v-bind="args" />`
+  template: `<DNotification v-bind="args" @update:visibility="args.onUpdateVisibility" />`
 });
 
 export const Default = Template.bind({});
