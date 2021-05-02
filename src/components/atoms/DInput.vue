@@ -76,7 +76,7 @@ import DError from "./DError";
  * May be in various sizes and have different corner roundness.<br>
  * Renders error string if any passed to a prop.
  *
- * @version 1.2.0
+ * @version 1.3.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -352,6 +352,7 @@ export default {
 .__small {
   .input {
     @include small-control;
+    @include small-text;
 
     padding: 3px 0 3px 9px;
 
@@ -366,7 +367,7 @@ export default {
 
   &.__smooth {
     .label {
-      padding-left: 8px;
+      padding-left: 10px;
     }
   }
 
