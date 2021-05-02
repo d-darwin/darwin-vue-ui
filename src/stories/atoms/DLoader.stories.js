@@ -10,7 +10,7 @@ const Template = args => ({
   setup() {
     return { args };
   },
-  template: "<DLoader />"
+  template: '<DLoader v-bind="args" />'
 });
 
 export const Default = Template.bind({});
