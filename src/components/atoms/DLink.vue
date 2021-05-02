@@ -23,6 +23,7 @@
 <script>
 /** mixins **/
 import typographySizeProp from "../../mixins/typographySizeProp";
+import typographyContentProp from "../../mixins/typographyContentProp";
 import hasRouter from "../../mixins/hasRouter";
 
 /** components **/
@@ -43,7 +44,7 @@ export default {
 
   inheritAttrs: false,
 
-  mixins: [typographySizeProp, hasRouter],
+  mixins: [typographySizeProp, typographyContentProp, hasRouter],
 
   components: {
     DTypography,
@@ -53,21 +54,14 @@ export default {
   props: {
     /**
      * Defines color of the component.<br>
-     * Takes values: 'primary', 'secondary', 'tertiary', 'inverse', 'danger'.
+     * Takes values: 'primary', 'secondary', 'alternative', 'inverse', 'danger'.
      */
     type: {
       type: String,
       default: "primary",
+      // TODO: unify with DButton ???
       validator: val =>
-        ["primary", "secondary", "tertiary", "inverse", "danger"].includes(val)
-    },
-
-    /**
-     * If not empty renders as an error HTML string.
-     */
-    content: {
-      type: [String, Number],
-      default: ""
+        ["primary", "secondary", "alternative", "inverse", "danger"].includes(val)
     },
 
     /**
@@ -91,7 +85,6 @@ export default {
       );
     },
 
-    // TODO: use attrs???
     rel() {
       return this.$attrs.rel
         ? this.$attrs.rel
@@ -100,7 +93,6 @@ export default {
         : "";
     },
 
-    // TODO: use attrs???
     target() {
       return this.$attrs.target
         ? this.$attrs.target
@@ -160,8 +152,8 @@ export default {
   @include link-secondary;
 }
 
-.__tertiary {
-  @include link-tertiary;
+.__alternative {
+  @include link-alternative;
 }
 
 .__inverse {

@@ -44,25 +44,25 @@
   }
 }
 
-@mixin link-tertiary {
+@mixin link-alternative {
   & {
-    color: var(--link-tertiary-color);
-    text-decoration: var(--link-tertiary-text-decoration);
+    color: var(--link-alternative-color);
+    text-decoration: var(--link-alternative-text-decoration);
   }
 
   &:visited {
-    color: var(--link-tertiary-visited-color);
-    text-decoration: var(--link-tertiary-visited-text-decoration);
+    color: var(--link-alternative-visited-color);
+    text-decoration: var(--link-alternative-visited-text-decoration);
   }
 
   &:hover {
-    color: var(--link-tertiary-hover-color);
-    text-decoration: var(--link-tertiary-hover-text-decoration);
+    color: var(--link-alternative-hover-color);
+    text-decoration: var(--link-alternative-hover-text-decoration);
   }
 
   &:active {
-    color: var(--link-tertiary-active-color);
-    text-decoration: var(--link-tertiary-active-text-decoration);
+    color: var(--link-alternative-active-color);
+    text-decoration: var(--link-alternative-active-text-decoration);
   }
 }
 

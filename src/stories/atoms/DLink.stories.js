@@ -8,7 +8,7 @@ export default {
       control: {
         type: "select",
         // TODO: make it more consistent with DButton types ???
-        options: ["primary", "secondary", "tertiary", "inverse", "danger"]
+        options: ["primary", "secondary", "alternative", "inverse", "danger"]
       },
       defaultValue: "primary"
     },
@@ -63,9 +63,9 @@ Secondary.args = {
   type: "secondary"
 };
 
-export const Tertiary = Template.bind({});
-Tertiary.args = {
-  type: "tertiary"
+export const Alternative = Template.bind({});
+Alternative.args = {
+  type: "alternative"
 };
 
 export const Inverse = Template.bind({});

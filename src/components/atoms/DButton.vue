@@ -73,7 +73,7 @@ export default {
         [
           "primary",
           "secondary",
-          "alternative",
+          "alternative", // TODO: tertiary or alternative ???
           "inverse",
           "danger",
           "backgroundless" // TODO: what about border ???
