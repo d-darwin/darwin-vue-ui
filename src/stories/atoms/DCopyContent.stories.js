@@ -4,7 +4,11 @@ export default {
   title: "Atoms/CopyContent",
   component: DCopyContent,
   argTypes: {
-    content: { control: { type: "text" }, defaultValue: "Some text to copy" }
+    content: {
+      control: { type: "text" },
+      defaultValue: "Some text to copy"
+    },
+    onCopied: { action: "copied" }
   }
 };
 

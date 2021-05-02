@@ -25,6 +25,7 @@ export default {
       defaultValue: "general"
     },
     error: { control: { type: "text" } },
+    // TODO: how to bind this automatically ???
     onUpdateValue: { action: "update:value" }
   }
 };
@@ -34,13 +35,7 @@ const Template = args => ({
   setup() {
     return { args };
   },
-  methods: {
-    onUpdateValue(e) {
-      // TODO: is it really a best path ???
-      this.args.onUpdateValue(e);
-    }
-  },
-  template: '<DCheckbox v-bind="args" @update:value="onUpdateValue" />'
+  template: '<DCheckbox v-bind="args" @update:value="args.onUpdateValue" />'
 });
 
 export const Primary = Template.bind({});

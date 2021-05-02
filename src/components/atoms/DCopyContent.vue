@@ -28,8 +28,8 @@
 </template>
 
 <script>
-/** utils **/
-import copyToClipboard from "../../utils/copyToClipboard";
+/** compositions **/
+import useCopyToClipboard from "../../compositions/copyToClipboard";
 
 /** components **/
 import DIconCopy from "../icons/DIconCopy";
@@ -39,7 +39,7 @@ import DTypography from "../containers/DTypography";
 /**
  * The component allows user to copy string passed to component in <i>content</i> prop.
  *
- * @version 1.0.3
+ * @version 1.1.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -48,6 +48,8 @@ export default {
   inheritAttrs: false,
 
   components: { DIconCopy, DButton, DTypography },
+
+  emits: ["copied"],
 
   props: {
     /**
@@ -91,20 +93,27 @@ export default {
     }
   },
 
+  setup() {
+    const { copyToClipboard } = useCopyToClipboard();
+    return { copyToClipboard };
+  },
+
   methods: {
     async copyText() {
-      copyToClipboard(this.content);
+      this.copyToClipboard(this.content);
       /**
        * Content string was copied.
        *
        * @event copied
-       * @type {undefined}
+       * @type {string}
        */
-      await this.$emit("copied");
+      await this.$emit("copied", this.content);
 
       // reset focus to copy-button
-      const copyButton = this.$refs["copy-button"].$el.children[0];
-      await this.$nextTick(() => copyButton.focus());
+      const copyButton = this.$refs["copy-button"]?.$el?.children[0];
+      if (copyButton) {
+        await this.$nextTick(() => copyButton.focus());
+      }
     }
   }
 };

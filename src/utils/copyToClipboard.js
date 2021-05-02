@@ -5,12 +5,13 @@
  * @param text
  */
 export default text => {
-  // TODO: move to compositions ???
-  const dummyElement = document.createElement("input");
+  if (document) {
+    const dummyElement = document.createElement("input");
 
-  document.body.appendChild(dummyElement);
-  dummyElement.value = text;
-  dummyElement.select();
-  document.execCommand("copy");
-  document.body.removeChild(dummyElement);
+    document.body.appendChild(dummyElement);
+    dummyElement.value = text;
+    dummyElement.select();
+    document.execCommand("copy");
+    document.body.removeChild(dummyElement);
+  }
 };
