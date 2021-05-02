@@ -229,7 +229,7 @@ export default {
        * File list was changed. Payload contains files array to be uploaded and component id.
        *
        * @event changed
-       * @type {{Array, String}}
+       * @type {{files: Array, id: String}}
        */
       this.$emit("changed", {
         files: this.uploadedFiles,

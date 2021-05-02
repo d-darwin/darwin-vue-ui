@@ -1,18 +1,18 @@
 import { DInput } from "@";
 
+import controlSizeList from "@/utils/controlSizeList";
+import controlRoundnessList from "@/utils/controlRoundnessList";
+
 export default {
   title: "Atoms/Input",
   component: DInput,
   argTypes: {
-    // TODO: use helper/util
-    // TODO: move control size prop to mixins
     size: {
-      control: { type: "select", options: ["large", "medium"] },
+      control: { type: "select", options: controlSizeList },
       defaultValue: "large"
     },
-    // TODO: move to some helpers or utils
     roundness: {
-      control: { type: "select", options: ["smooth", "rounded", "boxed"] },
+      control: { type: "select", options: controlRoundnessList },
       defaultValue: "smooth"
     },
     label: {
@@ -31,7 +31,9 @@ export default {
     },
     error: {
       control: { type: "text" }
-    }
+    },
+    onUpdateValue: { action: "update:value" },
+    onSubmit: { action: "submit" }
   }
 };
 
@@ -40,7 +42,7 @@ const Template = args => ({
   setup() {
     return { args };
   },
-  template: '<DInput v-bind="args" />'
+  template: '<DInput v-bind="args" @update:value="args.onUpdateValue" />'
 });
 
 export const Large = Template.bind({});
