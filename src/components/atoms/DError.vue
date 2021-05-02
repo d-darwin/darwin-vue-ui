@@ -4,8 +4,7 @@
       <DTypography
         v-bind="{
           size: 'small',
-          ...$attrs,
-          ...$props
+          ...$attrs
         }"
       >
         <!-- @slot Pass your custom error HTML here -->

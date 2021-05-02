@@ -6,7 +6,7 @@
       [`__${type}`]: type,
       [`${$attrs.class}`]: $attrs.class
     }"
-    v-bind="{ ...$props, ...$attrs, rel, target }"
+    v-bind="{ ...$attrs, rel, target }"
     class="d-link"
   >
     <DTypography v-if="!$slots.default" :content="content" :size="size" />
@@ -36,7 +36,7 @@ import DIconExternalLink from "../../components/icons/DIconExternalLink";
  * they will be pass to the tag automatically.<br>
  * If <i>href</i> is a link to external resource, optional icon added to the left side of the default slot. You can turn off this behavior or pass your own icon.<br>
  *
- * @version 1.3.1
+ * @version 1.3.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {

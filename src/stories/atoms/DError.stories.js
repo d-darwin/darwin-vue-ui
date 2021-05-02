@@ -1,11 +1,9 @@
 import { DError } from "@";
-// TODO: rename to DErrorControl / DControlError ???
 
 export default {
   title: "Atoms/Error",
   component: DError,
   argTypes: {
-    // TODO: rename to content ???
     content: {
       control: { type: "text" },
       defaultValue: "Some error <strong>HTML</strong> string"

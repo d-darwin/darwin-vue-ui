@@ -1,8 +1,7 @@
 <template>
   <DInput
     :type="isVisible ? 'text' : 'password'"
-    :class="$attrs.class"
-    v-bind="{ ...$props, ...$attrs }"
+    v-bind="$attrs"
     class="d-input-password"
   >
     <template #after>
@@ -35,7 +34,7 @@ import DIconEyeOff from "../icons/DIconEyeOff";
  * The component renders <b>input</b> tag with password <b>type</b> and visibility toggle.<br>
  * It uses <b>DInput</b> component so you can pass any compatible props.<br>
  *
- * @version 1.0.5
+ * @version 1.0.6
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {

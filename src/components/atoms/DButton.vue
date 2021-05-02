@@ -5,7 +5,7 @@
   >
     <component
       :is="el"
-      v-bind="{ ...$props, ...$attrs }"
+      v-bind="$attrs"
       :class="{
         [`__${type}`]: type,
         [`__${size}`]: size,
@@ -42,7 +42,7 @@ import DError from "./DError";
  * they will be pass to the tag automatically.<br>
  * May be in various sizes and have different corner roundness.
  *
- * @version 1.5.0
+ * @version 1.5.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
