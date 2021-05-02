@@ -81,7 +81,7 @@ export default {
 
   computed: {
     el() {
-      return this.$attrs.to && this.$router ? "router-link" : "a";
+      return this.$router && this.$attrs.to ? "router-link" : "a";
     },
 
     isExternalLink() {

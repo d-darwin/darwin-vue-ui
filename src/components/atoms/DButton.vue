@@ -101,7 +101,7 @@ export default {
 
   computed: {
     el() {
-      return this.$router && this.$attrs.to
+      return this.$router !== undefined && this.$attrs.to
         ? "router-link"
         : this.$attrs.href
         ? "a"

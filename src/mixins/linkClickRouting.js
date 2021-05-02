@@ -40,7 +40,7 @@ export default {
       // TODO: add if it is the same domain check
       if (href && href[0] === "/" && target !== "_blank") {
         event.preventDefault();
-        this.$router.push(href);
+        this.$router?.push(href);
       }
     },
 

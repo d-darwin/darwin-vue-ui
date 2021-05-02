@@ -3,6 +3,10 @@ import { ref, onMounted, onUnmounted } from "vue";
 /** utils **/
 import throttle from "../utils/throttle";
 
+/**
+ * Watches on current scroll offset.
+ * @returns {{scrollOffset: Ref<UnwrapRef<number>>}}
+ */
 export default function useScrollOffset() {
   let throttledOnScroll = null;
 
