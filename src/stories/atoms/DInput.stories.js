@@ -55,4 +55,7 @@ Medium.args = {
   size: "medium"
 };
 
-// TODO: small ???
+export const Small = Template.bind({});
+Small.args = {
+  size: "small"
+};

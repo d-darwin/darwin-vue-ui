@@ -349,5 +349,30 @@ export default {
   }
 }
 
-// TODO: __small ???
+.__small {
+  .input {
+    @include small-control;
+
+    padding: 3px 0 3px 9px;
+
+    &.__slot-before {
+      padding-left: var(--small-control-height);
+    }
+
+    &.__slot-after {
+      padding-right: var(--small-control-height);
+    }
+  }
+
+  &.__smooth {
+    .label {
+      padding-left: 8px;
+    }
+  }
+
+  .input-before,
+  .input-after {
+    width: var(--small-control-height);
+  }
+}
 </style>
