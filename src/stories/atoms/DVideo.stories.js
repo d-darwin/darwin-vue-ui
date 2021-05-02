@@ -15,7 +15,8 @@ export default {
     aspectRatio: {
       control: { type: "text" },
       defaultValue: "9:16"
-    }
+    },
+    onLoaded: { action: "loaded" }
   }
 };
 
