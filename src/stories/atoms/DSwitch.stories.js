@@ -1,12 +1,13 @@
 import { DSwitch } from "@";
 
+import controlColorList from "@/utils/controlColorList";
+
 export default {
   title: "Atoms/Switch",
   component: DSwitch,
   argTypes: {
-    // TODO: share with slider/radio
     color: {
-      control: { type: "select", options: ["primary", "accent", "text"] },
+      control: { type: "select", options: controlColorList },
       defaultValue: "primary"
     },
     labels: {
@@ -19,7 +20,8 @@ export default {
     },
     error: {
       control: { type: "text" }
-    }
+    },
+    onUpdateValue: { actions: "update:value" }
   }
 };
 
@@ -28,7 +30,7 @@ const Template = args => ({
   setup() {
     return { args };
   },
-  template: '<DSwitch v-bind="args" />'
+  template: '<DSwitch v-bind="args" @update:value="args.onUpdateValue" />'
 });
 
 export const Primary = Template.bind({});
