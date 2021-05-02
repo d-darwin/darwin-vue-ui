@@ -5,7 +5,7 @@ export default {
   title: "Atoms/Picture",
   component: DPicture,
   argTypes: {
-    // TODO: object type also
+    // TODO: add responsive image also
     source: {
       control: { type: "text" },
       defaultValue: image
@@ -14,10 +14,15 @@ export default {
       control: { type: "text" },
       defaultValue: "Some caption"
     },
+    alt: {
+      control: { type: "text" },
+      defaultValue: "Some Alt"
+    },
     aspectRatio: {
       control: { type: "text" },
       defaultValue: "2:3"
-    }
+    },
+    onLoaded: { action: "loaded" }
   }
 };
 

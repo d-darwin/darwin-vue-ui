@@ -51,11 +51,11 @@ import DTypography from "../containers/DTypography";
 import DAspectRatio from "../containers/DAspectRatio";
 
 /**
- * The component renders <b>picture</> tag according to Responsive Image principle.<br>
+ * The component renders <b>picture</b> tag according to the Responsive Image Principle.<br>
  *  Supports plain string image asset or an array of image assets for different screen width and pixel density.<br>
  *  Also supports lazy loading with <b>DLoader</b> placeholder, aspect-ration and renders <b>DIconImage</b> icon if <i>source</i> prop is empty.
  *
- * @version 1.3.4
+ * @version 1.4.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -64,6 +64,8 @@ export default {
   inheritAttrs: false,
 
   components: { DTypography, DLoader, DIconImage, DAspectRatio },
+
+  emits: ["loaded"],
 
   props: {
     /**
@@ -190,6 +192,12 @@ export default {
         return this.source;
       }
       return outPicture;
+    }
+  },
+
+  watch: {
+    isLoaded(value) {
+      this.$emit("loaded", value);
     }
   },
 
