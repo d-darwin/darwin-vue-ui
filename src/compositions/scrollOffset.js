@@ -9,20 +9,24 @@ export default function useScrollOffset() {
   const scrollOffset = ref(0);
 
   const onScroll = () => {
-    scrollOffset.value = window.scrollY;
+    scrollOffset.value = window?.scrollY;
   };
 
   onMounted(() => {
     if (process.browser) {
-      // execute when mounted first time
+      // get current offset on mounted
       onScroll();
+      // hold function pointer to remove event listener when the component will be unmounted
       throttledOnScroll = throttle(onScroll, 100);
+      // watch on offset on scroll
+      // TODO: why passive: true ???
       window.addEventListener("scroll", throttledOnScroll, { passive: true });
     }
   });
 
   onUnmounted(() => {
     if (process.browser) {
+      // prevent memory leaks
       window.removeEventListener("scroll", throttledOnScroll);
     }
   });

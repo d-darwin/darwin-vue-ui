@@ -100,6 +100,7 @@ export default {
 
   methods: {
     scrollToTop
+    // TODO: emits click
   }
 };
 </script>
