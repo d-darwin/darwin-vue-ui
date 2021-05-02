@@ -1,5 +1,4 @@
 import { DButtonScrollTop, DTypography } from "@";
-import "../assets/styles/atoms/d-button-scroll-top.scss";
 
 export default {
   title: "Atoms/ButtonScrollTop",

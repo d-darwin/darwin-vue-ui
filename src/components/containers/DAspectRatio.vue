@@ -6,14 +6,18 @@
 </template>
 
 <script>
+import aspectRatioProp from "../../mixins/aspectRatioProp";
+
 /**
  * The component uses padding-bottom / zero-height hack to simulate aspect-ratio CSS property.
  *
- * @version 1.0.1
+ * @version 1.1.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
   name: "DAspectRatio",
+
+  mixins: [aspectRatioProp],
 
   props: {
     /**
@@ -23,16 +27,6 @@ export default {
       // TODO: should I enumerate all possible tags???
       type: String,
       default: "div"
-    },
-
-    /**
-     * Aspect ratio of the picture. Padding-bottom / zero height hack used to simulate aspect-ratio CSS property.<br>
-     * Expected format: 'height:width'.
-     */
-    aspectRatio: {
-      // TODO: specify more accurate type, add validation ???
-      type: String,
-      default: "1:1"
     }
   },
 

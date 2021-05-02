@@ -17,14 +17,14 @@ const Template = args => ({
   },
   template: `
     <DAspectRatio v-bind="args">
-      <div class="content" >Content</div>
+      <div id="aspect-ratio-content" >Content</div>
     </DAspectRatio>
   `
 });
 
-export const _1_1_ = Template.bind({});
-_1_1_.args = {
-  aspectRatio: "1:1"
+export const _9_16_ = Template.bind({});
+_9_16_.args = {
+  aspectRatio: "9:16"
 };
 
 export const _2_3_ = Template.bind({});
@@ -32,7 +32,7 @@ _2_3_.args = {
   aspectRatio: "2:3"
 };
 
-export const _9_16_ = Template.bind({});
-_9_16_.args = {
-  aspectRatio: "9:16"
+export const _1_1_ = Template.bind({});
+_1_1_.args = {
+  aspectRatio: "1:1"
 };
