@@ -44,7 +44,7 @@
         />
       </template>
 
-      <!--TODO: use DButtons-->
+      <!--TODO: use DButtons instead ???-->
       <span
         v-if="type === 'button'"
         :class="{ [`__${color}`]: color }"
@@ -78,7 +78,7 @@ import DError from "./DError";
  * Feel free to use any attrs you expect with <b>input</b> tag with <i>type="radio"</i>,
  * they will be pass to the tag automatically.
  *
- * @version 1.1.0
+ * @version 1.1.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -158,6 +158,8 @@ export default {
       type: Object,
       default: () => {}
     },
+
+    // TODO: labelProps ???
 
     /**
      * If not empty renders as an error string below the <b>input</b> tag.

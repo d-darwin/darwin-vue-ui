@@ -1,5 +1,8 @@
 import { DSelect } from "@";
 
+import controlSizeList from "@/utils/controlSizeList";
+import controlRoundnessList from "@/utils/controlRoundnessList";
+
 export default {
   title: "Atoms/Select",
   component: DSelect,
@@ -23,14 +26,12 @@ export default {
     disabled: {
       control: { type: "boolean" }
     },
-    // TODO: move to some helpers or utils
     size: {
-      control: { type: "select", options: ["large", "medium"] },
+      control: { type: "select", options: controlSizeList },
       default: "large"
     },
-    // TODO: move to some helpers or utils
     roundness: {
-      control: { type: "select", options: ["smooth", "rounded", "boxed"] },
+      control: { type: "select", options: controlRoundnessList },
       defaultValue: "smooth"
     },
     borderless: {
@@ -38,7 +39,8 @@ export default {
     },
     error: {
       control: { type: "text" }
-    }
+    },
+    onUpdateValue: { actions: "update:value" }
   }
 };
 
@@ -47,7 +49,7 @@ const Template = args => ({
   setup() {
     return { args };
   },
-  template: '<DSelect v-bind="args" />'
+  template: '<DSelect v-bind="args" @update:value="args.onUpdateValue" />'
 });
 
 export const Large = Template.bind({});
@@ -55,3 +57,6 @@ Large.args = { size: "large" };
 
 export const Medium = Template.bind({});
 Medium.args = { size: "medium" };
+
+export const Small = Template.bind({});
+Small.args = { size: "small" };
