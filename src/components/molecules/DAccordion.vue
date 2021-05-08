@@ -125,6 +125,7 @@ export default {
         "update:open",
         this.itemListState.map(item => ({ open: item.open, id: item.id }))
       );
+      // TODO: should I emit only changed item or whole list ???
     }
   }
 };

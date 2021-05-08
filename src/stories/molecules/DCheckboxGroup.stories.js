@@ -21,7 +21,8 @@ export default {
     color: controlColor,
     error: {
       control: { type: "text" }
-    }
+    },
+    onUpdateValue: { action: "update:value" }
   }
 };
 
@@ -30,7 +31,8 @@ const Template = args => ({
   setup() {
     return { args };
   },
-  template: '<DCheckboxGroup v-bind="args" />'
+  template:
+    '<DCheckboxGroup v-bind="args" @update:value="args.onUpdateValue" />'
 });
 
 export const Default = Template.bind({});

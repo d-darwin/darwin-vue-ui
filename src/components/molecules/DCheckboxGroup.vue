@@ -101,6 +101,7 @@ export default {
        * @type {{index: Number, checked: Boolean, value: String, id: String}}
        */
       this.$emit("update:value", { index, checked, value, id });
+      // TODO: should I emit only changed item or whole list ???
     }
   }
 };
