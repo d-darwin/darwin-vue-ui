@@ -28,13 +28,15 @@ import DDetails from "../atoms/DDetails";
 /**
  * Render an accordion using <b>DDetails</b> components.
  *
- * @version 1.1.1
+ * @version 1.1.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
   name: "DAccordion",
 
   components: { DDetails },
+
+  emits: ["update:open"],
 
   props: {
     /**

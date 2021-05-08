@@ -1,5 +1,5 @@
 import { DAccordion } from "@";
-import "../assets/styles/molecules/d-accordion.scss"
+import "../assets/styles/molecules/d-accordion.scss";
 
 export default {
   title: "Molecules/Accordion",
@@ -34,7 +34,8 @@ export default {
     roundness: {
       control: { type: "select", options: ["smooth", "rounded", "boxed"] },
       defaultValue: "smooth"
-    }
+    },
+    onUpdateOpen: { action: "update:open" }
   }
 };
 
@@ -45,7 +46,7 @@ const Template = args => ({
   },
   template: `
     <div id="d-accordion-container">
-      <DAccordion v-bind="args" />
+      <DAccordion v-bind="args" @update:open="args.onUpdateOpen" />
     </div>
   `
 });
