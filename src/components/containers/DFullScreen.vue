@@ -5,6 +5,8 @@
 
     <DLink
       ref="request-full-screen-link"
+      href="#"
+      preventDefault
       v-show="!isFullScreen"
       v-bind="{ ...linkProps, onClick: requestFullScreen }"
       :style="linkStyle"
@@ -32,9 +34,9 @@ import DLink from "../atoms/DLink";
 import DTypography from "../containers/DTypography";
 
 /**
- * The component adds full screen mode to default slot content.
+ * The component adds full screen mode to the default slot content.
  *
- * @version 1.0.6
+ * @version 1.1.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -43,6 +45,8 @@ export default {
   inheritAttrs: false,
 
   components: { DTypography, DLink, DIconMaximize },
+
+  emits: ["update:fullscreen"],
 
   props: {
     /**
@@ -107,16 +111,23 @@ export default {
   },
 
   mounted() {
-    // hold pointer to the event listener to release it while unmount
+    // hold pointer to the event listener to release it on unmount
     this.fullScreenEventListener = () => {
       this.isFullScreen = !!document.fullscreenElement;
 
       if (!this.isFullScreen) {
         // move focus to requestFullScreenLink
         const requestFullScreenLink = this.$refs["request-full-screen-link"]
-          .$el;
-        this.$nextTick(() => requestFullScreenLink.focus());
+          ?.$el;
+        this.$nextTick(() => requestFullScreenLink?.focus());
       }
+      /**
+       * Emits current state of the component on change.
+       *
+       * @event update:fullscreen
+       * @type { Boolean }
+       */
+      this.$emit("update:fullscreen", this.isFullScreen);
     };
 
     window.addEventListener(
@@ -160,18 +171,21 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+// always include tokens unscoped
 @import "../../assets/styles/tokens/gaps";
+</style>
 
+<style scoped lang="scss">
 .d-full-screen {
   height: fit-content;
 }
 
 .d-link {
-  margin-top: var(--gap-base);
+  margin-top: var(--gap-2x);
 
   > * + * {
-    margin-left: var(--gap-base);
+    margin-left: var(--gap-2x);
   }
 }
 </style>

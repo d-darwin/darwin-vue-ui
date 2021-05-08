@@ -3,8 +3,8 @@
     <!--TODO: add transition-->
     <DDetails
       v-for="(item, index) in itemList"
-      :key="itemListProps[index].id"
-      v-bind="{ ...item, ...itemListProps[index] }"
+      :key="itemListState[index].id"
+      v-bind="{ ...item, ...itemListState[index] }"
       @update:open="updateOpenHandler"
     >
       <template v-if="$slots[`summary-${index}`]" #summary>
@@ -28,13 +28,15 @@ import DDetails from "../atoms/DDetails";
 /**
  * Render an accordion using <b>DDetails</b> components.
  *
- * @version 1.1.1
+ * @version 1.1.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
   name: "DAccordion",
 
   components: { DDetails },
+
+  emits: ["update:open"],
 
   props: {
     /**
@@ -82,8 +84,8 @@ export default {
 
   data() {
     return {
-      itemListProps: this.itemList.map(item => ({
-        id: this.componentId,
+      itemListState: this.itemList.map((item, index) => ({
+        id: item.id || `${this.componentId}_${index}`,
         open: item.open || false,
         size: item.size || this.size,
         roundness: item.roundness || this.roundness
@@ -95,12 +97,12 @@ export default {
     updateOpenHandler(e) {
       if (this.isSolo && e.open) {
         // close all other items
-        this.itemListProps = this.itemListProps.map(item => ({
+        this.itemListState = this.itemListState.map(item => ({
           ...item,
           open: item.id === e.id
         }));
       } else {
-        this.itemListProps = this.itemListProps.map(item => ({
+        this.itemListState = this.itemListState.map(item => ({
           ...item,
           open: item.id === e.id ? e.open : item.open
         }));
@@ -121,8 +123,9 @@ export default {
       // TODO: review emits naming.
       this.$emit(
         "update:open",
-        this.itemListProps.map(item => ({ open: item.open, id: item.id }))
+        this.itemListState.map(item => ({ open: item.open, id: item.id }))
       );
+      // TODO: should I emit only changed item or whole list ???
     }
   }
 };

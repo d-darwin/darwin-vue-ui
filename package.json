@@ -37,12 +37,13 @@
     "test": "vue-cli-service test:unit --config ./jest.config.json",
     "build": "vue-cli-service build",
     "build-lib": "vue-cli-service build --target lib --name ui-vue ./src/index.js",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "postinstall": "node -e \"try{require('./postinstall')}catch(e){}\""
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.12",
     "@vue/cli-plugin-eslint": "^4.5.12",
-    "@vue/cli-service": "^4.5.12",
+    "@vue/cli-service": "^4.5.13",
     "@vue/compiler-sfc": "^3.0.11",
     "@vue/eslint-config-prettier": "^6.0.0",
     "autoprefixer": "^10.2.5",
@@ -62,7 +63,7 @@
     "webpack-cli": "^4.6.0"
   },
   "peerDependencies": {
-    "core-js": "^3.11.0",
+    "core-js": "^3.11.1",
     "vue": "^3.0.5"
   },
   "dependencies": {
