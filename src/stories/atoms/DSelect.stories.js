@@ -1,7 +1,7 @@
 import { DSelect } from "@";
 
-import controlSizeList from "@/utils/controlSizeList";
-import controlRoundnessList from "@/utils/controlRoundnessList";
+import controlSize from "@/stories/helpers/controlSize";
+import controlRoundness from "@/stories/helpers/controlRoundness";
 
 export default {
   title: "Atoms/Select",
@@ -26,14 +26,8 @@ export default {
     disabled: {
       control: { type: "boolean" }
     },
-    size: {
-      control: { type: "select", options: controlSizeList },
-      default: "large"
-    },
-    roundness: {
-      control: { type: "select", options: controlRoundnessList },
-      defaultValue: "smooth"
-    },
+    size: controlSize,
+    roundness: controlRoundness,
     borderless: {
       control: { type: "boolean" }
     },

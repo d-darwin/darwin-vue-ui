@@ -1,20 +1,14 @@
 import { DTextarea } from "@";
 
-import controlSizeList from "@/utils/controlSizeList";
-import controlRoundnessList from "@/utils/controlRoundnessList";
+import controlSize from "@/stories/helpers/controlSize";
+import controlRoundness from "@/stories/helpers/controlRoundness";
 
 export default {
   title: "Atoms/Textarea",
   component: DTextarea,
   argTypes: {
-    size: {
-      control: { type: "select", options: controlSizeList },
-      defaultValue: "large"
-    },
-    roundness: {
-      control: { type: "select", options: controlRoundnessList },
-      defaultValue: "smooth"
-    },
+    size: controlSize,
+    roundness: controlRoundness,
     label: { control: { type: "text" }, defaultValue: "Textarea" },
     borderless: { control: { type: "boolean" } },
     error: { control: { type: "text" } },

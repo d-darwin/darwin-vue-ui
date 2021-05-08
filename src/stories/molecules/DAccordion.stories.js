@@ -1,5 +1,9 @@
 import { DAccordion } from "@";
+
 import "../assets/styles/molecules/d-accordion.scss";
+
+import controlSize from "@/stories/helpers/controlSize";
+import controlRoundness from "@/stories/helpers/controlRoundness";
 
 export default {
   title: "Molecules/Accordion",
@@ -25,16 +29,8 @@ export default {
     isSolo: {
       control: { type: "boolean" }
     },
-    // TODO: move to some helpers or utils
-    size: {
-      control: { type: "select", options: ["large", "medium", "small"] },
-      defaultValue: "large"
-    },
-    // TODO: move to some helpers or utils
-    roundness: {
-      control: { type: "select", options: ["smooth", "rounded", "boxed"] },
-      defaultValue: "smooth"
-    },
+    size: controlSize,
+    roundness: controlRoundness,
     onUpdateOpen: { action: "update:open" }
   }
 };

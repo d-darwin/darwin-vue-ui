@@ -2,8 +2,8 @@ import { DDetails } from "@";
 
 import "../assets/styles/atoms/d-details.scss";
 
-import controlSizeList from "@/utils/controlSizeList";
-import controlRoundnessList from "@/utils/controlRoundnessList";
+import controlSize from "@/stories/helpers/controlSize";
+import controlRoundness from "@/stories/helpers/controlRoundness";
 
 export default {
   title: "Atoms/Details",
@@ -16,14 +16,8 @@ export default {
       control: { type: "text" },
       defaultValue: "TODO: Details * Details * Details *"
     },
-    size: {
-      control: { type: "select", options: controlSizeList },
-      defaultValue: "medium"
-    },
-    roundness: {
-      control: { type: "select", options: controlRoundnessList },
-      defaultValue: "rounded"
-    },
+    size: controlSize,
+    roundness: controlRoundness,
     onUpdateOpen: { action: "update:open" }
   }
 };
