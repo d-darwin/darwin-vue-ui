@@ -1,4 +1,4 @@
-import { DModal } from "@";
+import { DModal, DButton } from "@";
 
 export default {
   title: "Organisms/Modal",
@@ -6,7 +6,7 @@ export default {
   argTypes: {
     isShown: {
       control: { type: "boolean" },
-      defaultValue: true
+      defaultValue: false
     },
     heading: {
       control: { type: "text" },
@@ -15,16 +15,27 @@ export default {
     content: {
       control: { type: "text" },
       defaultValue: "Some <strong>HTML</strong> string 📦"
-    }
+    },
+    onClose: { action: "close" },
+    onCancel: { action: "cancel" },
+    onAccept: { action: "accept" }
   }
 };
 
 const Template = args => ({
-  components: { DModal },
+  components: { DModal, DButton },
   setup() {
     return { args };
   },
-  template: '<DModal v-bind="args" />'
+  data() {
+    return {
+      isShown: false
+    };
+  },
+  template: `
+    <DButton @click="isShown = true">Show Modal</DButton>
+    <DModal v-bind="args" :is-shown="isShown || args.isShown" @close="isShown = false" />
+  `
 });
 
 export const Default = Template.bind({});

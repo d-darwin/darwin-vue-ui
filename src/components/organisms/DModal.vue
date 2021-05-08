@@ -115,6 +115,8 @@ export default {
 
   components: { DBackdrop, DTypography, DButton, DIconClose },
 
+  emits: ["close", "cancel", "accept"],
+
   // TODO: too many props, try to reduce
   props: {
     /**
@@ -296,8 +298,8 @@ export default {
     };
 
     return {
-      closeHandler,
       closeButtonId,
+      closeHandler,
       cancelHandler,
       acceptHandler
     };
