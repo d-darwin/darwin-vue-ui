@@ -22,7 +22,11 @@ const Template = args => ({
   },
   // TODO: add some demo content
   // TODO: close on event
-  template: '<DDrawer v-bind="args" />'
+  template: `
+    <DDrawer v-bind="args">
+      <div id="d-drawer-content">content</div>
+    </DDrawer>
+  `
 });
 
 export const Default = Template.bind({});

@@ -27,21 +27,22 @@ export default {
     isVertical: {
       control: { type: "boolean" },
       defaultValue: false
-    }
+    },
+    onUpdateSelected: { action: "update:selected" }
   }
 };
 
 const Template = args => ({
   components: { DTabs },
   setup() {
-    return {args}
+    return { args };
   },
-  template: '<DTabs v-bind="args" />'
+  template: '<DTabs v-bind="args" @update:selected="args.onUpdateSelected" />'
 });
 
-export const Horizontal = Template.bind({})
+export const Horizontal = Template.bind({});
 
-export const Vertical = Template.bind({})
+export const Vertical = Template.bind({});
 Vertical.args = {
   isVertical: true
-}
+};

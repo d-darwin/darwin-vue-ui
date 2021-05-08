@@ -205,6 +205,7 @@ body {
 }
 
 .drawer-wrap {
+  box-sizing: border-box;
   position: relative;
   background: var(--white);
   height: 100%;

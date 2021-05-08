@@ -85,6 +85,8 @@ export default {
 
   components: { DTypography },
 
+  emits: ['update:selected'],
+
   props: {
     /**
      * List of items to render. Should be presented (but may contains empty elements)
