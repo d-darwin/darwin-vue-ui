@@ -18,7 +18,8 @@ export default {
     },
     error: {
       control: { type: "text" }
-    }
+    },
+    onUpdateValue: { action: "update:value" }
   }
 };
 
@@ -27,7 +28,7 @@ const Template = args => ({
   setup() {
     return { args };
   },
-  template: '<DRadioGroup v-bind="args" />'
+  template: '<DRadioGroup v-bind="args" @update:value="args.onUpdateValue" />'
 });
 
 export const Default = Template.bind({});
