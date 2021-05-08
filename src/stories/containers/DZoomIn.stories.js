@@ -1,9 +1,14 @@
 import { DZoomIn, DPicture } from "@";
+
+import "../assets/styles/containers/d-zoom-in.scss";
 import image from "../assets/programmer.jpg";
 
 export default {
   title: "Containers/ZoomIn",
   component: DZoomIn
+  /*parameters: {
+    layout: "fullscreen"
+  }*/
 };
 
 const Template = args => ({
@@ -12,9 +17,11 @@ const Template = args => ({
     return { args, image };
   },
   template: `
-    <DZoomIn>
-      <DPicture :source="image" />
-    </DZoomIn>
+    <div id="d-zoom-in-container">
+      <DZoomIn>
+        <DPicture :source="image" />
+      </DZoomIn>
+    </div>
   `
 });
 

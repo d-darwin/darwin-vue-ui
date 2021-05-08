@@ -1,6 +1,10 @@
 @import "../../../../assets/styles/tokens/colors";
 
-#aspect-ratio-content {
+#d-aspect-ratio-container {
+  min-width: 320px;
+}
+
+#d-aspect-ratio-content {
   height: 100%;
   width: 100%;
   display: flex;

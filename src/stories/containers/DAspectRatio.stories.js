@@ -16,9 +16,11 @@ const Template = args => ({
     return { args };
   },
   template: `
-    <DAspectRatio v-bind="args">
-      <div id="aspect-ratio-content" >Content</div>
-    </DAspectRatio>
+    <div id="d-aspect-ratio-container" >
+      <DAspectRatio v-bind="args">
+        <div id="d-aspect-ratio-content" >Content</div>
+      </DAspectRatio>
+    </div>
   `
 });
 

@@ -1,4 +1,5 @@
 import { DEqualWidth, DButton } from "@";
+import "../assets/styles/containers/d-equal-width.scss";
 
 export default {
   title: "Containers/EqualWidth",
@@ -18,11 +19,13 @@ const Template = args => ({
     return { args };
   },
   template: `
-    <DEqualWidth>
-      <DButton type="primary">{{ args.firstButtonText }}</DButton>
-      <DButton type="secondary">{{ args.secondButtonText }}</DButton>
-      <DButton v-if="args.thirdButtonText" type="alternative">{{ args.thirdButtonText }}</DButton>
-    </DEqualWidth>
+    <div id="d-equal-width-container">
+      <DEqualWidth>
+        <DButton type="primary">{{ args.firstButtonText }}</DButton>
+        <DButton type="secondary">{{ args.secondButtonText }}</DButton>
+        <DButton v-if="args.thirdButtonText" type="alternative">{{ args.thirdButtonText }}</DButton>
+      </DEqualWidth>
+    </div>
   `
 });
 

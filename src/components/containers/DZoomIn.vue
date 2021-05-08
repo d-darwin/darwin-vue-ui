@@ -150,13 +150,15 @@ body {
 
   .zoom-in-link {
     cursor: zoom-in;
+    max-width: 100%;
   }
 
   .content-zoom-wrap {
+    box-sizing: border-box;
     display: flex;
     position: fixed;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     top: 0;
     left: 0;
     z-index: 1000;
@@ -195,10 +197,6 @@ body {
       padding: 20vh 10vw;
     }
   }
-
-  /* .content-zoom-wrap {
-    position: relative;
-  } */
 }
 
 @include lg-device-min {

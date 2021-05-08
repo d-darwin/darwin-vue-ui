@@ -9,6 +9,9 @@ export default {
     tag: { control: { type: "text" }, defaultValue: "div" },
     hasColumnGap: { control: { type: "boolean" }, defaultValue: true },
     hasRawGap: { control: { type: "boolean" }, defaultValue: true }
+  },
+  parameters: {
+    layout: "fullscreen"
   }
 };
 

@@ -1,4 +1,6 @@
 import { DFullScreen, DPicture } from "@";
+
+import "../assets/styles/containers/d-full-screen.scss";
 import image from "../assets/programmer.jpg";
 
 export default {
@@ -8,6 +10,9 @@ export default {
     linkText: { control: { type: "text" }, defaultValue: "Full Screen" },
     onUpdateFullscreen: { action: "update:fullscreen" }
   }
+  /*parameters: {
+    layout: "fullscreen"
+  }*/
 };
 
 const Template = args => ({
@@ -16,9 +21,11 @@ const Template = args => ({
     return { args, image };
   },
   template: `
-    <DFullScreen v-bind="args" @update:fullscreen="args.onUpdateFullscreen">
-      <DPicture :source="image" />
-    </DFullScreen>
+    <div id="d-full-screen-container">
+      <DFullScreen v-bind="args" @update:fullscreen="args.onUpdateFullscreen">
+        <DPicture :source="image" />
+      </DFullScreen>
+    </div>
   `
 });
 
