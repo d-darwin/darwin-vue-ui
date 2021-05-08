@@ -122,7 +122,7 @@ export default {
       {
         ctrlKey: true,
         altKey: true,
-        key: "d",
+        key: "d", // [d]ebug
         func: togglePanel
       }
     ]);
@@ -190,19 +190,19 @@ body {
 
     // TODO: think about colors
     --grid-column-color: rgba(0, 0, 0, 0.05);
-    --grid-gutter-color: transparent;
+    --grid-gap-color: transparent;
     --grid-column-width: calc(
-      (100% - var(--grid-gutter) * var(--grid-columns-count)) /
+      (100% - var(--grid-column-gap) * var(--grid-columns-count)) /
         var(--grid-columns-count)
     );
 
     width: calc(
-      var(--grid-width) - var(--grid-offset) * 2 + var(--grid-gutter)
+      var(--grid-width) - var(--grid-offset) * 2 + var(--grid-column-gap)
     );
 
     margin: 0
       calc(
-        50% - var(--grid-width) / 2 + var(--grid-offset) - var(--grid-gutter) /
+        50% - var(--grid-width) / 2 + var(--grid-offset) - var(--grid-column-gap) /
           2
       );
 
@@ -210,15 +210,15 @@ body {
     //noinspection CssInvalidFunction
     background-image: repeating-linear-gradient(
       to right,
-      var(--grid-gutter-color) 0,
-      var(--grid-gutter-color) calc(var(--grid-gutter) / 2),
-      var(--grid-column-color) calc(var(--grid-gutter) / 2),
+      var(--grid-gap-color) 0,
+      var(--grid-gap-color) calc(var(--grid-column-gap) / 2),
+      var(--grid-column-color) calc(var(--grid-column-gap) / 2),
       var(--grid-column-color)
-        calc(var(--grid-column-width) + var(--grid-gutter) / 2),
-      var(--grid-gutter-color)
-        calc(var(--grid-column-width) + var(--grid-gutter) / 2),
-      var(--grid-gutter-color)
-        calc(var(--grid-column-width) + var(--grid-gutter))
+        calc(var(--grid-column-width) + var(--grid-column-gap) / 2),
+      var(--grid-gap-color)
+        calc(var(--grid-column-width) + var(--grid-column-gap) / 2),
+      var(--grid-gap-color)
+        calc(var(--grid-column-width) + var(--grid-column-gap))
     );
   }
 }

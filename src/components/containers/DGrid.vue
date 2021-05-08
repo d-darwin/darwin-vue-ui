@@ -2,7 +2,11 @@
 <template>
   <component
     :is="tag"
-    :class="[...columnCountClass, { __condensed: isCondensed }]"
+    :class="[
+      ...columnCountClass,
+      { '__no-column-gap': !hasColumnGap },
+      { '__no-raw-gap': !hasRawGap }
+    ]"
     class="d-grid"
   >
     <!-- @slot Contains grid items -->
@@ -43,14 +47,20 @@ export default {
       default: "div"
     },
 
-    // TODO: add configurable rows gap
+    /**
+     * If false, grid hasn't gaps between columns.
+     */
+    hasColumnGap: {
+      type: Boolean,
+      default: true
+    },
 
     /**
-     * Condensed grid hasn't gaps between columns.
+     * If false, grid hasn't gaps between raws.
      */
-    isCondensed: {
+    hasRawGap: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
 
@@ -64,8 +74,8 @@ export default {
         lg: parseInt(gridTokens["lg-grid-columns-count"]),
         xl: parseInt(gridTokens["xl-grid-columns-count"]),
         xxl: parseInt(gridTokens["xxl-grid-columns-count"])
-      },
-      throttledFunction: null
+      }
+      // throttledFunction: null
     };
   },
 
@@ -104,8 +114,12 @@ export default {
 
   grid-template-columns: repeat(var(--grid-columns-count), 1fr);
 
-  &:not(.__condensed) {
-    grid-column-gap: var(--grid-gutter);
+  &:not(.__no-column-gap) {
+    grid-column-gap: var(--grid-column-gap);
+  }
+
+  &:not(.__no-raw-gap) {
+    grid-row-gap: var(--grid-raw-gap);
   }
 }
 

@@ -23,3 +23,5 @@ const Template = args => ({
 });
 
 export const Picture = Template.bind({});
+
+// TODO: add other content stories
