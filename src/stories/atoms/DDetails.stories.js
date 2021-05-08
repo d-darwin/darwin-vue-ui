@@ -1,5 +1,7 @@
 import { DDetails } from "@";
 
+import "../assets/styles/atoms/d-details.scss";
+
 import controlSizeList from "@/utils/controlSizeList";
 import controlRoundnessList from "@/utils/controlRoundnessList";
 
@@ -31,7 +33,11 @@ const Template = args => ({
   setup() {
     return { args };
   },
-  template: '<DDetails v-bind="args" @update:open="args.onUpdateOpen" />'
+  template: `
+    <div id="d-details-container">
+      <DDetails v-bind="args" @update:open="args.onUpdateOpen" />
+    </div>
+  `
 });
 
 export const Large = Template.bind({});

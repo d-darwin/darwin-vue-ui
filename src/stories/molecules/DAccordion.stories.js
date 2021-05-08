@@ -1,4 +1,5 @@
 import { DAccordion } from "@";
+import "../assets/styles/molecules/d-accordion.scss"
 
 export default {
   title: "Molecules/Accordion",
@@ -42,7 +43,11 @@ const Template = args => ({
   setup() {
     return { args };
   },
-  template: '<DAccordion v-bind="args" />'
+  template: `
+    <div id="d-accordion-container">
+      <DAccordion v-bind="args" />
+    </div>
+  `
 });
 
 export const Default = Template.bind({});
