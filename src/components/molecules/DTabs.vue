@@ -101,6 +101,7 @@ export default {
      * If set to true, tabs will be arranged in column.
      */
     isVertical: {
+      // TODO: transition animation ???
       type: Boolean,
       default: false
     },
@@ -211,6 +212,7 @@ export default {
         selected: this.selectedTabIndex,
         id: this.componentId
       });
+      // TODO: review event naming
     }
   }
 };
@@ -255,6 +257,7 @@ export default {
   border: none;
   background: none;
   padding: var(--gap-3x) var(--gap-6x);
+  margin: 0;
   min-height: var(--large-control-height);
   height: auto;
   position: relative;
@@ -287,6 +290,7 @@ export default {
     transform-origin: right;
     transition: transform var(--transition-time-short)
       var(--transition-function);
+    z-index: 10;
   }
 
   &.__disabled {
@@ -303,6 +307,7 @@ export default {
 }
 
 .tab-panel {
+  box-sizing: border-box;
   padding: var(--gap-3x) var(--gap-6x);
   border: 1px solid var(--color-separator);
   width: 100%;
