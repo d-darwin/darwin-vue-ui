@@ -11,7 +11,7 @@
       <DRadio
         v-for="(item, index) in itemList"
         :key="index"
-        v-bind="{ ...item, name: name || componentId, type }"
+        v-bind="{ color, type, name: name || componentId, ...item }"
         @update:value="emitChange(index, $event)"
       />
     </div>
@@ -21,6 +21,9 @@
 </template>
 
 <script>
+/** mixins **/
+import controlColorProp from "../../mixins/controlColorProp";
+
 /** compositions **/
 import useComponentId from "../../compositions/componentId";
 
@@ -32,13 +35,15 @@ import DError from "../atoms/DError";
 /**
  * The component renders a group of <b>DRadio</b> components with title.
  *
- * @version 1.0.4
+ * @version 1.0.5
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
   name: "DRadioGroup",
 
   inheritAttrs: false,
+
+  mixins: [controlColorProp],
 
   components: {
     DRadio,
