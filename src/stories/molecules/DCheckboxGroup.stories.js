@@ -1,5 +1,7 @@
 import { DCheckboxGroup } from "@";
 
+import controlColor from "@/stories/helpers/controlColor";
+
 export default {
   title: "Molecules/CheckboxGroup",
   component: DCheckboxGroup,
@@ -16,6 +18,7 @@ export default {
       control: { type: "text" },
       defaultValue: "Group title"
     },
+    color: controlColor,
     error: {
       control: { type: "text" }
     }
