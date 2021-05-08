@@ -1,29 +1,38 @@
-import { DDrawer } from "@";
+import { DDrawer, DButton } from "@";
+
+import "../assets/styles/organisms/d-drawer.scss";
 
 export default {
   title: "Organisms/Drawer",
   component: DDrawer,
   argTypes: {
-    isShown: {
+    /* isShown: {
       control: { type: "boolean" },
       defaultValue: true
-    },
+    }, */
     position: {
       control: { type: "select", options: ["top", "right", "bottom", "left"] },
       defaultValue: "right"
-    }
+    },
+    onClose: { action: "close" }
   }
 };
 
 const Template = args => ({
-  components: { DDrawer },
+  components: { DDrawer, DButton },
   setup() {
     return { args };
+  },
+  data() {
+    return {
+      isShown: false
+    };
   },
   // TODO: add some demo content
   // TODO: close on event
   template: `
-    <DDrawer v-bind="args">
+    <DButton @click="isShown = true">Show Drawer</DButton>
+    <DDrawer v-bind="args" :is-shown="isShown" @close="isShown = false">
       <div id="d-drawer-content">content</div>
     </DDrawer>
   `

@@ -1,14 +1,14 @@
 <template>
   <teleport to="body">
     <transition :name="backdropTransitionName">
-      <DBackdrop v-if="isShown" />
+      <DBackdrop v-if="isShown" @click="closeHandler" />
     </transition>
 
     <div
       :class="{
         __shown: isShown,
         [`__${position}`]: position,
-        [`${$attrs.class}`]: $attrs.class
+        [`${$attrs.class}`]: $attrs.clas
       }"
       class="d-drawer"
       @click="closeHandler"
@@ -52,7 +52,7 @@ import DBackdrop from "../atoms/DBackdrop";
 /**
  * Renders drawer. It's especially useful for navigation, but default slot may receive any content.
  *
- * @version 1.5.0
+ * @version 1.5.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -61,6 +61,8 @@ export default {
   inheritAttrs: false,
 
   components: { DBackdrop, DButton, DIconClose },
+
+  emits: ["close"],
 
   props: {
     /**
@@ -212,6 +214,10 @@ body {
   width: 100%;
   overflow-y: auto;
   z-index: 10;
+}
+
+.drawer-content {
+  height: 100%;
 }
 
 .close-button {
