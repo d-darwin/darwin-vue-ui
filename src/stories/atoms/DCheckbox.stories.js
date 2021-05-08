@@ -1,16 +1,13 @@
 import { DCheckbox } from "@";
 
-import controlColorList from "@/utils/controlColorList";
+import controlColor from "@/stories/helpers/controlColor";
 
 export default {
   title: "Atoms/Checkbox",
   component: DCheckbox,
   argTypes: {
     id: { control: { type: "text" } },
-    color: {
-      control: { type: "select", options: controlColorList },
-      defaultValue: "primary"
-    },
+    color: controlColor,
     label: {
       control: { type: "text" },
       defaultValue: "Checkbox"

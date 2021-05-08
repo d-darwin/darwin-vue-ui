@@ -1,15 +1,12 @@
 import { DSwitch } from "@";
 
-import controlColorList from "@/utils/controlColorList";
+import controlColor from "@/stories/helpers/controlColor";
 
 export default {
   title: "Atoms/Switch",
   component: DSwitch,
   argTypes: {
-    color: {
-      control: { type: "select", options: controlColorList },
-      defaultValue: "primary"
-    },
+    color: controlColor,
     labels: {
       control: { type: "object" },
       defaultValue: { truthy: "On", falsy: "Off" }

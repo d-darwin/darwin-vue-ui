@@ -1,6 +1,6 @@
 import { DSlider } from "@";
 
-import controlColorList from "@/utils/controlColorList";
+import controlColor from "@/stories/helpers/controlColor";
 
 export default {
   title: "Atoms/Slider",
@@ -22,10 +22,7 @@ export default {
       control: { type: "number" },
       defaultValue: 10
     },
-    color: {
-      control: { type: "select", options: controlColorList },
-      defaultValue: "primary"
-    },
+    color: controlColor,
     error: {
       control: { type: "text" }
     },

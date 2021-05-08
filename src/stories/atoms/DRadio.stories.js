@@ -1,6 +1,6 @@
 import { DRadio } from "@";
 
-import controlColorList from "@/utils/controlColorList";
+import controlColor from "@/stories/helpers/controlColor";
 
 export default {
   title: "Atoms/Radio",
@@ -10,10 +10,7 @@ export default {
       control: { type: "select", options: ["base", "button"] },
       defaultValue: "base"
     },
-    color: {
-      control: { type: "select", options: controlColorList },
-      defaultValue: "primary"
-    },
+    color: controlColor,
     label: {
       control: { type: "text" },
       default: "Radio"
