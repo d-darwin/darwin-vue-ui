@@ -5,10 +5,10 @@ import image from "../assets/programmer.jpg";
 
 export default {
   title: "Containers/ZoomIn",
-  component: DZoomIn
-  /*parameters: {
-    layout: "fullscreen"
-  }*/
+  component: DZoomIn,
+  argTypes: {
+    onUpdateZoom: { action: "update:zoom" }
+  }
 };
 
 const Template = args => ({
@@ -18,7 +18,7 @@ const Template = args => ({
   },
   template: `
     <div id="d-zoom-in-container">
-      <DZoomIn>
+      <DZoomIn v-bind="args" @update:zoom="args.onUpdateZoom">
         <DPicture :source="image" />
       </DZoomIn>
     </div>
