@@ -14,7 +14,7 @@
         'icon-only': true,
         size: 'small',
         roundness: 'boxed',
-        type: 'backgroundless',
+        type: 'inverse',
         ...buttonProps,
         onClick: copyText
       }"
@@ -42,7 +42,7 @@ import DTypography from "../containers/DTypography";
 /**
  * The component allows user to copy string passed to component in <i>content</i> prop.
  *
- * @version 1.1.2
+ * @version 1.1.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {

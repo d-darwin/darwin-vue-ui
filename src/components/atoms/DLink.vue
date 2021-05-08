@@ -38,7 +38,7 @@ import DIconExternalLink from "../../components/icons/DIconExternalLink";
  * they will be pass to the tag automatically.<br>
  * If <i>href</i> is a link to external resource, optional icon added to the left side of the default slot. You can turn off this behavior or pass your own icon.<br>
  *
- * @version 1.5.0
+ * @version 1.5.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -110,7 +110,7 @@ export default {
   methods: {
     clickHandler(e) {
       if (this.preventDefault) {
-        e.preventDefault();
+        e?.preventDefault();
       }
       /**
        * Just emits click event without any payload.

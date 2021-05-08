@@ -1,4 +1,6 @@
 import { DVideo } from "@";
+
+import "../assets/styles/atoms/d-video.scss";
 import video from "../assets/sample-mp4-file.mp4";
 
 export default {
@@ -25,7 +27,11 @@ const Template = args => ({
   setup() {
     return { args };
   },
-  template: '<DVideo v-bind="args" />'
+  template: `
+    <div id="d-video-container">
+      <DVideo v-bind="args" />
+    </div>
+  `
 });
 
 export const Youtube = Template.bind({});

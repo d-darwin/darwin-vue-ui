@@ -5,6 +5,7 @@
       v-bind="{
         size: 'small',
         href: '#',
+        preventDefault: true,
         ...linkProps,
         onClick: copyLink
       }"
@@ -35,7 +36,7 @@ import DTypography from "../containers/DTypography";
 /**
  * The component allows user to copy current page URL.
  *
- * @version 1.1.1
+ * @version 1.1.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -96,7 +97,7 @@ export default {
 
   methods: {
     async copyLink(e) {
-      e.preventDefault();
+      e?.preventDefault();
       const link = window?.location?.href;
 
       this.copyToClipboard(link);

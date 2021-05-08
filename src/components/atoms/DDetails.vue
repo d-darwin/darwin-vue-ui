@@ -74,7 +74,7 @@ import DIconDirection from "../icons/DIconDirection";
  * Custom focus-visible, icon and slots for summary and details content are presented.<br>
  * May be in various sizes and have different corner roundness.
  *
- * @version 1.1.0
+ * @version 1.1.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -265,6 +265,7 @@ export default {
       }
     }
 
+    // TODO: different left/right padding for different sizes
     .summary {
       min-height: var(--large-control-height);
       height: fit-content;
@@ -289,6 +290,8 @@ export default {
         border-radius: calc(var(--border-radius) + 2 * var(--outline-width));
       }
     }
+
+    // TODO: different left/right padding for different sizes
     .summary {
       min-height: var(--medium-control-height);
       height: fit-content;
@@ -314,6 +317,7 @@ export default {
       }
     }
 
+    // TODO: different left/right padding for different sizes
     .summary {
       min-height: var(--small-control-height);
       height: fit-content;
@@ -362,6 +366,7 @@ export default {
   padding: 0 var(--gap-3x);
 
   &.__expanded {
+    // TODO: different left/right padding for different sizes
     padding: var(--gap-2x) var(--gap-3x) var(--gap-3x);
   }
 }

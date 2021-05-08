@@ -1,4 +1,6 @@
 import { DPicture } from "@";
+
+import "../assets/styles/atoms/d-picture.scss";
 import image from "../assets/programmer.jpg";
 
 export default {
@@ -31,7 +33,13 @@ const Template = args => ({
   setup() {
     return { args };
   },
-  template: '<DPicture v-bind="args" />'
+  template: `
+    <div id="d-picture-container">
+      <DPicture v-bind="args" />
+    </div>
+  `
 });
 
 export const Default = Template.bind({});
+
+// TODO: add different stories
