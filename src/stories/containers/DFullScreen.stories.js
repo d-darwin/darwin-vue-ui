@@ -5,7 +5,8 @@ export default {
   title: "Containers/FullScreen",
   component: DFullScreen,
   argTypes: {
-    linkText: { control: { type: "text" }, defaultValue: "Full Screen" }
+    linkText: { control: { type: "text" }, defaultValue: "Full Screen" },
+    onUpdateFullscreen: { action: "update:fullscreen" }
   }
 };
 
@@ -15,7 +16,7 @@ const Template = args => ({
     return { args, image };
   },
   template: `
-    <DFullScreen>
+    <DFullScreen v-bind="args" @update:fullscreen="args.onUpdateFullscreen">
       <DPicture :source="image" />
     </DFullScreen>
   `
