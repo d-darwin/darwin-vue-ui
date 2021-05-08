@@ -6,10 +6,10 @@ export default {
   title: "Organisms/Drawer",
   component: DDrawer,
   argTypes: {
-    /* isShown: {
+    isShown: {
       control: { type: "boolean" },
-      defaultValue: true
-    }, */
+      defaultValue: false
+    },
     position: {
       control: { type: "select", options: ["top", "right", "bottom", "left"] },
       defaultValue: "right"
@@ -32,7 +32,7 @@ const Template = args => ({
   // TODO: close on event
   template: `
     <DButton @click="isShown = true">Show Drawer</DButton>
-    <DDrawer v-bind="args" :is-shown="isShown" @close="isShown = false">
+    <DDrawer v-bind="args" :is-shown="isShown || args.isShown" @close="isShown = false">
       <div id="d-drawer-content">content</div>
     </DDrawer>
   `
