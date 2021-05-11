@@ -118,7 +118,7 @@ export default {
       const closeButton = this.$refs["close-button"].$el.children[0];
       this.$nextTick(() => closeButton.focus());
 
-      this.$emit('update:zoom', true)
+      this.$emit("update:zoom", true);
     },
 
     zoomOutHandler() {
@@ -130,7 +130,7 @@ export default {
       const zoomInLink = this.$refs["zoom-in-link"].$el;
       this.$nextTick(() => zoomInLink.focus());
 
-      this.$emit('update:zoom', false)
+      this.$emit("update:zoom", false);
     }
   }
 };

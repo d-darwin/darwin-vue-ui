@@ -85,7 +85,7 @@ export default {
 
   components: { DTypography },
 
-  emits: ['update:selected'],
+  emits: ["update:selected"],
 
   props: {
     /**

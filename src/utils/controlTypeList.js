@@ -1,1 +1,1 @@
-export default ["primary", "secondary", "alternative", "inverse", "danger"]
+export default ["primary", "secondary", "alternative", "inverse", "danger"];

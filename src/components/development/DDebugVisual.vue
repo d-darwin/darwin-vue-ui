@@ -202,8 +202,8 @@ body {
 
     margin: 0
       calc(
-        50% - var(--grid-width) / 2 + var(--grid-offset) - var(--grid-column-gap) /
-          2
+        50% - var(--grid-width) / 2 + var(--grid-offset) -
+          var(--grid-column-gap) / 2
       );
 
     background-repeat: no-repeat;
