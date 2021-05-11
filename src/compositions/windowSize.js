@@ -29,12 +29,8 @@ export default function useWindowSize() {
 
   function onResize() {
     if (process.browser) {
-      windowHeight.value = window.innerHeight;
-
-      // Safari handles window width differently
-      windowWidth.value = !navigator.userAgent.includes("Safari")
-        ? window.innerWidth
-        : document.documentElement.clientWidth;
+      windowHeight.value = document?.documentElement?.clientHeight;
+      windowWidth.value = document?.documentElement?.clientWidth;
 
       if (windowWidth.value < breakpointList.sm) {
         // smallest
