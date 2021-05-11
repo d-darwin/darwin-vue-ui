@@ -41,8 +41,8 @@
     "postinstall": "node -e \"try{require('./postinstall')}catch(e){}\""
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.5.12",
-    "@vue/cli-plugin-eslint": "^4.5.12",
+    "@vue/cli-plugin-babel": "^4.5.13",
+    "@vue/cli-plugin-eslint": "^4.5.13",
     "@vue/cli-service": "^4.5.13",
     "@vue/compiler-sfc": "^3.0.11",
     "@vue/eslint-config-prettier": "^6.0.0",
@@ -50,17 +50,17 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
-    "core-js": "^3.11.1",
+    "core-js": "^3.12.0",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-vue": "^7.9.0",
-    "postcss": "^8.2.13",
+    "postcss": "^8.2.14",
     "prettier": "^1.19.1",
     "sass": "^1.32.12",
-    "sass-loader": "^10.1.1",
+    "sass-loader": "^10.2.0",
     "vue": "^3.0.11",
     "vue-loader": "^16.2.0",
-    "webpack-cli": "^4.6.0"
+    "webpack-cli": "^4.7.0"
   },
   "peerDependencies": {
     "core-js": "^3.11.1",
