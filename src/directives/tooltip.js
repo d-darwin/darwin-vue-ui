@@ -5,7 +5,7 @@
 
 
 /**
- * IN PROGRESS
+ * TODO: IN PROGRESS
  */
 const HAS_WINDOWS = typeof window !== "undefined";
 

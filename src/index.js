@@ -25,7 +25,6 @@ import DSelect from "./components/atoms/DSelect";
 import DSlider from "./components/atoms/DSlider";
 import DSwitch from "./components/atoms/DSwitch";
 import DTextarea from "./components/atoms/DTextarea";
-import DTooltip from "./components/atoms/DTooltip";
 import DVideo from "./components/atoms/DVideo";
 
 /** components: molecules **/
@@ -43,6 +42,7 @@ import DAspectRatio from "./components/containers/DAspectRatio";
 import DEqualWidth from "./components/containers/DEqualWidth";
 import DFullScreen from "./components/containers/DFullScreen";
 import DGrid from "./components/containers/DGrid";
+import DTooltip from "./components/containers/DTooltip";
 import DTypography from "./components/containers/DTypography";
 import DZoomIn from "./components/containers/DZoomIn";
 
@@ -125,7 +125,6 @@ export {
   DSlider,
   DSwitch,
   DTextarea,
-  DTooltip,
   DVideo,
   /** molecules **/
   DAccordion,
@@ -140,6 +139,7 @@ export {
   DEqualWidth,
   DFullScreen,
   DGrid,
+  DTooltip,
   DTypography,
   DZoomIn,
   /** development **/
