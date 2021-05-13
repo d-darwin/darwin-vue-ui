@@ -28,7 +28,8 @@ import typographyContentProp from "../../mixins/typographyContentProp";
 import DTypography from "./DTypography";
 
 /**
- * @version 1.0.0
+ * Adds tooltip to the child component.
+ * @version 1.0.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {

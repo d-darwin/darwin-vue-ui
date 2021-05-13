@@ -171,6 +171,8 @@ And finally, development components simplify development process.
   More details: '@dariwn-studio/ui-vue/src/components/containers/DFullScreen.vue'.
 - **DGrid**. Helps arrange child elements by grid.  
   More details: '@dariwn-studio/ui-vue/src/components/containers/DGrid.vue'.
+- **DTooltip**. Adds tooltip to the child component.  
+  More details: '@dariwn-studio/ui-vue/src/components/containers/DTooltip.vue'.
 - **DTypography**. Renders an HTML strings according to defined design tokens.  
   More details: '@dariwn-studio/ui-vue/src/components/containers/DTypography.vue'.
 - **DZoomIn**. The component allows zoom in slot content to cover all browser viewport.
