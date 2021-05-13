@@ -25,6 +25,7 @@ import DSelect from "./components/atoms/DSelect";
 import DSlider from "./components/atoms/DSlider";
 import DSwitch from "./components/atoms/DSwitch";
 import DTextarea from "./components/atoms/DTextarea";
+import DTooltip from "./components/atoms/DTooltip";
 import DVideo from "./components/atoms/DVideo";
 
 /** components: molecules **/
@@ -81,6 +82,7 @@ import useWindowSize from "./compositions/windowSize";
 
 /** directives **/
 import clickOutside from "./directives/click-outside";
+import tooltip from "./directives/tooltip";
 
 /** mixins **/
 import fontSizeProp from "./mixins/typographySizeProp";
@@ -123,6 +125,7 @@ export {
   DSlider,
   DSwitch,
   DTextarea,
+  DTooltip,
   DVideo,
   /** molecules **/
   DAccordion,
@@ -176,8 +179,8 @@ export const compositions = {
 };
 
 export const directives = {
-  // TODO: add all directives
-  clickOutside
+  clickOutside,
+  tooltip
 };
 
 export const mixins = {

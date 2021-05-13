@@ -61,7 +61,7 @@
     "eslint-plugin-vue": "^7.9.0",
     "postcss": "^8.2.15",
     "prettier": "^1.19.1",
-    "sass": "^1.32.12",
+    "sass": "^1.32.13",
     "sass-loader": "^10.2.0",
     "vue": "^3.0.11",
     "vue-loader": "^16.2.0",
