@@ -80,10 +80,13 @@ export default {
     const isPanelShown = ref(true);
 
     // If SSR we haven't document object
-    const body = document?.body;
+    const body = document && document.body;
     // just a helper
     const toggleVisualization = (className, flagName) => {
-      body?.classList.toggle(className);
+      if (body) {
+        body.classList.toggle(className);
+      }
+
       if (typeof [flagName] === "object") {
         [flagName].value = ![flagName].value;
       }

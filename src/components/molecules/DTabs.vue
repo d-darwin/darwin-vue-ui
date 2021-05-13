@@ -187,7 +187,7 @@ export default {
   },
 
   data() {
-    const activeTabIndex = this?.itemList?.findIndex(
+    const activeTabIndex = this.itemList.findIndex(
       item => item.active && !item.disabled
     );
     return {

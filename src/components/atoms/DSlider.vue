@@ -103,7 +103,7 @@ export default {
        * @type {{value: String, id: String}}
        */
       this.$emit("update:value", {
-        value: e?.target?.value,
+        value: e.target.value,
         id: this.componentId
       });
     }

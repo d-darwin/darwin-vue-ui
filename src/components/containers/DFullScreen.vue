@@ -117,9 +117,12 @@ export default {
 
       if (!this.isFullScreen) {
         // move focus to requestFullScreenLink
-        const requestFullScreenLink = this.$refs["request-full-screen-link"]
-          ?.$el;
-        this.$nextTick(() => requestFullScreenLink?.focus());
+        const requestFullScreenLink =
+          this.$refs["request-full-screen-link"] &&
+          this.$refs["request-full-screen-link"].$el;
+        if (requestFullScreenLink) {
+          this.$nextTick(() => requestFullScreenLink.focus());
+        }
       }
       /**
        * Emits current state of the component on change.
@@ -165,7 +168,7 @@ export default {
 
   methods: {
     requestFullScreen() {
-      document.getElementById(this?.componentId).requestFullscreen();
+      document.getElementById(this.componentId).requestFullscreen();
     }
   }
 };

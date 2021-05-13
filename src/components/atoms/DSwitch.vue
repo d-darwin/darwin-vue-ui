@@ -133,7 +133,7 @@ export default {
 
   methods: {
     emitChange(e) {
-      this.isChecked = e?.target?.checked;
+      this.isChecked = e && e.target.checked;
 
       /**
        * Checked attr of the <b>input</b> tag updated. Contains new <i>value</i> and component id.<br>
