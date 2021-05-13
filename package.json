@@ -38,9 +38,12 @@
     "build": "vue-cli-service build",
     "build-lib": "vue-cli-service build --target lib --name ui-vue ./src/index.js",
     "lint": "vue-cli-service lint",
-    "postinstall": "node -e \"try{require('./postinstall')}catch(e){}\""
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.14.2",
+    "@babel/plugin-proposal-optional-chaining": "^7.14.2",
     "@vue/cli-plugin-babel": "^4.5.13",
     "@vue/cli-plugin-eslint": "^4.5.13",
     "@vue/cli-service": "^4.5.13",
@@ -50,11 +53,11 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
-    "core-js": "^3.12.0",
+    "core-js": "^3.12.1",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-vue": "^7.9.0",
-    "postcss": "^8.2.14",
+    "postcss": "^8.2.15",
     "prettier": "^1.19.1",
     "sass": "^1.32.12",
     "sass-loader": "^10.2.0",

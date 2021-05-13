@@ -9,6 +9,7 @@ export default function useBlockBodyScroll() {
     const body = document.getElementsByTagName("body")[0];
     if (block) {
       body.classList.add("__blocked-scroll");
+      /*TODO: overcome step body widening*/
     } else {
       body.classList.remove("__blocked-scroll");
     }
