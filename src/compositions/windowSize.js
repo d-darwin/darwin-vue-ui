@@ -29,8 +29,8 @@ export default function useWindowSize() {
 
   function onResize() {
     if (process.browser) {
-      windowHeight.value = document?.documentElement?.clientHeight;
-      windowWidth.value = document?.documentElement?.clientWidth;
+      windowHeight.value = document && document.documentElement.clientHeight;
+      windowWidth.value = document && document.documentElement.clientWidth;
 
       if (windowWidth.value < breakpointList.sm) {
         // smallest

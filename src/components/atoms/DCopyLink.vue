@@ -97,8 +97,8 @@ export default {
 
   methods: {
     async copyLink(e) {
-      e?.preventDefault();
-      const link = window?.location?.href;
+      e.preventDefault();
+      const link = window.location.href;
 
       this.copyToClipboard(link);
       /**
@@ -110,7 +110,7 @@ export default {
       await this.$emit("copied", link);
 
       // reset focus to copy-link
-      const copyLink = this.$refs["copy-link"]?.$el;
+      const copyLink = this.$refs["copy-link"] && this.$refs["copy-link"].$el;
       if (copyLink) {
         await this.$nextTick(() => copyLink.focus());
       }

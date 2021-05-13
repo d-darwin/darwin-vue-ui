@@ -5,7 +5,9 @@
 export default function useScrollToTop() {
   const scrollToTop = () => {
     // TODO: add element / offset to scroll to
-    const c = document?.documentElement?.scrollTop || document?.body?.scrollTop;
+    const c =
+      document &&
+      (document.documentElement.scrollTop || document.body.scrollTop);
     if (c > 0) {
       // TODO: finally, why requestAnimationFrame ???
       window.requestAnimationFrame(scrollToTop);

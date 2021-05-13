@@ -85,8 +85,9 @@ export default {
 
     isExternalLink() {
       return (
-        this.$attrs?.href?.substring(0, 4) === "http" ||
-        this.$attrs?.href?.substring(0, 2) === "//"
+        this.$attrs.href &&
+        (this.$attrs.href.substring(0, 4) === "http" ||
+          this.$attrs.href.substring(0, 2) === "//")
       );
     },
 
@@ -109,8 +110,8 @@ export default {
 
   methods: {
     clickHandler(e) {
-      if (this.preventDefault) {
-        e?.preventDefault();
+      if (this.preventDefault && e) {
+        e.preventDefault();
       }
       /**
        * Just emits click event without any payload.

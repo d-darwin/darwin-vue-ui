@@ -24,13 +24,13 @@ export default {
 
   data() {
     return {
-      childrenCount: this.$slots.default()?.length
+      childrenCount: this.$slots.default().length
     };
   },
 
   mounted() {
     // TODO: use render function ???
-    if (this.$refs.row?.children) {
+    if (this.$refs.row && this.$refs.row.children) {
       const width = 100 / this.$refs.row.children.length + "%";
       this.$refs.row.children.forEach(
         child => (child.style = `width: ${width}; ${child.style}`)

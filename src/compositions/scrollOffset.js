@@ -13,7 +13,7 @@ export default function useScrollOffset() {
   const scrollOffset = ref(0);
 
   const onScroll = () => {
-    scrollOffset.value = window?.scrollY;
+    scrollOffset.value = window && window.scrollY;
   };
 
   onMounted(() => {

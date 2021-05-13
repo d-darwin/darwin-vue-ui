@@ -42,7 +42,6 @@
     "build-storybook": "build-storybook"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-optional-chaining": "^7.14.2",
     "@vue/cli-plugin-babel": "^4.5.13",
     "@vue/cli-plugin-eslint": "^4.5.13",
     "@vue/cli-service": "^4.5.13",
