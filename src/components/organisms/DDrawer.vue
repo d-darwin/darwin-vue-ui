@@ -74,9 +74,10 @@ export default {
     },
 
     /**
-     * Defines position of the component, left or right.
+     * Defines position of the component.
      */
     position: {
+      // TODO: move to mixins ???
       type: String,
       default: "right",
       validate: val => ["top", "right", "bottom", "left"].includes(val)

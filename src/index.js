@@ -42,6 +42,7 @@ import DAspectRatio from "./components/containers/DAspectRatio";
 import DEqualWidth from "./components/containers/DEqualWidth";
 import DFullScreen from "./components/containers/DFullScreen";
 import DGrid from "./components/containers/DGrid";
+import DTooltip from "./components/containers/DTooltip";
 import DTypography from "./components/containers/DTypography";
 import DZoomIn from "./components/containers/DZoomIn";
 
@@ -81,6 +82,7 @@ import useWindowSize from "./compositions/windowSize";
 
 /** directives **/
 import clickOutside from "./directives/click-outside";
+import tooltip from "./directives/tooltip";
 
 /** mixins **/
 import fontSizeProp from "./mixins/typographySizeProp";
@@ -137,6 +139,7 @@ export {
   DEqualWidth,
   DFullScreen,
   DGrid,
+  DTooltip,
   DTypography,
   DZoomIn,
   /** development **/
@@ -176,8 +179,8 @@ export const compositions = {
 };
 
 export const directives = {
-  // TODO: add all directives
-  clickOutside
+  clickOutside,
+  tooltip
 };
 
 export const mixins = {

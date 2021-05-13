@@ -25,7 +25,7 @@ import DTypography from "../containers/DTypography";
 /**
  * Helper component to unify error output of the control components.
  *
- * @version 1.2.1
+ * @version 1.2.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -65,5 +65,6 @@ export default {
   color: var(--color-danger);
   text-overflow: ellipsis;
   overflow: hidden;
+  width: fit-content;
 }
 </style>
