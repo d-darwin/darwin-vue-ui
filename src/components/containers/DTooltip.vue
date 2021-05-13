@@ -1,11 +1,26 @@
 <template>
-  <div :class="{ [`__${position}`]: position }" class="d-tooltip">
+  <div
+    ref="tooltipContainer"
+    :class="{
+      [`__${verticalPosition}`]: verticalPosition,
+      [`__${horizontalPosition}`]: horizontalPosition
+    }"
+    class="d-tooltip"
+  >
     <slot />
+    <!--    // TODO: custom one + props + styles;-->
     <DTypography ref="tooltip" :content="content" role="tooltip" />
   </div>
 </template>
 
 <script>
+/** core **/
+import { ref, onMounted, watch } from "vue";
+
+/** compositions **/
+import useScrollOffset from "../../compositions/scrollOffset";
+import useWindowSize from "../../compositions/windowSize";
+
 /** mixins **/
 import typographyContentProp from "../../mixins/typographyContentProp";
 
@@ -31,12 +46,112 @@ export default {
       // TODO: move to mixins ???
       type: String,
       default: "right",
-      validate: val => ["top", "right", "bottom", "left"].includes(val)
+      validate: val =>
+        [
+          "top",
+          "top-right",
+          "right",
+          "bottom",
+          "bottom-right",
+          "bottom-left",
+          "left",
+          "top-left"
+        ].includes(val)
     }
   },
 
-  mounted() {
-    // TODO: add detection of window and flip top/bottom, right/left
+  setup(props) {
+    // to manipulate get getBoundingClientRect and adjust tooltip position in adjustPosition
+    const tooltipContainer = ref(null);
+    const tooltip = ref(null);
+    // TODO: parse: semi-variants (top-right)
+    const defaultHorizontalPosition = ["left", "right"].includes(props.position)
+      ? props.position
+      : null;
+    const horizontalPosition = ref(defaultHorizontalPosition);
+    const defaultVerticalPosition = ["top", "bottom"].includes(props.position)
+      ? props.position
+      : null;
+    const verticalPosition = ref(defaultVerticalPosition);
+    const { windowWidth, windowHeight } = useWindowSize();
+    const { scrollOffset } = useScrollOffset();
+
+    function adjustPosition(scrollOffset) {
+      console.log(scrollOffset, windowWidth, windowHeight);
+
+      const tooltipContainerClientRect =
+        tooltipContainer.value &&
+        tooltipContainer.value.getBoundingClientRect();
+
+      if (tooltipContainerClientRect) {
+        // const tooltipContainerTop = tooltipContainerClientRect.top;
+        // const tooltipContainerBottom = tooltipContainerClientRect.bottom;
+
+        const tooltipOffsetHeight =
+          tooltip.value && tooltip.value.$el.offsetHeight;
+        const tooltipOffsetWidth =
+          tooltip.value && tooltip.value.$el.offsetWidth;
+
+        let {
+          marginBottom: tooltipMarginBottom,
+          marginTop: tooltipMarginTop,
+          marginLeft: tooltipMarginLeft,
+          marginRight: tooltipMarginRight
+        } = tooltip.value && getComputedStyle(tooltip.value.$el);
+
+        tooltipMarginBottom = parseFloat(tooltipMarginBottom);
+        tooltipMarginTop = parseFloat(tooltipMarginTop);
+        tooltipMarginLeft = parseFloat(tooltipMarginLeft);
+        tooltipMarginRight = parseFloat(tooltipMarginRight);
+        // console.log(tooltipContainerClientRect);
+        const spaceForTooltipOnTop = tooltipOffsetHeight + tooltipMarginBottom;
+        const spaceForTooltipOnBottom = tooltipOffsetHeight + tooltipMarginTop;
+        const spaceForTooltipOnLeft = tooltipOffsetWidth + tooltipMarginRight;
+        const spaceForTooltipOnRight = tooltipOffsetWidth + tooltipMarginLeft;
+
+        // console.log(windowHeight.value, tooltipContainerBottom);
+
+        // 1. если ушел за экран вверх, то флипаем вниз
+        // TODO: а что, если влезает справа/лева ???
+        if (tooltipContainerClientRect.top < spaceForTooltipOnTop) {
+          verticalPosition.value = "bottom";
+        } else if (
+          windowHeight.value - tooltipContainerClientRect.bottom <
+          spaceForTooltipOnBottom
+        ) {
+          verticalPosition.value = "top";
+        } else {
+          verticalPosition.value = defaultVerticalPosition;
+        }
+        // 2. если ушел за экран слева / справа - меняем на противоположный ???
+        // TODO, a что если место есть сверху/снизу ???
+        if (tooltipContainerClientRect.left < spaceForTooltipOnLeft) {
+          horizontalPosition.value = "right";
+        } else if (
+          windowWidth.value - tooltipContainerClientRect.right <
+          spaceForTooltipOnRight
+        ) {
+          horizontalPosition.value = "left";
+        } else {
+          horizontalPosition.value = defaultHorizontalPosition;
+        }
+      }
+    }
+
+    onMounted(() => {
+      adjustPosition(scrollOffset);
+    });
+
+    watch(scrollOffset, adjustPosition);
+    watch(windowWidth, adjustPosition);
+    watch(windowHeight, adjustPosition);
+
+    return {
+      tooltipContainer,
+      tooltip,
+      horizontalPosition,
+      verticalPosition
+    };
   }
 };
 </script>
@@ -97,7 +212,6 @@ export default {
 
   opacity: 0;
   transform: scale(0);
-
   position: absolute;
   color: var(--white);
   background: var(--color-text);
