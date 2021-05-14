@@ -44,6 +44,10 @@ export default {
   components: { DTypography },
 
   setup(props) {
+    // TODO: do we really need this
+    const { windowWidth, windowHeight } = useWindowSize();
+    const { scrollOffset } = useScrollOffset();
+
     // to manipulate get getBoundingClientRect and adjust tooltip position in adjustPosition
     const tooltipContainer = ref(null);
     const tooltip = ref(null);
@@ -68,10 +72,8 @@ export default {
       marginLeft: null
     };
 
-    const { windowWidth, windowHeight } = useWindowSize();
-    const { scrollOffset } = useScrollOffset();
-
-    function updateTooltipBoxModel(tooltipElement) {
+    function getTooltipBoxModel(tooltipElement) {
+      let tooltipBoxModel = {};
       if (isHTMLElement(tooltipElement)) {
         const {
           marginBottom,
@@ -83,15 +85,14 @@ export default {
         tooltipBoxModel = {
           offsetHeight: tooltipElement.offsetHeight,
           offsetWidth: tooltipElement.offsetWidth,
-          marginTop,
-          marginRight,
-          marginBottom,
-          marginLeft
+          marginTop: parseFloat(marginTop),
+          marginRight: parseFloat(marginRight),
+          marginBottom: parseFloat(marginBottom),
+          marginLeft: parseFloat(marginLeft)
         };
-
-        return true;
       }
-      return false;
+
+      return tooltipBoxModel;
     }
 
     function adjustPosition(scrollOffset) {
@@ -145,8 +146,8 @@ export default {
     }
 
     onMounted(() => {
-      // TODO: hold size and margin of the tooltip
-      updateTooltipBoxModel(tooltip.value && tooltip.value.$el);
+      // hold size and margin of the tooltip
+      tooltipBoxModel = getTooltipBoxModel(tooltip.value && tooltip.value.$el);
       // TODO: mark it as not shown
       // TODO: add animationNameProp
       adjustPosition(scrollOffset);
