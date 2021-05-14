@@ -3,7 +3,7 @@
  * @param o
  * @returns {boolean}
  */
-function isHTMLElement(o) {
+export default function isHTMLElement(o) {
   return typeof HTMLElement === "object"
     ? o instanceof HTMLElement //DOM2
     : o &&

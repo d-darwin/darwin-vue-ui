@@ -17,6 +17,9 @@
 /** core **/
 import { ref, onMounted, watch } from "vue";
 
+/** utils **/
+import isHTMLElement from "../../utils/isHTMLElement";
+
 /** compositions **/
 import useScrollOffset from "../../compositions/scrollOffset";
 import useWindowSize from "../../compositions/windowSize";
@@ -69,16 +72,26 @@ export default {
     const { scrollOffset } = useScrollOffset();
 
     function updateTooltipBoxModel(tooltipElement) {
-      if ()
-      const tooltipOffsetHeight = tooltipElement.offsetHeight;
-      const tooltipOffsetWidth = tooltipElement.offsetWidth;
+      if (isHTMLElement(tooltipElement)) {
+        const {
+          marginBottom,
+          marginTop,
+          marginLeft,
+          marginRight
+        } = getComputedStyle(tooltipElement);
 
-      let {
-        marginBottom: tooltipMarginBottom,
-        marginTop: tooltipMarginTop,
-        marginLeft: tooltipMarginLeft,
-        marginRight: tooltipMarginRight
-      } = getComputedStyle(tooltipElement);
+        tooltipBoxModel = {
+          offsetHeight: tooltipElement.offsetHeight,
+          offsetWidth: tooltipElement.offsetWidth,
+          marginTop,
+          marginRight,
+          marginBottom,
+          marginLeft
+        };
+
+        return true;
+      }
+      return false;
     }
 
     function adjustPosition(scrollOffset) {
@@ -91,8 +104,6 @@ export default {
       if (tooltipContainerClientRect) {
         // const tooltipContainerTop = tooltipContainerClientRect.top;
         // const tooltipContainerBottom = tooltipContainerClientRect.bottom;
-
-
 
         tooltipMarginBottom = parseFloat(tooltipMarginBottom);
         tooltipMarginTop = parseFloat(tooltipMarginTop);

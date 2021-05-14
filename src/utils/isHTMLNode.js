@@ -3,7 +3,7 @@
  * @param o
  * @returns {boolean}
  */
-function isHTMLNode(o) {
+export default function isHTMLNode(o) {
   return typeof Node === "object"
     ? o instanceof Node
     : o &&
