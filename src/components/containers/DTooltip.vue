@@ -63,15 +63,19 @@ export default {
       : null;
     const verticalPosition = ref(defaultVerticalPosition);
 
-    let tooltipBoxModel = {
-      offsetHeight: null,
-      offsetWidth: null,
-      marginTop: null,
-      marginRight: null,
-      marginBottom: null,
-      marginLeft: null
-    };
+    let tooltipBoxModel = {};
 
+    /**
+     * Return current sizes and margins of the tooltipElement.
+     * @param tooltipElement
+     * @returns {{
+     *  offsetHeight: number,
+        offsetWidth: number,
+        marginTop: number,
+        marginRight: number,
+        marginBottom: number,
+        marginLeft: number} || {}}
+     */
     function getTooltipBoxModel(tooltipElement) {
       let tooltipBoxModel = {};
       if (isHTMLElement(tooltipElement)) {
@@ -106,23 +110,29 @@ export default {
         // const tooltipContainerTop = tooltipContainerClientRect.top;
         // const tooltipContainerBottom = tooltipContainerClientRect.bottom;
 
-        tooltipMarginBottom = parseFloat(tooltipMarginBottom);
-        tooltipMarginTop = parseFloat(tooltipMarginTop);
-        tooltipMarginLeft = parseFloat(tooltipMarginLeft);
-        tooltipMarginRight = parseFloat(tooltipMarginRight);
+        // tooltipMarginBottom = parseFloat(tooltipMarginBottom);
+        // tooltipMarginTop = parseFloat(tooltipMarginTop);
+        // tooltipMarginLeft = parseFloat(tooltipMarginLeft);
+        // tooltipMarginRight = parseFloat(tooltipMarginRight);
         // console.log(tooltipContainerClientRect);
-        const spaceForTooltipOnTop = tooltipOffsetHeight + tooltipMarginBottom;
-        const spaceForTooltipOnBottom = tooltipOffsetHeight + tooltipMarginTop;
-        const spaceForTooltipOnLeft = tooltipOffsetWidth + tooltipMarginRight;
-        const spaceForTooltipOnRight = tooltipOffsetWidth + tooltipMarginLeft;
+        const spaceForTooltipOnTop =
+          tooltipBoxModel.offsetHeight + tooltipBoxModel.marginBottom;
+        const spaceForTooltipOnBottom =
+          tooltipBoxModel.offsetHeight + tooltipBoxModel.marginTop;
+        const spaceForTooltipOnLeft =
+          tooltipBoxModel.offsetWidth + tooltipBoxModel.marginRight;
+        const spaceForTooltipOnRight =
+          tooltipBoxModel.offsetWidth + tooltipBoxModel.marginLeft;
 
         // console.log(windowHeight.value, tooltipContainerBottom);
 
         // 1. если ушел за экран вверх, то флипаем вниз
         // TODO: а что, если влезает справа/лева ???
         if (tooltipContainerClientRect.top < spaceForTooltipOnTop) {
+          // TODO: если нет места ни там, ни там, то по центру
           verticalPosition.value = "bottom";
         } else if (
+          // TODO: если нет места ни там, ни там, то по центру
           windowHeight.value - tooltipContainerClientRect.bottom <
           spaceForTooltipOnBottom
         ) {
@@ -147,9 +157,10 @@ export default {
 
     onMounted(() => {
       // hold size and margin of the tooltip
+      // TODO: recalculate BoxModel when needed
       tooltipBoxModel = getTooltipBoxModel(tooltip.value && tooltip.value.$el);
-      // TODO: mark it as not shown
-      // TODO: add animationNameProp
+      // TODO: mark tooltip as not shown
+      // TODO: add animationNameProp and use v-if to animate
       adjustPosition(scrollOffset);
     });
 
@@ -215,6 +226,10 @@ export default {
     .d-typography {
       right: 100%;
     }
+  }
+
+  &.__center {
+    // Don't really need any styles
   }
 }
 
