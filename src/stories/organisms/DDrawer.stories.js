@@ -1,5 +1,6 @@
 import { DDrawer, DButton } from "@";
 
+import position from "@/stories/helpers/position";
 import "../assets/styles/organisms/d-drawer.scss";
 
 export default {
@@ -10,10 +11,7 @@ export default {
       control: { type: "boolean" },
       defaultValue: false
     },
-    position: {
-      control: { type: "select", options: ["top", "right", "bottom", "left"] },
-      defaultValue: "right"
-    },
+    position,
     onClose: { action: "close" }
   }
 };

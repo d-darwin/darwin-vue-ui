@@ -1,5 +1,7 @@
 import { DNotification } from "@";
 
+import positionFull from "@/stories/helpers/positionFull";
+
 export default {
   title: "Atoms/Notification",
   component: DNotification,
@@ -12,22 +14,7 @@ export default {
       control: { type: "number" },
       defaultValue: 5
     },
-    position: {
-      // TODO: use helper/util
-      control: {
-        type: "select",
-        options: [
-          "top",
-          "top-right",
-          "right",
-          "bottom-right",
-          "bottom",
-          "bottom-left",
-          "left",
-          "top-left"
-        ]
-      }
-    },
+    position: positionFull,
     onUpdateVisibility: { action: "update:visibility" }
   }
 };
