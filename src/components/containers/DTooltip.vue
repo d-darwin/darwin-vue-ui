@@ -44,17 +44,42 @@ export default {
     // to manipulate get getBoundingClientRect and adjust tooltip position in adjustPosition
     const tooltipContainer = ref(null);
     const tooltip = ref(null);
+
     // TODO: parse: semi-variants (top-right)
     const defaultHorizontalPosition = ["left", "right"].includes(props.position)
       ? props.position
       : null;
     const horizontalPosition = ref(defaultHorizontalPosition);
+
     const defaultVerticalPosition = ["top", "bottom"].includes(props.position)
       ? props.position
       : null;
     const verticalPosition = ref(defaultVerticalPosition);
+
+    let tooltipBoxModel = {
+      offsetHeight: null,
+      offsetWidth: null,
+      marginTop: null,
+      marginRight: null,
+      marginBottom: null,
+      marginLeft: null
+    };
+
     const { windowWidth, windowHeight } = useWindowSize();
     const { scrollOffset } = useScrollOffset();
+
+    function updateTooltipBoxModel(tooltipElement) {
+      if ()
+      const tooltipOffsetHeight = tooltipElement.offsetHeight;
+      const tooltipOffsetWidth = tooltipElement.offsetWidth;
+
+      let {
+        marginBottom: tooltipMarginBottom,
+        marginTop: tooltipMarginTop,
+        marginLeft: tooltipMarginLeft,
+        marginRight: tooltipMarginRight
+      } = getComputedStyle(tooltipElement);
+    }
 
     function adjustPosition(scrollOffset) {
       console.log(scrollOffset, windowWidth, windowHeight);
@@ -67,17 +92,7 @@ export default {
         // const tooltipContainerTop = tooltipContainerClientRect.top;
         // const tooltipContainerBottom = tooltipContainerClientRect.bottom;
 
-        const tooltipOffsetHeight =
-          tooltip.value && tooltip.value.$el.offsetHeight;
-        const tooltipOffsetWidth =
-          tooltip.value && tooltip.value.$el.offsetWidth;
 
-        let {
-          marginBottom: tooltipMarginBottom,
-          marginTop: tooltipMarginTop,
-          marginLeft: tooltipMarginLeft,
-          marginRight: tooltipMarginRight
-        } = tooltip.value && getComputedStyle(tooltip.value.$el);
 
         tooltipMarginBottom = parseFloat(tooltipMarginBottom);
         tooltipMarginTop = parseFloat(tooltipMarginTop);
@@ -119,6 +134,10 @@ export default {
     }
 
     onMounted(() => {
+      // TODO: hold size and margin of the tooltip
+      updateTooltipBoxModel(tooltip.value && tooltip.value.$el);
+      // TODO: mark it as not shown
+      // TODO: add animationNameProp
       adjustPosition(scrollOffset);
     });
 
