@@ -9,7 +9,7 @@
   >
     <slot />
     <!--    // TODO: custom one + props + styles;-->
-    <DTypography ref="tooltip" :content="content" role="tooltip" />
+    <DTypography ref="tooltip" :content="content" role="tooltip" class="tooltip" />
   </div>
 </template>
 
@@ -34,7 +34,7 @@ import DTypography from "./DTypography";
 
 /**
  * Adds tooltip to the child component.
- * @version 1.0.2
+ * @version 1.1.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -74,8 +74,7 @@ export default {
     // we should render the component before fill this
     let tooltipBoxModel = {};
 
-    // TODO: move to compositions / utils
-
+    // TODO: move to compositions / utils ???
     function adjustPosition(scrollOffset) {
       console.log(scrollOffset, windowWidth, windowHeight);
 
@@ -146,6 +145,7 @@ export default {
     });
 
     // TODO: add other watchers and recalc of the tooltipBoxModel if needed
+    // TODO: if isPositionAdjustable
     watch(scrollOffset, adjustPosition);
     // watch(windowWidth, adjustPosition(scrollOffset));
     // watch(windowHeight, adjustPosition(scrollOffset));
@@ -180,14 +180,14 @@ export default {
   justify-content: center;
 
   &:hover {
-    .d-typography {
+    .tooltip {
       opacity: 1;
       transform: scale(1);
     }
   }
 
   &.__top {
-    .d-typography {
+    .tooltip {
       bottom: 100%;
 
       &::after {
@@ -199,7 +199,7 @@ export default {
   }
 
   &.__top.__right {
-    .d-typography {
+    .tooltip {
       border-bottom-left-radius: 0;
 
       &::after {
@@ -209,7 +209,7 @@ export default {
   }
 
   &.__right {
-    .d-typography {
+    .tooltip {
       left: 100%;
 
       &::after {
@@ -221,7 +221,7 @@ export default {
   }
 
   &.__bottom {
-    .d-typography {
+    .tooltip {
       top: 100%;
 
       &::after {
@@ -233,7 +233,7 @@ export default {
   }
 
   &.__bottom.__right {
-    .d-typography {
+    .tooltip {
       border-top-left-radius: 0;
 
       &::after {
@@ -243,7 +243,7 @@ export default {
   }
 
   &.__bottom.__left {
-    .d-typography {
+    .tooltip {
       border-top-right-radius: 0;
 
       &::after {
@@ -253,7 +253,7 @@ export default {
   }
 
   &.__left {
-    .d-typography {
+    .tooltip {
       right: 100%;
 
       &::after {
@@ -265,7 +265,7 @@ export default {
   }
 
   &.__top.__left {
-    .d-typography {
+    .tooltip {
       border-bottom-right-radius: 0;
 
       &::after {
@@ -279,7 +279,7 @@ export default {
   }
 }
 
-.d-typography {
+.tooltip {
   @include transition-short;
 
   opacity: 0;
