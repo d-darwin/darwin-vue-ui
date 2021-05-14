@@ -23,6 +23,7 @@
 <script>
 /** mixins **/
 import typographyContentProp from "../../mixins/typographyContentProp";
+import positionFullProp from "../../mixins/positionFullProp";
 
 /** components **/
 import DTypography from "../containers/DTypography";
@@ -30,7 +31,7 @@ import DTypography from "../containers/DTypography";
 /**
  * The component renders text notification for a given duration.
  *
- * @version 1.2.0
+ * @version 1.2.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -38,7 +39,7 @@ export default {
 
   inheritAttrs: false,
 
-  mixins: [typographyContentProp],
+  mixins: [typographyContentProp, positionFullProp],
 
   components: { DTypography },
 
@@ -53,26 +54,6 @@ export default {
     displayDuration: {
       type: Number,
       default: 5
-    },
-
-    /**
-     * Positions on the window.
-     * Takes values: 'top', 'top-right', 'right', 'bottom-right', 'bottom', 'bottom-left', 'left', 'top-left'.
-     */
-    position: {
-      type: String,
-      default: "bottom",
-      validator: val =>
-        [
-          "top",
-          "top-right",
-          "right",
-          "bottom-right",
-          "bottom",
-          "bottom-left",
-          "left",
-          "top-left"
-        ].includes(val)
     },
 
     /**

@@ -23,43 +23,22 @@ import useWindowSize from "../../compositions/windowSize";
 
 /** mixins **/
 import typographyContentProp from "../../mixins/typographyContentProp";
+import positionFullProp from "../../mixins/positionFullProp";
 
 /** components **/
 import DTypography from "./DTypography";
 
 /**
  * Adds tooltip to the child component.
- * @version 1.0.1
+ * @version 1.0.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
   name: "DTooltip",
 
-  mixins: [typographyContentProp],
+  mixins: [typographyContentProp, positionFullProp],
 
   components: { DTypography },
-
-  props: {
-    /**
-     * Defines position of the component.
-     */
-    position: {
-      // TODO: move to mixins ???
-      type: String,
-      default: "right",
-      validate: val =>
-        [
-          "top",
-          "top-right",
-          "right",
-          "bottom",
-          "bottom-right",
-          "bottom-left",
-          "left",
-          "top-left"
-        ].includes(val)
-    }
-  },
 
   setup(props) {
     // to manipulate get getBoundingClientRect and adjust tooltip position in adjustPosition
