@@ -43,6 +43,17 @@ export default {
 
   components: { DTypography },
 
+  props: {
+    /**
+     * Defines if position should be automatically adjusted
+     * if there is no space for default positioning.
+     */
+    isPositionAdjustable: {
+      type: Boolean,
+      default: true
+    }
+  },
+
   setup(props) {
     // TODO: do we really need this
     const { windowWidth, windowHeight } = useWindowSize();
@@ -156,14 +167,19 @@ export default {
     }
 
     onMounted(() => {
-      // hold size and margin of the tooltip
-      // TODO: recalculate BoxModel when needed
-      tooltipBoxModel = getTooltipBoxModel(tooltip.value && tooltip.value.$el);
-      // TODO: mark tooltip as not shown
-      // TODO: add animationNameProp and use v-if to animate
-      adjustPosition(scrollOffset);
+      if (props.isPositionAdjustable) {
+        // hold size and margin of the tooltip
+        // TODO: recalculate BoxModel when needed
+        tooltipBoxModel = getTooltipBoxModel(
+          tooltip.value && tooltip.value.$el
+        );
+        // TODO: mark tooltip as not shown
+        // TODO: add animationNameProp and use v-if to animate
+        adjustPosition(scrollOffset);
+      }
     });
 
+    // TODO: add other watchers and recalc of the tooltipBoxModel if needed
     watch(scrollOffset, adjustPosition);
     watch(windowWidth, adjustPosition);
     watch(windowHeight, adjustPosition);
@@ -207,24 +223,48 @@ export default {
   &.__top {
     .d-typography {
       bottom: 100%;
+
+      &::after {
+        border-bottom: 0;
+        border-top-color: var(--color-text);
+        bottom: calc(var(--gap-base) * -1);
+      }
     }
   }
 
   &.__right {
     .d-typography {
       left: 100%;
+
+      &::after {
+        border-left: 0;
+        border-right-color: var(--color-text);
+        left: calc(var(--gap-base) * -1);
+      }
     }
   }
 
   &.__bottom {
     .d-typography {
       top: 100%;
+
+      &::after {
+        border-top: 0;
+        border-bottom-color: var(--color-text);
+        top: calc(var(--gap-base) * -1);
+      }
     }
   }
 
   &.__left {
     .d-typography {
       right: 100%;
+
+      &::after {
+        border-right: 0;
+        border-left-color: var(--color-text);
+        right: calc(var(--gap-base) * -1);
+      }
     }
   }
 
@@ -244,7 +284,17 @@ export default {
   color: var(--white);
   background: var(--color-text);
   padding: var(--gap-base) var(--gap-2x);
-  margin: var(--gap-base) var(--gap-2x);
+  margin: var(--gap-2x) var(--gap-3x);
   border-radius: var(--border-radius);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &::after {
+    position: absolute;
+    content: "";
+    border: var(--gap-base) solid transparent;
+  }
 }
 </style>
