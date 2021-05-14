@@ -193,6 +193,8 @@ export default {
   opacity: 0;
   transform: scale(0);
   position: absolute;
+  width: fit-content;
+  max-width: var(--control-min-width); // TODO: I'm not sure about this...
   color: var(--white);
   background: var(--color-text);
   padding: var(--gap-base) var(--gap-2x);

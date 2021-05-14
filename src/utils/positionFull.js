@@ -6,5 +6,6 @@ export default [
   "bottom-right",
   "bottom-left",
   "left",
-  "top-left"
+  "top-left",
+  "center" // TODO: implement in the components
 ];
