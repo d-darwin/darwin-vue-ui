@@ -7,5 +7,5 @@ export default [
   "bottom-left",
   "left",
   "top-left",
-  "center" // TODO: implement in the components
+  "center"
 ];

@@ -63,19 +63,47 @@ export default {
     const tooltipContainer = ref(null);
     const tooltip = ref(null);
 
-    // TODO: parse: semi-variants (top-right)
-    const defaultHorizontalPosition = ["left", "right"].includes(props.position)
-      ? props.position
-      : null;
+    const {
+      horizontal: defaultHorizontalPosition,
+      vertical: defaultVerticalPosition
+    } = getParsedPosition(props.position);
     const horizontalPosition = ref(defaultHorizontalPosition);
-
-    const defaultVerticalPosition = ["top", "bottom"].includes(props.position)
-      ? props.position
-      : null;
     const verticalPosition = ref(defaultVerticalPosition);
+
+    console.log(
+      props.position,
+      defaultHorizontalPosition,
+      defaultVerticalPosition
+    );
 
     let tooltipBoxModel = {};
 
+    // TODO: move to compositions / utils
+    /**
+     * Return parsed position string
+     * @param position
+     * @return {{horizontal: string | null, vertical: string | null}}
+     */
+    function getParsedPosition(position) {
+      const splitPosition = position && position.split("-");
+      const horizontal = ["left", "right"].includes(
+        // if position is hybrid, left/right should be the second
+        splitPosition[1] || splitPosition[0]
+      )
+        ? splitPosition[1] || splitPosition[0]
+        : null;
+
+      const vertical = ["top", "bottom"].includes(
+        // if position is hybrid, top/bottom should be the first
+        splitPosition[0] || splitPosition[1]
+      )
+        ? splitPosition[0] || splitPosition[1]
+        : null;
+
+      return { horizontal, vertical };
+    }
+
+    // TODO: move to compositions / utils
     /**
      * Return current sizes and margins of the tooltipElement.
      * @param tooltipElement
@@ -232,6 +260,16 @@ export default {
     }
   }
 
+  &.__top.__right {
+    .d-typography {
+      border-bottom-left-radius: 0;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
   &.__right {
     .d-typography {
       left: 100%;
@@ -256,6 +294,26 @@ export default {
     }
   }
 
+  &.__bottom.__right {
+    .d-typography {
+      border-top-left-radius: 0;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &.__bottom.__left {
+    .d-typography {
+      border-top-right-radius: 0;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
   &.__left {
     .d-typography {
       right: 100%;
@@ -264,6 +322,16 @@ export default {
         border-right: 0;
         border-left-color: var(--color-text);
         right: calc(var(--gap-base) * -1);
+      }
+    }
+  }
+
+  &.__top.__left {
+    .d-typography {
+      border-bottom-right-radius: 0;
+
+      &::after {
+        display: none;
       }
     }
   }
