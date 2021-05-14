@@ -18,7 +18,8 @@
 import { ref, onMounted, watch } from "vue";
 
 /** utils **/
-import isHTMLElement from "../../utils/isHTMLElement";
+import getParsedPosition from "../../utils/getParsedPosition";
+import getHTMLElementBoxModel from "../../utils/getHTMLElementBoxModel";
 
 /** compositions **/
 import useScrollOffset from "../../compositions/scrollOffset";
@@ -70,73 +71,10 @@ export default {
     const horizontalPosition = ref(defaultHorizontalPosition);
     const verticalPosition = ref(defaultVerticalPosition);
 
-    console.log(
-      props.position,
-      defaultHorizontalPosition,
-      defaultVerticalPosition
-    );
-
+    // we should render the component before fill this
     let tooltipBoxModel = {};
 
     // TODO: move to compositions / utils
-    /**
-     * Return parsed position string
-     * @param position
-     * @return {{horizontal: string | null, vertical: string | null}}
-     */
-    function getParsedPosition(position) {
-      const splitPosition = position && position.split("-");
-      const horizontal = ["left", "right"].includes(
-        // if position is hybrid, left/right should be the second
-        splitPosition[1] || splitPosition[0]
-      )
-        ? splitPosition[1] || splitPosition[0]
-        : null;
-
-      const vertical = ["top", "bottom"].includes(
-        // if position is hybrid, top/bottom should be the first
-        splitPosition[0] || splitPosition[1]
-      )
-        ? splitPosition[0] || splitPosition[1]
-        : null;
-
-      return { horizontal, vertical };
-    }
-
-    // TODO: move to compositions / utils
-    /**
-     * Return current sizes and margins of the tooltipElement.
-     * @param tooltipElement
-     * @returns {{
-     *  offsetHeight: number,
-        offsetWidth: number,
-        marginTop: number,
-        marginRight: number,
-        marginBottom: number,
-        marginLeft: number} || {}}
-     */
-    function getTooltipBoxModel(tooltipElement) {
-      let tooltipBoxModel = {};
-      if (isHTMLElement(tooltipElement)) {
-        const {
-          marginBottom,
-          marginTop,
-          marginLeft,
-          marginRight
-        } = getComputedStyle(tooltipElement);
-
-        tooltipBoxModel = {
-          offsetHeight: tooltipElement.offsetHeight,
-          offsetWidth: tooltipElement.offsetWidth,
-          marginTop: parseFloat(marginTop),
-          marginRight: parseFloat(marginRight),
-          marginBottom: parseFloat(marginBottom),
-          marginLeft: parseFloat(marginLeft)
-        };
-      }
-
-      return tooltipBoxModel;
-    }
 
     function adjustPosition(scrollOffset) {
       console.log(scrollOffset, windowWidth, windowHeight);
@@ -198,7 +136,7 @@ export default {
       if (props.isPositionAdjustable) {
         // hold size and margin of the tooltip
         // TODO: recalculate BoxModel when needed
-        tooltipBoxModel = getTooltipBoxModel(
+        tooltipBoxModel = getHTMLElementBoxModel(
           tooltip.value && tooltip.value.$el
         );
         // TODO: mark tooltip as not shown
@@ -209,8 +147,8 @@ export default {
 
     // TODO: add other watchers and recalc of the tooltipBoxModel if needed
     watch(scrollOffset, adjustPosition);
-    watch(windowWidth, adjustPosition);
-    watch(windowHeight, adjustPosition);
+    // watch(windowWidth, adjustPosition(scrollOffset));
+    // watch(windowHeight, adjustPosition(scrollOffset));
 
     return {
       tooltipContainer,
