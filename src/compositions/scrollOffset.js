@@ -35,6 +35,7 @@ export default function useScrollOffset() {
     }
   });
 
+  // TODO: move to scrollOffsetY, scrollOffsetX
   return {
     scrollOffset
   };

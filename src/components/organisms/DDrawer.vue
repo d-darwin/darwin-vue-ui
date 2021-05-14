@@ -44,6 +44,9 @@
 /** compositions **/
 import useClosable from "../../compositions/closable";
 
+/** mixins **/
+import positionProp from "../../mixins/positionProp";
+
 /** components **/
 import DIconClose from "../icons/DIconClose";
 import DButton from "../atoms/DButton";
@@ -52,13 +55,15 @@ import DBackdrop from "../atoms/DBackdrop";
 /**
  * Renders drawer. It's especially useful for navigation, but default slot may receive any content.
  *
- * @version 1.5.1
+ * @version 1.5.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
   name: "DrawerBase",
 
   inheritAttrs: false,
+
+  mixins: [positionProp],
 
   components: { DBackdrop, DButton, DIconClose },
 
@@ -71,16 +76,6 @@ export default {
     isShown: {
       type: Boolean,
       default: true
-    },
-
-    /**
-     * Defines position of the component.
-     */
-    position: {
-      // TODO: move to mixins ???
-      type: String,
-      default: "right",
-      validate: val => ["top", "right", "bottom", "left"].includes(val)
     },
 
     /**
