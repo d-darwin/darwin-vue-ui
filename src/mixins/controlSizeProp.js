@@ -1,4 +1,4 @@
-import controlSizeList from "../utils/controlSizeList";
+import controlSizeList from "../variables/controlSizeList";
 
 export default {
   props: {

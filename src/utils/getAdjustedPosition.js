@@ -1,6 +1,17 @@
 import getHTMLElementBoxModel from "./getHTMLElementBoxModel";
 import getOppositePosition from "./getOppositePosition";
 
+/**
+ * Adjust position of the tooltip component if there is no space for default (user defined) position
+ *
+ * @param elementContainer
+ * @param element
+ * @param windowWidth
+ * @param windowHeight
+ * @param defaultHorizontalPosition
+ * @param defaultVerticalPosition
+ * @returns {{}}
+ */
 export default function(
   elementContainer,
   element,

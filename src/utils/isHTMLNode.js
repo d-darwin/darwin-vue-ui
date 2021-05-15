@@ -1,13 +1,13 @@
 /**
  * Returns true if it is a DOM node
- * @param o
+ * @param obj
  * @returns {boolean}
  */
-export default function isHTMLNode(o) {
+export default function isHTMLNode(obj) {
   return typeof Node === "object"
-    ? o instanceof Node
-    : o &&
-        typeof o === "object" &&
-        typeof o.nodeType === "number" &&
-        typeof o.nodeName === "string";
+    ? obj instanceof Node
+    : obj &&
+        typeof obj === "object" &&
+        typeof obj.nodeType === "number" &&
+        typeof obj.nodeName === "string";
 }

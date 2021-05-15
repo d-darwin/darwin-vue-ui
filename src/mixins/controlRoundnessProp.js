@@ -1,4 +1,4 @@
-import controlRoundnessList from "../utils/controlRoundnessList";
+import controlRoundnessList from "../variables/controlRoundnessList";
 
 export default {
   props: {

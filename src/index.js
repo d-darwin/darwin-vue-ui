@@ -74,6 +74,7 @@ import DIconVideo from "./components/icons/DIconVideo";
 import useBlockBodyScroll from "./compositions/blockBodyScroll";
 import useClosable from "./compositions/closable";
 import useComponentId from "./compositions/componentId";
+import useCopyToClipboard from "./compositions/copyToClipboard";
 import useDownloadFile from "./compositions/downloadFile";
 import useKeyboardListener from "./compositions/keyboardListener";
 import useScrollOffset from "./compositions/scrollOffset";
@@ -85,15 +86,39 @@ import clickOutside from "./directives/click-outside";
 import tooltip from "./directives/tooltip";
 
 /** mixins **/
-import fontSizeProp from "./mixins/typographySizeProp";
+import aspectRatioProp from "./mixins/aspectRatioProp";
+import controlColorProp from "./mixins/controlColorProp";
+import controlRoundnessProp from "./mixins/controlRoundnessProp";
+import controlSizeProp from "./mixins/controlSizeProp";
+import controlTypeProp from "./mixins/controlTypeProp";
+import hasRouter from "./mixins/hasRouter";
 import linkClickRouting from "./mixins/linkClickRouting";
+import positionFullProp from "./mixins/positionFullProp";
+import positionProp from "./mixins/positionProp";
+import typographyContentProp from "./mixins/typographyContentProp";
+import typographySizeProp from "./mixins/typographySizeProp";
 
 /** utils **/
+import consoleWarn from "./utils/consoleWarn";
 import copyToClipboard from "./utils/copyToClipboard";
 import debounce from "./utils/debounce";
+import getAdjustedPosition from "./utils/getAdjustedPosition";
+import getHTMLElementBoxModel from "./utils/getHTMLElementBoxModel";
+import getOppositePosition from "./utils/getOppositePosition";
+import getParsedPosition from "./utils/getParsedPosition";
+import isHTMLElement from "./utils/isHTMLElement";
+import isHTMLNode from "./utils/isHTMLNode";
 import throttle from "./utils/throttle";
 import uuid from "./utils/uuid";
-import warn from "./utils/consoleWarn";
+
+/** variables **/
+import controlColorList from "./variables/controlColorList";
+import controlRoundnessList from "./variables/controlRoundnessList";
+import controlSizeList from "./variables/controlSizeList";
+import controlTypeList from "./variables/controlTypeList";
+import position from "./variables/position";
+import positionFull from "./variables/positionFull";
+import typographySizeList from "./variables/typographySizeList";
 
 /** plugin **/
 import darwinStudioUiPlugin from "./plugin/darwinStudioUi";
@@ -167,10 +192,10 @@ export {
 };
 
 export const compositions = {
-  // TODO: add all compositions
   useBlockBodyScroll,
   useClosable,
   useComponentId,
+  useCopyToClipboard,
   useDownloadFile,
   useKeyboardListener,
   useScrollOffset,
@@ -184,18 +209,41 @@ export const directives = {
 };
 
 export const mixins = {
-  // TODO: add all mixins
-  fontSizeProp,
-  linkClickRouting
+  aspectRatioProp,
+  controlColorProp,
+  controlRoundnessProp,
+  controlSizeProp,
+  controlTypeProp,
+  hasRouter,
+  linkClickRouting,
+  positionFullProp,
+  positionProp,
+  typographyContentProp,
+  typographySizeProp
 };
 
 export const utils = {
-  // TODO: add all utils
+  consoleWarn,
   copyToClipboard,
+  getAdjustedPosition,
+  getHTMLElementBoxModel,
+  getOppositePosition,
+  getParsedPosition,
+  isHTMLElement,
+  isHTMLNode,
   debounce,
   throttle,
-  uuid,
-  warn
+  uuid
+};
+
+export const variables = {
+  controlColorList,
+  controlRoundnessList,
+  controlSizeList,
+  controlTypeList,
+  position,
+  positionFull,
+  typographySizeList
 };
 
 export { darwinStudioUiPlugin };

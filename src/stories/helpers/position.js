@@ -1,4 +1,4 @@
-import position from "@/utils/position";
+import position from "@/variables/position";
 
 export default {
   control: { type: "select", options: position },
