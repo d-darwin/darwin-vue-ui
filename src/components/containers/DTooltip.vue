@@ -6,8 +6,8 @@
       [`__${horizontalPosition}`]: horizontalPosition
     }"
     class="d-tooltip"
-    @mouseenter="$emit('update:show', true)"
-    @mouseleave="$emit('update:show', false)"
+    @mouseenter="emitUpdateShow()"
+    @mouseleave="emitUpdateShow(false)"
   >
     <!-- @slot Tooltip will be added to the content of this slot -->
     <slot />
@@ -50,7 +50,7 @@ import DTypography from "./DTypography";
  * Adds tooltip to the child component. Adjusts tooltip position
  * if  there is no space on the window for default positioning.
  *
- * @version 1.2.2
+ * @version 1.2.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -90,7 +90,7 @@ export default {
     }
   },
 
-  setup(props) {
+  setup(props, { emit }) {
     // we will be watching on this to adjust tooltip position
     const { scrollOffset } = useScrollOffset();
     const { windowWidth, windowHeight } = useWindowSize();
@@ -232,6 +232,18 @@ export default {
       horizontalPosition,
       verticalPosition
     };
+  },
+
+  methods: {
+    emitUpdateShow(show = true) {
+      /**
+       * Emits current tooltip state.
+       *
+       * @event update:show
+       * @type {boolean}
+       */
+      this.$emit("update:show", show);
+    }
   }
 };
 </script>
