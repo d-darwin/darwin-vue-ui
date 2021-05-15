@@ -1,3 +1,9 @@
+/**
+ * Returns opposite position.
+ *
+ * @param position
+ * @returns {string}
+ */
 export default function(position) {
   switch (position) {
     case "top":
