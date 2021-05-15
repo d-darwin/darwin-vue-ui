@@ -195,7 +195,13 @@ export default {
       }
     });
 
-    const watchableList = [scrollOffset, windowWidth, windowHeight, props];
+    const watchableList = [
+      scrollOffset,
+      windowWidth,
+      windowHeight,
+      tooltipContainer,
+      props
+    ];
     watchableList.forEach(watchable =>
       watch(watchable, () => {
         if (props.isPositionAdjustable) {
@@ -354,6 +360,7 @@ export default {
   padding: var(--gap-base) var(--gap-2x);
   margin: var(--gap-2x) var(--gap-3x);
   border-radius: var(--border-radius);
+  word-break: break-all;
 
   display: flex;
   justify-content: center;

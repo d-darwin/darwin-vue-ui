@@ -32,6 +32,11 @@ Top.args = {
   position: "top"
 };
 
+export const TopRight = Template.bind({});
+TopRight.args = {
+  position: "top-right"
+};
+
 export const Right = Template.bind({});
 Right.args = {
   position: "right"
@@ -42,7 +47,22 @@ Bottom.args = {
   position: "bottom"
 };
 
+export const BottomRight = Template.bind({});
+BottomRight.args = {
+  position: "bottom-right"
+};
+
+export const BottomLeft = Template.bind({});
+BottomLeft.args = {
+  position: "bottom-left"
+};
+
 export const Left = Template.bind({});
 Left.args = {
   position: "left"
+};
+
+export const TopLeft = Template.bind({});
+TopLeft.args = {
+  position: "top-left"
 };
