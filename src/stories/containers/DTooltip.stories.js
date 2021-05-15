@@ -10,8 +10,8 @@ export default {
     content: {
       control: { type: "text" },
       defaultValue: "Some tooltip content"
-    }
-    // TODO: add show/hide events
+    },
+    onUpdateShow: { action: "update:show" }
   }
 };
 
@@ -21,7 +21,7 @@ const Template = args => ({
     return { args };
   },
   template: `
-    <DTooltip v-bind="args">
+    <DTooltip v-bind="args" @update:show="args.onUpdateShow">
       <DTypography content="Hover me to see the tooltip." />
     </DTooltip>
   `

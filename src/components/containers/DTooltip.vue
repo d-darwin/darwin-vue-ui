@@ -6,21 +6,29 @@
       [`__${horizontalPosition}`]: horizontalPosition
     }"
     class="d-tooltip"
+    @mouseenter="$emit('update:show', true)"
+    @mouseleave="$emit('update:show', false)"
   >
+    <!-- @slot Tooltip will be added to the content of this slot -->
     <slot />
-    <!--    // TODO: custom one + props + styles;-->
+
     <DTypography
+      v-if="!$slots.tooltip"
       ref="tooltip"
       :content="content"
+      v-bind="typographyProps"
+      :style="typographyStyle"
       role="tooltip"
       class="tooltip"
     />
+    <!-- @slot Replace default tooltip with your own implementation. Slot should have .tooltip class-->
+    <slot v-else name="tooltip" />
   </div>
 </template>
 
 <script>
 /** core **/
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted, watch, nextTick } from "vue";
 
 /** utils **/
 import getParsedPosition from "../../utils/getParsedPosition";
@@ -39,25 +47,46 @@ import positionFullProp from "../../mixins/positionFullProp";
 import DTypography from "./DTypography";
 
 /**
- * Adds tooltip to the child component.
- * @version 1.2.0
+ * Adds tooltip to the child component. Adjusts tooltip position
+ * if  there is no space on the window for default positioning.
+ *
+ * @version 1.2.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
+  // TODO: too many lines, try to split
   name: "DTooltip",
 
   mixins: [typographyContentProp, positionFullProp],
 
   components: { DTypography },
 
+  emits: ["update:show"],
+
   props: {
     /**
      * Defines if position should be automatically adjusted
-     * if there is no space for default positioning.
+     * if there is no space on the window for default positioning.
      */
     isPositionAdjustable: {
       type: Boolean,
       default: true
+    },
+
+    /**
+     * Pass any <b>DTypography</b> props if needed.
+     */
+    typographyProps: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Pass any style object to <i>.d-typography</i> if needed.
+     */
+    typographyStyle: {
+      type: Object,
+      default: () => {}
     }
   },
 
@@ -152,25 +181,28 @@ export default {
     }
 
     onMounted(() => {
-      if (props.isPositionAdjustable) {
-        // hold size and margin of the tooltip
-        // TODO: recalculate BoxModel when needed
-        tooltipBoxModel = getHTMLElementBoxModel(
-          tooltip.value && tooltip.value.$el
-        );
-        // TODO: mark tooltip as not shown
-        // TODO: add animationNameProp and use v-if to animate
-        adjustPosition(
-          tooltipContainer,
-          tooltipBoxModel,
-          windowWidth,
-          windowHeight,
-          horizontalPosition,
-          verticalPosition,
-          defaultHorizontalPosition,
-          defaultVerticalPosition
-        );
-      }
+      nextTick(() => {
+        // We need to wait until children components will mounted (if there are)
+        if (props.isPositionAdjustable) {
+          // hold size and margin of the tooltip
+          // TODO: recalculate BoxModel when needed
+          tooltipBoxModel = getHTMLElementBoxModel(
+            tooltip.value && tooltip.value.$el
+          );
+          // TODO: mark tooltip as not shown
+          // TODO: add animationNameProp and use v-if to animate
+          adjustPosition(
+            tooltipContainer,
+            tooltipBoxModel,
+            windowWidth,
+            windowHeight,
+            horizontalPosition,
+            verticalPosition,
+            defaultHorizontalPosition,
+            defaultVerticalPosition
+          );
+        }
+      });
     });
 
     const watchableList = [scrollOffset, windowWidth, windowHeight, props];
@@ -214,6 +246,7 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/styles/mixins/transitions";
+@import "../../assets/styles/transitions/scale";
 
 .d-tooltip {
   position: relative;
@@ -224,14 +257,16 @@ export default {
   justify-content: center;
 
   &:hover {
-    .tooltip {
+    .tooltip,
+    ::v-slotted(.tooltip) {
       opacity: 1;
       transform: scale(1);
     }
   }
 
   &.__top {
-    .tooltip {
+    .tooltip,
+    ::v-slotted(.tooltip) {
       bottom: 100%;
 
       &::after {
@@ -243,7 +278,8 @@ export default {
   }
 
   &.__top.__right {
-    .tooltip {
+    .tooltip,
+    ::v-slotted(.tooltip) {
       border-bottom-left-radius: 0;
 
       &::after {
@@ -253,7 +289,8 @@ export default {
   }
 
   &.__right {
-    .tooltip {
+    .tooltip,
+    ::v-slotted(.tooltip) {
       left: 100%;
 
       &::after {
@@ -265,7 +302,8 @@ export default {
   }
 
   &.__bottom {
-    .tooltip {
+    .tooltip,
+    ::v-slotted(.tooltip) {
       top: 100%;
 
       &::after {
@@ -277,7 +315,8 @@ export default {
   }
 
   &.__bottom.__right {
-    .tooltip {
+    .tooltip,
+    ::v-slotted(.tooltip) {
       border-top-left-radius: 0;
 
       &::after {
@@ -287,7 +326,8 @@ export default {
   }
 
   &.__bottom.__left {
-    .tooltip {
+    .tooltip,
+    ::v-slotted(.tooltip) {
       border-top-right-radius: 0;
 
       &::after {
@@ -297,7 +337,8 @@ export default {
   }
 
   &.__left {
-    .tooltip {
+    .tooltip,
+    ::v-slotted(.tooltip) {
       right: 100%;
 
       &::after {
@@ -309,7 +350,8 @@ export default {
   }
 
   &.__top.__left {
-    .tooltip {
+    .tooltip,
+    ::v-slotted(.tooltip) {
       border-bottom-right-radius: 0;
 
       &::after {
@@ -323,7 +365,8 @@ export default {
   }
 }
 
-.tooltip {
+.tooltip,
+::v-slotted(.tooltip) {
   @include transition-short;
 
   opacity: 0;
