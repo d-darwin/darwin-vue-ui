@@ -9,17 +9,23 @@
   >
     <slot />
     <!--    // TODO: custom one + props + styles;-->
-    <DTypography ref="tooltip" :content="content" role="tooltip" class="tooltip" />
+    <DTypography
+      ref="tooltip"
+      :content="content"
+      role="tooltip"
+      class="tooltip"
+    />
   </div>
 </template>
 
 <script>
 /** core **/
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted, watch, nextTick } from "vue";
 
 /** utils **/
 import getParsedPosition from "../../utils/getParsedPosition";
 import getHTMLElementBoxModel from "../../utils/getHTMLElementBoxModel";
+import getOppositePosition from "../../utils/getOppositePosition";
 
 /** compositions **/
 import useScrollOffset from "../../compositions/scrollOffset";
@@ -34,7 +40,7 @@ import DTypography from "./DTypography";
 
 /**
  * Adds tooltip to the child component.
- * @version 1.1.0
+ * @version 1.2.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -56,11 +62,11 @@ export default {
   },
 
   setup(props) {
-    // TODO: do we really need this
-    const { windowWidth, windowHeight } = useWindowSize();
+    // we will be watching on this to adjust tooltip position
     const { scrollOffset } = useScrollOffset();
+    const { windowWidth, windowHeight } = useWindowSize();
 
-    // to manipulate get getBoundingClientRect and adjust tooltip position in adjustPosition
+    // to manipulate get getBoundingClientRect and adjust tooltip position
     const tooltipContainer = ref(null);
     const tooltip = ref(null);
 
@@ -75,64 +81,101 @@ export default {
     let tooltipBoxModel = {};
 
     // TODO: move to compositions / utils ???
-    function adjustPosition(scrollOffset) {
-      console.log(scrollOffset, windowWidth, windowHeight);
-
+    function adjustPosition(
+      tooltipContainer,
+      windowWidth,
+      windowHeight,
+      horizontalPosition,
+      verticalPosition,
+      defaultHorizontalPosition,
+      defaultVerticalPosition
+    ) {
       const tooltipContainerClientRect =
         tooltipContainer.value &&
         tooltipContainer.value.getBoundingClientRect();
 
       if (tooltipContainerClientRect) {
-        // const tooltipContainerTop = tooltipContainerClientRect.top;
-        // const tooltipContainerBottom = tooltipContainerClientRect.bottom;
+        const tooltipContainerClientSpace = {
+          top: tooltipContainerClientRect.top,
+          right: windowWidth.value - tooltipContainerClientRect.right,
+          bottom: windowHeight.value - tooltipContainerClientRect.bottom,
+          left: tooltipContainerClientRect.left
+        };
 
-        // tooltipMarginBottom = parseFloat(tooltipMarginBottom);
-        // tooltipMarginTop = parseFloat(tooltipMarginTop);
-        // tooltipMarginLeft = parseFloat(tooltipMarginLeft);
-        // tooltipMarginRight = parseFloat(tooltipMarginRight);
-        // console.log(tooltipContainerClientRect);
-        const spaceForTooltipOnTop =
-          tooltipBoxModel.offsetHeight + tooltipBoxModel.marginBottom;
-        const spaceForTooltipOnBottom =
-          tooltipBoxModel.offsetHeight + tooltipBoxModel.marginTop;
-        const spaceForTooltipOnLeft =
-          tooltipBoxModel.offsetWidth + tooltipBoxModel.marginRight;
-        const spaceForTooltipOnRight =
-          tooltipBoxModel.offsetWidth + tooltipBoxModel.marginLeft;
+        const spaceForTooltip = {
+          top: tooltipBoxModel.offsetHeight + tooltipBoxModel.marginBottom,
+          right: tooltipBoxModel.offsetWidth + tooltipBoxModel.marginLeft,
+          bottom: tooltipBoxModel.offsetHeight + tooltipBoxModel.marginTop,
+          left: tooltipBoxModel.offsetWidth + tooltipBoxModel.marginRight
+        };
 
-        // console.log(windowHeight.value, tooltipContainerBottom);
+        verticalPosition.value = getAdjustedAxePosition(
+          tooltipContainerClientSpace,
+          spaceForTooltip,
+          defaultVerticalPosition
+        );
 
-        // 1. если ушел за экран вверх, то флипаем вниз
-        // TODO: а что, если влезает справа/лева ???
-        if (tooltipContainerClientRect.top < spaceForTooltipOnTop) {
-          // TODO: если нет места ни там, ни там, то по центру
-          verticalPosition.value = "bottom";
-        } else if (
-          // TODO: если нет места ни там, ни там, то по центру
-          windowHeight.value - tooltipContainerClientRect.bottom <
-          spaceForTooltipOnBottom
+        horizontalPosition.value = getAdjustedAxePosition(
+          tooltipContainerClientSpace,
+          spaceForTooltip,
+          defaultHorizontalPosition
+        );
+      }
+    }
+
+    function getAdjustedAxePosition(
+      tooltipContainerClientSpace,
+      spaceForTooltip,
+      axeDefaultPosition
+    ) {
+      if (axeDefaultPosition) {
+        const oppositeAxePosition = getOppositePosition(axeDefaultPosition);
+
+        console.log(tooltipContainerClientSpace, spaceForTooltip);
+
+        if (
+          tooltipContainerClientSpace[axeDefaultPosition] >
+          spaceForTooltip[axeDefaultPosition]
         ) {
-          verticalPosition.value = "top";
-        } else {
-          verticalPosition.value = defaultVerticalPosition;
-        }
-        // 2. если ушел за экран слева / справа - меняем на противоположный ???
-        // TODO, a что если место есть сверху/снизу ???
-        if (tooltipContainerClientRect.left < spaceForTooltipOnLeft) {
-          horizontalPosition.value = "right";
+          // there is enough space in the default position (user defined)
+          return axeDefaultPosition;
         } else if (
-          windowWidth.value - tooltipContainerClientRect.right <
-          spaceForTooltipOnRight
+          tooltipContainerClientSpace[oppositeAxePosition] >
+          spaceForTooltip[oppositeAxePosition]
         ) {
-          horizontalPosition.value = "left";
-        } else {
-          horizontalPosition.value = defaultHorizontalPosition;
+          // there is in the opposite position
+          return oppositeAxePosition;
         }
       }
+
+      // there in no space at all => remove axe positioning (center)
+      return "";
     }
 
     onMounted(() => {
       if (props.isPositionAdjustable) {
+        /* const mutationObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            adjustPosition(
+              tooltipContainer,
+              windowWidth,
+              windowHeight,
+              horizontalPosition,
+              verticalPosition,
+              defaultHorizontalPosition,
+              defaultVerticalPosition
+            );
+          });
+        });
+        mutationObserver.observe(tooltipContainer.value, {
+          attributes: true,
+          characterData: true,
+          childList: true,
+          subtree: true,
+          attributeOldValue: true,
+          characterDataOldValue: true
+        }); */
+
         // hold size and margin of the tooltip
         // TODO: recalculate BoxModel when needed
         tooltipBoxModel = getHTMLElementBoxModel(
@@ -140,15 +183,34 @@ export default {
         );
         // TODO: mark tooltip as not shown
         // TODO: add animationNameProp and use v-if to animate
-        adjustPosition(scrollOffset);
+        adjustPosition(
+          tooltipContainer,
+          windowWidth,
+          windowHeight,
+          horizontalPosition,
+          verticalPosition,
+          defaultHorizontalPosition,
+          defaultVerticalPosition
+        );
       }
     });
 
-    // TODO: add other watchers and recalc of the tooltipBoxModel if needed
-    // TODO: if isPositionAdjustable
-    watch(scrollOffset, adjustPosition);
-    // watch(windowWidth, adjustPosition(scrollOffset));
-    // watch(windowHeight, adjustPosition(scrollOffset));
+    const watchableList = [scrollOffset, windowWidth, windowHeight, props];
+    watchableList.forEach(watchable =>
+      watch(watchable, () => {
+        if (props.isPositionAdjustable) {
+          adjustPosition(
+            tooltipContainer,
+            windowWidth,
+            windowHeight,
+            horizontalPosition,
+            verticalPosition,
+            defaultHorizontalPosition,
+            defaultVerticalPosition
+          );
+        }
+      })
+    );
 
     return {
       tooltipContainer,
