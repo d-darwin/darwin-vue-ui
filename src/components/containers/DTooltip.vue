@@ -49,11 +49,10 @@ import DTypography from "./DTypography";
  * Adds tooltip to the child component. Adjusts tooltip position
  * if  there is no space on the window for default positioning.
  *
- * @version 1.2.3
+ * @version 1.2.4
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
-  // TODO: too many lines, try to split
   name: "DTooltip",
 
   mixins: [typographyContentProp, positionFullProp],
@@ -177,7 +176,6 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/styles/mixins/transitions";
-@import "../../assets/styles/transitions/scale";
 
 .d-tooltip {
   position: relative;
@@ -289,10 +287,6 @@ export default {
         display: none;
       }
     }
-  }
-
-  &.__center {
-    // Don't really need any styles
   }
 }
 
