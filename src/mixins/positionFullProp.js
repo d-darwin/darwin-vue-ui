@@ -1,4 +1,4 @@
-import positionFull from "../utils/variables/positionFull";
+import positionFull from "../variables/positionFull";
 
 export default {
   props: {

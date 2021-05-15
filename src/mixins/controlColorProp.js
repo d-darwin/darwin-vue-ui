@@ -1,4 +1,4 @@
-import controlColorList from "../utils/variables/controlColorList";
+import controlColorList from "../variables/controlColorList";
 
 export default {
   props: {

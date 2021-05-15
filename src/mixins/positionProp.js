@@ -1,4 +1,4 @@
-import position from "../utils/variables/position";
+import position from "../variables/position";
 
 export default {
   props: {

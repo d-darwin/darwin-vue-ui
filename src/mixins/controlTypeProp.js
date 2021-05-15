@@ -1,4 +1,4 @@
-import controlTypeList from "../utils/variables/controlTypeList";
+import controlTypeList from "../variables/controlTypeList";
 
 export default {
   props: {
