@@ -32,8 +32,7 @@ import { ref, onMounted, watch, nextTick } from "vue";
 
 /** utils **/
 import getParsedPosition from "../../utils/getParsedPosition";
-import getHTMLElementBoxModel from "../../utils/getHTMLElementBoxModel";
-import getOppositePosition from "../../utils/getOppositePosition";
+import getAdjustedPosition from "../../utils/getAdjustedPosition";
 
 /** compositions **/
 import useScrollOffset from "../../compositions/scrollOffset";
@@ -90,7 +89,7 @@ export default {
     }
   },
 
-  setup(props, { emit }) {
+  setup(props) {
     // we will be watching on this to adjust tooltip position
     const { scrollOffset } = useScrollOffset();
     const { windowWidth, windowHeight } = useWindowSize();
@@ -103,125 +102,45 @@ export default {
       horizontal: defaultHorizontalPosition,
       vertical: defaultVerticalPosition
     } = getParsedPosition(props.position);
+
     const horizontalPosition = ref(defaultHorizontalPosition);
     const verticalPosition = ref(defaultVerticalPosition);
-
-    // we should render the component before fill this
-    let tooltipBoxModel = {};
-
-    // TODO: too many arguments
-    function adjustPosition(
-      tooltipContainer,
-      tooltipBoxModel,
-      windowWidth,
-      windowHeight,
-      horizontalPosition,
-      verticalPosition,
-      defaultHorizontalPosition,
-      defaultVerticalPosition
-    ) {
-      const tooltipContainerClientRect =
-        tooltipContainer.value &&
-        tooltipContainer.value.getBoundingClientRect();
-
-      if (tooltipContainerClientRect) {
-        const tooltipContainerClientSpace = {
-          top: tooltipContainerClientRect.top,
-          right: windowWidth.value - tooltipContainerClientRect.right,
-          bottom: windowHeight.value - tooltipContainerClientRect.bottom,
-          left: tooltipContainerClientRect.left
-        };
-
-        const spaceForTooltip = {
-          top: tooltipBoxModel.offsetHeight + tooltipBoxModel.marginBottom,
-          right: tooltipBoxModel.offsetWidth + tooltipBoxModel.marginLeft,
-          bottom: tooltipBoxModel.offsetHeight + tooltipBoxModel.marginTop,
-          left: tooltipBoxModel.offsetWidth + tooltipBoxModel.marginRight
-        };
-
-        verticalPosition.value = getAdjustedAxePosition(
-          tooltipContainerClientSpace,
-          spaceForTooltip,
-          defaultVerticalPosition
-        );
-
-        horizontalPosition.value = getAdjustedAxePosition(
-          tooltipContainerClientSpace,
-          spaceForTooltip,
-          defaultHorizontalPosition
-        );
-      }
-    }
-
-    function getAdjustedAxePosition(
-      tooltipContainerClientSpace,
-      spaceForTooltip,
-      axeDefaultPosition
-    ) {
-      if (axeDefaultPosition) {
-        const oppositeAxePosition = getOppositePosition(axeDefaultPosition);
-
-        if (
-          tooltipContainerClientSpace[axeDefaultPosition] >
-          spaceForTooltip[axeDefaultPosition]
-        ) {
-          // there is enough space in the default position (user defined)
-          return axeDefaultPosition;
-        } else if (
-          tooltipContainerClientSpace[oppositeAxePosition] >
-          spaceForTooltip[oppositeAxePosition]
-        ) {
-          // there is in the opposite position
-          return oppositeAxePosition;
-        }
-      }
-
-      // there in no space at all => remove axe positioning (center)
-      return "";
-    }
 
     onMounted(() => {
       nextTick(() => {
         // We need to wait until children components will mounted (if there are)
         if (props.isPositionAdjustable) {
-          // hold size and margin of the tooltip
-          // TODO: recalculate BoxModel when needed
-          tooltipBoxModel = getHTMLElementBoxModel(
-            tooltip.value && tooltip.value.$el
-          );
-          // TODO: mark tooltip as not shown
-          // TODO: add animationNameProp and use v-if to animate
-          adjustPosition(
+          const adjustedPosition = getAdjustedPosition(
             tooltipContainer,
-            tooltipBoxModel,
+            tooltip,
             windowWidth,
             windowHeight,
-            horizontalPosition,
-            verticalPosition,
             defaultHorizontalPosition,
             defaultVerticalPosition
           );
+
+          horizontalPosition.value = adjustedPosition.horizontal;
+          verticalPosition.value = adjustedPosition.vertical;
         }
       });
     });
 
+    // adjust position when something changes
     const watchableList = [scrollOffset, windowWidth, windowHeight, props];
     watchableList.forEach(watchable =>
       watch(watchable, () => {
         if (props.isPositionAdjustable) {
-          tooltipBoxModel = getHTMLElementBoxModel(
-            tooltip.value && tooltip.value.$el
-          );
-          adjustPosition(
+          const adjustedPosition = getAdjustedPosition(
             tooltipContainer,
-            tooltipBoxModel,
+            tooltip,
             windowWidth,
             windowHeight,
-            horizontalPosition,
-            verticalPosition,
             defaultHorizontalPosition,
             defaultVerticalPosition
           );
+
+          horizontalPosition.value = adjustedPosition.horizontal;
+          verticalPosition.value = adjustedPosition.vertical;
         }
       })
     );
