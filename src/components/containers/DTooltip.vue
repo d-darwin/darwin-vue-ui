@@ -20,7 +20,7 @@
 
 <script>
 /** core **/
-import { ref, onMounted, watch, nextTick } from "vue";
+import { ref, onMounted, watch } from "vue";
 
 /** utils **/
 import getParsedPosition from "../../utils/getParsedPosition";
@@ -131,8 +131,6 @@ export default {
       if (axeDefaultPosition) {
         const oppositeAxePosition = getOppositePosition(axeDefaultPosition);
 
-        console.log(tooltipContainerClientSpace, spaceForTooltip);
-
         if (
           tooltipContainerClientSpace[axeDefaultPosition] >
           spaceForTooltip[axeDefaultPosition]
@@ -199,7 +197,6 @@ export default {
       scrollOffset,
       windowWidth,
       windowHeight,
-      tooltipContainer,
       props
     ];
     watchableList.forEach(watchable =>
@@ -360,7 +357,6 @@ export default {
   padding: var(--gap-base) var(--gap-2x);
   margin: var(--gap-2x) var(--gap-3x);
   border-radius: var(--border-radius);
-  word-break: break-all;
 
   display: flex;
   justify-content: center;
