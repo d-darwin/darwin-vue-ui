@@ -177,6 +177,9 @@ export default {
     watchableList.forEach(watchable =>
       watch(watchable, () => {
         if (props.isPositionAdjustable) {
+          tooltipBoxModel = getHTMLElementBoxModel(
+            tooltip.value && tooltip.value.$el
+          );
           adjustPosition(
             tooltipContainer,
             tooltipBoxModel,
