@@ -4,11 +4,7 @@
 export default {
   data() {
     return {
-      hasRouter: false
+      hasRouter: !!this.$router
     };
   },
-
-  created() {
-    this.hasRouter = !!this.$router;
-  }
 };
