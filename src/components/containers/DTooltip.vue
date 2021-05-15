@@ -80,9 +80,10 @@ export default {
     // we should render the component before fill this
     let tooltipBoxModel = {};
 
-    // TODO: move to compositions / utils ???
+    // TODO: too many arguments
     function adjustPosition(
       tooltipContainer,
+      tooltipBoxModel,
       windowWidth,
       windowHeight,
       horizontalPosition,
@@ -152,28 +153,6 @@ export default {
 
     onMounted(() => {
       if (props.isPositionAdjustable) {
-        /* const mutationObserver = new MutationObserver(function(mutations) {
-          mutations.forEach(function(mutation) {
-            adjustPosition(
-              tooltipContainer,
-              windowWidth,
-              windowHeight,
-              horizontalPosition,
-              verticalPosition,
-              defaultHorizontalPosition,
-              defaultVerticalPosition
-            );
-          });
-        });
-        mutationObserver.observe(tooltipContainer.value, {
-          attributes: true,
-          characterData: true,
-          childList: true,
-          subtree: true,
-          attributeOldValue: true,
-          characterDataOldValue: true
-        }); */
-
         // hold size and margin of the tooltip
         // TODO: recalculate BoxModel when needed
         tooltipBoxModel = getHTMLElementBoxModel(
@@ -183,6 +162,7 @@ export default {
         // TODO: add animationNameProp and use v-if to animate
         adjustPosition(
           tooltipContainer,
+          tooltipBoxModel,
           windowWidth,
           windowHeight,
           horizontalPosition,
@@ -193,17 +173,13 @@ export default {
       }
     });
 
-    const watchableList = [
-      scrollOffset,
-      windowWidth,
-      windowHeight,
-      props
-    ];
+    const watchableList = [scrollOffset, windowWidth, windowHeight, props];
     watchableList.forEach(watchable =>
       watch(watchable, () => {
         if (props.isPositionAdjustable) {
           adjustPosition(
             tooltipContainer,
+            tooltipBoxModel,
             windowWidth,
             windowHeight,
             horizontalPosition,
