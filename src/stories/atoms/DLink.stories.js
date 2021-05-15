@@ -1,7 +1,7 @@
 import { DLink } from "@";
 
-import controlTypeList from "@/utils/controlTypeList";
-import typographySizeList from "@/utils/typographySizeList";
+import controlTypeList from "@/utils/variables/controlTypeList";
+import typographySizeList from "@/utils/variables/typographySizeList";
 
 export default {
   title: "Atoms/Link",

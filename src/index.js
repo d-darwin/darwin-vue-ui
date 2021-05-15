@@ -89,11 +89,11 @@ import fontSizeProp from "./mixins/typographySizeProp";
 import linkClickRouting from "./mixins/linkClickRouting";
 
 /** utils **/
+import consoleWarn from "./utils/consoleWarn";
 import copyToClipboard from "./utils/copyToClipboard";
 import debounce from "./utils/debounce";
 import throttle from "./utils/throttle";
 import uuid from "./utils/uuid";
-import warn from "./utils/consoleWarn";
 
 /** plugin **/
 import darwinStudioUiPlugin from "./plugin/darwinStudioUi";
@@ -195,7 +195,7 @@ export const utils = {
   debounce,
   throttle,
   uuid,
-  warn
+  consoleWarn
 };
 
 export { darwinStudioUiPlugin };

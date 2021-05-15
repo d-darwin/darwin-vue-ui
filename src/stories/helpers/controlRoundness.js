@@ -1,4 +1,4 @@
-import controlRoundnessList from "@/utils/controlRoundnessList";
+import controlRoundnessList from "@/utils/variables/controlRoundnessList";
 
 export default {
   control: { type: "select", options: controlRoundnessList },

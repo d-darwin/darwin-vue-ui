@@ -1,4 +1,4 @@
-import typographySizeList from "../utils/typographySizeList";
+import typographySizeList from "../utils/variables/typographySizeList";
 
 export default {
   props: {
