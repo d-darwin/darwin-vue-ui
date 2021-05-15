@@ -52,7 +52,7 @@ import DLink from "../atoms/DLink";
  * The component allows zoom in slot content to cover all browser viewport.</br>
  * You can pass other content for zoomed contend via slot:zoomed.
  *
- * @version 1.1.0
+ * @version 1.1.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -118,7 +118,7 @@ export default {
       const closeButton = this.$refs["close-button"].$el.children[0];
       this.$nextTick(() => closeButton.focus());
 
-      this.$emit("update:zoom", true);
+      this.emitUpdateZoom()
     },
 
     zoomOutHandler() {
@@ -130,7 +130,17 @@ export default {
       const zoomInLink = this.$refs["zoom-in-link"].$el;
       this.$nextTick(() => zoomInLink.focus());
 
-      this.$emit("update:zoom", false);
+      this.emitUpdateZoom(false)
+    },
+
+    emitUpdateZoom(zoom) {
+      /**
+       * Emits current components state.
+       *
+       * @event update:zoom
+       * @type {boolean}
+       */
+      this.$emit("update:zoom", zoom);
     }
   }
 };

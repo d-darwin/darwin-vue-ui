@@ -10,8 +10,8 @@ export default {
     content: {
       control: { type: "text" },
       defaultValue: "Some tooltip content"
-    }
-    // TODO: add show/hide events
+    },
+    onUpdateShow: { action: "update:show" }
   }
 };
 
@@ -21,7 +21,7 @@ const Template = args => ({
     return { args };
   },
   template: `
-    <DTooltip v-bind="args">
+    <DTooltip v-bind="args" @update:show="args.onUpdateShow">
       <DTypography content="Hover me to see the tooltip." />
     </DTooltip>
   `
@@ -30,6 +30,11 @@ const Template = args => ({
 export const Top = Template.bind({});
 Top.args = {
   position: "top"
+};
+
+export const TopRight = Template.bind({});
+TopRight.args = {
+  position: "top-right"
 };
 
 export const Right = Template.bind({});
@@ -42,7 +47,22 @@ Bottom.args = {
   position: "bottom"
 };
 
+export const BottomRight = Template.bind({});
+BottomRight.args = {
+  position: "bottom-right"
+};
+
+export const BottomLeft = Template.bind({});
+BottomLeft.args = {
+  position: "bottom-left"
+};
+
 export const Left = Template.bind({});
 Left.args = {
   position: "left"
+};
+
+export const TopLeft = Template.bind({});
+TopLeft.args = {
+  position: "top-left"
 };

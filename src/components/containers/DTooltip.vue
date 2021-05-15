@@ -6,15 +6,23 @@
       [`__${horizontalPosition}`]: horizontalPosition
     }"
     class="d-tooltip"
+    @mouseenter="emitUpdateShow()"
+    @mouseleave="emitUpdateShow(false)"
   >
+    <!-- @slot Tooltip will be added to the content of this slot -->
     <slot />
-    <!--    // TODO: custom one + props + styles;-->
+
     <DTypography
+      v-if="!$slots.tooltip"
       ref="tooltip"
       :content="content"
+      v-bind="typographyProps"
+      :style="typographyStyle"
       role="tooltip"
       class="tooltip"
     />
+    <!-- @slot Replace default tooltip with your own implementation. Slot should have .tooltip class-->
+    <slot v-else name="tooltip" />
   </div>
 </template>
 
@@ -24,8 +32,7 @@ import { ref, onMounted, watch, nextTick } from "vue";
 
 /** utils **/
 import getParsedPosition from "../../utils/getParsedPosition";
-import getHTMLElementBoxModel from "../../utils/getHTMLElementBoxModel";
-import getOppositePosition from "../../utils/getOppositePosition";
+import getAdjustedPosition from "../../utils/getAdjustedPosition";
 
 /** compositions **/
 import useScrollOffset from "../../compositions/scrollOffset";
@@ -39,8 +46,10 @@ import positionFullProp from "../../mixins/positionFullProp";
 import DTypography from "./DTypography";
 
 /**
- * Adds tooltip to the child component.
- * @version 1.2.0
+ * Adds tooltip to the child component. Adjusts tooltip position
+ * if  there is no space on the window for default positioning.
+ *
+ * @version 1.2.4
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -50,14 +59,32 @@ export default {
 
   components: { DTypography },
 
+  emits: ["update:show"],
+
   props: {
     /**
      * Defines if position should be automatically adjusted
-     * if there is no space for default positioning.
+     * if there is no space on the window for default positioning.
      */
     isPositionAdjustable: {
       type: Boolean,
       default: true
+    },
+
+    /**
+     * Pass any <b>DTypography</b> props if needed.
+     */
+    typographyProps: {
+      type: Object,
+      default: () => {}
+    },
+
+    /**
+     * Pass any style object to <i>.d-typography</i> if needed.
+     */
+    typographyStyle: {
+      type: Object,
+      default: () => {}
     }
   },
 
@@ -74,140 +101,45 @@ export default {
       horizontal: defaultHorizontalPosition,
       vertical: defaultVerticalPosition
     } = getParsedPosition(props.position);
+
     const horizontalPosition = ref(defaultHorizontalPosition);
     const verticalPosition = ref(defaultVerticalPosition);
 
-    // we should render the component before fill this
-    let tooltipBoxModel = {};
-
-    // TODO: move to compositions / utils ???
-    function adjustPosition(
-      tooltipContainer,
-      windowWidth,
-      windowHeight,
-      horizontalPosition,
-      verticalPosition,
-      defaultHorizontalPosition,
-      defaultVerticalPosition
-    ) {
-      const tooltipContainerClientRect =
-        tooltipContainer.value &&
-        tooltipContainer.value.getBoundingClientRect();
-
-      if (tooltipContainerClientRect) {
-        const tooltipContainerClientSpace = {
-          top: tooltipContainerClientRect.top,
-          right: windowWidth.value - tooltipContainerClientRect.right,
-          bottom: windowHeight.value - tooltipContainerClientRect.bottom,
-          left: tooltipContainerClientRect.left
-        };
-
-        const spaceForTooltip = {
-          top: tooltipBoxModel.offsetHeight + tooltipBoxModel.marginBottom,
-          right: tooltipBoxModel.offsetWidth + tooltipBoxModel.marginLeft,
-          bottom: tooltipBoxModel.offsetHeight + tooltipBoxModel.marginTop,
-          left: tooltipBoxModel.offsetWidth + tooltipBoxModel.marginRight
-        };
-
-        verticalPosition.value = getAdjustedAxePosition(
-          tooltipContainerClientSpace,
-          spaceForTooltip,
-          defaultVerticalPosition
-        );
-
-        horizontalPosition.value = getAdjustedAxePosition(
-          tooltipContainerClientSpace,
-          spaceForTooltip,
-          defaultHorizontalPosition
-        );
-      }
-    }
-
-    function getAdjustedAxePosition(
-      tooltipContainerClientSpace,
-      spaceForTooltip,
-      axeDefaultPosition
-    ) {
-      if (axeDefaultPosition) {
-        const oppositeAxePosition = getOppositePosition(axeDefaultPosition);
-
-        console.log(tooltipContainerClientSpace, spaceForTooltip);
-
-        if (
-          tooltipContainerClientSpace[axeDefaultPosition] >
-          spaceForTooltip[axeDefaultPosition]
-        ) {
-          // there is enough space in the default position (user defined)
-          return axeDefaultPosition;
-        } else if (
-          tooltipContainerClientSpace[oppositeAxePosition] >
-          spaceForTooltip[oppositeAxePosition]
-        ) {
-          // there is in the opposite position
-          return oppositeAxePosition;
-        }
-      }
-
-      // there in no space at all => remove axe positioning (center)
-      return "";
-    }
-
     onMounted(() => {
-      if (props.isPositionAdjustable) {
-        /* const mutationObserver = new MutationObserver(function(mutations) {
-          mutations.forEach(function(mutation) {
-            adjustPosition(
-              tooltipContainer,
-              windowWidth,
-              windowHeight,
-              horizontalPosition,
-              verticalPosition,
-              defaultHorizontalPosition,
-              defaultVerticalPosition
-            );
-          });
-        });
-        mutationObserver.observe(tooltipContainer.value, {
-          attributes: true,
-          characterData: true,
-          childList: true,
-          subtree: true,
-          attributeOldValue: true,
-          characterDataOldValue: true
-        }); */
+      nextTick(() => {
+        // We need to wait until children components will mounted (if there are)
+        if (props.isPositionAdjustable) {
+          const adjustedPosition = getAdjustedPosition(
+            tooltipContainer,
+            tooltip,
+            windowWidth,
+            windowHeight,
+            defaultHorizontalPosition,
+            defaultVerticalPosition
+          );
 
-        // hold size and margin of the tooltip
-        // TODO: recalculate BoxModel when needed
-        tooltipBoxModel = getHTMLElementBoxModel(
-          tooltip.value && tooltip.value.$el
-        );
-        // TODO: mark tooltip as not shown
-        // TODO: add animationNameProp and use v-if to animate
-        adjustPosition(
-          tooltipContainer,
-          windowWidth,
-          windowHeight,
-          horizontalPosition,
-          verticalPosition,
-          defaultHorizontalPosition,
-          defaultVerticalPosition
-        );
-      }
+          horizontalPosition.value = adjustedPosition.horizontal;
+          verticalPosition.value = adjustedPosition.vertical;
+        }
+      });
     });
 
+    // adjust position when something changes
     const watchableList = [scrollOffset, windowWidth, windowHeight, props];
     watchableList.forEach(watchable =>
       watch(watchable, () => {
         if (props.isPositionAdjustable) {
-          adjustPosition(
+          const adjustedPosition = getAdjustedPosition(
             tooltipContainer,
+            tooltip,
             windowWidth,
             windowHeight,
-            horizontalPosition,
-            verticalPosition,
             defaultHorizontalPosition,
             defaultVerticalPosition
           );
+
+          horizontalPosition.value = adjustedPosition.horizontal;
+          verticalPosition.value = adjustedPosition.vertical;
         }
       })
     );
@@ -218,6 +150,18 @@ export default {
       horizontalPosition,
       verticalPosition
     };
+  },
+
+  methods: {
+    emitUpdateShow(show = true) {
+      /**
+       * Emits current tooltip state.
+       *
+       * @event update:show
+       * @type {boolean}
+       */
+      this.$emit("update:show", show);
+    }
   }
 };
 </script>
@@ -242,14 +186,16 @@ export default {
   justify-content: center;
 
   &:hover {
-    .tooltip {
+    .tooltip,
+    ::v-slotted(.tooltip) {
       opacity: 1;
       transform: scale(1);
     }
   }
 
   &.__top {
-    .tooltip {
+    .tooltip,
+    ::v-slotted(.tooltip) {
       bottom: 100%;
 
       &::after {
@@ -261,7 +207,8 @@ export default {
   }
 
   &.__top.__right {
-    .tooltip {
+    .tooltip,
+    ::v-slotted(.tooltip) {
       border-bottom-left-radius: 0;
 
       &::after {
@@ -271,7 +218,8 @@ export default {
   }
 
   &.__right {
-    .tooltip {
+    .tooltip,
+    ::v-slotted(.tooltip) {
       left: 100%;
 
       &::after {
@@ -283,7 +231,8 @@ export default {
   }
 
   &.__bottom {
-    .tooltip {
+    .tooltip,
+    ::v-slotted(.tooltip) {
       top: 100%;
 
       &::after {
@@ -295,7 +244,8 @@ export default {
   }
 
   &.__bottom.__right {
-    .tooltip {
+    .tooltip,
+    ::v-slotted(.tooltip) {
       border-top-left-radius: 0;
 
       &::after {
@@ -305,7 +255,8 @@ export default {
   }
 
   &.__bottom.__left {
-    .tooltip {
+    .tooltip,
+    ::v-slotted(.tooltip) {
       border-top-right-radius: 0;
 
       &::after {
@@ -315,7 +266,8 @@ export default {
   }
 
   &.__left {
-    .tooltip {
+    .tooltip,
+    ::v-slotted(.tooltip) {
       right: 100%;
 
       &::after {
@@ -327,7 +279,8 @@ export default {
   }
 
   &.__top.__left {
-    .tooltip {
+    .tooltip,
+    ::v-slotted(.tooltip) {
       border-bottom-right-radius: 0;
 
       &::after {
@@ -335,13 +288,10 @@ export default {
       }
     }
   }
-
-  &.__center {
-    // Don't really need any styles
-  }
 }
 
-.tooltip {
+.tooltip,
+::v-slotted(.tooltip) {
   @include transition-short;
 
   opacity: 0;

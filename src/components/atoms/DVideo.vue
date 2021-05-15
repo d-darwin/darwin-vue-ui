@@ -52,7 +52,7 @@ import DAspectRatio from "../containers/DAspectRatio";
  * It renders <b>iframe</b> or <b>video</b> or any iframe depending on your source value.<br>
  * Supports lazy loading with <b>DLoader</b> placeholder, aspect-ration and renders <b>DIconVideo</b> icon if <i>source</i> prop is empty.
  *
- * @version 1.4.0
+ * @version 1.4.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -217,6 +217,8 @@ export default {
 </style>
 
 <style scoped lang="scss">
+@import "../../assets/styles/transitions/opacity";
+
 .d-video {
   position: relative;
   display: flex;
