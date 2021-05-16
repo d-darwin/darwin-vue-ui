@@ -34,6 +34,8 @@ export default function(
       left: elementContainerClientRect.left
     };
 
+    console.log(element.value);
+
     // hold size and margin of the element
     const elementBoxModel = getHTMLElementBoxModel(
       element.value && element.value.$el
