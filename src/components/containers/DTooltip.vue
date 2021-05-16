@@ -5,9 +5,10 @@
       [`__${verticalPosition}`]: verticalPosition,
       [`__${horizontalPosition}`]: horizontalPosition
     }"
+    :aria-describedby="componentId"
     class="d-tooltip"
-    @mouseenter="emitUpdateShow()"
-    @mouseleave="emitUpdateShow(false)"
+    @mouseenter="updateShown()"
+    @mouseleave="updateShown(false)"
   >
     <!-- @slot Tooltip will be added to the content of this slot -->
     <slot />
@@ -15,14 +16,15 @@
     <DTypography
       v-if="!$slots.tooltip"
       ref="tooltip"
+      :id="componentId"
       :content="content"
+      :aria-hidden="!isShown"
       v-bind="typographyProps"
       :style="typographyStyle"
-      role="tooltip"
       class="tooltip"
     />
     <!-- @slot Replace default tooltip with your own implementation. Slot should have .tooltip class-->
-    <slot v-else name="tooltip" />
+    <slot v-else name="tooltip" v-bind="{ componentId, isShown }" />
   </div>
 </template>
 
@@ -35,6 +37,7 @@ import getParsedPosition from "../../utils/getParsedPosition";
 import getAdjustedPosition from "../../utils/getAdjustedPosition";
 
 /** compositions **/
+import useComponentId from "../../compositions/componentId";
 import useScrollOffset from "../../compositions/scrollOffset";
 import useWindowSize from "../../compositions/windowSize";
 
@@ -49,7 +52,7 @@ import DTypography from "./DTypography";
  * Adds tooltip to the child component. Adjusts tooltip position
  * if  there is no space on the window for default positioning.
  *
- * @version 1.2.4
+ * @version 1.3.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -89,7 +92,10 @@ export default {
   },
 
   setup(props) {
+    const isShown = ref(false);
+
     // we will be watching on this to adjust tooltip position
+    const { componentId } = useComponentId();
     const { scrollOffset } = useScrollOffset();
     const { windowWidth, windowHeight } = useWindowSize();
 
@@ -145,6 +151,8 @@ export default {
     );
 
     return {
+      componentId,
+      isShown,
       tooltipContainer,
       tooltip,
       horizontalPosition,
@@ -153,7 +161,9 @@ export default {
   },
 
   methods: {
-    emitUpdateShow(show = true) {
+    updateShown(show = true) {
+      this.isShown = show;
+
       /**
        * Emits current tooltip state.
        *
@@ -190,6 +200,7 @@ export default {
     ::v-slotted(.tooltip) {
       opacity: 1;
       transform: scale(1);
+      visibility: visible;
     }
   }
 
@@ -296,6 +307,7 @@ export default {
 
   opacity: 0;
   transform: scale(0);
+  visibility: hidden;
   position: absolute;
   width: fit-content;
   max-width: var(--control-min-width); // TODO: I'm not sure about this...
