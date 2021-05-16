@@ -13,18 +13,28 @@
     <!-- @slot Tooltip will be added to the content of this slot -->
     <slot />
 
+    <!-- TODO: try to use named transitions instead of css animation-->
     <DTypography
-      v-if="!$slots.tooltip"
       ref="tooltip"
       :id="componentId"
-      :content="content"
+      :content="!$slots.tooltip ? content : ''"
       :aria-hidden="!isShown"
       v-bind="typographyProps"
       :style="typographyStyle"
       class="tooltip"
-    />
-    <!-- @slot Replace default tooltip with your own implementation. Slot should have .tooltip class-->
-    <slot v-else name="tooltip" v-bind="{ componentId, isShown }" />
+    >
+      <!-- @slot Replace default tooltip with your own implementation. Slot should have .tooltip class-->
+      <slot
+        name="tooltip"
+        v-bind="{
+          componentId,
+          isShown,
+          content,
+          verticalPosition,
+          horizontalPosition
+        }"
+      />
+    </DTypography>
   </div>
 </template>
 
@@ -196,17 +206,15 @@ export default {
   justify-content: center;
 
   &:hover {
-    .tooltip,
-    ::v-slotted(.tooltip) {
+    .tooltip {
       opacity: 1;
       transform: scale(1);
-      visibility: visible;
+      // visibility: visible;
     }
   }
 
   &.__top {
-    .tooltip,
-    ::v-slotted(.tooltip) {
+    .tooltip {
       bottom: 100%;
 
       &::after {
@@ -218,8 +226,7 @@ export default {
   }
 
   &.__top.__right {
-    .tooltip,
-    ::v-slotted(.tooltip) {
+    .tooltip {
       border-bottom-left-radius: 0;
 
       &::after {
@@ -229,8 +236,7 @@ export default {
   }
 
   &.__right {
-    .tooltip,
-    ::v-slotted(.tooltip) {
+    .tooltip {
       left: 100%;
 
       &::after {
@@ -242,8 +248,7 @@ export default {
   }
 
   &.__bottom {
-    .tooltip,
-    ::v-slotted(.tooltip) {
+    .tooltip {
       top: 100%;
 
       &::after {
@@ -255,8 +260,7 @@ export default {
   }
 
   &.__bottom.__right {
-    .tooltip,
-    ::v-slotted(.tooltip) {
+    .tooltip {
       border-top-left-radius: 0;
 
       &::after {
@@ -266,8 +270,7 @@ export default {
   }
 
   &.__bottom.__left {
-    .tooltip,
-    ::v-slotted(.tooltip) {
+    .tooltip {
       border-top-right-radius: 0;
 
       &::after {
@@ -277,8 +280,7 @@ export default {
   }
 
   &.__left {
-    .tooltip,
-    ::v-slotted(.tooltip) {
+    .tooltip {
       right: 100%;
 
       &::after {
@@ -290,8 +292,7 @@ export default {
   }
 
   &.__top.__left {
-    .tooltip,
-    ::v-slotted(.tooltip) {
+    .tooltip {
       border-bottom-right-radius: 0;
 
       &::after {
@@ -301,13 +302,12 @@ export default {
   }
 }
 
-.tooltip,
-::v-slotted(.tooltip) {
+.tooltip {
   @include transition-short;
 
   opacity: 0;
   transform: scale(0);
-  visibility: hidden;
+  // visibility: hidden;
   position: absolute;
   width: fit-content;
   max-width: var(--control-min-width); // TODO: I'm not sure about this...
