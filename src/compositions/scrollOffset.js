@@ -23,7 +23,7 @@ export default function useScrollOffset() {
       // hold function pointer to remove event listener when the component will be unmounted
       throttledOnScroll = throttle(onScroll, 100);
       // watch on offset on scroll
-      // TODO: why passive: true ???
+      // use passive mode to notify browser that it can perform default action immediately
       window.addEventListener("scroll", throttledOnScroll, { passive: true });
     }
   });
