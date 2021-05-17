@@ -15,7 +15,8 @@ export default function useKeyboardListener(keyCombos, type = "keydown") {
       kc =>
         event.key === kc.key &&
         event.shiftKey === !!kc.shiftKey &&
-        event.ctrlKey === !!kc.ctrlKey &&
+        // use ctrlKey and metaKey interchangeable
+        (event.ctrlKey === !!kc.ctrlKey || event.metaKey === !!kc.metaKey) &&
         event.altKey === !!kc.altKey
     );
 
@@ -27,7 +28,7 @@ export default function useKeyboardListener(keyCombos, type = "keydown") {
 
   if (process.browser) {
     // add listener only in browser
-    window.addEventListener(type, onKeyDown, false);
+    window.addEventListener(type, onKeyDown);
 
     onBeforeUnmount(() => {
       // remove event listener before unmount component to prevent memory leaks
