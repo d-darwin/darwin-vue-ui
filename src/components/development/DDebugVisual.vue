@@ -106,24 +106,28 @@ export default {
       {
         ctrlKey: true,
         altKey: true,
+        // TODO: use event.code- KeyG
         key: "g", // [g]rid
         func: toggleGridVisualization
       },
       {
         ctrlKey: true,
         altKey: true,
+        // TODO: use event.code - KeyB
         key: "b", // [b]orders
         func: toggleBordersVisualization
       },
       {
         ctrlKey: true,
         altKey: true,
+        // TODO: use event.code - KeyS
         key: "s", // [s]emantic
         func: toggleSemanticVisualization
       },
       {
         ctrlKey: true,
         altKey: true,
+        // TODO: use event.code - KeyD
         key: "d", // [d]ebug
         func: togglePanel
       }
