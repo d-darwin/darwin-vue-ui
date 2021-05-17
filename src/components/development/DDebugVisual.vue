@@ -105,29 +105,33 @@ export default {
     useKeyboardListener([
       {
         ctrlKey: true,
+        metaKey: true,
         altKey: true,
-        // TODO: use event.code- KeyG
+        code: "KeyG",
         key: "g", // [g]rid
         func: toggleGridVisualization
       },
       {
         ctrlKey: true,
+        metaKey: true,
         altKey: true,
-        // TODO: use event.code - KeyB
+        code: "KeyB",
         key: "b", // [b]orders
         func: toggleBordersVisualization
       },
       {
         ctrlKey: true,
+        metaKey: true,
         altKey: true,
-        // TODO: use event.code - KeyS
+        code: "KeyS",
         key: "s", // [s]emantic
         func: toggleSemanticVisualization
       },
       {
         ctrlKey: true,
+        metaKey: true,
         altKey: true,
-        // TODO: use event.code - KeyD
+        code: "KeyD",
         key: "d", // [d]ebug
         func: togglePanel
       }
