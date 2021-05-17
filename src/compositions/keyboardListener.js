@@ -13,11 +13,12 @@ export default function useKeyboardListener(keyCombos, type = "keydown") {
     // find pressed key with shift/ctrl/alt modifications in keyCombos
     const keyCombo = keyCombos.find(
       kc =>
-        event.key === kc.key &&
+        // use .key and .code interchangeable
+        (event.key === kc.key || event.code === kc.code) &&
         event.shiftKey === !!kc.shiftKey &&
+        event.altKey === !!kc.altKey &&
         // use ctrlKey and metaKey interchangeable
-        (event.ctrlKey === !!kc.ctrlKey || event.metaKey === !!kc.metaKey) &&
-        event.altKey === !!kc.altKey
+        (event.ctrlKey === !!kc.ctrlKey || event.metaKey === !!kc.metaKey)
     );
 
     if (keyCombo) {
