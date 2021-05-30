@@ -357,6 +357,7 @@ body {
     display: flex;
     justify-content: flex-end;
 
+    // TODO: avoid using <any> selector
     > * + * {
       margin-left: var(--gap-3x);
     }

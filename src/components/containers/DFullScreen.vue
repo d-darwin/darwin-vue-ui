@@ -187,6 +187,7 @@ export default {
 .d-link {
   margin-top: var(--gap-2x);
 
+  // TODO: avoid using <any> selector
   > * + * {
     margin-left: var(--gap-2x);
   }

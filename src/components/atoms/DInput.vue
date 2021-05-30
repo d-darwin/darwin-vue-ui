@@ -176,6 +176,7 @@ export default {
        * @event submit
        * @type {{value: String, id: String}}
        */
+      // TODO: don't use id to be able to use v-model:value ???
       this.$emit("submit", {
         value: event.target.value,
         id: this.componentId

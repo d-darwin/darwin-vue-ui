@@ -6,9 +6,12 @@
       [`__${horizontalPosition}`]: horizontalPosition
     }"
     :aria-describedby="componentId"
+    :tabindex="$attrs.tabindex || 0"
     class="d-tooltip"
     @mouseenter="updateShown()"
+    @focus="updateShown()"
     @mouseleave="updateShown(false)"
+    @blur="updateShown(false)"
   >
     <!-- @slot Tooltip will be added to the content of this slot -->
     <slot />
@@ -62,7 +65,7 @@ import DTypography from "./DTypography";
  * Adds tooltip to the child component. Adjusts tooltip position
  * if  there is no space on the window for default positioning.
  *
- * @version 1.3.0
+ * @version 1.3.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -196,6 +199,7 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/styles/mixins/transitions";
+@import "../../assets/styles/mixins/outline";
 
 .d-tooltip {
   position: relative;
@@ -205,7 +209,8 @@ export default {
   align-items: center;
   justify-content: center;
 
-  &:hover {
+  &:hover,
+  &:focus {
     .tooltip {
       opacity: 1;
       transform: scale(1);
@@ -299,6 +304,12 @@ export default {
         display: none;
       }
     }
+  }
+
+  outline: none;
+
+  &.focus-visible::before {
+    @include outline;
   }
 }
 

@@ -193,6 +193,7 @@ export default {
   &.__disabled {
     cursor: not-allowed;
 
+    // TODO: avoid using <any> selector
     > * {
       color: var(--color-separator);
     }

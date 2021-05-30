@@ -70,6 +70,7 @@ export default {
   width: 100%;
   height: 0;
 
+  // TODO: avoid using <any> selector
   > *,
   > ::v-slotted(*) {
     position: absolute;
