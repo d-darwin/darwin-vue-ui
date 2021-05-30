@@ -157,6 +157,7 @@ export default {
   text-decoration: none;
   width: 100%;
 
+  // TODO: avoid using <any> selector
   > * + *,
   > ::v-slotted(* + *) {
     margin-left: 6px;

@@ -53,7 +53,7 @@ import DButton from "../atoms/DButton";
  * It highlights all semantic DOM elements with green background on <i>Ctrl + Alt + s</i>.<br>
  * Also you can toggle the component buttons panel visibility on <i>Ctrl + Alt + d</i>.
  *
- * @version 1.3.2
+ * @version 1.3.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -86,7 +86,7 @@ export default {
         body.classList.toggle(className);
       }
 
-      if (typeof [flagName] === "object") {
+      if (flagName && [flagName].value !== undefined) {
         [flagName].value = ![flagName].value;
       }
     };
@@ -182,6 +182,7 @@ body {
   }
 
   &.__d-debug-border {
+    // TODO: avoid using <any> selector
     * {
       // TODO: think about colors
       box-shadow: inset 0 0 5px tomato !important;
@@ -252,6 +253,7 @@ body {
     opacity: 1;
   }
 
+  // TODO: avoid using <any> selector
   > * + * {
     margin-top: var(--gap-base);
   }

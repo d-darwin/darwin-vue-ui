@@ -129,6 +129,7 @@ export default {
   display: flex;
   align-items: center;
 
+  // TODO: avoid using <any> selector
   > * + *,
   > * + ::v-slotted(*) {
     margin-left: var(--gap-2x);
