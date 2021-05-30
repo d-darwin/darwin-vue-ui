@@ -6,5 +6,5 @@ export default {
     return {
       hasRouter: !!this.$router
     };
-  },
+  }
 };
