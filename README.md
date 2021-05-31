@@ -80,9 +80,7 @@ export default {
 
 ## Documentation
 
-For now there isn't any fancy documentation site to check out,
-but we are planing to use Storybook for the documentation when it will be integrated with Vue 3.  
-You can find particular component documentation in its source code.
+Check out [the library Storybook](https://ui-vue.darwin.st/) or you can find particular component documentation in its source code.
 
 ## More details
 
