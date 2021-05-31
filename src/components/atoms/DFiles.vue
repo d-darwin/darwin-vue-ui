@@ -9,9 +9,10 @@
     <DLink
       :href="!!$attrs.disabled ? null : '#'"
       :disabled="!!$attrs.disabled"
+      :prevent-default="true"
       type="secondary"
       class="d-link"
-      @click.prevent="$refs.input.click()"
+      @click="$refs.input.click()"
     >
       <label :for="componentId" :style="labelStyle" class="label">
         <DIconPaperclip v-if="!$slots['icon-attach']" />
@@ -49,8 +50,9 @@
 
         <DLink
           :href="!!$attrs.disabled ? null : '#'"
+          :prevent-default="true"
           type="secondary"
-          @click.prevent="removeFromList(index)"
+          @click="removeFromList(index)"
         >
           <DIconCloseCircle v-if="!$slots['icon-remove']" />
           <!-- @slot You can replace default remove icon by passing your own here. -->
@@ -97,7 +99,7 @@ import DError from "./DError";
  * they will be pass to the tag automatically.<br>
  * While submitted uploadedFiles array need to be processed with FormData().
  *
- * @version 1.1.0
+ * @version 1.1.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 
