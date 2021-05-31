@@ -53,7 +53,7 @@ import DButton from "../atoms/DButton";
  * It highlights all semantic DOM elements with green background on <i>Ctrl + Alt + s</i>.<br>
  * Also you can toggle the component buttons panel visibility on <i>Ctrl + Alt + d</i>.
  *
- * @version 1.3.4
+ * @version 1.3.5
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -79,11 +79,11 @@ export default {
     const isPanelShown = ref(true);
 
     // just a helper to DRY
-    const toggleVisualization = (className, flagName) => {
+    const toggleVisualization = (className, flag) => {
       const body = document && document.body;
       body.classList.toggle(className);
 
-      flagName.value = !flagName.value;
+      flag.value = !flag.value;
     };
 
     const toggleGridVisualization = () =>
