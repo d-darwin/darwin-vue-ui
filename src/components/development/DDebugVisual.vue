@@ -1,6 +1,5 @@
 <template>
   <teleport to="body">
-    <client-only></client-only>
     <transition :name="transitionName">
       <div v-show="isPanelShown" class="d-debug-visual">
         <DButton
@@ -48,13 +47,13 @@ import DIconSemantic from "../icons/DIconSemantic";
 import DButton from "../atoms/DButton";
 
 /**
- * This development component intents to help visualize grid columns, elements' borders and semantic tags.</br>
+ * This development component intents to help visualize grid columns, elements' borders and semantic tags.<br>
  * It renders independent grid visualization on <i>Ctrl + Alt + g</i>.<br>
  * It highlights all DOM elements with red borders on <i>Ctrl + Alt + b</i>.<br>
  * It highlights all semantic DOM elements with green background on <i>Ctrl + Alt + s</i>.<br>
  * Also you can toggle the component buttons panel visibility on <i>Ctrl + Alt + d</i>.
  *
- * @version 1.3.3
+ * @version 1.3.4
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -79,34 +78,29 @@ export default {
 
     const isPanelShown = ref(true);
 
-    // If SSR we haven't document object
-    const body = document && document.body;
-    // just a helper
+    // just a helper to DRY
     const toggleVisualization = (className, flagName) => {
-      if (body) {
-        body.classList.toggle(className);
-      }
+      const body = document && document.body;
+      body.classList.toggle(className);
 
-      if (flagName && [flagName].value !== undefined) {
-        [flagName].value = ![flagName].value;
-      }
+      flagName.value = !flagName.value;
     };
 
     const toggleGridVisualization = () =>
-      toggleVisualization("__d-debug-grid", "isGridVisualizationShown");
+      toggleVisualization("__d-debug-grid", isGridVisualizationShown);
 
     const toggleBordersVisualization = () =>
-      toggleVisualization("__d-debug-border", "isBordersVisualizationShown");
+      toggleVisualization("__d-debug-border", isBordersVisualizationShown);
 
     const toggleSemanticVisualization = () =>
-      toggleVisualization("__d-debug-semantic", "isSemanticVisualizationShown");
+      toggleVisualization("__d-debug-semantic", isSemanticVisualizationShown);
 
     const togglePanel = () => (isPanelShown.value = !isPanelShown.value);
 
     useKeyboardListener([
       {
         ctrlKey: true,
-        metaKey: true,
+        metaKey: true, // for iOS
         altKey: true,
         code: "KeyG",
         key: "g", // [g]rid
@@ -114,7 +108,7 @@ export default {
       },
       {
         ctrlKey: true,
-        metaKey: true,
+        metaKey: true, // for iOS
         altKey: true,
         code: "KeyB",
         key: "b", // [b]orders
@@ -122,7 +116,7 @@ export default {
       },
       {
         ctrlKey: true,
-        metaKey: true,
+        metaKey: true, // for iOS
         altKey: true,
         code: "KeyS",
         key: "s", // [s]emantic
@@ -130,7 +124,7 @@ export default {
       },
       {
         ctrlKey: true,
-        metaKey: true,
+        metaKey: true, // for iOS
         altKey: true,
         code: "KeyD",
         key: "d", // [d]ebug
