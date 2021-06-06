@@ -15,18 +15,24 @@
           v-bind="typographyProps"
           :style="typographyStyle"
         />
+        <!--TODO: add default slot-->
       </div>
     </transition>
   </teleport>
 </template>
 
 <script>
+/** mixins **/
+import typographyContentProp from "../../mixins/typographyContentProp";
+import positionFullProp from "../../mixins/positionFullProp";
+
+/** components **/
 import DTypography from "../containers/DTypography";
 
 /**
  * The component renders text notification for a given duration.
  *
- * @version 1.1.1
+ * @version 1.2.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -34,16 +40,14 @@ export default {
 
   inheritAttrs: false,
 
+  mixins: [typographyContentProp, positionFullProp],
+
   components: { DTypography },
 
+  emits: ["update:visibility"],
+
   props: {
-    /**
-     * Simple string or any HTML.
-     */
-    content: {
-      type: String,
-      default: ""
-    },
+    // TODO: add notification type, may be 'primary', 'secondary'... or 'notification', 'warning'...
 
     /**
      * Defines how long the notification will be displayed.
@@ -51,26 +55,6 @@ export default {
     displayDuration: {
       type: Number,
       default: 5
-    },
-
-    /**
-     * Positions on the window.
-     * Takes values: 'top', 'top-right', 'right', 'bottom-right', 'bottom', 'bottom-left', 'left', 'top-left'.
-     */
-    position: {
-      type: String,
-      default: "bottom",
-      validator: val =>
-        [
-          "top",
-          "top-right",
-          "right",
-          "bottom-right",
-          "bottom",
-          "bottom-left",
-          "left",
-          "top-left"
-        ].includes(val)
     },
 
     /**
@@ -109,8 +93,18 @@ export default {
     // TODO: move to setup() ???
     content(value) {
       if (value) {
+        this.$emit;
         this.showNotification();
       }
+    },
+    shown(value) {
+      /**
+       * Visibility of the component changed.
+       *
+       * @event update:visibility
+       * @type {Boolean}
+       */
+      this.$emit("update:visibility", value);
     }
   },
 
@@ -141,7 +135,7 @@ export default {
 @import "../../assets/styles/tokens/colors";
 @import "../../assets/styles/tokens/gaps";
 @import "../../assets/styles/tokens/controls";
-// TODO: how to not use it here
+// TODO: how not to use it here
 @import "../../assets/styles/tokens/shadows";
 </style>
 
@@ -150,6 +144,7 @@ export default {
 @import "../../assets/styles/transitions/opacity";
 
 .d-notification {
+  box-sizing: border-box; // TODO: or turn it on by default for all components???
   position: fixed;
   width: 100%;
   height: 100%;
@@ -161,6 +156,7 @@ export default {
 
   padding: var(--gap-6x) var(--gap-3x);
 
+  // TODO: try to avoid complex top-right and just reuse __top + __right
   &.__top {
     justify-content: center;
   }
@@ -192,8 +188,14 @@ export default {
     align-items: center;
   }
 
-  /*&.__top-left {
-  }*/
+  &.__top-left {
+    // Don't really need any styles
+  }
+
+  &.__center {
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .d-typography {

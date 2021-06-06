@@ -1,7 +1,8 @@
 <template>
   <div :class="$attrs.class" class="d-equal-width">
     <div class="table">
-      <div ref="row" class="row">
+      <div ref="row" class="table-row">
+        <!-- @slot Contains the component items -->
         <slot />
       </div>
     </div>
@@ -12,23 +13,24 @@
 /**
  * The component forces default slot elements to be equal width, equal to the biggest one.
  *
- * @version 1.0.0
+ * @version 1.0.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
+  // TODO: Add possibility to set the gap
   name: "DEqualWidth",
 
   inheritAttrs: false,
 
   data() {
     return {
-      childrenCount: this.$slots.default() && this.$slots.default().length
+      childrenCount: this.$slots.default().length
     };
   },
 
   mounted() {
-    // TODO: use render function
-    if (this.$refs.row.children) {
+    // TODO: use render function ???
+    if (this.$refs.row && this.$refs.row.children) {
       const width = 100 / this.$refs.row.children.length + "%";
       this.$refs.row.children.forEach(
         child => (child.style = `width: ${width}; ${child.style}`)
@@ -53,7 +55,7 @@ export default {
   margin: auto;
 }
 
-.row {
+.table-row {
   display: table-row;
   width: auto;
 

@@ -3,8 +3,8 @@
     <!--TODO: add transition-->
     <DDetails
       v-for="(item, index) in itemList"
-      :key="itemListProps[index].id"
-      v-bind="{ ...item, ...itemListProps[index] }"
+      :key="itemListState[index].id"
+      v-bind="{ ...item, ...itemListState[index] }"
       @update:open="updateOpenHandler"
     >
       <template v-if="$slots[`summary-${index}`]" #summary>
@@ -19,8 +19,8 @@
 </template>
 
 <script>
-/** utils **/
-import uuid from "../../utils/uuid";
+/** compositions **/
+import useComponentId from "../../compositions/componentId";
 
 /** components **/
 import DDetails from "../atoms/DDetails";
@@ -28,7 +28,7 @@ import DDetails from "../atoms/DDetails";
 /**
  * Render an accordion using <b>DDetails</b> components.
  *
- * @version 1.1.0
+ * @version 1.1.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -36,11 +36,14 @@ export default {
 
   components: { DDetails },
 
+  emits: ["update:open"],
+
   props: {
     /**
      * List of props objects to pass to <b>DDetails</b> components.
      */
     itemList: {
+      // TODO: define type more accurate
       type: Array,
       default: () => []
     },
@@ -48,7 +51,7 @@ export default {
     /**
      * Set to true if only one <b>DDetails</b> component may be opened.
      */
-    isSingleOpened: {
+    isSolo: {
       type: Boolean,
       default: false
     },
@@ -74,10 +77,15 @@ export default {
     }
   },
 
+  setup(props) {
+    const { componentId } = useComponentId(props);
+    return { componentId };
+  },
+
   data() {
     return {
-      itemListProps: this.itemList.map(item => ({
-        id: item.id ? item.id : uuid(),
+      itemListState: this.itemList.map((item, index) => ({
+        id: item.id || `${this.componentId}_${index}`,
         open: item.open || false,
         size: item.size || this.size,
         roundness: item.roundness || this.roundness
@@ -87,14 +95,14 @@ export default {
 
   methods: {
     updateOpenHandler(e) {
-      if (this.isSingleOpened && e.open) {
+      if (this.isSolo && e.open) {
         // close all other items
-        this.itemListProps = this.itemListProps.map(item => ({
+        this.itemListState = this.itemListState.map(item => ({
           ...item,
           open: item.id === e.id
         }));
       } else {
-        this.itemListProps = this.itemListProps.map(item => ({
+        this.itemListState = this.itemListState.map(item => ({
           ...item,
           open: item.id === e.id ? e.open : item.open
         }));
@@ -112,10 +120,12 @@ export default {
        * @event update:open
        * @type {{open: Boolean, id: String}}
        */
+      // TODO: review emits naming.
       this.$emit(
         "update:open",
-        this.itemListProps.map(item => ({ open: item.open, id: item.id }))
+        this.itemListState.map(item => ({ open: item.open, id: item.id }))
       );
+      // TODO: should I emit only changed item or whole list ???
     }
   }
 };

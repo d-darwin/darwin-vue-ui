@@ -47,13 +47,13 @@ import DIconSemantic from "../icons/DIconSemantic";
 import DButton from "../atoms/DButton";
 
 /**
- * This development component intents to help visualize grid columns, elements' borders and semantic tags.</br>
+ * This development component intents to help visualize grid columns, elements' borders and semantic tags.<br>
  * It renders independent grid visualization on <i>Ctrl + Alt + g</i>.<br>
  * It highlights all DOM elements with red borders on <i>Ctrl + Alt + b</i>.<br>
  * It highlights all semantic DOM elements with green background on <i>Ctrl + Alt + s</i>.<br>
- * Also you can toggle the component buttons panel on <i>Ctrl + Alt + d</i>.
+ * Also you can toggle the component buttons panel visibility on <i>Ctrl + Alt + d</i>.
  *
- * @version 1.3.1
+ * @version 1.3.5
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -78,65 +78,69 @@ export default {
 
     const isPanelShown = ref(true);
 
-    // TODO: All these functions are almost the same - share logic
-    const toggleGridVisualization = () => {
-      const body = document.getElementsByTagName("body")[0];
-      body.classList.toggle("__d-debug-grid");
-      isGridVisualizationShown.value = !isGridVisualizationShown.value;
+    // just a helper to DRY
+    const toggleVisualization = (className, flag) => {
+      const body = document && document.body;
+      body.classList.toggle(className);
+
+      flag.value = !flag.value;
     };
 
-    const toggleBordersVisualization = () => {
-      const body = document.getElementsByTagName("body")[0];
-      body.classList.toggle("__d-debug-border");
-      isBordersVisualizationShown.value = !isBordersVisualizationShown.value;
-    };
+    const toggleGridVisualization = () =>
+      toggleVisualization("__d-debug-grid", isGridVisualizationShown);
 
-    const toggleSemanticVisualization = () => {
-      const body = document.getElementsByTagName("body")[0];
-      body.classList.toggle("__d-debug-semantic");
-      isSemanticVisualizationShown.value = !isSemanticVisualizationShown.value;
-    };
+    const toggleBordersVisualization = () =>
+      toggleVisualization("__d-debug-border", isBordersVisualizationShown);
 
-    const togglePanel = () => {
-      isPanelShown.value = !isPanelShown.value;
-    };
+    const toggleSemanticVisualization = () =>
+      toggleVisualization("__d-debug-semantic", isSemanticVisualizationShown);
+
+    const togglePanel = () => (isPanelShown.value = !isPanelShown.value);
 
     useKeyboardListener([
       {
         ctrlKey: true,
+        metaKey: true, // for iOS
         altKey: true,
-        key: "g",
+        code: "KeyG",
+        key: "g", // [g]rid
         func: toggleGridVisualization
       },
       {
         ctrlKey: true,
+        metaKey: true, // for iOS
         altKey: true,
-        key: "b",
+        code: "KeyB",
+        key: "b", // [b]orders
         func: toggleBordersVisualization
       },
       {
         ctrlKey: true,
+        metaKey: true, // for iOS
         altKey: true,
-        key: "s",
+        code: "KeyS",
+        key: "s", // [s]emantic
         func: toggleSemanticVisualization
       },
       {
         ctrlKey: true,
+        metaKey: true, // for iOS
         altKey: true,
-        key: "d",
+        code: "KeyD",
+        key: "d", // [d]ebug
         func: togglePanel
       }
     ]);
 
     return {
-      toggleGridVisualization,
-      toggleBordersVisualization,
-      toggleSemanticVisualization,
-      togglePanel,
       isGridVisualizationShown,
       isBordersVisualizationShown,
       isSemanticVisualizationShown,
-      isPanelShown
+      isPanelShown,
+      toggleGridVisualization,
+      toggleBordersVisualization,
+      toggleSemanticVisualization,
+      togglePanel
     };
   }
 };
@@ -144,6 +148,8 @@ export default {
 
 <style lang="scss">
 @import "../../assets/styles/tokens/grid";
+@import "../../assets/styles/tokens/gaps";
+@import "../../assets/styles/tokens/colors";
 
 body {
   &.__d-debug-semantic {
@@ -171,6 +177,7 @@ body {
   }
 
   &.__d-debug-border {
+    // TODO: avoid using <any> selector
     * {
       // TODO: think about colors
       box-shadow: inset 0 0 5px tomato !important;
@@ -189,34 +196,35 @@ body {
 
     // TODO: think about colors
     --grid-column-color: rgba(0, 0, 0, 0.05);
-    --grid-gutter-color: transparent;
+    --grid-gap-color: transparent;
     --grid-column-width: calc(
-      (100% - var(--grid-gutter) * var(--grid-columns-count)) /
+      (100% - var(--grid-column-gap) * var(--grid-columns-count)) /
         var(--grid-columns-count)
     );
 
     width: calc(
-      var(--grid-width) - var(--grid-offset) * 2 + var(--grid-gutter)
+      var(--grid-width) - var(--grid-offset) * 2 + var(--grid-column-gap)
     );
+
     margin: 0
       calc(
-        50% - var(--grid-width) / 2 + var(--grid-offset) - var(--grid-gutter) /
-          2
+        50% - var(--grid-width) / 2 + var(--grid-offset) -
+          var(--grid-column-gap) / 2
       );
 
     background-repeat: no-repeat;
     //noinspection CssInvalidFunction
     background-image: repeating-linear-gradient(
       to right,
-      var(--grid-gutter-color) 0,
-      var(--grid-gutter-color) calc(var(--grid-gutter) / 2),
-      var(--grid-column-color) calc(var(--grid-gutter) / 2),
+      var(--grid-gap-color) 0,
+      var(--grid-gap-color) calc(var(--grid-column-gap) / 2),
+      var(--grid-column-color) calc(var(--grid-column-gap) / 2),
       var(--grid-column-color)
-        calc(var(--grid-column-width) + var(--grid-gutter) / 2),
-      var(--grid-gutter-color)
-        calc(var(--grid-column-width) + var(--grid-gutter) / 2),
-      var(--grid-gutter-color)
-        calc(var(--grid-column-width) + var(--grid-gutter))
+        calc(var(--grid-column-width) + var(--grid-column-gap) / 2),
+      var(--grid-gap-color)
+        calc(var(--grid-column-width) + var(--grid-column-gap) / 2),
+      var(--grid-gap-color)
+        calc(var(--grid-column-width) + var(--grid-column-gap))
     );
   }
 }
@@ -224,16 +232,14 @@ body {
 
 <style scoped lang="scss">
 @import "../../assets/styles/mixins/transitions";
-@import "../../assets/styles/tokens/gaps";
-@import "../../assets/styles/tokens/colors";
 @import "../../assets/styles/transitions/scale";
 
 .d-debug-visual {
   @include transition-short;
 
   color: var(--white);
-  bottom: $gap-3x;
-  left: $gap-3x;
+  bottom: var(--gap-3x);
+  left: var(--gap-3x);
   position: fixed;
   opacity: 0.2;
   z-index: 9999;
@@ -242,6 +248,7 @@ body {
     opacity: 1;
   }
 
+  // TODO: avoid using <any> selector
   > * + * {
     margin-top: var(--gap-base);
   }

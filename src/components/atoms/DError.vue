@@ -1,23 +1,31 @@
 <template>
   <transition :name="transitionName">
-    <DTypography
-      v-if="text"
-      :class="$attrs.class"
-      :content="text"
-      size="small"
-      class="d-error"
-    />
+    <div v-if="content || $slots.default" class="d-error">
+      <DTypography
+        v-bind="{
+          size: 'small',
+          content,
+          ...$attrs
+        }"
+      >
+        <!-- @slot Pass your custom error HTML here -->
+        <slot />
+      </DTypography>
+    </div>
   </transition>
 </template>
 
 <script>
+/** mixins **/
+import typographyContentProp from "../../mixins/typographyContentProp";
+
 /** components **/
 import DTypography from "../containers/DTypography";
 
 /**
  * Helper component to unify error output of the control components.
  *
- * @version 1.0.2
+ * @version 1.2.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -25,19 +33,13 @@ export default {
 
   inheritAttrs: false,
 
+  mixins: [typographyContentProp],
+
   components: {
     DTypography
   },
 
   props: {
-    /**
-     * If not empty renders as an error string.
-     */
-    text: {
-      type: String,
-      default: ""
-    },
-
     /**
      * Name of the component transition (animation).
      */
@@ -63,5 +65,6 @@ export default {
   color: var(--color-danger);
   text-overflow: ellipsis;
   overflow: hidden;
+  width: fit-content;
 }
 </style>

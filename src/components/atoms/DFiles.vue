@@ -8,8 +8,11 @@
   >
     <DLink
       :href="!!$attrs.disabled ? null : '#'"
+      :disabled="!!$attrs.disabled"
+      :prevent-default="true"
       type="secondary"
-      @click.prevent="$refs.input.click()"
+      class="d-link"
+      @click="$refs.input.click()"
     >
       <label :for="componentId" :style="labelStyle" class="label">
         <DIconPaperclip v-if="!$slots['icon-attach']" />
@@ -20,7 +23,7 @@
       </label>
     </DLink>
 
-    <DError :text="error" />
+    <DError :content="error" />
 
     <transition-group
       :style="listStyle"
@@ -47,8 +50,9 @@
 
         <DLink
           :href="!!$attrs.disabled ? null : '#'"
+          :prevent-default="true"
           type="secondary"
-          @click.prevent="removeFromList(index)"
+          @click="removeFromList(index)"
         >
           <DIconCloseCircle v-if="!$slots['icon-remove']" />
           <!-- @slot You can replace default remove icon by passing your own here. -->
@@ -78,14 +82,14 @@
 import transitionsTokens from "../../assets/styles/tokens/_transitions.scss";
 
 /** compositions **/
-import useInputId from "../../compositions/componentId";
+import useComponentId from "../../compositions/componentId";
 import useDownloadFile from "../../compositions/downloadFile";
 
 /** components **/
 import DIconPaperclip from "../icons/DIconPaperclip";
 import DIconCloseCircle from "../icons/DIconCloseCircle";
 import DTypography from "../containers/DTypography";
-import DLink from "../atoms/DLink";
+import DLink from "./DLink";
 import DError from "./DError";
 
 /**
@@ -95,7 +99,7 @@ import DError from "./DError";
  * they will be pass to the tag automatically.<br>
  * While submitted uploadedFiles array need to be processed with FormData().
  *
- * @version 1.0.4
+ * @version 1.1.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 
@@ -112,12 +116,15 @@ export default {
     DIconCloseCircle
   },
 
+  emits: ["changed"],
+
   props: {
     /**
      * Defines <i>id</i> attr of the <b>input</b> tag.<br>
      * If you don't want to specify it, it will be generated automatically.
      */
     id: {
+      // TODO: move to mixins/componentId ???
       type: [String, Number],
       default: ""
     },
@@ -126,6 +133,7 @@ export default {
      * Defines content of the <b>label</b> tag.
      */
     label: {
+      // TODO: how to reuse typographyContentProp ???
       type: String,
       default: ""
     },
@@ -172,7 +180,7 @@ export default {
   },
 
   setup(props) {
-    const { componentId } = useInputId(props);
+    const { componentId } = useComponentId(props);
     const { downloadFile } = useDownloadFile();
 
     return { componentId, downloadFile };
@@ -184,27 +192,22 @@ export default {
     };
   },
 
-  watch: {
-    uploadedFiles() {
-      /**
-       * File list was changed. Payload contains files array to be uploaded and component id.
-       *
-       * @event changed
-       * @type {Array, String}
-       */
-      this.$emit("changed", this.uploadedFiles, this.componentId);
-    }
-  },
-
   methods: {
     addToList(event) {
+      let isChanged = false;
       for (let i = 0; i < event.target.files.length; i++) {
         const newFile = event.target.files[i];
         if (!this.uploadedFiles.find(f => f.name === newFile.name)) {
+          isChanged = true;
           // the old one file with the same name stays at uploadedFiles
           this.uploadedFiles.push(event.target.files[i]);
         }
       }
+
+      if (isChanged) {
+        this.emitChanged();
+      }
+
       // Input is used only to collect uploadedFiles array
       // This array is needed to be processed via FormData() while uploading
       this.$refs.form.reset();
@@ -213,6 +216,7 @@ export default {
     removeFromList(index) {
       if (!this.disabled) {
         this.uploadedFiles.splice(index, 1);
+        this.emitChanged();
       }
     },
 
@@ -220,6 +224,19 @@ export default {
       // Used to delay item animation
       const delay = parseInt(transitionsTokens["transition-delay-short"]);
       return index * delay + "ms";
+    },
+
+    emitChanged() {
+      /**
+       * File list was changed. Payload contains files array to be uploaded and component id.
+       *
+       * @event changed
+       * @type {{files: Array, id: String}}
+       */
+      this.$emit("changed", {
+        files: this.uploadedFiles,
+        id: this.componentId
+      });
     }
   }
 };
@@ -240,6 +257,10 @@ export default {
     .d-link {
       cursor: not-allowed;
       color: var(--color-primary-disabled);
+    }
+
+    .label {
+      cursor: not-allowed;
     }
   }
 }

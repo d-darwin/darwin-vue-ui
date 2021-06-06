@@ -1,12 +1,14 @@
 <template>
-  <div :id="id" :class="$attrs.class" class="d-full-screen">
+  <div :id="componentId" :class="$attrs.class" class="d-full-screen">
+    <!-- @slot The component content -->
     <slot />
 
     <DLink
       ref="request-full-screen-link"
+      href="#"
+      preventDefault
       v-show="!isFullScreen"
       v-bind="{ ...linkProps, onClick: requestFullScreen }"
-      href="#"
       :style="linkStyle"
     >
       <DIconMaximize v-if="!$slots['icon-maximize']" />
@@ -23,8 +25,8 @@
 </template>
 
 <script>
-/** utils **/
-import uuid from "../../utils/uuid";
+/** compositions **/
+import useComponentId from "../../compositions/componentId";
 
 /** components **/
 import DIconMaximize from "../icons/DIconMaximize";
@@ -32,9 +34,9 @@ import DLink from "../atoms/DLink";
 import DTypography from "../containers/DTypography";
 
 /**
- * The component adds full screen mode to default slot content.
+ * The component adds full screen mode to the default slot content.
  *
- * @version 1.0.4
+ * @version 1.1.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -44,13 +46,15 @@ export default {
 
   components: { DTypography, DLink, DIconMaximize },
 
+  emits: ["update:fullscreen"],
+
   props: {
     /**
      * Defines component id.
      */
     id: {
-      type: String,
-      default: `d_full_screen_${uuid()}`
+      type: [String, Number],
+      default: ""
     },
 
     /**
@@ -94,6 +98,11 @@ export default {
     }
   },
 
+  setup(props) {
+    const { componentId } = useComponentId(props);
+    return { componentId };
+  },
+
   data() {
     return {
       isFullScreen: false,
@@ -102,16 +111,26 @@ export default {
   },
 
   mounted() {
-    // hold pointer to the event listener to release it while unmount
+    // hold pointer to the event listener to release it on unmount
     this.fullScreenEventListener = () => {
       this.isFullScreen = !!document.fullscreenElement;
 
       if (!this.isFullScreen) {
         // move focus to requestFullScreenLink
-        const requestFullScreenLink = this.$refs["request-full-screen-link"]
-          .$el;
-        this.$nextTick(() => requestFullScreenLink.focus());
+        const requestFullScreenLink =
+          this.$refs["request-full-screen-link"] &&
+          this.$refs["request-full-screen-link"].$el;
+        if (requestFullScreenLink) {
+          this.$nextTick(() => requestFullScreenLink.focus());
+        }
       }
+      /**
+       * Emits current state of the component on change.
+       *
+       * @event update:fullscreen
+       * @type { Boolean }
+       */
+      this.$emit("update:fullscreen", this.isFullScreen);
     };
 
     window.addEventListener(
@@ -149,22 +168,28 @@ export default {
 
   methods: {
     requestFullScreen() {
-      document.getElementById(this && this.id).requestFullscreen();
+      document.getElementById(this.componentId).requestFullscreen();
     }
   }
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+// always include tokens unscoped
 @import "../../assets/styles/tokens/gaps";
+</style>
 
+<style scoped lang="scss">
 .d-full-screen {
   height: fit-content;
 }
 
 .d-link {
+  margin-top: var(--gap-2x);
+
+  // TODO: avoid using <any> selector
   > * + * {
-    margin-left: var(--gap-base);
+    margin-left: var(--gap-2x);
   }
 }
 </style>

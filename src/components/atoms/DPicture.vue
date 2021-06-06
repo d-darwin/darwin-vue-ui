@@ -45,17 +45,21 @@
 </template>
 
 <script>
+/** mixins **/
+import aspectRatioProp from "../../mixins/aspectRatioProp";
+
+/** components **/
 import DLoader from "./DLoader";
 import DIconImage from "../icons/DIconImage";
 import DTypography from "../containers/DTypography";
 import DAspectRatio from "../containers/DAspectRatio";
 
 /**
- * The component renders <b>picture</> tag according to Responsive Image principle.<br>
+ * The component renders <b>picture</b> tag according to the Responsive Image Principle.<br>
  *  Supports plain string image asset or an array of image assets for different screen width and pixel density.<br>
  *  Also supports lazy loading with <b>DLoader</b> placeholder, aspect-ration and renders <b>DIconImage</b> icon if <i>source</i> prop is empty.
  *
- * @version 1.3.4
+ * @version 1.5.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -63,7 +67,11 @@ export default {
 
   inheritAttrs: false,
 
+  mixins: [aspectRatioProp],
+
   components: { DTypography, DLoader, DIconImage, DAspectRatio },
+
+  emits: ["loaded"],
 
   props: {
     /**
@@ -90,16 +98,6 @@ export default {
      * The picture caption. Also used as <i>alt</i> and <i>title</> attrs if they aren't presented.
      */
     caption: {
-      type: String,
-      default: ""
-    },
-
-    /**
-     * Aspect ratio of the picture.
-     * Expected format: 'height:width'.
-     */
-    aspectRatio: {
-      // TODO: specify more accurate type ???
       type: String,
       default: ""
     },
@@ -141,37 +139,31 @@ export default {
     },
 
     tagProps() {
-      if (this.aspectRatio) {
-        return {
-          "aspect-ratio": this.aspectRatio,
-          tag: "picture"
-        };
-      } else {
-        return null;
-      }
+      return this.aspectRatio
+        ? {
+            "aspect-ratio": this.aspectRatio,
+            tag: "picture"
+          }
+        : null;
     },
 
     alt() {
-      return this.$attrs.alt ? this.$attrs.alt : this.caption;
+      return this?.$attrs?.alt || this.caption;
     },
 
     hasSource() {
-      return (
-        this.sortedItems[0] &&
-        (this.sortedItems[0].src || this.sortedItems[0].srcset)
-      );
+      return this.sortedItems[0]?.src || this.sortedItems[0]?.srcset;
     },
 
     sortedItems() {
-      // Array.sort function mutates array itself
-      // so we need to clone it to avoid prop mutates
+      // Array.sort mutates array itself, so we need to clone source to avoid prop mutation
       const outPicture = JSON.parse(JSON.stringify(this.source));
       if (Array.isArray(outPicture)) {
         // Resort Array by min_width (higher is above)
         outPicture.sort(function(a, b) {
           return b.min_width - a.min_width;
         });
-        // if srcset is array of images prepare srcset string
+        // If srcset is array of images prepare srcset string
         outPicture.forEach(function(item, k) {
           if (Array.isArray(item.srcset)) {
             let srcset = "";
@@ -187,9 +179,22 @@ export default {
       } else if (typeof outPicture === "string") {
         return [{ min_width: 0, src: outPicture }];
       } else {
+        // fallback
         return this.source;
       }
       return outPicture;
+    }
+  },
+
+  watch: {
+    isLoaded(value) {
+      /**
+       * Image src was loaded.
+       *
+       * @event loaded
+       * @type {boolean}
+       */
+      this.$emit("loaded", value);
     }
   },
 

@@ -14,7 +14,7 @@
         'icon-only': true,
         size: 'small',
         roundness: 'boxed',
-        type: 'backgroundless',
+        type: 'inverse',
         ...buttonProps,
         onClick: copyText
       }"
@@ -28,8 +28,11 @@
 </template>
 
 <script>
-/** utils **/
-import copyToClipboard from "../../utils/copyToClipboard";
+/** mixins **/
+import typographyContentProp from "../../mixins/typographyContentProp";
+
+/** compositions **/
+import useCopyToClipboard from "../../compositions/copyToClipboard";
 
 /** components **/
 import DIconCopy from "../icons/DIconCopy";
@@ -39,7 +42,7 @@ import DTypography from "../containers/DTypography";
 /**
  * The component allows user to copy string passed to component in <i>content</i> prop.
  *
- * @version 1.0.3
+ * @version 1.1.3
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -47,17 +50,13 @@ export default {
 
   inheritAttrs: false,
 
+  mixins: [typographyContentProp],
+
   components: { DIconCopy, DButton, DTypography },
 
-  props: {
-    /**
-     * Simple string or any HTML.
-     */
-    content: {
-      type: String,
-      default: ""
-    },
+  emits: ["copied"],
 
+  props: {
     /**
      * Pass any <b>DTypography</b> props if needed.
      */
@@ -91,20 +90,28 @@ export default {
     }
   },
 
+  setup() {
+    const { copyToClipboard } = useCopyToClipboard();
+    return { copyToClipboard };
+  },
+
   methods: {
     async copyText() {
-      copyToClipboard(this.content);
+      this.copyToClipboard(this.content);
       /**
        * Content string was copied.
        *
        * @event copied
-       * @type {undefined}
+       * @type {string}
        */
-      await this.$emit("copied");
+      await this.$emit("copied", this.content);
 
       // reset focus to copy-button
-      const copyButton = this.$refs["copy-button"].$el.children[0];
-      await this.$nextTick(() => copyButton.focus());
+      const copyButton =
+        this.$refs["copy-button"] && this.$refs["copy-button"].$el.children[0];
+      if (copyButton) {
+        await this.$nextTick(() => copyButton.focus());
+      }
     }
   }
 };
@@ -120,6 +127,7 @@ export default {
   display: flex;
   align-items: center;
 
+  // TODO: avoid using <any> selector
   > * + *,
   > * + ::v-slotted(*) {
     margin-left: var(--gap-base);

@@ -1,8 +1,11 @@
 <template>
-  <div :class="$attrs.class" class="d-button">
+  <div
+    :class="{ [$attrs.class]: $attrs.class, ['__full-width']: isFullWidth }"
+    class="d-button"
+  >
     <component
       :is="el"
-      v-bind="{ ...$props, ...$attrs }"
+      v-bind="$attrs"
       :class="{
         [`__${type}`]: type,
         [`__${size}`]: size,
@@ -11,16 +14,27 @@
         __disabled: !!$attrs.disabled
       }"
       class="control-button"
+      @click="clickHandler"
     >
+      <DTypography v-if="!$slots.default" :content="content" />
       <!-- @slot May contains a string, an icon or some combination of both. -->
       <slot />
     </component>
 
-    <DError :text="error" />
+    <DError :content="error" />
   </div>
 </template>
 
 <script>
+/** mixins **/
+import typographyContentProp from "../../mixins/typographyContentProp";
+import controlTypeProp from "../../mixins/controlTypeProp";
+import controlSizeProp from "../../mixins/controlSizeProp";
+import controlRoundnessProp from "../../mixins/controlRoundnessProp";
+import hasRouter from "../../mixins/hasRouter";
+
+/** components **/
+import DTypography from "../containers/DTypography";
 import DError from "./DError";
 
 /**
@@ -29,7 +43,7 @@ import DError from "./DError";
  * they will be pass to the tag automatically.<br>
  * May be in various sizes and have different corner roundness.
  *
- * @version 1.0.9
+ * @version 1.6.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -37,51 +51,31 @@ export default {
 
   inheritAttrs: false,
 
-  components: { DError },
+  mixins: [
+    typographyContentProp,
+    controlTypeProp,
+    controlSizeProp,
+    controlRoundnessProp,
+    hasRouter
+  ],
+
+  components: { DTypography, DError },
+
+  emits: ["click"],
 
   props: {
     /**
-     * Defines background and border colors of the component as well as :hover and :active behavior.<br>
-     * Takes values: 'primary', 'secondary', 'alternative', 'inverse', 'danger', 'backgroundless'.
-     */
-    type: {
-      type: String,
-      default: "primary",
-      validator: val =>
-        [
-          "primary",
-          "secondary",
-          "alternative",
-          "inverse",
-          "danger",
-          "backgroundless"
-        ].includes(val)
-    },
-
-    /**
-     * Defines vertical size of the component.<br>
-     * Takes values: 'large', 'medium', 'small'.
-     */
-    size: {
-      type: String,
-      default: "large",
-      validator: val => ["large", "medium", "small"].includes(val)
-    },
-
-    /**
-     * Defines corner's roundness of the component.<br>
-     * Takes values: 'smooth', 'rounded', 'boxed'.
-     */
-    roundness: {
-      type: String,
-      default: "smooth",
-      validator: val => ["smooth", "rounded", "boxed"].includes(val)
-    },
-
-    /**
-     * Reduces horizontal padding of the components.
+     * Makes component equal height and width, removes padding and centers slot content.
      */
     iconOnly: {
+      type: Boolean,
+      default: false
+    },
+
+    /**
+     * Makes component take all the container's width.
+     */
+    isFullWidth: {
       type: Boolean,
       default: false
     },
@@ -97,11 +91,23 @@ export default {
 
   computed: {
     el() {
-      return this.$attrs.to && this.$router
+      return this.hasRouter && this.$attrs.to
         ? "router-link"
         : this.$attrs.href
         ? "a"
         : "button";
+    }
+  },
+
+  methods: {
+    clickHandler() {
+      /**
+       * Just emits click event without any payload.
+       *
+       * @event click
+       * @type {undefined}
+       */
+      this.$emit("click");
     }
   }
 };
@@ -119,6 +125,16 @@ export default {
 @import "../../assets/styles/mixins/typography";
 @import "../../assets/styles/mixins/transitions";
 @import "../../assets/styles/mixins/outline";
+
+.d-button {
+  &.__full-width {
+    width: 100%;
+  }
+
+  &:not(.__full-width) {
+    width: fit-content;
+  }
+}
 
 .control-group {
   position: relative;
@@ -141,6 +157,7 @@ export default {
   text-decoration: none;
   width: 100%;
 
+  // TODO: avoid using <any> selector
   > * + *,
   > ::v-slotted(* + *) {
     margin-left: 6px;
@@ -289,22 +306,6 @@ export default {
   &.__disabled {
     background: var(--color-danger-disabled);
     border-color: var(--color-danger-disabled);
-  }
-}
-
-.__backgroundless {
-  transition: none;
-  color: var(--text-aux);
-  background: transparent;
-  border-color: transparent;
-
-  &:not(.__disabled):hover,
-  &:not(.__disabled):active {
-    opacity: 0.8;
-  }
-
-  &.__disabled {
-    color: var(--text-alt);
   }
 }
 </style>

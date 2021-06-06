@@ -36,13 +36,17 @@
       <div class="outline" />
     </div>
 
-    <DError :text="error" />
+    <DError :content="error" />
   </div>
 </template>
 
 <script>
-/** utils **/
-import useInputId from "../../compositions/componentId";
+/** mixins **/
+import controlSizeProp from "../../mixins/controlSizeProp";
+import controlRoundnessProp from "../../mixins/controlRoundnessProp";
+
+/** compositions **/
+import useComponentId from "../../compositions/componentId";
 
 /** components **/
 import DTypography from "../containers/DTypography";
@@ -55,7 +59,7 @@ import DError from "./DError";
  * May be in various sizes and have different corner roundness.<br>
  * Renders error string if any passed to a prop.
  *
- * @version 1.0.2
+ * @version 1.1.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -63,7 +67,11 @@ export default {
 
   inheritAttrs: false,
 
+  mixins: [controlSizeProp, controlRoundnessProp],
+
   components: { DError, DTypography },
+
+  emits: ["update:value"],
 
   props: {
     /**
@@ -73,26 +81,6 @@ export default {
     id: {
       type: [String, Number],
       default: ""
-    },
-
-    /**
-     * Defines vertical size of the <b>textarea</b> tag.<br>
-     * Takes values: 'large', 'medium'.
-     */
-    size: {
-      type: String,
-      default: "large",
-      validator: val => ["large", "medium"].includes(val)
-    },
-
-    /**
-     * Defines corner's roundness of the <b>textarea</b> tag.<br>
-     * Takes values: 'smooth', 'rounded', 'boxed'.
-     */
-    roundness: {
-      type: String,
-      default: "smooth",
-      validator: val => ["smooth", "rounded", "boxed"].includes(val)
     },
 
     /**
@@ -121,7 +109,7 @@ export default {
   },
 
   setup(props) {
-    const { componentId } = useInputId(props);
+    const { componentId } = useComponentId(props);
     return { componentId };
   },
 
@@ -268,5 +256,18 @@ export default {
   }
 }
 
-// TODO: __small ???
+.__small {
+  .textarea {
+    @include small-control;
+    @include small-text;
+
+    padding: 3px 9px;
+  }
+
+  &.__smooth {
+    .label {
+      padding-left: 10px;
+    }
+  }
+}
 </style>

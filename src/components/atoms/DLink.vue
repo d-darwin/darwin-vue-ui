@@ -3,14 +3,15 @@
     :is="el"
     :class="{
       [`__${size}`]: size,
-      [`__${type}`]: type,
-      [`${$attrs.class}`]: $attrs.class
+      [`__${type}`]: type
     }"
-    v-bind="{ ...$props, ...$attrs, rel, target }"
+    v-bind="{ ...$attrs, rel, target }"
     class="d-link"
+    @click="clickHandler"
   >
+    <DTypography v-if="!$slots.default" :content="content" :size="size" />
     <!-- @slot May contains a string or any content you want. -->
-    <slot name="default" />
+    <slot v-else />
 
     <template v-if="isExternalLink && !hideExternalLinkIcon">
       <DIconExternalLink v-if="!$slots['icon-external-link']" />
@@ -21,10 +22,14 @@
 </template>
 
 <script>
-/** utils **/
-import fontSizeProp from "../../utils/fontSizeProp";
+/** mixins **/
+import typographySizeProp from "../../mixins/typographySizeProp";
+import typographyContentProp from "../../mixins/typographyContentProp";
+import controlTypeProp from "../../mixins/controlTypeProp";
+import hasRouter from "../../mixins/hasRouter";
 
 /** components **/
+import DTypography from "../../components/containers/DTypography";
 import DIconExternalLink from "../../components/icons/DIconExternalLink";
 
 /**
@@ -33,7 +38,7 @@ import DIconExternalLink from "../../components/icons/DIconExternalLink";
  * they will be pass to the tag automatically.<br>
  * If <i>href</i> is a link to external resource, optional icon added to the left side of the default slot. You can turn off this behavior or pass your own icon.<br>
  *
- * @version 1.0.5
+ * @version 1.5.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -41,28 +46,28 @@ export default {
 
   inheritAttrs: false,
 
+  mixins: [
+    typographySizeProp,
+    typographyContentProp,
+    controlTypeProp,
+    hasRouter
+  ],
+
   components: {
+    DTypography,
     DIconExternalLink
   },
 
+  emits: ["click"],
+
   props: {
     /**
-     * Defines color of the component.<br>
-     * Takes values: 'primary', 'secondary', 'tertiary', 'inverse', 'danger'.
+     * Prevent default <b>router-link</b> or <b>a</b> behavior
      */
-    type: {
-      type: String,
-      default: "primary",
-      validator: val =>
-        ["primary", "secondary", "tertiary", "inverse", "danger"].includes(val)
+    preventDefault: {
+      type: Boolean,
+      default: false
     },
-
-    /**
-     * Defines main font props of the component content.<br>
-     * Expected values: "small", "general", "longread", "augmented", "h5", "h4", "h3", "h2", "h1".<br>
-     * See './src/assets/styles/tokens/_typography.scss' for more details.
-     */
-    size: fontSizeProp,
 
     /**
      * Set to true if you don't want to add icon to external links.
@@ -75,7 +80,7 @@ export default {
 
   computed: {
     el() {
-      return this.$attrs.to && this.$router ? "router-link" : "a";
+      return this.hasRouter && this.$attrs.to ? "router-link" : "a";
     },
 
     isExternalLink() {
@@ -86,7 +91,6 @@ export default {
       );
     },
 
-    // TODO: use attrs???
     rel() {
       return this.$attrs.rel
         ? this.$attrs.rel
@@ -95,13 +99,27 @@ export default {
         : "";
     },
 
-    // TODO: use attrs???
     target() {
       return this.$attrs.target
         ? this.$attrs.target
         : this.isExternalLink
         ? "_blank"
         : "";
+    }
+  },
+
+  methods: {
+    clickHandler(e) {
+      if (this.preventDefault && e) {
+        e.preventDefault();
+      }
+      /**
+       * Just emits click event without any payload.
+       *
+       * @event click
+       * @type {undefined}
+       */
+      this.$emit("click");
     }
   }
 };
@@ -126,8 +144,15 @@ export default {
   width: auto;
   display: inline-flex;
   align-items: center;
-  cursor: pointer;
   position: relative;
+
+  &:not([disabled]) {
+    cursor: pointer;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
 
   outline: none;
 
@@ -148,8 +173,8 @@ export default {
   @include link-secondary;
 }
 
-.__tertiary {
-  @include link-tertiary;
+.__alternative {
+  @include link-alternative;
 }
 
 .__inverse {

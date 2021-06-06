@@ -3,76 +3,88 @@
 // It's not very convenient but we have to use scss variables
 // to use them in @for loop in DGrid component.
 // TODO: Unfortunately we can't redefine columns-count on runtime.
-$xs-grid-columns-count: 2 !default;
+$xs-grid-columns-count: 2 !default; // TODO: why !default ???
 $xs-grid-offset: 18px !default;
-$xs-grid-gutter: 18px !default;
+$xs-grid-column-gap: 18px !default;
+$xs-grid-raw-gap: 18px !default;
 $xs-grid-width: 100% !default;
 
 $sm-grid-columns-count: 6 !default;
 $sm-grid-offset: 18px !default;
-$sm-grid-gutter: 18px !default;
+$sm-grid-column-gap: 18px !default;
+$sm-grid-raw-gap: 18px !default;
 $sm-grid-width: 100% !default;
 
 $md-grid-columns-count: 12 !default;
 $md-grid-offset: 24px !default;
-$md-grid-gutter: 24px !default;
+$md-grid-column-gap: 24px !default;
+$md-grid-raw-gap: 24px !default;
 $md-grid-width: 100% !default;
 
 $lg-grid-columns-count: 12 !default;
 $lg-grid-offset: 0px !default;
-$lg-grid-gutter: 24px !default;
+$lg-grid-column-gap: 24px !default;
+$lg-grid-raw-gap: 24px !default;
 $lg-grid-width: 960px !default;
 
 $xl-grid-columns-count: 12 !default;
 $xl-grid-offset: 0px !default;
-$xl-grid-gutter: 24px !default;
+$xl-grid-column-gap: 24px !default;
+$xl-grid-raw-gap: 24px !default;
 $xl-grid-width: 1140px !default;
 
 $xxl-grid-columns-count: 12 !default;
 $xxl-grid-offset: 0px !default;
-$xxl-grid-gutter: 24px !default;
+$xxl-grid-column-gap: 24px !default;
+$xxl-grid-raw-gap: 24px !default;
 $xxl-grid-width: 1320px !default;
 
 :root {
   @include xs-device {
     --grid-columns-count: #{$xs-grid-columns-count};
     --grid-offset: #{$xs-grid-offset};
-    --grid-gutter: #{$xs-grid-gutter};
+    --grid-column-gap: #{$xs-grid-column-gap};
+    --grid-raw-gap: #{$xs-grid-raw-gap};
     --grid-width: #{$xs-grid-width};
   }
 
   @include sm-device {
     --grid-columns-count: #{$sm-grid-columns-count};
     --grid-offset: #{$sm-grid-offset};
-    --grid-gutter: #{$sm-grid-gutter};
+    --grid-column-gap: #{$sm-grid-column-gap};
+    --grid-raw-gap: #{$sm-grid-raw-gap};
     --grid-width: #{$sm-grid-width};
   }
 
   @include md-device {
     --grid-columns-count: #{$md-grid-columns-count};
     --grid-offset: #{$md-grid-offset};
-    --grid-gutter: #{$md-grid-gutter};
+    --grid-column-gap: #{$md-grid-column-gap};
+    --grid-raw-gap: #{$md-grid-raw-gap};
     --grid-width: #{$md-grid-width};
   }
 
   @include lg-device {
     --grid-columns-count: #{$lg-grid-columns-count};
     --grid-offset: #{$lg-grid-offset};
-    --grid-gutter: #{$lg-grid-gutter};
+    --grid-column-gap: #{$lg-grid-column-gap};
+    --grid-raw-gap: #{$lg-grid-raw-gap};
     --grid-width: #{$lg-grid-width};
   }
 
   @include xl-device {
     --grid-columns-count: #{$xl-grid-columns-count};
     --grid-offset: #{$xl-grid-offset};
-    --grid-gutter: #{$xl-grid-gutter};
+    --grid-column-gap: #{$xl-grid-column-gap};
+    --grid-raw-gap: #{$xl-grid-raw-gap};
     --grid-width: #{$xl-grid-width};
   }
 
   @include xxl-device {
     --grid-columns-count: #{$xxl-grid-columns-count};
     --grid-offset: #{$xxl-grid-offset};
-    --grid-gutter: #{$xxl-grid-gutter};
+    --grid-column-gap: #{$xxl-grid-column-gap};
+    --grid-raw-gap: #{$xxl-grid-raw-gap};
     --grid-width: #{$xxl-grid-width};
   }
 }
@@ -83,31 +95,37 @@ $xxl-grid-width: 1320px !default;
 :export {
   xs-grid-columns-count: $xs-grid-columns-count;
   xs-grid-offset: $xs-grid-offset;
-  xs-grid-gutter: $xs-grid-gutter;
+  xs-grid-column-gap: $xs-grid-column-gap;
+  xs-grid-raw-gap: $xs-grid-raw-gap;
   xs-grid-width: $xs-grid-width;
 
   sm-grid-columns-count: $sm-grid-columns-count;
   sm-grid-offset: $sm-grid-offset;
-  sm-grid-gutter: $sm-grid-gutter;
+  sm-grid-column-gap: $sm-grid-column-gap;
+  sm-grid-raw-gap: $sm-grid-raw-gap;
   sm-grid-width: $sm-grid-width;
 
   md-grid-columns-count: $md-grid-columns-count;
   md-grid-offset: $md-grid-offset;
-  md-grid-gutter: $md-grid-gutter;
+  md-grid-column-gap: $md-grid-column-gap;
+  md-grid-raw-gap: $md-grid-raw-gap;
   md-grid-width: $md-grid-width;
 
   lg-grid-columns-count: $lg-grid-columns-count;
   lg-grid-offset: $lg-grid-offset;
-  lg-grid-gutter: $lg-grid-gutter;
+  lg-grid-column-gap: $lg-grid-column-gap;
+  lg-grid-raw-gap: $lg-grid-raw-gap;
   lg-grid-width: $lg-grid-width;
 
   xl-grid-columns-count: $xl-grid-columns-count;
   xl-grid-offset: $xl-grid-offset;
-  xl-grid-gutter: $xl-grid-gutter;
+  xl-grid-column-gap: $xl-grid-column-gap;
+  xl-grid-raw-gap: $xl-grid-raw-gap;
   xl-grid-width: $xl-grid-width;
 
   xxl-grid-columns-count: $xxl-grid-columns-count;
   xxl-grid-offset: $xxl-grid-offset;
-  xxl-grid-gutter: $xxl-grid-gutter;
+  xxl-grid-column-gap: $xxl-grid-column-gap;
+  xxl-grid-raw-gap: $xxl-grid-raw-gap;
   xxl-grid-width: $xxl-grid-width;
 }

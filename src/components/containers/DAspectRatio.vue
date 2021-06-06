@@ -1,36 +1,32 @@
 <template>
-  <component :is="tag" :style="{ paddingBottom }" class="d-aspect-ratio-box">
+  <component :is="tag" :style="{ paddingBottom }" class="d-aspect-ratio">
+    <!-- @slot Contains any HTML -->
     <slot />
   </component>
 </template>
 
 <script>
+import aspectRatioProp from "../../mixins/aspectRatioProp";
+
 /**
  * The component uses padding-bottom / zero-height hack to simulate aspect-ratio CSS property.
  *
- * @version 1.0.0
+ * @version 1.1.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
   name: "DAspectRatio",
+
+  mixins: [aspectRatioProp],
 
   props: {
     /**
      * A tag of the container component.
      */
     tag: {
+      // TODO: should I enumerate all possible tags???
       type: String,
       default: "div"
-    },
-
-    /**
-     * Aspect ratio of the picture. Padding-bottom / zero height hack used to simulate aspect-ratio CSS property.<br>
-     * Expected format: 'height:width'.
-     */
-    aspectRatio: {
-      // TODO: specify more accurate type ???
-      type: String,
-      default: "1:1"
     }
   },
 
@@ -68,12 +64,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.d-aspect-ratio-box {
+.d-aspect-ratio {
   position: relative;
   display: block;
   width: 100%;
   height: 0;
 
+  // TODO: avoid using <any> selector
   > *,
   > ::v-slotted(*) {
     position: absolute;

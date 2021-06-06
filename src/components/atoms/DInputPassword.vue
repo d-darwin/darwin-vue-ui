@@ -1,8 +1,7 @@
 <template>
   <DInput
     :type="isVisible ? 'text' : 'password'"
-    :class="$attrs.class"
-    v-bind="{ ...$props, ...$attrs }"
+    v-bind="$attrs"
     class="d-input-password"
   >
     <template #after>
@@ -35,7 +34,7 @@ import DIconEyeOff from "../icons/DIconEyeOff";
  * The component renders <b>input</b> tag with password <b>type</b> and visibility toggle.<br>
  * It uses <b>DInput</b> component so you can pass any compatible props.<br>
  *
- * @version 1.0.5
+ * @version 1.1.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -46,7 +45,13 @@ export default {
 
   components: { DIconEyeOff, DIconEye, DInput },
 
+  // TODO: there is no automatic pass to DInput
+  // TODO: there is rerendering issue on update:visibility in Storybook
+  emits: ["update:value", "submit", "update:visibility"],
+
   props: {
+    // TODO: write all DInput props in plain style to document it in Storybook???
+
     /**
      * Pass any style object to <i>.visibility-toggle-style</i> if needed.
      */
@@ -77,10 +82,10 @@ export default {
       /**
        * Visibility of the password changed.
        *
-       * @event visibility-change
+       * @event update:visibility
        * @type {Boolean}
        */
-      this.$emit("visibility-change", this.isVisible);
+      this.$emit("update:visibility", this.isVisible);
     }
   }
 };

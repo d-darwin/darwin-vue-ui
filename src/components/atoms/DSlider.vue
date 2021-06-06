@@ -14,7 +14,6 @@
       <input
         :id="componentId"
         v-bind="{
-          ...$props,
           ...$attrs,
           min: $attrs.min || 0,
           max: $attrs.max || 100,
@@ -28,13 +27,16 @@
       <div class="outline" />
     </div>
 
-    <DError :text="error" />
+    <DError :content="error" />
   </div>
 </template>
 
 <script>
+/** mixins **/
+import controlColorProp from "../../mixins/controlColorProp";
+
 /** compositions **/
-import useInputId from "../../compositions/componentId";
+import useComponentId from "../../compositions/componentId";
 
 /** components **/
 import DTypography from "../containers/DTypography";
@@ -45,7 +47,7 @@ import DError from "./DError";
  * Feel free to use any attrs you expect with <b>input</b> tag with <i>type="range"</i>,
  * they will be pass to the tag automatically.
  *
- * @version 1.0.3
+ * @version 1.1.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -53,7 +55,11 @@ export default {
 
   inheritAttrs: false,
 
+  mixins: [controlColorProp],
+
   components: { DError, DTypography },
+
+  emits: ["update:value"],
 
   props: {
     /**
@@ -74,16 +80,6 @@ export default {
     },
 
     /**
-     * Defines color of the component's default icons.<br>
-     * Takes values: "primary", "accent", "text".
-     */
-    color: {
-      type: String,
-      default: "primary",
-      validator: val => ["primary", "accent", "text"].includes(val)
-    },
-
-    /**
      * If not empty renders as an error string below the <b>input</b> tag.
      */
     error: {
@@ -93,7 +89,7 @@ export default {
   },
 
   setup(props) {
-    const { componentId } = useInputId(props);
+    const { componentId } = useComponentId(props);
     return { componentId };
   },
 

@@ -1,14 +1,14 @@
 <template>
   <teleport to="body">
     <transition :name="backdropTransitionName">
-      <DBackdrop v-if="isShown" />
+      <DBackdrop v-if="isShown" @click="closeHandler" />
     </transition>
 
     <div
       :class="{
         __shown: isShown,
         [`__${position}`]: position,
-        [`${$attrs.class}`]: $attrs.class
+        [`${$attrs.class}`]: $attrs.clas
       }"
       class="d-drawer"
       @click="closeHandler"
@@ -44,6 +44,9 @@
 /** compositions **/
 import useClosable from "../../compositions/closable";
 
+/** mixins **/
+import positionProp from "../../mixins/positionProp";
+
 /** components **/
 import DIconClose from "../icons/DIconClose";
 import DButton from "../atoms/DButton";
@@ -52,7 +55,7 @@ import DBackdrop from "../atoms/DBackdrop";
 /**
  * Renders drawer. It's especially useful for navigation, but default slot may receive any content.
  *
- * @version 1.5.0
+ * @version 1.5.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -60,7 +63,11 @@ export default {
 
   inheritAttrs: false,
 
+  mixins: [positionProp],
+
   components: { DBackdrop, DButton, DIconClose },
+
+  emits: ["close"],
 
   props: {
     /**
@@ -69,15 +76,6 @@ export default {
     isShown: {
       type: Boolean,
       default: true
-    },
-
-    /**
-     * Defines position of the component, left or right.
-     */
-    position: {
-      type: String,
-      default: "right",
-      validate: val => ["top", "right", "bottom", "left"].includes(val)
     },
 
     /**
@@ -205,12 +203,17 @@ body {
 }
 
 .drawer-wrap {
+  box-sizing: border-box;
   position: relative;
   background: var(--white);
   height: 100%;
   width: 100%;
   overflow-y: auto;
   z-index: 10;
+}
+
+.drawer-content {
+  height: 100%;
 }
 
 .close-button {

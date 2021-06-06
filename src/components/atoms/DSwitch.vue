@@ -46,13 +46,16 @@
       />
     </div>
 
-    <DError :text="error" />
+    <DError :content="error" />
   </div>
 </template>
 
 <script>
+/** mixins **/
+import controlColorProp from "../../mixins/controlColorProp";
+
 /** compositions **/
-import useInputId from "../../compositions/componentId";
+import useComponentId from "../../compositions/componentId";
 
 /** components **/
 import DTypography from "../containers/DTypography";
@@ -64,7 +67,7 @@ import DError from "./DError";
  * they will be pass to the tag automatically.<br>
  * If values prop defined the component will be rendered as toggle (slightly different appearance).
  *
- * @version 1.0.5
+ * @version 1.1.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -72,7 +75,11 @@ export default {
 
   inheritAttrs: false,
 
+  mixins: [controlColorProp],
+
   components: { DError, DTypography },
+
+  emits: ["update:value"],
 
   props: {
     /**
@@ -82,15 +89,6 @@ export default {
     id: {
       type: [String, Number],
       default: ""
-    },
-
-    /**
-     * Defines color of the component.
-     */
-    color: {
-      type: String,
-      default: "primary",
-      validator: val => ["primary", "accent", "text"].includes(val)
     },
 
     /**
@@ -123,7 +121,7 @@ export default {
   },
 
   setup(props) {
-    const { componentId } = useInputId(props);
+    const { componentId } = useComponentId(props);
     return { componentId };
   },
 
@@ -134,8 +132,8 @@ export default {
   },
 
   methods: {
-    emitChange(event) {
-      this.isChecked = event.target.checked;
+    emitChange(e) {
+      this.isChecked = e && e.target.checked;
 
       /**
        * Checked attr of the <b>input</b> tag updated. Contains new <i>value</i> and component id.<br>
@@ -144,7 +142,7 @@ export default {
        * @event update:value
        * @type {{value: (Boolean | String | Number), id: String}}
        */
-      const value = event.target.checked
+      const value = this.isChecked
         ? (this.values && this.values.truthy) || true
         : (this.values && this.values.falsy) || false;
 

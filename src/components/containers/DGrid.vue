@@ -2,10 +2,14 @@
 <template>
   <component
     :is="tag"
-    :class="[...columnCountClass, { __condensed: isCondensed }]"
+    :class="[
+      ...columnCountClass,
+      { '__no-column-gap': !hasColumnGap },
+      { '__no-raw-gap': !hasRawGap }
+    ]"
     class="d-grid"
   >
-    <!-- @slot contains grid items -->
+    <!-- @slot Contains grid items -->
     <slot />
   </component>
 </template>
@@ -15,9 +19,9 @@
 import gridTokens from "../../assets/styles/tokens/_grid.scss";
 
 /**
- * The container allows you an easy way to arrange child nodes in a grid template.
+ * The container provides you with an easy way to arrange child nodes in a grid template.
  *
- * @version 1.0.1
+ * @version 1.0.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -30,7 +34,7 @@ export default {
      * If no column count presented for any device width, nodes will take all width of the container.
      */
     columnCount: {
-      // TODO: specify more accurate type ???
+      // TODO: specify more specific type
       type: Object,
       default: () => {}
     },
@@ -44,11 +48,19 @@ export default {
     },
 
     /**
-     * Condensed grid hasn't gaps between columns.
+     * If false, grid hasn't gaps between columns.
      */
-    isCondensed: {
+    hasColumnGap: {
       type: Boolean,
-      default: false
+      default: true
+    },
+
+    /**
+     * If false, grid hasn't gaps between raws.
+     */
+    hasRawGap: {
+      type: Boolean,
+      default: true
     }
   },
 
@@ -62,8 +74,8 @@ export default {
         lg: parseInt(gridTokens["lg-grid-columns-count"]),
         xl: parseInt(gridTokens["xl-grid-columns-count"]),
         xxl: parseInt(gridTokens["xxl-grid-columns-count"])
-      },
-      throttledFunction: null
+      }
+      // throttledFunction: null
     };
   },
 
@@ -102,8 +114,12 @@ export default {
 
   grid-template-columns: repeat(var(--grid-columns-count), 1fr);
 
-  &:not(.__condensed) {
-    grid-column-gap: var(--grid-gutter);
+  &:not(.__no-column-gap) {
+    grid-column-gap: var(--grid-column-gap);
+  }
+
+  &:not(.__no-raw-gap) {
+    grid-row-gap: var(--grid-raw-gap);
   }
 }
 

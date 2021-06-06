@@ -7,7 +7,7 @@
 
 ## What is it?
 
-It's lightweight and performant UI Library for Vue 3.
+It's lightweight and flexible UI Library for Vue 3.
 
 🚧 DISCLAIMER: Under construction. Not even close to alpha. So please, don't use in production.
 
@@ -80,9 +80,7 @@ export default {
 
 ## Documentation
 
-For now there isn't any fancy documentation site to check out,
-but we are planing to use Storybook for the documentation when it will be integrated with Vue 3.  
-You can find particular component documentation in its source code.
+Check out [the library Storybook](https://ui-vue.darwin.st/) or you can find particular component documentation in its source code.
 
 ## More details
 
@@ -94,7 +92,7 @@ And finally, development components simplify development process.
 
 #### Atoms
 
-- **DBackdrop**. Renders a simple backdrop. Used in pair with closable components.    
+- **DBackdrop**. Renders a simple backdrop. Used in pair with closable components.  
   More details: '@dariwn-studio/ui-vue/src/components/atoms/DButton.vue'.
 - **DButton**. Renders a button of various appearance and behavior.  
   More details: '@dariwn-studio/ui-vue/src/components/atoms/DButton.vue'.
@@ -171,6 +169,8 @@ And finally, development components simplify development process.
   More details: '@dariwn-studio/ui-vue/src/components/containers/DFullScreen.vue'.
 - **DGrid**. Helps arrange child elements by grid.  
   More details: '@dariwn-studio/ui-vue/src/components/containers/DGrid.vue'.
+- **DTooltip**. Adds tooltip to the child component.  
+  More details: '@dariwn-studio/ui-vue/src/components/containers/DTooltip.vue'.
 - **DTypography**. Renders an HTML strings according to defined design tokens.  
   More details: '@dariwn-studio/ui-vue/src/components/containers/DTypography.vue'.
 - **DZoomIn**. The component allows zoom in slot content to cover all browser viewport.

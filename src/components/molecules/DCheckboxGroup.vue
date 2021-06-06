@@ -11,16 +11,19 @@
       <DCheckbox
         v-for="(item, index) in itemList"
         :key="index"
-        v-bind="item"
+        v-bind="{ color, ...item }"
         @update:value="emitChange(index, $event)"
       />
     </div>
 
-    <DError :text="error" />
+    <DError :content="error" />
   </div>
 </template>
 
 <script>
+/** mixins **/
+import controlColorProp from "../../mixins/controlColorProp";
+
 /** components **/
 import DTypography from "../containers/DTypography";
 import DCheckbox from "../atoms/DCheckbox";
@@ -29,7 +32,7 @@ import DError from "../atoms/DError";
 /**
  * The component a group of <b>DCheckbox</b> components.
  *
- * @version 1.0.4
+ * @version 1.1.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -37,7 +40,11 @@ export default {
 
   inheritAttrs: false,
 
+  mixins: [controlColorProp],
+
   components: { DError, DTypography, DCheckbox },
+
+  emits: ["update:value"],
 
   props: {
     /**
@@ -63,6 +70,8 @@ export default {
       type: Object,
       default: () => {}
     },
+
+    // TODO: add titleProps
 
     /**
      * Pass any style object to <i>.list</i> if needed.
@@ -92,6 +101,7 @@ export default {
        * @type {{index: Number, checked: Boolean, value: String, id: String}}
        */
       this.$emit("update:value", { index, checked, value, id });
+      // TODO: should I emit only changed item or whole list ???
     }
   }
 };

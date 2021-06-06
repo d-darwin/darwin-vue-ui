@@ -32,19 +32,22 @@
 
       <DTypography
         :content="label"
-        :size="labelSize"
+        :fontSize="labelSize"
         :style="labelStyle"
         class="label"
       />
     </label>
 
-    <DError :text="error" />
+    <DError :content="error" />
   </div>
 </template>
 
 <script>
+/** mixins **/
+import controlColorProp from "../../mixins/controlColorProp";
+
 /** compositions **/
-import useInputId from "../../compositions/componentId";
+import useComponentId from "../../compositions/componentId";
 
 /** components **/
 import DIconUnchecked from "../icons/DIconUnchecked";
@@ -57,7 +60,7 @@ import DError from "./DError";
  * Feel free to use any attrs you expect with <b>input</b> tag with <i>type="checkbox"</i>,
  * they will be pass to the tag automatically.
  *
- * @version 1.0.5
+ * @version 1.1.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -65,7 +68,11 @@ export default {
 
   inheritAttrs: false,
 
+  mixins: [controlColorProp],
+
   components: { DError, DTypography, DIconChecked, DIconUnchecked },
+
+  emits: ["update:value"],
 
   props: {
     /**
@@ -78,13 +85,12 @@ export default {
     },
 
     /**
-     * Defines color of the component's default icons.<br>
-     * Takes values: "primary", "accent", "text".
+     * Defines content of the <b>label</b> tag.
      */
-    color: {
+    label: {
+      // TODO: reuse /mixins/typographyProp ???
       type: String,
-      default: "primary",
-      validator: val => ["primary", "accent", "text"].includes(val)
+      default: "Label"
     },
 
     /**
@@ -96,18 +102,11 @@ export default {
     },
 
     /**
-     * Defines content of the <b>label</b> tag.
-     */
-    label: {
-      type: String,
-      default: "Label"
-    },
-
-    /**
      * Defines <b>DTypography</b> size.<br>
      * Takes values: 'large', 'medium'.
      */
     labelSize: {
+      // TODO: do we really need this ???
       type: String,
       default: "general",
       validator: val => ["general", "small"].includes(val)
@@ -131,7 +130,7 @@ export default {
   },
 
   setup(props) {
-    const { componentId } = useInputId(props);
+    const { componentId } = useComponentId(props);
     return { componentId };
   },
 
@@ -194,6 +193,7 @@ export default {
   &.__disabled {
     cursor: not-allowed;
 
+    // TODO: avoid using <any> selector
     > * {
       color: var(--color-separator);
     }
