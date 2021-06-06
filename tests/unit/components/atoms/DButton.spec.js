@@ -30,6 +30,7 @@ describe("components/atoms/DButton.vue", () => {
       href: "/some-link"
     });
     expect(wrapper.vm.el).toBe("a");
+    wrapper.unmount();
   });
 
   it("Renders 'router-link' tag if 'to' props is presented and vue-router module is installed", () => {
