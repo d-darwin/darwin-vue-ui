@@ -1,6 +1,6 @@
 {
   "name": "@darwin-studio/ui-vue",
-  "version": "0.38.14",
+  "version": "0.38.15",
   "description": "Vue 3 based lightweight and flexible UI library",
   "author": "Dmitrii Bykov <d@darwin.st> (https://darwin.st/)",
   "scripts": {
