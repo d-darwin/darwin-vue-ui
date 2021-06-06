@@ -1,5 +1,5 @@
 import { defineComponent, PropType } from "vue";
-import FontSize from "../typings/types/FontSize";
+import TypographySize from "../typings/types/typographySize";
 
 export default defineComponent({
   props: {
@@ -9,7 +9,7 @@ export default defineComponent({
      * See './src/assets/styles/tokens/_typography.scss' for more details.
      */
     fontSize: {
-      type: String as PropType<FontSize>,
+      type: String as PropType<TypographySize>,
       default: "general"
     }
   }

@@ -1,4 +1,4 @@
-type FontSize =
+type TypographySize =
   | "small"
   | "general"
   | "longread"
@@ -9,4 +9,4 @@ type FontSize =
   | "h2"
   | "h1";
 
-export default FontSize;
+export default TypographySize;

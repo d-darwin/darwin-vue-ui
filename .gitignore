@@ -25,8 +25,8 @@ pnpm-debug.log*
 # Dev files and folders
 /public
 /src/main.js
+/src/main.ts
 /src/App.vue
-/src/_App.vue
 /src/router/
 /src/views/
 /storybook-static/

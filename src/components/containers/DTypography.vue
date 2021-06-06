@@ -19,8 +19,12 @@
   </component>
 </template>
 
-<script>
+<script lang="ts">
+/** core **/
+import { defineComponent, PropType } from "vue";
+
 /** mixins **/
+import typographyContentProp from "../../mixins/typographyContentProp";
 import typographySizeProp from "../../mixins/typographySizeProp";
 import linkClickRouting from "../../mixins/linkClickRouting";
 
@@ -33,22 +37,14 @@ import linkClickRouting from "../../mixins/linkClickRouting";
  * @version 1.1.1
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
-export default {
+export default defineComponent({
   name: "DTypography",
 
   inheritAttrs: false,
 
-  mixins: [typographySizeProp, linkClickRouting],
+  mixins: [typographyContentProp, typographySizeProp, linkClickRouting],
 
   props: {
-    /**
-     * May contain any HTML string. Alternatively you can use default slot to place any HTML or components.
-     */
-    content: {
-      type: [String, Number],
-      default: ""
-    },
-
     /**
      * Which tag should wrap component content.
      */
@@ -58,7 +54,7 @@ export default {
       default: "div"
     }
   }
-};
+});
 </script>
 
 <style lang="scss">

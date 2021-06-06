@@ -15,12 +15,15 @@
   </transition>
 </template>
 
-<script>
+<script lang="ts">
+/** core **/
+import { defineComponent, PropType } from "vue";
+
 /** mixins **/
 import typographyContentProp from "../../mixins/typographyContentProp";
 
 /** components **/
-import DTypography from "../containers/DTypography";
+import DTypography from "../containers/DTypography.vue";
 
 /**
  * Helper component to unify error output of the control components.
@@ -28,7 +31,7 @@ import DTypography from "../containers/DTypography";
  * @version 1.2.2
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
-export default {
+export default defineComponent({
   name: "DError",
 
   inheritAttrs: false,
@@ -44,11 +47,11 @@ export default {
      * Name of the component transition (animation).
      */
     transitionName: {
-      type: String,
+      type: String as PropType<string>,
       default: "error"
     }
   }
-};
+});
 </script>
 
 <style lang="scss">

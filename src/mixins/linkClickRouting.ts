@@ -1,33 +1,37 @@
+import { defineComponent } from "vue";
+
+/** mixins **/
+import hasRouter from "./hasRouter";
+
 /**
  * If children of a component contains relative HTML links
  *  the mixins handles these as routes.
  */
-export default {
+export default defineComponent({
+  mixins: [hasRouter],
+
   data() {
     return {
-      links: []
+      links: [] as HTMLLinkElement[]
     };
   },
 
   mounted() {
-    // TODO: use hasRouter mixin ???
-    if (this.$router) {
+    if (this.hasRouter) {
       this.addListeners();
     }
   },
 
   beforeUnmount() {
-    if (this.$router) {
+    if (this.hasRouter) {
       this.removeListeners();
     }
   },
 
   updated() {
-    if (this.$router) {
+    if (this.hasRouter) {
       this.removeListeners();
-      this.$nextTick(() => {
-        this.addListeners();
-      });
+      this.$nextTick().then(_ => this.addListeners());
     }
   },
 
@@ -35,18 +39,22 @@ export default {
     /**
      * Prevents default browser behavior (page reload) for relative links.
      */
-    navigate(event) {
-      const href = event.target.getAttribute("href");
-      const target = event.target.getAttribute("target");
-      // TODO: add if it is the same domain check
-      if (href && href[0] === "/" && target !== "_blank") {
-        event.preventDefault();
-        this.$router && this.$router.push(href);
+    navigate(event: MouseEvent) {
+      const link = event.target as HTMLLinkElement;
+      if (link) {
+        const href = link.getAttribute("href");
+        const target = link.getAttribute("target");
+        // TODO: add if it is the same domain check
+        if (href && href[0] === "/" && target !== "_blank") {
+          event.preventDefault();
+          // @ts-ignore // TODO: don't use suppression
+          this.$router && this.$router.push(href);
+        }
       }
     },
 
     addListeners() {
-      this.links = this.$el.getElementsByTagName("a");
+      this.links = this.$el.getElementsByTagName("a") as HTMLLinkElement[];
       for (let i = 0; i < this.links.length; i++) {
         this.links[i].addEventListener("click", this.navigate, false);
       }
@@ -59,4 +67,4 @@ export default {
       this.links = [];
     }
   }
-};
+});

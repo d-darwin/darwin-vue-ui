@@ -1,6 +1,12 @@
-import typographySizeList from "../variables/typographySizeList";
+/** core **/
+import { defineComponent } from "vue";
+import { PropType } from "vue";
 
-export default {
+// TODO: which type definition should I use ???
+import typographySizeList from "../variables/typographySizeList";
+import TypographySize from "../typings/types/typographySize";
+
+export default defineComponent({
   props: {
     /**
      * Defines main font props of the component content.<br>
@@ -8,9 +14,9 @@ export default {
      * See './src/assets/styles/tokens/_typography.scss' for more details.
      */
     size: {
-      type: String,
+      type: String as PropType<TypographySize>,
       default: "general",
       validator: val => typographySizeList.includes(val)
     }
   }
-};
+});

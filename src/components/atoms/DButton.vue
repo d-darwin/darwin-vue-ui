@@ -25,7 +25,10 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+/** core **/
+import { defineComponent, PropType } from "vue";
+
 /** mixins **/
 import typographyContentProp from "../../mixins/typographyContentProp";
 import controlTypeProp from "../../mixins/controlTypeProp";
@@ -34,8 +37,8 @@ import controlRoundnessProp from "../../mixins/controlRoundnessProp";
 import hasRouter from "../../mixins/hasRouter";
 
 /** components **/
-import DTypography from "../containers/DTypography";
-import DError from "./DError";
+import DTypography from "../containers/DTypography.vue";
+import DError from "./DError.vue";
 
 /**
  * The component renders as a <b>button</b>, <b>router-link</b> or <b>a</b> depending on props.<br>
@@ -46,7 +49,7 @@ import DError from "./DError";
  * @version 1.6.0
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
-export default {
+export default defineComponent({
   name: "DButton",
 
   inheritAttrs: false,
@@ -68,7 +71,7 @@ export default {
      * Makes component equal height and width, removes padding and centers slot content.
      */
     iconOnly: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: false
     },
 
@@ -76,7 +79,7 @@ export default {
      * Makes component take all the container's width.
      */
     isFullWidth: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: false
     },
 
@@ -84,13 +87,13 @@ export default {
      * If not empty renders as an error string below the <b>input</b> tag.
      */
     error: {
-      type: String,
+      type: String as PropType<string>,
       default: ""
     }
   },
 
   computed: {
-    el() {
+    el(): string {
       return this.hasRouter && this.$attrs.to
         ? "router-link"
         : this.$attrs.href
@@ -110,7 +113,7 @@ export default {
       this.$emit("click");
     }
   }
-};
+});
 </script>
 
 <style lang="scss">
