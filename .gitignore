@@ -31,3 +31,4 @@ pnpm-debug.log*
 /src/views/
 /storybook-static/
 /coverage/
+/assets/
