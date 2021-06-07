@@ -17,6 +17,10 @@ describe("components/atoms/DCopyContent", () => {
     expect(wrapper.html().includes("d-copy-content")).toBe(true);
   });
 
+  it("Contains props.content", () => {
+    expect(wrapper.html().includes(CONTENT)).toBe(true);
+  });
+
   it("Contains DButton component", () => {
     expect(wrapper.findComponent(DButton).exists()).toBe(true);
   });

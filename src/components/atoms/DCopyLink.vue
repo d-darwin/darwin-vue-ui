@@ -36,7 +36,7 @@ import DTypography from "../containers/DTypography";
 /**
  * The component allows user to copy current page URL.
  *
- * @version 1.1.4
+ * @version 1.1.5
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -97,9 +97,13 @@ export default {
 
   methods: {
     async copyLink() {
-      const link = window.location.href;
+      let link = "";
 
-      this.copyToClipboard(link);
+      if (process.browser) {
+        link = window.location.href;
+        this.copyToClipboard(link);
+      }
+
       /**
        * Page link was copied.
        *
