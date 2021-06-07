@@ -13,4 +13,11 @@ describe("components/atoms/DCheckbox", () => {
   it("Renders .d-checkbox element", () => {
     expect(wrapper.html().includes(LABEL)).toBe(true);
   });
+
+  it("Emits update:value on click", () => {
+    wrapper.find("input").trigger("click");
+    expect(!!wrapper.emitted()["update:value"]).toBe(true);
+  });
+
+  // TODO: what actually emits component on click
 });
