@@ -11,7 +11,7 @@ describe("components/atoms/DCheckbox", () => {
   });
 
   it("Renders .d-checkbox element", () => {
-    expect(wrapper.html().includes(".d-checkbox")).toBe(true);
+    expect(wrapper.html().includes("d-checkbox")).toBe(true);
   });
 
   it("Renders label element with props.content text", () => {
