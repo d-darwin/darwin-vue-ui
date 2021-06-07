@@ -2,7 +2,7 @@
 import { watch, nextTick, onBeforeUnmount } from "vue";
 
 /** utils **/
-import uuid from "../utils/uuid";
+import { v4 as uuid } from "uuid";
 
 /** compositions **/
 import useBlockBodyScroll from "./blockBodyScroll";

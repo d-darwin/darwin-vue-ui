@@ -109,7 +109,6 @@ import getParsedPosition from "./utils/getParsedPosition";
 import isHTMLElement from "./utils/isHTMLElement";
 import isHTMLNode from "./utils/isHTMLNode";
 import throttle from "./utils/throttle";
-import uuid from "./utils/uuid";
 
 /** variables **/
 import controlColorList from "./variables/controlColorList";
@@ -232,8 +231,7 @@ export const utils = {
   isHTMLElement,
   isHTMLNode,
   debounce,
-  throttle,
-  uuid
+  throttle
 };
 
 export const variables = {

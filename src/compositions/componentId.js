@@ -1,5 +1,5 @@
 import { ref, watchEffect } from "vue";
-import uuid from "../utils/uuid";
+import { v4 as uuid } from "uuid";
 
 /**
  * Uses passed id prop or generates custom UUID.
