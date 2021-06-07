@@ -42,7 +42,7 @@ import DTypography from "../containers/DTypography";
 /**
  * The component allows user to copy string passed to component in <i>content</i> prop.
  *
- * @version 1.1.3
+ * @version 1.1.4
  * @author [Dmitriy Bykov] (https://github.com/d-darwin)
  */
 export default {
@@ -97,7 +97,10 @@ export default {
 
   methods: {
     async copyText() {
-      this.copyToClipboard(this.content);
+      if (process.browser) {
+        this.copyToClipboard(this.content);
+      }
+
       /**
        * Content string was copied.
        *

@@ -1,7 +1,7 @@
 import { mount } from "@vue/test-utils";
-import DBackdrop from "@/components/atoms/DBackdrop.vue";
+import DBackdrop from "@/components/atoms/DBackdrop";
 
-describe("DBackdrop.vue", () => {
+describe("components/atoms/DBackdrop.vue", () => {
   const wrapper = mount(DBackdrop, {});
 
   it("Renders .d-backdrop element", () => {

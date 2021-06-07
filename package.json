@@ -27,6 +27,7 @@
   "dependencies": {
     "focus-visible": "^5.2.0",
     "get-video-id": "^3.2.0",
+    "uuid": "^8.3.2",
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
@@ -47,6 +48,7 @@
     "eslint-plugin-vue": "^7.9.0",
     "postcss": "^8.2.15",
     "prettier": "^1.19.1",
+    "regenerator-runtime": "^0.13.7",
     "sass": "^1.32.13",
     "sass-loader": "^10.2.0",
     "typescript": "~3.9.3",
