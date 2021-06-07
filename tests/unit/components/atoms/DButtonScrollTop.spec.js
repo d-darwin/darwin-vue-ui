@@ -16,13 +16,11 @@ describe("components/atoms/DButtonScrollTop", () => {
     expect(wrapper.html().includes("<!--teleport start-->")).toBe(true);
   });
 
-  it("Renders .d-button-scroll-top element immediately if props.scrollOffset = 0", () => {
-    // const teleportedElement = document.querySelector(".d-button-scroll-top");
-    // expect(!!teleportedElement).toBe(true);
+  it("Shows component immediately if props.scrollOffset = 0", () => {
     expect(wrapper.vm.isShown).toBe(true);
   });
 
-  it("Doesn't render .d-button-scroll-top element immediately if props.scrollOffset > 0", () => {
+  it("Doesn't show component immediately if props.scrollOffset > 0", () => {
     const wrapper = factory({ scrollOffset: 400 });
     expect(wrapper.vm.isShown).toBe(false);
   });
