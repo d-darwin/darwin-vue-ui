@@ -22,7 +22,7 @@ describe("components/atoms/DCopyContent", () => {
   });
 
   it("Emits copied event on click", async () => {
-    await wrapper.findComponent(DButton).trigger("click");
+    await wrapper.vm.copyText();
     // await wrapper.vm.$nextTick();
 
     console.log(wrapper.emitted());
