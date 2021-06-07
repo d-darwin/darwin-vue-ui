@@ -21,15 +21,12 @@ describe("components/atoms/DCopyContent", () => {
     expect(wrapper.findComponent(DButton).exists()).toBe(true);
   });
 
-  it("Emits copied event on click", async () => {
+  it("Emits copied on content copy", async () => {
     await wrapper.vm.copyText();
-    // await wrapper.vm.$nextTick();
-
-    console.log(wrapper.emitted());
-    // expect(!!wrapper.emitted().copied).toBe(true);
+    expect(!!wrapper.emitted().copied).toBe(true);
   });
 
   /*it("Push props.content to clipboard after click", () => {
-
+    // TODO: jest can't use browser API, use puppeteer???
   })*/
 });
