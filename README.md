@@ -9,7 +9,7 @@
 
 It's lightweight and flexible UI Library for Vue 3.
 
-🚧 DISCLAIMER: Under construction. Not even close to alpha. So please, don't use in production.
+🚧 DISCLAIMER: Under construction. So please, don't use in production.
 
 ## In short
 
