@@ -1,6 +1,6 @@
 # DARWIN Studio UI Library
 
-[![Minified Gzipped Size](https://badgen.net/bundlephobia/minzip/@darwin-studio/ui-vue)](https://bundlephobia.com/result?p=@darwin-studio/ui-vue)
+[![Minified Gzipped Size](https://badgen.net/bundlephobia/minzip/@darwin-studio/ui-vue)](https://badgen.net/bundlephobia/minzip/@darwin-studio/ui-vue)
 [![Known Vulnerabilities](https://snyk.io/test/npm/@darwin-studio/ui-vue/badge.svg)](https://snyk.io/advisor/npm-package/@darwin-studio/ui-vue)
 [![Licence](https://badgen.net/github/license/d-darwin/darwin-vue-ui)](https://badgen.net/github/license/d-darwin/darwin-vue-ui)
 [![Package Version](https://badgen.net/npm/v/@darwin-studio/ui-vue)](https://badgen.net/npm/v/@darwin-studio/ui-vue)
