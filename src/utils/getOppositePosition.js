@@ -1,8 +1,8 @@
 /**
  * Returns opposite position.
  *
- * @param position
- * @returns {string}
+ * @param position: Position
+ * @returns {position: Position}
  */
 export default function(position) {
   switch (position) {

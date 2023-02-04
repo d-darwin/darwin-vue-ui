@@ -10,7 +10,7 @@ import getOppositePosition from "./getOppositePosition";
  * @param windowHeight
  * @param defaultHorizontalPosition
  * @param defaultVerticalPosition
- * @returns {{}}
+ * @returns {{vertical: number, horizontal: number}}
  */
 export default function(
   elementContainer,
@@ -33,8 +33,6 @@ export default function(
       bottom: windowHeight.value - elementContainerClientRect.bottom,
       left: elementContainerClientRect.left
     };
-
-    console.log(element.value);
 
     // hold size and margin of the element
     const elementBoxModel = getHTMLElementBoxModel(

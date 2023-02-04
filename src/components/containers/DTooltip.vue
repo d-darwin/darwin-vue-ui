@@ -126,7 +126,7 @@ export default {
 
     onMounted(() => {
       nextTick(() => {
-        // We need to wait until children components will mounted (if there are)
+        // We need to wait until children components will be mounted (if there are)
         if (props.isPositionAdjustable) {
           const adjustedPosition = getAdjustedPosition(
             tooltipContainer,

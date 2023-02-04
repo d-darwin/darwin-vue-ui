@@ -4,12 +4,13 @@ import isHTMLElement from "./isHTMLElement";
  * Return current sizes and margins of the tooltipElement.
  * @param tooltipElement
  * @returns {{
- *  offsetHeight: number,
+ *      offsetHeight: number,
         offsetWidth: number,
         marginTop: number,
         marginRight: number,
         marginBottom: number,
-        marginLeft: number} || {}}
+        marginLeft: number
+   }}
  */
 export default function(tooltipElement) {
   let tooltipBoxModel = {};
